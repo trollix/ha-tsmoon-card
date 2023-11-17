@@ -1,7 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import cssImports from 'rollup-plugin-import-css';
-import minifyHTML from 'rollup-plugin-minify-html-literals';
+import template from 'rollup-plugin-html-literals';
 import { terser } from 'rollup-plugin-terser';
 import versionInjector from 'rollup-plugin-version-injector';
 import json from '@rollup/plugin-json';
@@ -24,7 +24,7 @@ plugins.push(typescript());
 let sourcemapPathTransform = undefined;
 
 if (process.env.release) {
-  plugins.push(minifyHTML())
+  plugins.push(template())
   plugins.push(
     terser({
       compress: {}

@@ -1,0 +1,5 @@
+{
+    "name": "My card",
+    "render_readme": true,
+    "filename": "my-custom-card.js"
+}

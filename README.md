@@ -18,11 +18,8 @@ Startup setup for new lovelace (Home Assistant) card development
     * Click on the "Use this template" button at the top of this page. Your private repo will be created for you.
 
     * Clone your repo to your box
-    
     OR
-    
     * Clone this repo to your box
-      
       `git clone https://github.com/trollix/ha-tmoon-card.git your-card-name`
 
     * Create empty repo on your git server and copy it's url

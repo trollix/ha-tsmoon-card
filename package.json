@@ -1,15 +1,16 @@
 {
   "name": "lovelace-card-boilerplate",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Lovelace card boilerplate",
   "main": "dist/my-custom-card.js",
   "files": [
     "/dist"
   ],
   "scripts": {
-    "build": "rimraf dist && rollup -c",
+    "build": "rimraf dist && npm run rollup",
     "release": "rollup --environment release -c",
-    "watch": "rollup -c --watch"
+    "watch": "rollup -c --watch",
+    "rollup": "rollup -c --bundleConfigAsCjs"
   },
   "repository": {
     "type": "git",

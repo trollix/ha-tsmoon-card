@@ -1,6 +1,6 @@
 import { HomeAssistant } from "../ha-types";
 import { html, css, LitElement, CSSResultGroup, TemplateResult } from "lit";
-import { property } from "lit/decorators";
+import { property } from "lit/decorators.js";
 import { ICardConfig } from "../types";
 import styles from "./card.css";
 

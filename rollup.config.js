@@ -2,7 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import cssImports from 'rollup-plugin-import-css';
 import template from 'rollup-plugin-html-literals';
-import { terser } from 'rollup-plugin-terser';
+import { terser } from '@rollup/plugin-terser';
 import versionInjector from 'rollup-plugin-version-injector';
 import json from '@rollup/plugin-json';
 import pkg from './package.json';
@@ -36,7 +36,6 @@ if (process.env.release) {
     .replace(/.git$/, "");
   repoRoot += "/";
 
-  sourcemapPathTransform = file => repoRoot + "v" + pkg.version + file.substr(2);
 }
 
 export default {
@@ -46,9 +45,6 @@ export default {
     globals: {},
     file: targetFileName,
     format: 'iife',
-    sourcemap: true,
-    sourcemapExcludeSources: true,
-    sourcemapPathTransform: sourcemapPathTransform
   },
   plugins: plugins,
 }

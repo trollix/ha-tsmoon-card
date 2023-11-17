@@ -143,10 +143,10 @@
         n$1({ attribute: false })
     ], MyCustomCard.prototype, "state", void 0);
 
-    const printVersion = () => console.info("%c MY CUSTOM CARD %c 0.1.1", "color: white; background: gray; font-weight: 700;", "color: gray; background: white; font-weight: 700;");
+    const printVersion = () => console.info("%c MY CUSTOM CARD %c 0.1.2", "color: white; background: gray; font-weight: 700;", "color: gray; background: white; font-weight: 700;");
 
     var name = "lovelace-card-boilerplate";
-    var version = "0.1.1";
+    var version = "0.1.2";
 
     console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // Registering card

@@ -3,6 +3,9 @@
   "version": "0.1.1",
   "description": "Lovelace card boilerplate",
   "main": "dist/my-custom-card.js",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "build": "rimraf dist && rollup -c",
     "release": "rollup --environment release -c",

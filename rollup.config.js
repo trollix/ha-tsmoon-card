@@ -4,6 +4,7 @@ import cssImports from 'rollup-plugin-import-css';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import { terser } from 'rollup-plugin-terser';
 import versionInjector from 'rollup-plugin-version-injector';
+import json from '@rollup/plugin-json';
 import pkg from './package.json';
 
 let targetFileName = pkg.main;
@@ -11,6 +12,7 @@ let targetFileName = pkg.main;
 const plugins = [
   cssImports({minify:true}),
   resolve(),
+  json(),
   versionInjector({
     injectInComments: false,
     logLevel: 'warn',

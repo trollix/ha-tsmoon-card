@@ -1,6 +1,6 @@
 {
   "name": "lovelace-card-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lovelace card boilerplate",
   "main": "dist/my-custom-card.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxwroc/lovelace-card-boilerplate.git"
+    "url": "https://github.comtrollix/ha-tmoon-card.git"
   },
   "keywords": [
     "lovelace",
@@ -21,12 +21,12 @@
     "home",
     "assistant"
   ],
-  "author": "Max Chodorowski",
+  "author": "Trollix",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maxwroc/lovelace-card-boilerplate/issues"
+    "url": "https://github.com/trollix/ha-tmoon-card/issues"
   },
-  "homepage": "https://github.com/maxwroc/lovelace-card-boilerplate#readme",
+  "homepage": "https://github.com/trollix/ha-tmoon-card#readme",
   "jest": {
     "preset": "ts-jest",
     "runner": "jest-electron/runner",
@@ -45,6 +45,7 @@
     }
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
     "@types/jest": "^27.0.3",

@@ -1,4 +1,5 @@
 # lovelace-card-boilerplate
+
 Startup setup for new lovelace (Home Assistant) card development
 
 ## What is here?
@@ -22,7 +23,7 @@ Startup setup for new lovelace (Home Assistant) card development
     
     * Clone this repo to your box
       
-      `git clone https://github.com/maxwroc/lovelace-card-boilerplate.git your-card-name`
+      `git clone https://github.com/trollix/ha-tmoon-card.git your-card-name`
 
     * Create empty repo on your git server and copy it's url
 

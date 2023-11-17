@@ -4,7 +4,7 @@
   "description": "Lovelace card boilerplate",
   "main": "dist/my-custom-card.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rimraf dist && rollup -c",
     "release": "rollup --environment release -c",
     "test": "jest",
     "test+debug": "SET DEBUG_MODE=1&&jest",

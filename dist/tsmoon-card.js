@@ -145,14 +145,14 @@
         n$1({ attribute: false })
     ], MyCustomCard.prototype, "state", void 0);
 
-    var name = "lovelace-card-boilerplate";
-    var version = "0.1.6";
+    var name = "ha-tsmoon-card";
+    var version = "0.1.7";
 
-    const printVersion = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
+    const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 
-    console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // Registering card
     customElements.define("my-custom-card", MyCustomCard);
-    printVersion();
+    // 
+    printVersionToConsole();
 
 })();

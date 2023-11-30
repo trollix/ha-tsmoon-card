@@ -1,6 +1,6 @@
 {
   "name": "lovelace-card-boilerplate",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Lovelace card boilerplate",
   "main": "dist/my-custom-card.js",
   "files": [
@@ -19,7 +19,6 @@
   "keywords": [
     "lovelace",
     "card",
-    "boilerplate",
     "home",
     "assistant"
   ],
@@ -34,7 +33,7 @@
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
-    "rollup": "^4.4.1",
+    "rollup": "^4.6.1",
     "rollup-plugin-import-css": "^3.3.5",
     "rollup-plugin-html-literals": "^1.1.8",
     "@rollup/plugin-terser": "^0.4.4",

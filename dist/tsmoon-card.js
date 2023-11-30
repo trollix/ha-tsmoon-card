@@ -74,7 +74,7 @@
     /**
      * Main card class definition
      */
-    class MyCustomCard extends s {
+    class TSMoonCard extends s {
         constructor() {
             super(...arguments);
             this.cardTitle = "Card header";
@@ -140,18 +140,18 @@
     }
     __decorate([
         n$1({ attribute: false })
-    ], MyCustomCard.prototype, "cardTitle", void 0);
+    ], TSMoonCard.prototype, "cardTitle", void 0);
     __decorate([
         n$1({ attribute: false })
-    ], MyCustomCard.prototype, "state", void 0);
+    ], TSMoonCard.prototype, "state", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.1.7";
+    var version = "0.1.8";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 
     // Registering card
-    customElements.define("my-custom-card", MyCustomCard);
+    customElements.define("tsmoon-card", TSMoonCard);
     // 
     printVersionToConsole();
 

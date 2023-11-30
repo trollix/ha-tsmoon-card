@@ -1,8 +1,8 @@
-import { MyCustomCard } from "./custom-element/my-custom-card";
+import { TSMoonCard } from "./custom-element/tsmoon-card";
 import { printVersionToConsole } from "./utils";
 
 // Registering card
-customElements.define("my-custom-card", MyCustomCard);
+customElements.define("tsmoon-card", TSMoonCard);
 
 // 
 printVersionToConsole();

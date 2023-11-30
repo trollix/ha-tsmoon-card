@@ -7,7 +7,7 @@ import styles from "./card.css";
 /**
  * Main card class definition
  */
-export class MyCustomCard extends LitElement {
+export class TSMoonCard extends LitElement {
 
     @property({ attribute: false })
     private cardTitle: string = "Card header";

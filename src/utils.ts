@@ -1,5 +1,9 @@
+import { version, name } from '../package.json'
+
 export const printVersion = () => console.info(
-    "%c MY CUSTOM CARD %c [VI]{version}[/VI]",
-    "color: white; background: gray; font-weight: 700;",
-    "color: gray; background: white; font-weight: 700;",
+    `%c  ${name.toUpperCase()}  %c  Version ${version}  `,
+    'color: white; font-weight: bold; background: crimson',
+    'color: #000; font-weight: bold; background: #ddd',
 );
+
+

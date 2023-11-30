@@ -1,6 +1,6 @@
 {
   "name": "lovelace-card-boilerplate",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Lovelace card boilerplate",
   "main": "dist/my-custom-card.js",
   "files": [

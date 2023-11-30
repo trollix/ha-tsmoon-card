@@ -1,4 +1,4 @@
-# lovelace-card-boilerplate
+# HA-TSMOON
 
 Startup setup for new lovelace (Home Assistant) card development
 

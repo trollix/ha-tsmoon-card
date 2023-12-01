@@ -77,7 +77,7 @@
     class TSMoonCard extends s {
         constructor() {
             super(...arguments);
-            this.cardTitle = "Card header";
+            this.cardTitle = "Moon Phase";
             this.state = "";
             this.entity = "";
         }
@@ -116,15 +116,15 @@
                 </div>
             </div>
             <div class="card-content">
-                <div>
-                    <div class="entity-row">
-                        <div class="icon">
-                            <ha-icon
+                <div class="entity-row">
+                    <div class="icon">
+                        <ha-icon
                                 style="color: yellow"
                                 icon="mdi:lightbulb"
-                            ></ha-icon>
-
-                            <div class="icon">
+                        >
+                        </ha-icon>
+                    </div>
+                    <div class="icon">
 
 <svg width="40px" height="40px" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
     <circle fill="#FFD983" cx="18" cy="18" r="18"></circle>
@@ -139,19 +139,15 @@
     <circle fill="#FFCC4D" cx="4" cy="19" r="2"></circle>
     <circle fill="#5B6876" cx="26" cy="23" r="2"></circle>
 </svg>
-</div>
-
-                        </div>
-
-                        <div class="name truncate">
-                            Entity name
-                            <div class="secondary">Secondary info</div>
-                        </div>
-                        <div class="state">
-                            ${this.state}
-                        </div>
-                    <div>
-                </div>
+                    </div>
+                    <div class="name truncate">
+                        Entity name
+                        <div class="secondary">Secondary info</div>
+                    </div>
+                    <div class="state">
+                        ${this.state}
+                    </div>
+                <div>
             </div>
         </ha-card>
         `;
@@ -165,13 +161,13 @@
     ], TSMoonCard.prototype, "state", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.2.3";
+    var version = "0.2.4";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 
-    // Registering card
-    customElements.define("tsmoon-card", TSMoonCard);
     // 
     printVersionToConsole();
+    // Registering card
+    customElements.define("tsmoon-card", TSMoonCard);
 
 })();

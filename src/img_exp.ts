@@ -26,9 +26,22 @@ interface SvgType {
 export const svg: SvgType = {
     forms: {
         first_quarter: svgMoonFormsFirstQuarter,
-        full_moon: svgMoonFormsFirstQuarter,
+        full_moon: svgMoonFormsFullMoon,
+        last_quarter: svgMoonFormsLastQuarter,
+        new_moon: svgMoonFormsNewMoon,
+        waning_crescent: svgMoonFormsWaningCrescent,
+        waning_gibbous: svgMoonFormsWaningGibbous,
+        waxing_crescent: svgMoonFormsWaxingCrescent,
+        waxing_gibbous: svgMoonFormsWaxingGibbous
     },
     round: {
         first_quarter: svgMoonRoundFirstQuarter,
+        full_moon: svgMoonRoundFullMoon,
+        last_quarter: svgMoonRoundLastQuarter,
+        new_moon: svgMoonRoundNewMoon,
+        waning_crescent: svgMoonRoundWaningCrescent,
+        waning_gibbous: svgMoonRoundWaningGibbous,
+        waxing_crescent: svgMoonRoundWaxingCrescent,
+        waxing_gibbous: svgMoonRoundWaxingGibbous
     }
 }

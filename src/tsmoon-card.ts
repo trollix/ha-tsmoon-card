@@ -52,7 +52,7 @@ export class TSMoonCard extends LitElement {
             // Gérer le cas où le type n'est ni 'forms' ni 'round'
             throw new Error('Type non pris en charge');
           }
-      }
+    }
 
     // CSS for the card
     // https://lit.dev/docs/components/styles/

@@ -18,7 +18,12 @@ import svgMoonRoundWaningGibbous from './icons/moon-round/waning_gibbous.svg'
 import svgMoonRoundWaxingCrescent from './icons/moon-round/waxing_crescent.svg'
 import svgMoonRoundWaxingGibbous from './icons/moon-round/waxing_gibbous.svg'
 
-export const svg = {
+interface SvgType {
+    forms: { [key: string]: string };
+    round: { [key: string]: string };
+}
+
+export const svg: SvgType = {
     forms: {
         first_quarter: svgMoonFormsFirstQuarter,
         full_moon: svgMoonFormsFirstQuarter,

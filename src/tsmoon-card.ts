@@ -31,15 +31,28 @@ export class TSMoonCard extends LitElement {
             </div>
         `
     }
-
-    private toIcon (weatherState: string, type: 'fill' | 'line', forceDay: boolean, kind: 'static' | 'animated'): string {
+/*
+    private toIcon (moonState: string, type: 'forms' | 'round'): string {
         //const daytime = forceDay ? 'day' : this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
         //const iconMap = kind === 'animated' ? svg : png
-        //const icon = iconMap[type][weatherState]
+        //const icon = iconMap[type][moonState]
+        
         //return icon?.[daytime] || icon
-        return svg.forms.full_moon;
+        // L'utilisation de icon?.[daytime] est une syntaxe raccourcie pour vérifier si icon est défini, puis accéder à la propriété correspondant à la valeur de daytime. Si cette propriété n'existe pas, l'expression retourne undefined
+        
+        return svg[type][moonState];
     }
-
+*/
+    private toIcon(moonState: string, type: 'forms' | 'round'): string {
+        if (type === 'forms') {
+            return svg.forms[moonState];
+          } else if (type === 'round') {
+            return svg.round[moonState];
+          } else {
+            // Gérer le cas où le type n'est ni 'forms' ni 'round'
+            throw new Error('Type non pris en charge');
+          }
+      }
 
     // CSS for the card
     // https://lit.dev/docs/components/styles/
@@ -71,7 +84,7 @@ export class TSMoonCard extends LitElement {
      */
     render(): TemplateResult {
 
-        const moonIcon = this.toIcon(this.state, 'fill', true, 'static');
+        const moonIcon = this.toIcon(this.state, 'forms');
 
         return html`
         <ha-card>
@@ -82,13 +95,6 @@ export class TSMoonCard extends LitElement {
             </div>
             <div class="card-content">
                 <div class="entity-row">
-                    <div class="icon">
-                        <ha-icon
-                                style="color: yellow"
-                                icon="mdi:lightbulb"
-                        >
-                        </ha-icon>
-                    </div>
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
                         Entity name

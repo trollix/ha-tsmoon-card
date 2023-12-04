@@ -152,12 +152,29 @@
             </div>
         `;
         }
-        toIcon(weatherState, type, forceDay, kind) {
-            //const daytime = forceDay ? 'day' : this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
-            //const iconMap = kind === 'animated' ? svg : png
-            //const icon = iconMap[type][weatherState]
-            //return icon?.[daytime] || icon
-            return svg.forms.full_moon;
+        /*
+            private toIcon (moonState: string, type: 'forms' | 'round'): string {
+                //const daytime = forceDay ? 'day' : this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
+                //const iconMap = kind === 'animated' ? svg : png
+                //const icon = iconMap[type][moonState]
+                
+                //return icon?.[daytime] || icon
+                // L'utilisation de icon?.[daytime] est une syntaxe raccourcie pour vérifier si icon est défini, puis accéder à la propriété correspondant à la valeur de daytime. Si cette propriété n'existe pas, l'expression retourne undefined
+                
+                return svg[type][moonState];
+            }
+        */
+        toIcon(moonState, type) {
+            if (type === 'forms') {
+                return svg.forms[moonState];
+            }
+            else if (type === 'round') {
+                return svg.round[moonState];
+            }
+            else {
+                // Gérer le cas où le type n'est ni 'forms' ni 'round'
+                throw new Error('Type non pris en charge');
+            }
         }
         // CSS for the card
         // https://lit.dev/docs/components/styles/
@@ -185,7 +202,7 @@
          * Renders the card when the update is requested (when any of the properties are changed)
          */
         render() {
-            const moonIcon = this.toIcon(this.state, 'fill', true, 'static');
+            const moonIcon = this.toIcon(this.state, 'forms');
             return x `
         <ha-card>
             <div class="card-header">
@@ -195,13 +212,6 @@
             </div>
             <div class="card-content">
                 <div class="entity-row">
-                    <div class="icon">
-                        <ha-icon
-                                style="color: yellow"
-                                icon="mdi:lightbulb"
-                        >
-                        </ha-icon>
-                    </div>
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
                         Entity name
@@ -224,7 +234,7 @@
     ], TSMoonCard.prototype, "state", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.3.4";
+    var version = "0.3.6";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

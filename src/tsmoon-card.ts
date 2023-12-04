@@ -71,7 +71,7 @@ export class TSMoonCard extends LitElement {
     setConfig(config: ICardConfig): void {
         this.entity = config.entity;
         this.cardTitle = config.title || this.cardTitle;
-        this.icon_type !== undefined ? config.icon_type : 'forms'; console.log(config.icon_type);
+        this.icon_type !== undefined ? config.icon_type : 'forms'; console.log(config.icon_type + this.icon_type );
     }
 
     /**

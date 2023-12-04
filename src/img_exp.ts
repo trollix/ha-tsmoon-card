@@ -18,9 +18,20 @@ import svgMoonRoundWaningGibbous from './icons/moon-round/waning_gibbous.svg'
 import svgMoonRoundWaxingCrescent from './icons/moon-round/waxing_crescent.svg'
 import svgMoonRoundWaxingGibbous from './icons/moon-round/waxing_gibbous.svg'
 
+// Photos in moon
+import svgMoonPhotoFirstQuarter from './icons/moon-photo/first_quarter.svg'
+import svgMoonPhotoFullMoon from './icons/moon-photo/full_moon.svg'
+import svgMoonPhotoLastQuarter from './icons/moon-photo/last_quarter.svg'
+import svgMoonPhotoNewMoon from './icons/moon-photo/new_moon.svg'
+import svgMoonPhotoWaningCrescent from './icons/moon-photo/waning_crescent.svg'
+import svgMoonPhotoWaningGibbous from './icons/moon-photo/waning_gibbous.svg'
+import svgMoonPhotoWaxingCrescent from './icons/moon-photo/waxing_crescent.svg'
+import svgMoonPhotoWaxingGibbous from './icons/moon-photo/waxing_gibbous.svg'
+
 interface SvgType {
     forms: { [key: string]: string };
     round: { [key: string]: string };
+    photo: { [key: string]: string };
 }
 
 export const svg: SvgType = {
@@ -43,5 +54,15 @@ export const svg: SvgType = {
         waning_gibbous: svgMoonRoundWaningGibbous,
         waxing_crescent: svgMoonRoundWaxingCrescent,
         waxing_gibbous: svgMoonRoundWaxingGibbous
+    },
+    photo: {
+        first_quarter: svgMoonPhotoFirstQuarter,
+        full_moon: svgMoonPhotoFullMoon,
+        last_quarter: svgMoonPhotoLastQuarter,
+        new_moon: svgMoonPhotoNewMoon,
+        waning_crescent: svgMoonPhotoWaningCrescent,
+        waning_gibbous: svgMoonPhotoWaningGibbous,
+        waxing_crescent: svgMoonPhotoWaxingCrescent,
+        waxing_gibbous: svgMoonPhotoWaxingGibbous
     }
 }

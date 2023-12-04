@@ -1,4 +1,4 @@
-import { TSMoonCard } from "./custom-element/tsmoon-card";
+import { TSMoonCard } from "./tsmoon-card";
 import { printVersionToConsole } from "./utils";
 
 // 

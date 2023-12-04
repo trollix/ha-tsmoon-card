@@ -69,7 +69,48 @@
      * SPDX-License-Identifier: BSD-3-Clause
      */var n;null!=(null===(n=window.HTMLSlotElement)||void 0===n?void 0:n.prototype.assignedElements)?(o,n)=>o.assignedElements(n):(o,n)=>o.assignedNodes(n).filter((o=>o.nodeType===Node.ELEMENT_NODE));
 
-    var styles = ".truncate{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}.card-content > div{margin-bottom:8px;}.card-content > div:last-child{margin-bottom:0;}.entity-spacing:first-child{margin-top:0;}.entity-spacing:last-child{margin-bottom:0;}.entity-row{display:flex;align-items:center;}.entity-row .name{flex:1;margin:0 6px;}.entity-row .secondary{color:var(--primary-color);}.entity-row .icon{flex:0 0 40px;border-radius:50%;text-align:center;line-height:40px;margin-right:10px;}";
+    var styles = i$2 `
+
+.truncate {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.card-content > div {
+    margin-bottom: 8px;
+}
+.card-content > div:last-child {
+    margin-bottom: 0;
+}
+
+.entity-spacing:first-child {
+    margin-top: 0;
+}
+.entity-spacing:last-child {
+    margin-bottom: 0;
+}
+
+.entity-row {
+    display: flex;
+    align-items: center;
+}
+.entity-row .name {
+    flex: 1;
+    margin: 0 6px;
+}
+.entity-row .secondary {
+    color: var(--primary-color);
+}
+.entity-row .icon {
+    flex: 0 0 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+}
+
+`;
 
     /**
      * Main card class definition
@@ -81,11 +122,10 @@
             this.state = "";
             this.entity = "";
         }
-        /**
-         * CSS for the card
-         */
+        // CSS for the card
+        // https://lit.dev/docs/components/styles/
         static get styles() {
-            return i$2([styles]);
+            return styles;
         }
         /**
          * Called on every hass update
@@ -161,7 +201,7 @@
     ], TSMoonCard.prototype, "state", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.2.4";
+    var version = "0.2.6";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

@@ -1,3 +1,7 @@
+import { css } from 'lit'
+
+export default css`
+
 .truncate {
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -36,3 +40,5 @@
     line-height: 40px;
     margin-right: 10px;
 }
+
+`

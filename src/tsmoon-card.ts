@@ -1,8 +1,8 @@
-import { HomeAssistant } from "../ha-types";
+import { HomeAssistant } from "./ha-types";
 import { html, css, LitElement, CSSResultGroup, TemplateResult } from "lit";
 import { property } from "lit/decorators.js";
-import { ICardConfig } from "../types";
-import styles from "./card.css";
+import { ICardConfig } from "./types";
+import styles from './styles'
 
 /**
  * Main card class definition
@@ -17,13 +17,11 @@ export class TSMoonCard extends LitElement {
 
     private entity: string = "";
 
-    /**
-     * CSS for the card
-     */
-    static get styles(): CSSResultGroup {
-        return css(<TemplateStringsArray><any>[styles]);
+    // CSS for the card
+    // https://lit.dev/docs/components/styles/
+    static get styles (): CSSResultGroup {
+        return styles
     }
-
     /**
      * Called on every hass update
      */

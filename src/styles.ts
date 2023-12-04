@@ -41,4 +41,9 @@ export default css`
     margin-right: 10px;
 }
 
+.moon-img-svg {
+    width: 40px;
+    height: 40px;
+}
+
 `

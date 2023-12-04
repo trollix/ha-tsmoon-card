@@ -228,7 +228,8 @@
             this.entity = config.entity;
             this.cardTitle = config.title || this.cardTitle;
             this.icon_type !== undefined ? config.icon_type : 'forms';
-            console.log(config.icon_type + this.icon_type);
+            console.log(config.icon_type);
+            console.log(this.icon_type);
         }
         /**
          * Renders the card when the update is requested (when any of the properties are changed)
@@ -269,7 +270,7 @@
     ], TSMoonCard.prototype, "icon_type", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.3.12";
+    var version = "0.3.13";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

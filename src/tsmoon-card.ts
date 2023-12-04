@@ -42,6 +42,8 @@ export class TSMoonCard extends LitElement {
           return svg.forms[moonState]!;
         } else if (type === 'round') {
           return svg.round[moonState]!;
+        } else if (type === 'photo') {
+            return svg.photo[moonState]!;
         } else {
           // Gérer le cas où la propriété n'est pas définie
           throw new Error('Propriété non définie');

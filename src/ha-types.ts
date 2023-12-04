@@ -220,7 +220,7 @@ export interface HassEntity {
   export interface LovelaceCardConfig {
     entity: string;
     title?: string;
-    icon_type?: 'forms' | 'round' | 'photo';
+    icon_type?: string;
   }
 
   export interface LovelaceCard extends HTMLElement {

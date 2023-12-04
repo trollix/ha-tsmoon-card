@@ -227,6 +227,9 @@
             else if (type === 'round') {
                 return svg.round[moonState];
             }
+            else if (type === 'photo') {
+                return svg.photo[moonState];
+            }
             else {
                 // Gérer le cas où la propriété n'est pas définie
                 throw new Error('Propriété non définie');
@@ -295,7 +298,7 @@
     ], TSMoonCard.prototype, "icon_type", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.4.1";
+    var version = "0.4.2";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

@@ -197,7 +197,7 @@
                         >
                         </ha-icon>
                     </div>
-${this.renderIcon(moonIcon)}
+                    <img src="${this.renderIcon(moonIcon)}" alt="SVG Image">
                     <div class="name truncate">
                         Entity name
                         <div class="secondary">Secondary info</div>
@@ -219,7 +219,7 @@ ${this.renderIcon(moonIcon)}
     ], TSMoonCard.prototype, "state", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.3.1";
+    var version = "0.3.2";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

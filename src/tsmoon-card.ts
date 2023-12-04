@@ -89,7 +89,7 @@ export class TSMoonCard extends LitElement {
                         >
                         </ha-icon>
                     </div>
-${this.renderIcon(moonIcon)}
+                    <img src="${this.renderIcon(moonIcon)}" alt="SVG Image">
                     <div class="name truncate">
                         Entity name
                         <div class="secondary">Secondary info</div>

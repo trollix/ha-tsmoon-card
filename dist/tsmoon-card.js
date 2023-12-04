@@ -246,7 +246,7 @@
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
                         Entity name
-                        <div class="secondary">Secondary info</div>
+                        <div class="secondary">Secondary info - ${this.icon_type}</div>
                     </div>
                     <div class="state">
                         ${this.state}
@@ -268,7 +268,7 @@
     ], TSMoonCard.prototype, "icon_type", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.3.8";
+    var version = "0.3.9";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

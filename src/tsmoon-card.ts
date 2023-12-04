@@ -93,7 +93,7 @@ export class TSMoonCard extends LitElement {
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
                         Entity name
-                        <div class="secondary">Secondary info</div>
+                        <div class="secondary">Secondary info - ${this.icon_type}</div>
                     </div>
                     <div class="state">
                         ${this.state}

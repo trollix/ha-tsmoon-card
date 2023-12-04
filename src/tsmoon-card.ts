@@ -37,7 +37,7 @@ export class TSMoonCard extends LitElement {
         `
     }
 
-    private toIcon(moonState: string, type: 'forms' | 'round'): string {
+    private toIcon(moonState: string, type: string): string {
         if (type === 'forms') {
           return svg.forms[moonState]!;
         } else if (type === 'round') {
@@ -70,8 +70,8 @@ export class TSMoonCard extends LitElement {
      */
     setConfig(config: ICardConfig): void {
         this.entity = config.entity;
-        this.cardTitle = config.title || this.cardTitle;
-        this.icon_type = config.icon_type ?? 'forms'; console.log(config.icon_type); console.log(this.icon_type );
+        this.cardTitle = config.title ?? this.cardTitle;
+        this.icon_type = config.icon_type ?? 'forms';
     }
 
     /**
@@ -79,7 +79,7 @@ export class TSMoonCard extends LitElement {
      */
     render(): TemplateResult {
 
-        const moonIcon = this.toIcon(this.state, 'forms');
+        const moonIcon = this.toIcon(this.state, this.icon_type);
 
         return html`
         <ha-card>

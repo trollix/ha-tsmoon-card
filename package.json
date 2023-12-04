@@ -1,6 +1,6 @@
 {
   "name": "ha-tsmoon-card",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Simple Moon Card",
   "main": "dist/tsmoon-card.js",
   "files": [
@@ -34,6 +34,7 @@
     "@rollup/plugin-json": "^6.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.5",
+    "@rollup/plugin-image": "^3.0.3",
     "rollup": "^4.6.1",
     "rollup-plugin-import-css": "^3.3.5",
     "rollup-plugin-html-literals": "^1.1.8",

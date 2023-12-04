@@ -3,6 +3,9 @@ import { html, css, LitElement, CSSResultGroup, TemplateResult } from "lit";
 import { property } from "lit/decorators.js";
 import { ICardConfig } from "./types";
 import styles from './styles'
+import { svg } from './img_exp'
+
+
 
 /**
  * Main card class definition
@@ -20,6 +23,8 @@ export class TSMoonCard extends LitElement {
     // CSS for the card
     // https://lit.dev/docs/components/styles/
     static get styles (): CSSResultGroup {
+        const fullMoonForm = svg.forms.full_moon;
+        console.log(fullMoonForm);
         return styles
     }
     /**

@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import cssImports from 'rollup-plugin-import-css';
 import template from 'rollup-plugin-html-literals';
 import { terser } from '@rollup/plugin-terser';
+import image from '@rollup/plugin-image'
 import versionInjector from 'rollup-plugin-version-injector';
 import json from '@rollup/plugin-json';
 import pkg from './package.json';
@@ -13,6 +14,7 @@ const plugins = [
   cssImports({minify:true}),
   resolve(),
   json(),
+  image(),
   versionInjector({
     injectInComments: false,
     logLevel: 'warn',

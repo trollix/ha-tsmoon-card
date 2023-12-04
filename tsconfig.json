@@ -11,4 +11,5 @@
         "strict": true,
         "resolveJsonModule": true
     },
+    "include": ["src", "src/img_dec.d.ts"]
 }

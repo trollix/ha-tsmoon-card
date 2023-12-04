@@ -22,7 +22,12 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false })
     private state: string = "";
 
+    @property({ attribute: false })
+    private icon_type: string = "forms";
+
     private entity: string = "";
+
+
 
     private renderIcon (svg_icon_code: string): TemplateResult {
         return html`
@@ -31,28 +36,17 @@ export class TSMoonCard extends LitElement {
             </div>
         `
     }
-/*
-    private toIcon (moonState: string, type: 'forms' | 'round'): string {
-        //const daytime = forceDay ? 'day' : this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
-        //const iconMap = kind === 'animated' ? svg : png
-        //const icon = iconMap[type][moonState]
-        
-        //return icon?.[daytime] || icon
-        // L'utilisation de icon?.[daytime] est une syntaxe raccourcie pour vérifier si icon est défini, puis accéder à la propriété correspondant à la valeur de daytime. Si cette propriété n'existe pas, l'expression retourne undefined
-        
-        return svg[type][moonState];
-    }
-*/
+
     private toIcon(moonState: string, type: 'forms' | 'round'): string {
         if (type === 'forms') {
-            return svg.forms[moonState];
-          } else if (type === 'round') {
-            return svg.round[moonState];
-          } else {
-            // Gérer le cas où le type n'est ni 'forms' ni 'round'
-            throw new Error('Type non pris en charge');
-          }
-    }
+          return svg.forms[moonState]!;
+        } else if (type === 'round') {
+          return svg.round[moonState]!;
+        } else {
+          // Gérer le cas où la propriété n'est pas définie
+          throw new Error('Propriété non définie');
+        }
+      }
 
     // CSS for the card
     // https://lit.dev/docs/components/styles/
@@ -77,6 +71,7 @@ export class TSMoonCard extends LitElement {
     setConfig(config: ICardConfig): void {
         this.entity = config.entity;
         this.cardTitle = config.title || this.cardTitle;
+        this.icon_type !== undefined ? config.icon_type : 'forms';
     }
 
     /**

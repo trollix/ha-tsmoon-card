@@ -184,6 +184,7 @@
             super(...arguments);
             this.cardTitle = "Moon Phase";
             this.state = "";
+            this.icon_type = "forms";
             this.entity = "";
         }
         renderIcon(svg_icon_code) {
@@ -193,18 +194,6 @@
             </div>
         `;
         }
-        /*
-            private toIcon (moonState: string, type: 'forms' | 'round'): string {
-                //const daytime = forceDay ? 'day' : this.getSun()?.state === 'below_horizon' ? 'night' : 'day'
-                //const iconMap = kind === 'animated' ? svg : png
-                //const icon = iconMap[type][moonState]
-                
-                //return icon?.[daytime] || icon
-                // L'utilisation de icon?.[daytime] est une syntaxe raccourcie pour vérifier si icon est défini, puis accéder à la propriété correspondant à la valeur de daytime. Si cette propriété n'existe pas, l'expression retourne undefined
-                
-                return svg[type][moonState];
-            }
-        */
         toIcon(moonState, type) {
             if (type === 'forms') {
                 return svg.forms[moonState];
@@ -213,8 +202,8 @@
                 return svg.round[moonState];
             }
             else {
-                // Gérer le cas où le type n'est ni 'forms' ni 'round'
-                throw new Error('Type non pris en charge');
+                // Gérer le cas où la propriété n'est pas définie
+                throw new Error('Propriété non définie');
             }
         }
         // CSS for the card
@@ -238,6 +227,7 @@
         setConfig(config) {
             this.entity = config.entity;
             this.cardTitle = config.title || this.cardTitle;
+            this.icon_type !== undefined ? config.icon_type : 'forms';
         }
         /**
          * Renders the card when the update is requested (when any of the properties are changed)
@@ -273,9 +263,12 @@
     __decorate([
         n$1({ attribute: false })
     ], TSMoonCard.prototype, "state", void 0);
+    __decorate([
+        n$1({ attribute: false })
+    ], TSMoonCard.prototype, "icon_type", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.3.7";
+    var version = "0.3.8";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

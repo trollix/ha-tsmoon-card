@@ -218,10 +218,9 @@ export interface HassEntity {
   }
 
   export interface LovelaceCardConfig {
-    index?: number;
-    view_index?: number;
-    type: string;
-    [key: string]: any;
+    entity: string;
+    title?: string;
+    icon_type?: 'forms' | 'round' | 'photo';
   }
 
   export interface LovelaceCard extends HTMLElement {

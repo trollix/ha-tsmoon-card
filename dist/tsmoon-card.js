@@ -436,6 +436,7 @@
             this.cardTitle = "Moon Phase";
             this.state = "";
             this.icon_type = "forms";
+            this.language = "fr";
             this.entity = "";
         }
         renderIcon(svg_icon_code) {
@@ -480,10 +481,11 @@
          * @param config Card configuration (yaml converted to JSON)
          */
         setConfig(config) {
-            var _a, _b;
+            var _a, _b, _c;
             this.entity = config.entity;
             this.cardTitle = (_a = config.title) !== null && _a !== void 0 ? _a : this.cardTitle;
             this.icon_type = (_b = config.icon_type) !== null && _b !== void 0 ? _b : 'forms';
+            this.language = (_c = config.language) !== null && _c !== void 0 ? _c : 'fr';
         }
         /**
          * Renders the card when the update is requested (when any of the properties are changed)
@@ -525,6 +527,9 @@
     __decorate([
         n$1({ attribute: false })
     ], TSMoonCard.prototype, "icon_type", void 0);
+    __decorate([
+        n$1({ attribute: false })
+    ], TSMoonCard.prototype, "language", void 0);
     __decorate([
         t()
     ], TSMoonCard.prototype, "config", void 0);

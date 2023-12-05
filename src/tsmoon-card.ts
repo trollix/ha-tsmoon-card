@@ -36,6 +36,9 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false })
     private icon_type: string = "forms";
 
+    @property({ attribute: false })
+    private language: string = "fr";
+
     private entity: string = "";
 
     @state() private config!: ICardConfig
@@ -89,6 +92,7 @@ export class TSMoonCard extends LitElement {
         this.entity = config.entity;
         this.cardTitle = config.title ?? this.cardTitle;
         this.icon_type = config.icon_type ?? 'forms';
+        this.language = config.language ?? 'fr';
     }
 
     /**

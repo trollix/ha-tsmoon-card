@@ -1,0 +1,29 @@
+{
+    "common": {
+      "version": "Version",
+      "title": "Phases de lune",
+      "title_card": "Minimal Sun Moon Card",
+      "description": "Une simple carte popurafficher la phase de la lune",
+      "invalid_configuration": "Invalid configuration"
+    },
+    "editor": {
+      "moon_entity": "Entité de la lune"
+    },
+    "errors": {
+      "missing_moon_entity": "Sensor de la lune manquant",
+      "invalid_icon_type": "Type d'icone incorect"
+    },
+    "card": {
+      "moon_info": "La lune est en phase de : {phase}."
+    },
+    "moon": {
+      "new_moon": "Nouvelle lune",
+      "waxing_crescent": "Lune montante",
+      "first_quarter": "Premier quartier",
+      "waxing_gibbous": "Lune gibeuse montante",
+      "full_moon": "Pleine lune",
+      "waning_gibbous": "Lune gibeuse descendante",
+      "last_quarter": "Dernier quartier",
+      "waning_crescent": "Lune descendante"
+    }
+  }

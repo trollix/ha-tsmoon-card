@@ -1,11 +1,22 @@
-import { HomeAssistant } from "./ha-types";
+//import { HomeAssistant } from "./ha-types";
 import { html, css, LitElement, CSSResultGroup, TemplateResult } from "lit";
-import { property } from "lit/decorators.js";
+import { property, state } from "lit/decorators.js";
 import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
+import { localize } from './localize/localize';
 
-
+import {
+    HomeAssistant,
+    hasConfigOrEntityChanged,
+    hasAction,
+    ActionHandlerEvent,
+    handleAction,
+    LovelaceCardEditor,
+    getLovelace,
+    formatTime
+  } from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
+  
 // test
 //const fullMoonForm = svg.forms.full_moon;
 //console.log(fullMoonForm);
@@ -27,7 +38,7 @@ export class TSMoonCard extends LitElement {
 
     private entity: string = "";
 
-
+    @state() private config!: ICardConfig
 
     private renderIcon (svg_icon_code: string): TemplateResult {
         return html`
@@ -35,6 +46,14 @@ export class TSMoonCard extends LitElement {
                 <img class="moon-img-svg" src=${svg_icon_code} />
             </div>
         `
+    }
+
+    private localize (key: string): string {
+        return localize(key, this.getLocale())
+    }
+
+    private getLocale (): string {
+        return this.config.locale ?? this.hass.locale.language ?? 'en-GB'
     }
 
     private toIcon(moonState: string, type: string): string {
@@ -78,6 +97,7 @@ export class TSMoonCard extends LitElement {
     render(): TemplateResult {
 
         const moonIcon = this.toIcon(this.state, this.icon_type);
+        const l_state = this.localize(`moon.${this.state}`);
 
         return html`
         <ha-card>
@@ -94,7 +114,7 @@ export class TSMoonCard extends LitElement {
                         <div class="secondary">Secondary info - ${this.icon_type}</div>
                     </div>
                     <div class="state">
-                        ${this.state}
+                    ${l_state}
                     </div>
                 <div>
             </div>

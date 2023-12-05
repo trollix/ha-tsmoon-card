@@ -1,8 +1,8 @@
 {
     "common": {
       "version": "Version",
-      "title": "Phases de lune",
-      "title_card": "Minimal Sun Moon Card",
+      "title": "Phases de la lune",
+      "title_card": "Simple carte des phases de la lune",
       "description": "Une simple carte pour afficher la phase de la lune",
       "invalid_configuration": "Invalid configuration"
     },

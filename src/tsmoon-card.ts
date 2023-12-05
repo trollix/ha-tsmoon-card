@@ -5,6 +5,8 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
+import * as suncalc from 'suncalc';
+
 
 import {
     HomeAssistant,
@@ -37,7 +39,7 @@ export class TSMoonCard extends LitElement {
     private icon_type: string = "forms";
 
     @property({ attribute: false })
-    private language: string = "fr";
+    private language: string = "en";
 
     private entity: string = "";
 
@@ -102,8 +104,10 @@ export class TSMoonCard extends LitElement {
 
         const moonIcon = this.toIcon(this.state, this.icon_type);
         const l_state = this.localize(`moon.${this.state}`);
+        this.getMoonRise();
 
         return html`
+        
         <ha-card>
             <div class="card-header">
                 <div class="truncate">
@@ -126,5 +130,18 @@ export class TSMoonCard extends LitElement {
             </div>
         </ha-card>
         `;
+    }
+
+    private getMoonRise() {
+
+        // Obtenez les temps du lever et du coucher du soleil
+        const times = suncalc.getTimes(new Date(), 51.5, -0.1);
+
+        // Accédez aux propriétés spécifiques pour obtenir les heures
+        const sunrise = times.sunrise;
+        const sunset = times.sunset;
+
+        console.log('Heure du lever du soleil :', sunrise);
+        console.log('Heure du coucher du soleil :', sunset);
     }
 }

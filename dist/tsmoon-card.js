@@ -248,7 +248,7 @@
         }
         toIcon(moonState, type) {
             if ((type === 'forms') || (type === 'round') || (type === 'photo') || (type === 'clear')) {
-                return svg.photo[moonState];
+                return svg[type][moonState];
             }
             else {
                 // Gérer le cas où la propriété n'est pas définie
@@ -318,7 +318,7 @@
     ], TSMoonCard.prototype, "icon_type", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.4.4";
+    var version = "0.4.5";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

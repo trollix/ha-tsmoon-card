@@ -56,7 +56,7 @@ export class TSMoonCard extends LitElement {
     }
 
     private getLocale (): string {
-        return 'fr';//this.config.language ?? this.hass.locale.language ?? 'en-GB'
+        return this.language ?? this.hass.locale.language ?? 'en'
     }
 
     private toIcon(moonState: string, type: string): string {

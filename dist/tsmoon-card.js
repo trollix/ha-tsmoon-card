@@ -450,7 +450,8 @@
             return localize(key, this.getLocale());
         }
         getLocale() {
-            return 'fr'; //this.config.language ?? this.hass.locale.language ?? 'en-GB'
+            var _a, _b;
+            return (_b = (_a = this.language) !== null && _a !== void 0 ? _a : this.hass.locale.language) !== null && _b !== void 0 ? _b : 'en';
         }
         toIcon(moonState, type) {
             if ((type === 'forms') || (type === 'round') || (type === 'photo') || (type === 'clear')) {
@@ -534,7 +535,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.3";
+    var version = "0.5.4";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

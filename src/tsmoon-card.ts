@@ -38,11 +38,7 @@ export class TSMoonCard extends LitElement {
     }
 
     private toIcon(moonState: string, type: string): string {
-        if (type === 'forms') {
-          return svg.forms[moonState]!;
-        } else if (type === 'round') {
-          return svg.round[moonState]!;
-        } else if (type === 'photo') {
+        if ((type === 'forms') || (type === 'round') || (type === 'photo') || (type === 'clear')) {
             return svg.photo[moonState]!;
         } else {
           // Gérer le cas où la propriété n'est pas définie

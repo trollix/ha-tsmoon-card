@@ -1,2 +1,5 @@
 /.vscode/
 /node_modules/
+
+# MacOS shit
+.DS_Store

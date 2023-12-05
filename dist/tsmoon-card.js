@@ -221,13 +221,7 @@
         `;
         }
         toIcon(moonState, type) {
-            if (type === 'forms') {
-                return svg.forms[moonState];
-            }
-            else if (type === 'round') {
-                return svg.round[moonState];
-            }
-            else if (type === 'photo') {
+            if ((type === 'forms') || (type === 'round') || (type === 'photo') || (type === 'clear')) {
                 return svg.photo[moonState];
             }
             else {
@@ -298,7 +292,7 @@
     ], TSMoonCard.prototype, "icon_type", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.4.2";
+    var version = "0.4.3";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

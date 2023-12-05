@@ -41,11 +41,10 @@ if (process.env.release) {
 }
 
 export default {
-  external: ['suncalc'],
+  external: [],
   input: 'src/index.ts',
   output: {
     globals: {
-      suncalc: 'suncalc',
     },
     file: targetFileName,
     format: 'iife',

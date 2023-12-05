@@ -1,24 +1,5 @@
-(function (suncalc) {
+(function () {
     'use strict';
-
-    function _interopNamespaceDefault(e) {
-        var n = Object.create(null);
-        if (e) {
-            Object.keys(e).forEach(function (k) {
-                if (k !== 'default') {
-                    var d = Object.getOwnPropertyDescriptor(e, k);
-                    Object.defineProperty(n, k, d.get ? d : {
-                        enumerable: true,
-                        get: function () { return e[k]; }
-                    });
-                }
-            });
-        }
-        n.default = e;
-        return Object.freeze(n);
-    }
-
-    var suncalc__namespace = /*#__PURE__*/_interopNamespaceDefault(suncalc);
 
     /******************************************************************************
     Copyright (c) Microsoft Corporation.
@@ -539,8 +520,9 @@
         `;
         }
         getMoonRise() {
+            let SunCalc = require('suncalc3');
             // Obtenez les temps du lever et du coucher du soleil
-            const times = suncalc__namespace.getTimes(new Date(), 51.5, -0.1);
+            const times = SunCalc.getTimes(new Date(), 51.5, -0.1);
             // Accédez aux propriétés spécifiques pour obtenir les heures
             const sunrise = times.sunrise;
             const sunset = times.sunset;
@@ -565,7 +547,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.5";
+    var version = "0.5.6";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 
@@ -574,4 +556,4 @@
     // Registering card
     customElements.define("tsmoon-card", TSMoonCard);
 
-})(suncalc);
+})();

@@ -3,7 +3,7 @@
       "version": "Version",
       "title": "Phases de lune",
       "title_card": "Minimal Sun Moon Card",
-      "description": "Une simple carte popurafficher la phase de la lune",
+      "description": "Une simple carte pour afficher la phase de la lune",
       "invalid_configuration": "Invalid configuration"
     },
     "editor": {

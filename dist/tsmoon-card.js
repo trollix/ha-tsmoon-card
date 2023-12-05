@@ -298,7 +298,7 @@
     	version: "Version",
     	title: "Phases de lune",
     	title_card: "Minimal Sun Moon Card",
-    	description: "Une simple carte popurafficher la phase de la lune",
+    	description: "Une simple carte pour afficher la phase de la lune",
     	invalid_configuration: "Invalid configuration"
     };
     var editor = {
@@ -450,7 +450,7 @@
         }
         getLocale() {
             var _a, _b;
-            return (_b = (_a = this.config.locale) !== null && _a !== void 0 ? _a : this.hass.locale.language) !== null && _b !== void 0 ? _b : 'en-GB';
+            return (_b = (_a = this.config.language) !== null && _a !== void 0 ? _a : this.hass.locale.language) !== null && _b !== void 0 ? _b : 'en-GB';
         }
         toIcon(moonState, type) {
             if ((type === 'forms') || (type === 'round') || (type === 'photo') || (type === 'clear')) {
@@ -503,7 +503,9 @@
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
                         Entity name
-                        <div class="secondary">Secondary info - ${this.icon_type}</div>
+                        <div class="secondary">
+                            Secondary info - ${this.icon_type}
+                        </div>
                     </div>
                     <div class="state">
                     ${l_state}
@@ -528,7 +530,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.0";
+    var version = "0.5.1";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

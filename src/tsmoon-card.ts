@@ -53,7 +53,7 @@ export class TSMoonCard extends LitElement {
     }
 
     private getLocale (): string {
-        return this.config.locale ?? this.hass.locale.language ?? 'en-GB'
+        return this.config.language ?? this.hass.locale.language ?? 'en-GB'
     }
 
     private toIcon(moonState: string, type: string): string {
@@ -111,7 +111,9 @@ export class TSMoonCard extends LitElement {
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
                         Entity name
-                        <div class="secondary">Secondary info - ${this.icon_type}</div>
+                        <div class="secondary">
+                            Secondary info - ${this.icon_type}
+                        </div>
                     </div>
                     <div class="state">
                     ${l_state}

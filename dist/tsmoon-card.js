@@ -515,6 +515,410 @@
       }
     }
 
+    var __createBinding$6 = (undefined && undefined.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() { return m[k]; } };
+        }
+        Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    }));
+    var __setModuleDefault$6 = (undefined && undefined.__setModuleDefault) || (Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    });
+    var __importStar$6 = (undefined && undefined.__importStar) || function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding$6(result, mod, k);
+        __setModuleDefault$6(result, mod);
+        return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.precessionCalc = exports.apparentCoordinateCalc = exports.coordinateCalc = void 0;
+    const apparentCoordinateCalc = __importStar$6(require("./apparentCoordinateCalc"));
+    exports.apparentCoordinateCalc = apparentCoordinateCalc;
+    const coordinateCalc = __importStar$6(require("./coordinateCalc"));
+    exports.coordinateCalc = coordinateCalc;
+    const precessionCalc = __importStar$6(require("./precessionCalc"));
+    exports.precessionCalc = precessionCalc;
+
+    var __createBinding$5 = (undefined && undefined.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() { return m[k]; } };
+        }
+        Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    }));
+    var __setModuleDefault$5 = (undefined && undefined.__setModuleDefault) || (Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    });
+    var __importStar$5 = (undefined && undefined.__importStar) || function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding$5(result, mod, k);
+        __setModuleDefault$5(result, mod);
+        return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.earthCalc = void 0;
+    const earthCalc = __importStar$5(require("./earthCalc"));
+    exports.earthCalc = earthCalc;
+
+    var __createBinding$4 = (undefined && undefined.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() { return m[k]; } };
+        }
+        Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    }));
+    var __setModuleDefault$4 = (undefined && undefined.__setModuleDefault) || (Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    });
+    var __importStar$4 = (undefined && undefined.__importStar) || function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding$4(result, mod, k);
+        __setModuleDefault$4(result, mod);
+        return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.magnitudeCalc = exports.moonPhaseCalc = exports.moonCalc = void 0;
+    const magnitudeCalc$1 = __importStar$4(require("./magnitudeCalc"));
+    exports.magnitudeCalc = magnitudeCalc$1;
+    const moonCalc = __importStar$4(require("./moonCalc"));
+    exports.moonCalc = moonCalc;
+    const moonPhaseCalc = __importStar$4(require("./moonPhaseCalc"));
+    exports.moonPhaseCalc = moonPhaseCalc;
+
+    var __createBinding$3 = (undefined && undefined.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() { return m[k]; } };
+        }
+        Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    }));
+    var __setModuleDefault$3 = (undefined && undefined.__setModuleDefault) || (Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    });
+    var __importStar$3 = (undefined && undefined.__importStar) || function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding$3(result, mod, k);
+        __setModuleDefault$3(result, mod);
+        return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.magnitudeCalc = exports.vsop87Calc = exports.conjunctionCalc = void 0;
+    const conjunctionCalc = __importStar$3(require("./conjunctionCalc"));
+    exports.conjunctionCalc = conjunctionCalc;
+    const magnitudeCalc = __importStar$3(require("./magnitudeCalc"));
+    exports.magnitudeCalc = magnitudeCalc;
+    const vsop87Calc = __importStar$3(require("./vsop87Calc"));
+    exports.vsop87Calc = vsop87Calc;
+
+    var __createBinding$2 = (undefined && undefined.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() { return m[k]; } };
+        }
+        Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    }));
+    var __setModuleDefault$2 = (undefined && undefined.__setModuleDefault) || (Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    });
+    var __importStar$2 = (undefined && undefined.__importStar) || function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding$2(result, mod, k);
+        __setModuleDefault$2(result, mod);
+        return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.starCalc = void 0;
+    const starCalc = __importStar$2(require("./starCalc"));
+    exports.starCalc = starCalc;
+
+    var __createBinding$1 = (undefined && undefined.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() { return m[k]; } };
+        }
+        Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    }));
+    var __setModuleDefault$1 = (undefined && undefined.__setModuleDefault) || (Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    });
+    var __importStar$1 = (undefined && undefined.__importStar) || function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding$1(result, mod, k);
+        __setModuleDefault$1(result, mod);
+        return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.sunCalc = void 0;
+    const sunCalc = __importStar$1(require("./sunCalc"));
+    exports.sunCalc = sunCalc;
+
+    var __createBinding = (undefined && undefined.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        var desc = Object.getOwnPropertyDescriptor(m, k);
+        if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+          desc = { enumerable: true, get: function() { return m[k]; } };
+        }
+        Object.defineProperty(o, k2, desc);
+    }) : (function(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    }));
+    var __setModuleDefault = (undefined && undefined.__setModuleDefault) || (Object.create ? (function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+    }) : function(o, v) {
+        o["default"] = v;
+    });
+    var __importStar = (undefined && undefined.__importStar) || function (mod) {
+        if (mod && mod.__esModule) return mod;
+        var result = {};
+        if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+        __setModuleDefault(result, mod);
+        return result;
+    };
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.timeCalc = void 0;
+    const timeCalc = __importStar(require("./timeCalc"));
+    exports.timeCalc = timeCalc;
+
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.sec2deg = exports.normalizeAngle = exports.time2deg = exports.deg2time = exports.angle2deg = exports.decimal2degreeMinutesSeconds = exports.decimal2degreeMinutes = exports.deg2angle = exports.rad2deg = exports.deg2rad = void 0;
+    const math_1$1 = require("./math");
+    function deg2rad(degrees) {
+        return degrees * (Math.PI / 180);
+    }
+    exports.deg2rad = deg2rad;
+    function rad2deg(radians) {
+        return radians * (180 / Math.PI);
+    }
+    exports.rad2deg = rad2deg;
+    function deg2angle(deg, short = false) {
+        return decimal2degreeMinutesSeconds(deg, short);
+    }
+    exports.deg2angle = deg2angle;
+    function decimal2degreeMinutes(decimal, short = false, prefixes) {
+        const sign = getSignPrefix(decimal, prefixes);
+        decimal = Math.abs(decimal);
+        const degPart = Math.floor(decimal);
+        const min = (0, math_1$1.round)((decimal - degPart) * 60, 5);
+        const degString = degPart + '° ';
+        const minString = (0, math_1$1.pad)(min, 2) + '\'';
+        if (short && degPart === 0.0) {
+            return sign + minString;
+        }
+        return sign + degString + minString;
+    }
+    exports.decimal2degreeMinutes = decimal2degreeMinutes;
+    function decimal2degreeMinutesSeconds(decimal, short = false, prefixes) {
+        const sign = getSignPrefix(decimal, prefixes);
+        decimal = Math.abs(decimal);
+        const degPart = Math.floor(decimal);
+        const min = Math.floor((decimal - degPart) * 60);
+        const sec = (0, math_1$1.round)((decimal - degPart - min / 60) * 3600, 3);
+        const secParts = sec.toString().split('.');
+        const degString = degPart + '° ';
+        const minString = (0, math_1$1.pad)(min, 2) + '\' ';
+        const secString = (secParts.length === 1 ? (0, math_1$1.pad)(sec, 2) : (0, math_1$1.pad)(secParts[0], 2) + '.' + secParts[1]) + '"';
+        if (short && degPart === 0.0 && min === 0.0) {
+            return sign + secString;
+        }
+        if (short && degPart === 0.0) {
+            return sign + minString + secString;
+        }
+        return sign + degString + minString + secString;
+    }
+    exports.decimal2degreeMinutesSeconds = decimal2degreeMinutesSeconds;
+    function angle2deg(angle) {
+        const matches = angle.match(/(-?)(\d+)°.*?(\d+)'.*?([\d.]+)"/);
+        if (!matches) {
+            throw new Error('false angle format');
+        }
+        const sign = matches[1].trim() === '-' ? -1 : 1;
+        const deg = parseInt(matches[2]);
+        const min = parseInt(matches[3]);
+        const sec = parseFloat(matches[4]);
+        return sign * (deg + min / 60 + sec / 3600);
+    }
+    exports.angle2deg = angle2deg;
+    function deg2time(angle) {
+        const sign = angle < 0 ? '-' : '';
+        const time = Math.abs(angle / 15);
+        const hour = Math.floor(time);
+        const min = Math.floor((time - hour) * 60);
+        const sec = (0, math_1$1.round)((time - hour - min / 60) * 3600, 3);
+        const secParts = sec.toString().split('.');
+        const hourString = sign + hour;
+        const minString = (0, math_1$1.pad)(min, 2);
+        const secString = secParts.length === 1 ? (0, math_1$1.pad)(sec, 2) : (0, math_1$1.pad)(secParts[0], 2) + '.' + secParts[1];
+        return `${hourString}h ${minString}m ${secString}s`;
+    }
+    exports.deg2time = deg2time;
+    function time2deg(timeAngle) {
+        const matches = timeAngle.match(/(-?)(\d+)h.*?(\d+)m.*?([\d.]+)s/);
+        if (!matches) {
+            throw new Error('false time angle format');
+        }
+        const sign = matches[1].trim() === '-' ? -1 : 1;
+        const deg = parseInt(matches[2]);
+        const min = parseInt(matches[3]);
+        const sec = parseFloat(matches[4]);
+        const angleDeg = sign * (deg + min / 60 + sec / 3600);
+        return angleDeg * 15;
+    }
+    exports.time2deg = time2deg;
+    function normalizeAngle(degrees, baseAngle = 360.0) {
+        let angle = degrees % baseAngle;
+        if (angle < 0) {
+            angle = angle + baseAngle;
+        }
+        return angle;
+    }
+    exports.normalizeAngle = normalizeAngle;
+    function sec2deg(seconds) {
+        return seconds / 3600;
+    }
+    exports.sec2deg = sec2deg;
+    function getSignPrefix(decimal, prefixes) {
+        if (prefixes) {
+            return decimal < 0 ? prefixes.negativePrefix : prefixes.positivePrefix;
+        }
+        return decimal < 0 ? '-' : '';
+    }
+
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.getDistanceInKm = exports.km2au = exports.au2km = void 0;
+    const dimensions_1 = require("../earth/constants/dimensions");
+    const angleCalc_1$1 = require("./angleCalc");
+    const math_1 = require("./math");
+    const AU_UNIT_OF_LENGTH = 149597870700.0;
+    function au2km(R) {
+        return R * (AU_UNIT_OF_LENGTH / 1000);
+    }
+    exports.au2km = au2km;
+    function km2au(km) {
+        return km / (AU_UNIT_OF_LENGTH / 1000);
+    }
+    exports.km2au = km2au;
+    function getDistanceInKm(location1, location2) {
+        const { lat: lat1, lon: lon1 } = location1;
+        const { lat: lat2, lon: lon2 } = location2;
+        const F = (lat1 + lat2) / 2;
+        const G = (lat1 - lat2) / 2;
+        const lambda = (lon2 - lon1) / 2;
+        const FRad = (0, angleCalc_1$1.deg2rad)(F);
+        const GRad = (0, angleCalc_1$1.deg2rad)(G);
+        const lambdaRad = (0, angleCalc_1$1.deg2rad)(lambda);
+        const S = (0, math_1.sin2)(GRad) * (0, math_1.cos2)(lambdaRad) + (0, math_1.cos2)(FRad) * (0, math_1.sin2)(lambdaRad);
+        const C = (0, math_1.cos2)(GRad) * (0, math_1.cos2)(lambdaRad) + (0, math_1.sin2)(FRad) * (0, math_1.sin2)(lambdaRad);
+        const omegaRad = Math.atan(Math.sqrt(S / C));
+        const R = Math.sqrt(S * C) / omegaRad;
+        const D = 2 * omegaRad * dimensions_1.EARTH_RADIUS / 1000;
+        const H1 = (3 * R - 1) / (2 * C);
+        const H2 = (3 * R + 1) / (2 * S);
+        return D * (1 + dimensions_1.EARTH_FLATTENING * H1 * (0, math_1.sin2)(FRad) * (0, math_1.cos2)(GRad) - dimensions_1.EARTH_FLATTENING * H2 * (0, math_1.cos2)(FRad) * (0, math_1.sin2)(GRad));
+    }
+    exports.getDistanceInKm = getDistanceInKm;
+
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.getAngularSeparation = exports.getAngularDiameter = exports.isWaxing = exports.getPositionAngleOfBrightLimb = exports.getIlluminatedFraction = exports.getPhaseAngle = exports.getElongation = void 0;
+    const angleCalc_1 = require("./angleCalc");
+    function getElongation(equCoordsObj, equCoordsSun) {
+        const raObjRad = (0, angleCalc_1.deg2rad)(equCoordsObj.rightAscension);
+        const dObjRad = (0, angleCalc_1.deg2rad)(equCoordsObj.declination);
+        const raSunRad = (0, angleCalc_1.deg2rad)(equCoordsSun.rightAscension);
+        const dSunRad = (0, angleCalc_1.deg2rad)(equCoordsSun.declination);
+        const phiRad = Math.acos(Math.sin(dSunRad) * Math.sin(dObjRad) + Math.cos(dSunRad) * Math.cos(dObjRad) * Math.cos(raSunRad - raObjRad));
+        return (0, angleCalc_1.rad2deg)(phiRad);
+    }
+    exports.getElongation = getElongation;
+    function getPhaseAngle(equCoordsObj, equCoordsSun) {
+        const distObj = equCoordsObj.radiusVector;
+        const distSun = equCoordsSun.radiusVector;
+        const phi = getElongation(equCoordsObj, equCoordsSun);
+        const phiRad = (0, angleCalc_1.deg2rad)(phi);
+        const i = Math.atan2(distSun * Math.sin(phiRad), distObj - distSun * Math.cos(phiRad));
+        return (0, angleCalc_1.rad2deg)(i);
+    }
+    exports.getPhaseAngle = getPhaseAngle;
+    function getIlluminatedFraction(phaseAngle) {
+        const iRad = (0, angleCalc_1.deg2rad)(phaseAngle);
+        return (1 + Math.cos(iRad)) / 2;
+    }
+    exports.getIlluminatedFraction = getIlluminatedFraction;
+    function getPositionAngleOfBrightLimb(equCoordsObj, equCoordsSun) {
+        const raObjRad = (0, angleCalc_1.deg2rad)(equCoordsObj.rightAscension);
+        const dObjRad = (0, angleCalc_1.deg2rad)(equCoordsObj.declination);
+        const raSunRad = (0, angleCalc_1.deg2rad)(equCoordsSun.rightAscension);
+        const dSunRad = (0, angleCalc_1.deg2rad)(equCoordsSun.declination);
+        const numerator = Math.cos(dSunRad) * Math.sin(raSunRad - raObjRad);
+        const denominator = Math.sin(dSunRad) * Math.cos(dObjRad)
+            - Math.cos(dSunRad) * Math.sin(dObjRad) * Math.cos(raSunRad - raObjRad);
+        const chiRad = Math.atan2(numerator, denominator);
+        return (0, angleCalc_1.normalizeAngle)((0, angleCalc_1.rad2deg)(chiRad));
+    }
+    exports.getPositionAngleOfBrightLimb = getPositionAngleOfBrightLimb;
+    function isWaxing(chi) {
+        return chi >= 180;
+    }
+    exports.isWaxing = isWaxing;
+    function getAngularDiameter(distance, trueDiameter) {
+        const delta = 2 * Math.atan2(trueDiameter, 2 * distance);
+        return (0, angleCalc_1.rad2deg)(delta);
+    }
+    exports.getAngularDiameter = getAngularDiameter;
+    function getAngularSeparation(coords1, coords2) {
+        const raRad1 = (0, angleCalc_1.deg2rad)(coords1.rightAscension);
+        const dRad1 = (0, angleCalc_1.deg2rad)(coords1.declination);
+        const raRad2 = (0, angleCalc_1.deg2rad)(coords2.rightAscension);
+        const dRad2 = (0, angleCalc_1.deg2rad)(coords2.declination);
+        const dRad = Math.acos(Math.sin(dRad1) * Math.sin(dRad2)
+            + Math.cos(dRad1) * Math.cos(dRad2) * Math.cos(raRad1 - raRad2));
+        return (0, angleCalc_1.rad2deg)(dRad);
+    }
+    exports.getAngularSeparation = getAngularSeparation;
+
     /**
      * Main card class definition
      */
@@ -622,6 +1026,13 @@
             //const sunset = times.sunset;
             console.log('Heure du lever du soleil :', phase);
             console.log('Heure du coucher du soleil :', agePercent);
+            const angleInDeg = 132.6029282;
+            undefined(angleInDeg);
+            undefined(angleInDeg);
+            //const toi = createTimeOfInterest.fromTime(2020, 11, 20, 0, 0, 0);
+            //const moon = createMoon(toi);
+            //console.log('TOI :', toi);
+            //console.log('MOON :', moon);
         }
     }
     __decorate([
@@ -641,7 +1052,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.22";
+    var version = "0.5.24";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

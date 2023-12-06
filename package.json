@@ -1,6 +1,6 @@
 {
   "name": "ha-tsmoon-card",
-  "version": "0.5.22",
+  "version": "0.5.24",
   "description": "Simple Moon Card",
   "main": "dist/tsmoon-card.js",
   "files": [
@@ -47,6 +47,7 @@
     "@rollup/plugin-typescript": "^11.1.5",
     "custom-card-helpers": "^1.9.0",
     "lit": "^2.8.0",
-    "lunarphase-js": "^2.0.1"
+    "lunarphase-js": "^2.0.1",
+    "astronomy-bundle": "^7.7.6"
   }
 }

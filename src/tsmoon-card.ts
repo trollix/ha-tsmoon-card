@@ -8,6 +8,8 @@ import { localize } from './localize/localize';
 import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
 
+import {angleCalc} from 'astronomy-bundle/utils';
+
 import {
     HomeAssistant,
     hasConfigOrEntityChanged,
@@ -137,8 +139,8 @@ export class TSMoonCard extends LitElement {
         const agePercent = Moon.lunarAgePercent();
         
         // Utilisation de la classe
-const personne1 = new Personne("John Doe", 25);
-personne1.afficherInformations();
+        const personne1 = new Personne("John Doe", 25);
+        personne1.afficherInformations();
 
 
         //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
@@ -152,5 +154,19 @@ personne1.afficherInformations();
 
         console.log('Heure du lever du soleil :', phase);
         console.log('Heure du coucher du soleil :', agePercent);
+
+        const location = {
+            lat: 52.519,
+            lon: 13.408,
+        };
+        const angleInDeg = 132.6029282;
+
+const angleStr = angleCalc.deg2angle(angleInDeg);
+const timeStr = angleCalc.deg2time(angleInDeg);
+        //const toi = createTimeOfInterest.fromTime(2020, 11, 20, 0, 0, 0);
+        //const moon = createMoon(toi);
+        //console.log('TOI :', toi);
+        //console.log('MOON :', moon);
+
     }
 }

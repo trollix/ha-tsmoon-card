@@ -5,7 +5,6 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-const SunCalc = require('suncalc3');
 
 
 import {
@@ -136,6 +135,7 @@ export class TSMoonCard extends LitElement {
     private getMoonRise() {
 
         
+        const SunCalc = require('suncalc3');
 
         // Obtenez les temps du lever et du coucher du soleil
         const times = SunCalc.getTimes(new Date(), 51.5, -0.1);

@@ -15,6 +15,7 @@ const plugins = [
   resolve(),
   json(),
   image(),
+  typescript(),
   versionInjector({
     injectInComments: false,
     logLevel: 'warn',

@@ -221,6 +221,7 @@ export interface HassEntity {
     entity: string;
     title?: string;
     icon_type?: string;
+    locale?: string
   }
 
   export interface LovelaceCard extends HTMLElement {

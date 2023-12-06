@@ -5,9 +5,11 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-var SunCalc = require('suncalc');
+//import * as SunCalc from 'suncalc';
 
-
+// Importation d'un fichier JavaScript
+import './lib/suncalc3/suncalc.js';
+let SunCalc = require('suncalc3');
 
 import {
     HomeAssistant,

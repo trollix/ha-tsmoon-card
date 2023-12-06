@@ -3,6 +3,7 @@
         "target": "es2017",
         "module": "esnext",
         "moduleResolution": "node",
+        "esModuleInterop": true,
         "experimentalDecorators": true,
         "alwaysStrict": true,
         "noImplicitAny": true,
@@ -10,7 +11,9 @@
         "noImplicitThis": true,
         "strict": true,
         "resolveJsonModule": true,
-        "types": ["node"],
+        "typeRoots": [
+            "node_modules/@types"
+          ],
         "allowSyntheticDefaultImports": true  // pour utiliser require sans alert
     },
     "include": ["src", "src/img_dec.d.ts"]

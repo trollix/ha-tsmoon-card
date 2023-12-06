@@ -424,6 +424,7 @@
         return translated;
     }
 
+    var SunCalc = require('suncalc');
     // test
     //const fullMoonForm = svg.forms.full_moon;
     //console.log(fullMoonForm);
@@ -520,12 +521,12 @@
         `;
         }
         getMoonRise() {
-            var SunCalc = require('suncalc');
+            const { sunrise, sunset } = SunCalc.getTimes(new Date(), 51.5, -0.1);
             // Obtenez les temps du lever et du coucher du soleil
-            const times = SunCalc.getTimes(new Date(), 51.5, -0.1);
+            //const times = SunCalc.getTimes(new Date(), 51.5, -0.1);
             // Accédez aux propriétés spécifiques pour obtenir les heures
-            const sunrise = times.sunrise;
-            const sunset = times.sunset;
+            //const sunrise = times.sunrise;
+            //const sunset = times.sunset;
             console.log('Heure du lever du soleil :', sunrise);
             console.log('Heure du coucher du soleil :', sunset);
         }
@@ -547,7 +548,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.12";
+    var version = "0.5.15";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

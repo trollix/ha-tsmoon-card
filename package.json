@@ -1,6 +1,6 @@
 {
   "name": "ha-tsmoon-card",
-  "version": "0.5.12",
+  "version": "0.5.15",
   "description": "Simple Moon Card",
   "main": "dist/tsmoon-card.js",
   "files": [
@@ -35,6 +35,8 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
+    "@types/node": "^20.10.3",
+    "@types/suncalc": "^1.9.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.6.1",
     "rollup-plugin-html-literals": "^1.1.8",
@@ -44,9 +46,9 @@
     "typescript": "^5.3.2"
   },
   "dependencies": {
-    "@types/suncalc": "^1.9.2",
     "custom-card-helpers": "^1.9.0",
     "lit": "^2.8.0",
+    "solar-calc": "^1.1.0",
     "suncalc": "^1.9.0"
   }
 }

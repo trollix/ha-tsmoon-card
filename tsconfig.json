@@ -10,6 +10,7 @@
         "noImplicitThis": true,
         "strict": true,
         "resolveJsonModule": true,
+        "types": ["node"],
         "allowSyntheticDefaultImports": true  // pour utiliser require sans alert
     },
     "include": ["src", "src/img_dec.d.ts"]

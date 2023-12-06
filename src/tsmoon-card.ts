@@ -6,6 +6,9 @@ import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
 import { Personne } from "./utils2";
+//import  Suncalc  from "./class_suncalc";
+import { DateTime } from "luxon";
+import { phase } from "astral/moon";
 
 import {
     HomeAssistant,
@@ -131,7 +134,8 @@ export class TSMoonCard extends LitElement {
 
     private getMoonRise() {
 
-
+        console.log(phase(DateTime.fromObject({year: 2018, month: 1, day: 1})));
+        
         // Utilisation de la classe
 const personne1 = new Personne("John Doe", 25);
 personne1.afficherInformations();

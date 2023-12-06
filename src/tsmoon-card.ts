@@ -5,7 +5,7 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-import { default as SunCalc } from 'suncalc3'
+const SunCalc = require('suncalc3');
 
 
 import {

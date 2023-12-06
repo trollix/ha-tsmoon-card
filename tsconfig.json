@@ -9,7 +9,8 @@
         "strictNullChecks": true,
         "noImplicitThis": true,
         "strict": true,
-        "resolveJsonModule": true
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true  // pour utiliser require sans alert
     },
     "include": ["src", "src/img_dec.d.ts"]
 }

@@ -277,8 +277,8 @@ export default class SunCalc {
         // ...
 
         return {
-            ra: rightAscension(l, b),
-            dec: declination(l, b),
+            ra: SunCalc.rightAscension(l, b),
+            dec: SunCalc.declination(l, b),
             dist: dt
         };
     }

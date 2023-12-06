@@ -5,11 +5,7 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-//import * as SunCalc from 'suncalc';
-
-// Importation d'un fichier JavaScript
-import './lib/suncalc3/suncalc.js';
-let SunCalc = require('suncalc3');
+import { Personne } from "./utils2";
 
 import {
     HomeAssistant,
@@ -22,9 +18,6 @@ import {
     formatTime
   } from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
   
-// test
-//const fullMoonForm = svg.forms.full_moon;
-//console.log(fullMoonForm);
 
 
 /**
@@ -138,7 +131,13 @@ export class TSMoonCard extends LitElement {
 
     private getMoonRise() {
 
-        const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
+
+        // Utilisation de la classe
+const personne1 = new Personne("John Doe", 25);
+personne1.afficherInformations();
+
+
+        //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
         // Obtenez les temps du lever et du coucher du soleil
         //const times = SunCalc.getTimes(new Date(), 51.5, -0.1);
 
@@ -147,7 +146,7 @@ export class TSMoonCard extends LitElement {
         //const sunset = times.sunset;
 
 
-        console.log('Heure du lever du soleil :', sunrise);
-        console.log('Heure du coucher du soleil :', sunset);
+        //console.log('Heure du lever du soleil :', sunrise);
+        //console.log('Heure du coucher du soleil :', sunset);
     }
 }

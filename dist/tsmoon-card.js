@@ -3710,16 +3710,16 @@
         }
         getMoonRise() {
             const date = new Date();
-            const phase = c.lunarPhase(date);
+            const phase2 = c.lunarPhase(date);
             const agePercent = c.lunarAgePercent();
-            console.log('Phase de la lune :', phase);
+            console.log('Phase de la lune :', phase2);
             console.log('Pourcentage de fin de lune:', agePercent);
             // Utilisation de la classe
             const personne1 = new Personne("John Doe", 25);
             personne1.afficherInformations();
             const today = new Date();
-            const jd = julian.JD(today);
-            const phase2 = moonphase.phase(jd);
+            const jd = julian.toJulianDay(today);
+            moonphase.phase(jd);
             console.log(phase2);
             //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
             //return moonriseTime || null;
@@ -3748,7 +3748,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.37";
+    var version = "0.5.38";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

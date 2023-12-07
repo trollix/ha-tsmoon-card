@@ -8,7 +8,7 @@ import { localize } from './localize/localize';
 import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
 //import { SunCalc } from './lib/suncalc3';
-import * as astronomia from 'astronomia';
+import { julian, moonphase } from 'astronomia';
 
 import {
     HomeAssistant,
@@ -135,10 +135,10 @@ export class TSMoonCard extends LitElement {
     private getMoonRise() {
 
         const date = new Date();
-        const phase = Moon.lunarPhase(date);
+        const phase2 = Moon.lunarPhase(date);
         const agePercent = Moon.lunarAgePercent();
 
-        console.log('Phase de la lune :', phase);
+        console.log('Phase de la lune :', phase2);
         console.log('Pourcentage de fin de lune:', agePercent);
 
         // Utilisation de la classe
@@ -151,8 +151,8 @@ export class TSMoonCard extends LitElement {
         const l_longitude = 2.3522; // Longitude de l'emplacement souhaité
         
         const today = new Date();
-        const jd = astronomia.julian.JD(today);
-        const phase2 = astronomia.moonphase.phase(jd);
+        const jd = julian.toJulianDay(today);
+        const phase = moonphase.phase(jd);
         console.log(phase2);
 
         //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;

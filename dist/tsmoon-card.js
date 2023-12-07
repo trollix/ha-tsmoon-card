@@ -628,6 +628,8 @@
             //const sunset = times.sunset;
             console.log('Heure du lever du soleil :', phase);
             console.log('Heure du coucher du soleil :', agePercent);
+            let toto = this.getMoonriseTime(new Date(), 51.5, -0.1);
+            console.log('Moonrise :', toto);
         }
         getMoonriseTime(date, latitude, longitude) {
             // Use the library dynamically, as TypeScript may not recognize the specific functions
@@ -653,7 +655,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.28";
+    var version = "0.5.29";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

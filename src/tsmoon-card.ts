@@ -8,10 +8,12 @@ import { localize } from './localize/localize';
 import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
 //import * as SunCalc from "suncalc";
+
 import * as SunTimesAny from 'suntimes';
 type SuntimesAnyType = {
     [key: string]: any;
   };
+
 import {
     HomeAssistant,
     hasConfigOrEntityChanged,
@@ -157,8 +159,9 @@ export class TSMoonCard extends LitElement {
         console.log('Heure du lever du soleil :', phase);
         console.log('Heure du coucher du soleil :', agePercent);
 
-
-
+        let toto = this.getMoonriseTime(new Date(), 51.5, -0.1);
+        console.log('Moonrise :', toto);
+        
     }
 
     private getMoonriseTime(date: Date, latitude: number, longitude: number): Date | null {

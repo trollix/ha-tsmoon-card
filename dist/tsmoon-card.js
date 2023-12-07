@@ -2321,7 +2321,7 @@
             // Utilisation de la classe
             const personne1 = new Personne("John Doe", 25);
             personne1.afficherInformations();
-            const moonPhase = moonphase.phase(new Date()); // Obtenez la phase actuelle de la lune
+            const moonPhase = moonphase.phase(new Date());
             console.log(moonPhase);
             //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
             //return moonriseTime || null;
@@ -2350,7 +2350,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.35";
+    var version = "0.5.36";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

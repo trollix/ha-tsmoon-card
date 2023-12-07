@@ -8,7 +8,7 @@ import { localize } from './localize/localize';
 import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
 //import { SunCalc } from './lib/suncalc3';
-import { moonphase } from 'astronomia'
+import * as astronomia from 'astronomia';
 
 import {
     HomeAssistant,
@@ -150,7 +150,7 @@ export class TSMoonCard extends LitElement {
         const l_latitude = 48.8566; // Latitude de l'emplacement souhaité
         const l_longitude = 2.3522; // Longitude de l'emplacement souhaité
         
-        const moonPhase = moonphase.phase(new Date()); // Obtenez la phase actuelle de la lune
+        const moonPhase = astronomia.moonphase.phase(new Date());
         console.log(moonPhase);
 
         //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;

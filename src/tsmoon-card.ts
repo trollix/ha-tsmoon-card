@@ -166,8 +166,8 @@ export class TSMoonCard extends LitElement {
 
     private getMoonriseTime(date: Date, latitude: number, longitude: number): Date | null {
         // Use the library dynamically, as TypeScript may not recognize the specific functions
-        const suntimes: SuntimesAnyType = SunTimesAny;
-        const moonrise = suntimes.getMoonRise(date, latitude, longitude);
+
+        const moonrise = SunTimesAny.getNoonDateTimeUtc(date, longitude);
       
         return moonrise ? new Date(moonrise) : null;
       }

@@ -7,8 +7,8 @@ import { svg } from './img_exp'
 import { localize } from './localize/localize';
 import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
-//import * as SunCalc from "suncalc";
-
+//import { SunCalc } from './lib/suncalc3';
+import { moonphase } from 'astronomia'
 
 import {
     HomeAssistant,
@@ -126,7 +126,7 @@ export class TSMoonCard extends LitElement {
                     <div class="state">
                     ${l_state}
                     </div>
-                <div>
+                </div>
             </div>
         </ha-card>
         `;
@@ -137,11 +137,24 @@ export class TSMoonCard extends LitElement {
         const date = new Date();
         const phase = Moon.lunarPhase(date);
         const agePercent = Moon.lunarAgePercent();
-        
+
+        console.log('Phase de la lune :', phase);
+        console.log('Pourcentage de fin de lune:', agePercent);
+
         // Utilisation de la classe
         const personne1 = new Personne("John Doe", 25);
         personne1.afficherInformations();
 
+        // Exemple d'utilisation
+        const l_date = new Date(); // Utilisez la date actuelle ou une date spécifique
+        const l_latitude = 48.8566; // Latitude de l'emplacement souhaité
+        const l_longitude = 2.3522; // Longitude de l'emplacement souhaité
+        
+        const moonPhase = moonphase.phase(new Date()); // Obtenez la phase actuelle de la lune
+        console.log(moonPhase);
+
+        //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
+        //return moonriseTime || null;
 
         //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
         // Obtenez les temps du lever et du coucher du soleil
@@ -152,8 +165,7 @@ export class TSMoonCard extends LitElement {
         //const sunset = times.sunset;
 
 
-        console.log('Heure du lever du soleil :', phase);
-        console.log('Heure du coucher du soleil :', agePercent);
+
 
         
     }

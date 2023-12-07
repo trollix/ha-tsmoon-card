@@ -516,6 +516,1711 @@
     }
 
     /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module base
+     */
+    /**
+     * Base: Functions and other definitions useful with multiple packages.
+     *
+     * Base contains various definitions and support functions useful in multiple
+     * chapters.
+     *
+     * Bessellian and Julian Year
+     *
+     * Chapter 21, Precession actually contains these definitions.  They are moved
+     * here because of their general utility.
+     *
+     * Chapter 22, Nutation contains the function for Julian centuries since J2000.
+     *
+     * Phase angle functions
+     *
+     * Two functions, Illuminated and Limb, concern the illumnated phase of a body
+     * and are given in two chapters, 41 an 48.  They are collected here because
+     * the identical functions apply in both chapters.
+     *
+     * General purpose math functions
+     *
+     * SmallAngle is recommended in chapter 17, p. 109.
+     *
+     * PMod addresses the issue on p. 7, chapter 1, in the section "Trigonometric
+     * functions of large angles", but the function is not written to be specific
+     * to angles and so has more general utility.
+     *
+     * Horner is described on p. 10, chapter 1.
+     *
+     * FloorDiv and FloorDiv64 are optimizations for the INT function described
+     * on p. 60, chapter 7.
+    */
+
+    // ---- constants ----
+
+    /** K is the Gaussian gravitational constant. */
+    const K = 0.01720209895;
+    // K from ch 33, p. 228, for example
+
+    /** AU is one astronomical unit in km. */
+    const AU = 149597870;
+    // from Appendix I, p, 407.
+
+    /** SOblJ2000 sine obliquity at J2000. */
+    const SOblJ2000 = 0.397777156;
+    /** COblJ2000 cosine obliquity at J2000. */
+    const COblJ2000 = 0.917482062;
+    // SOblJ2000, COblJ2000 from ch 33, p. 228, for example
+
+    /**
+     * lightTime returns time for light to travel a given distance.
+     * `dist` is distance in to earth in AU. √(x² + y² + z²)
+     * Result in seconds of time.
+     * @param {Number} dist - distance in to earth in AU
+     * @returns {Number} time for light to travel a given distance in seconds
+     */
+    function lightTime (dist) {
+      // Formula given as (33.3) p. 224.
+      return 0.0057755183 * dist
+    }
+
+    // ---- julian ----
+
+    /**
+     * Julian and Besselian years described in chapter 21, Precession.
+     * T, Julian centuries since J2000 described in chapter 22, Nutation.
+     */
+
+    /** JMod is the Julian date of the modified Julian date epoch. */
+    const JMod = 2400000.5;
+
+    /** J2000 is the Julian date corresponding to January 1.5, year 2000. */
+    const J2000 = 2451545.0;
+
+    // Julian days of common epochs.
+    // B1900, B1950 from p. 133
+    /** Julian days of Julian epoch 1900 */
+    const J1900 = 2415020.0;
+    /** Julian days of Besselian epoch 1900 */
+    const B1900 = 2415020.3135;
+    /** Julian days of Besselian epoch 1950 */
+    const B1950 = 2433282.4235;
+
+    // JulianYear and other common periods
+    /** JulianYear in days */
+    const JulianYear = 365.25; // days
+    /** JulianCentury in days */
+    const JulianCentury = 36525; // days
+    /** BesselianYear in days; equals mean tropical year */
+    const BesselianYear = 365.2421988; // days
+    /** Mean sidereal year */
+    const meanSiderealYear = 365.25636; // days
+
+    /**
+     * JulianYearToJDE returns the Julian ephemeris day for a Julian year.
+     * @param {Number} jy - Julian year
+     * @returns {Number} jde - Julian ephemeris day
+     */
+    function JulianYearToJDE (jy) {
+      return J2000 + JulianYear * (jy - 2000)
+    }
+
+    /**
+     * JDEToJulianYear returns a Julian year for a Julian ephemeris day.
+     * @param {Number} jde - Julian ephemeris day
+     * @returns {Number} jy - Julian year
+     */
+    function JDEToJulianYear (jde) {
+      return 2000 + (jde - J2000) / JulianYear
+    }
+
+    /**
+     * BesselianYearToJDE returns the Julian ephemeris day for a Besselian year.
+     * @param {Number} by - Besselian year
+     * @returns {Number} jde - Julian ephemeris day
+     */
+    function BesselianYearToJDE (by) {
+      return B1900 + BesselianYear * (by - 1900)
+    }
+
+    /**
+     * JDEToBesselianYear returns the Besselian year for a Julian ephemeris day.
+     * @param {Number} jde - Julian ephemeris day
+     * @returns {Number} by - Besselian year
+     */
+    function JDEToBesselianYear (jde) {
+      return 1900 + (jde - B1900) / BesselianYear
+    }
+
+    /**
+     * J2000Century returns the number of Julian centuries since J2000.
+     *
+     * The quantity appears as T in a number of time series.
+     * @param {Number} jde - Julian ephemeris day
+     * @returns {Number} number of Julian centuries since J2000
+     */
+    function J2000Century (jde) {
+      // The formula is given in a number of places in the book, for example
+      // (12.1) p. 87.
+      // (22.1) p. 143.
+      // (25.1) p. 163.
+      return (jde - J2000) / JulianCentury
+    }
+
+    // ---- phase ----
+
+    /**
+     * illuminated returns the illuminated fraction of a body's disk.
+     *
+     * The illuminated body can be the Moon or a planet.
+     *
+     * @param {Number} i - phase angle in radians.
+     * @returns {Number} illuminated fraction of a body's disk.
+     */
+    function illuminated (i) {
+      // (41.1) p. 283, also (48.1) p. 345.
+      return (1 + Math.cos(i)) * 0.5
+    }
+
+    /**
+     * celestial coordinates in right ascension and declination
+     * or ecliptic coordinates in longitude and latitude
+     */
+    class Coord {
+      /**
+       * celestial coordinates in right ascension and declination
+       * or ecliptic coordinates in longitude and latitude
+       *
+       * @param {number} ra - right ascension (or longitude)
+       * @param {number} dec - declination (or latitude)
+       * @param {number} [range] - distance
+       * @param {number} [elongation] - elongation
+       */
+      constructor (ra, dec, range, elongation) {
+        this._ra = ra || 0;
+        this._dec = dec || 0;
+        this.range = range;
+        this.elongation = elongation;
+      }
+
+      /**
+       * right ascension
+       * @return {number}
+       */
+      get ra () {
+        return this._ra
+      }
+
+      set ra (ra) {
+        this._ra = ra;
+      }
+
+      /**
+       * declination
+       * @return {number}
+       */
+      get dec () {
+        return this._dec
+      }
+
+      set dec (dec) {
+        this._dec = dec;
+      }
+
+      /**
+       * right ascension (or longitude)
+       * @return {number}
+       */
+      get lon () {
+        return this._ra
+      }
+
+      set lon (ra) {
+        this._ra = ra;
+      }
+
+      /**
+       * declination (or latitude)
+       * @return {number}
+       */
+      get lat () {
+        return this._dec
+      }
+
+      set lat (dec) {
+        this._dec = dec;
+      }
+    }
+
+    /**
+     * Limb returns the position angle of the midpoint of an illuminated limb.
+     *
+     * The illuminated body can be the Moon or a planet.
+     *
+     * @param {Coord} equ - equatorial coordinates of the body `{ra, dec}` (in radians)
+     * @param {Coord} appSun - apparent coordinates of the Sun `{ra, dec}` (In radians).
+     * @returns {Number} position angle of the midpoint (in radians).
+     */
+    function limb (equ, appSun) {
+      const α = equ.ra;
+      const δ = equ.dec;
+      const α0 = appSun.ra;
+      const δ0 = appSun.dec;
+      // Mentioned in ch 41, p. 283.  Formula (48.5) p. 346
+      const sδ = Math.sin(δ);
+      const cδ = Math.cos(δ);
+      const sδ0 = Math.sin(δ0);
+      const cδ0 = Math.cos(δ0);
+      const sα0α = Math.sin(α0 - α);
+      const cα0α = Math.cos(α0 - α);
+      let χ = Math.atan2(cδ0 * sα0α, (sδ0 * cδ - cδ0 * sδ * cα0α));
+      if (χ < 0) {
+        χ += 2 * Math.PI;
+      }
+      return χ
+    }
+
+    // ---- math ----
+
+    // In chapter 17, p. 109, Meeus recommends 10′.
+    /**
+     * SmallAngle is threshold used by various routines for switching between
+     * trigonometric functions and Pythagorean approximations.
+     */
+    const SmallAngle = 10 * Math.PI / 180 / 60; // about .003 radians
+    /** cosine of SmallAngle */
+    const CosSmallAngle = Math.cos(SmallAngle); // about .999996
+
+    /**
+     * pmod returns a positive floating-point x mod y.
+     *
+     * For a positive argument y, it returns a value in the range [0,y).
+     *
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {Number} x % y - The result may not be useful if y is negative.
+     */
+    function pmod (x, y) {
+      let r = x % y;
+      if (r < 0) {
+        r += y;
+      }
+      return r
+    }
+
+    /**
+     * horner evaluates a polynomal with coefficients c at x.  The constant
+     * term is c[0].
+     * @param {Number} x
+     * @param {Number[]} c - coefficients; c[0] may be of type Number[]
+     * @returns {Number}
+     */
+    function horner (x, ...c) {
+      if (Array.isArray(c[0])) {
+        c = c[0];
+      }
+      let i = c.length - 1;
+      let y = c[i];
+      while (i > 0) {
+        i--;
+        y = y * x + c[i];
+      }
+      return y
+    }
+
+    /**
+     * FloorDiv returns the integer floor of the fractional value (x / y).
+     * @param {Number} x
+     * @param {Number} y
+     * @returns {Number} (int)
+     */
+    function floorDiv (x, y) {
+      const q = x / y;
+      return Math.floor(q)
+    }
+
+    /**
+     * Cmp compares two float64s and returns -1, 0, or 1 if a is <, ==, or > b,
+     * respectively.
+     * .
+     * @param {Number} a
+     * @param {Number} b
+     * @returns {Number} comparison result
+     */
+    function cmp (a, b) {
+      if (a < b) return -1
+      if (a > b) return 1
+      return 0
+    }
+
+    /**
+     * shorthand function for Math.sin, Math.cos
+     * @param {Number} ε
+     * @returns {Number[]} [sin(ε), cos(ε)]
+     */
+    function sincos (ε) {
+      return [Math.sin(ε), Math.cos(ε)]
+    }
+
+    /**
+     * Convert degrees to radians
+     * @param  {Number} deg - Angle in degrees
+     * @return {Number} Angle in radians
+     */
+    function toRad (deg) {
+      return (Math.PI / 180.0) * deg
+    }
+
+    /**
+     * Convert radians to degrees
+     * @param  {Number} rad - Angle in radians
+     * @return {Number} Angle in degrees
+     */
+    function toDeg (rad) {
+      return (180.0 / Math.PI) * rad
+    }
+
+    /**
+     * separate fix `i` from fraction `f`
+     * @param {Number} float
+     * @returns {Array} [i, f]
+     *  {Number} i - (int) fix value
+     *  {Number} f - (float) fractional portion; always > 1
+     */
+    function modf$1 (float) {
+      const i = Math.trunc(float);
+      const f = Math.abs(float - i);
+      return [i, f]
+    }
+
+    /**
+     * Rounds `float` value by precision
+     * @param {Number} float - value to round
+     * @param {Number} [precision] - (int) number of post decimal positions
+     * @return {Number} rounded `float`
+     */
+    function round$1 (float, precision = 14) {
+      return parseFloat(float.toFixed(precision))
+    }
+
+    function errorCode (msg, code) {
+      const err = new Error(msg);
+      // @ts-ignore
+      err.code = code;
+      return err
+    }
+
+    var base = {
+      K,
+      AU,
+      SOblJ2000,
+      COblJ2000,
+      lightTime,
+      JMod,
+      J2000,
+      J1900,
+      B1900,
+      B1950,
+      JulianYear,
+      JulianCentury,
+      BesselianYear,
+      meanSiderealYear,
+      JulianYearToJDE,
+      JDEToJulianYear,
+      BesselianYearToJDE,
+      JDEToBesselianYear,
+      J2000Century,
+      illuminated,
+      Coord,
+      limb,
+      SmallAngle,
+      CosSmallAngle,
+      pmod,
+      horner,
+      floorDiv,
+      cmp,
+      sincos,
+      toRad,
+      toDeg,
+      modf: modf$1,
+      round: round$1,
+      errorCode
+    };
+
+    /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module sexagesimal
+     */
+    /**
+     * Sexagesimal functions
+     */
+
+    /**
+     * Angle represents a general purpose angle.
+     * Unit is radians.
+     */
+    class Angle {
+      /**
+      * constructs a new Angle value from sign, degree, minute, and second
+      * components.
+      * @param {Number|Boolean} angleOrNeg - angle in radians or sign, true if negative (required to attribute -0°30')
+      * __Four arguments__
+      * @param {Number} [d] - (int) degree
+      * @param {Number} [m] - (int) minute
+      * @param {Number} [s] - (float) second
+      */
+      constructor (angleOrNeg, d, m, s) {
+        if (arguments.length === 1) {
+          this.angle = Number(angleOrNeg);
+        } else {
+          this.setDMS(!!angleOrNeg, d, m, s);
+        }
+      }
+
+      /**
+       * SetDMS sets the value of an FAngle from sign, degree, minute, and second
+       * components.
+       * The receiver is returned as a convenience.
+       * @param {Boolean} neg - sign, true if negative
+       * @param {Number} d - (int) degree
+       * @param {Number} m - (int) minute
+       * @param {Number} s - (float) second
+       * @returns {Angle}
+       */
+      setDMS (neg = false, d = 0, m = 0, s = 0.0) {
+        this.angle = (DMSToDeg(neg, d, m, s) * Math.PI / 180);
+        return this
+      }
+
+      /**
+       * sets angle
+       * @param {Number} angle - (float) angle in radians
+       * @returns {Angle}
+       */
+      setAngle (angle) {
+        this.angle = angle;
+        return this
+      }
+
+      /**
+       * Rad returns the angle in radians.
+       * @returns {Number} angle in radians
+       */
+      rad () {
+        return this.angle
+      }
+
+      /**
+       * Deg returns the angle in degrees.
+       * @returns {Number} angle in degree
+       */
+      deg () {
+        return this.angle * 180 / Math.PI
+      }
+
+      /**
+       * toDMS converts to parsed sexagesimal angle component.
+       */
+      toDMS () {
+        return degToDMS(this.deg())
+      }
+
+      /**
+       * Print angle in degree using `d°m´s.ss″`
+       * @param {Number} [precision] - precision of `s.ss`
+       * @returns {String}
+       */
+      toString (precision) {
+        let [neg, d, m, s] = this.toDMS();
+        s = round(s, precision).toString().replace(/^0\./, '.');
+        const str = (neg ? '-' : '') +
+          (d + '°') +
+          (m + '′') +
+          (s + '″');
+        return str
+      }
+
+      /**
+       * Print angle in degree using `d°.ff`
+       * @param {Number} [precision] - precision of `.ff`
+       * @returns {String}
+       */
+      toDegString (precision) {
+        let [i, s] = modf(this.deg());
+        s = round(s, precision).toString().replace(/^0\./, '.');
+        const str = (i + '°') + s;
+        return str
+      }
+    }
+
+    /**
+     * HourAngle represents an angle corresponding to angular rotation of
+     * the Earth in a specified time.
+     *
+     * Unit is radians.
+     */
+    class HourAngle extends Angle {
+      /**
+       * NewHourAngle constructs a new HourAngle value from sign, hour, minute,
+       * and second components.
+       * @param {Boolean} neg
+       * @param {Number} h - (int)
+       * @param {Number} m - (int)
+       * @param {Number} s - (float)
+       * @constructor
+       */
+
+      /**
+       * SetDMS sets the value of an FAngle from sign, degree, minute, and second
+       * components.
+       * The receiver is returned as a convenience.
+       * @param {Boolean} neg - sign, true if negative
+       * @param {Number} h - (int) hour
+       * @param {Number} m - (int) minute
+       * @param {Number} s - (float) second
+       * @returns {Angle}
+       */
+      setDMS (neg = false, h = 0, m = 0, s = 0.0) {
+        this.angle = (DMSToDeg(neg, h, m, s) * 15 * Math.PI / 180);
+        return this
+      }
+
+      /**
+       * Hour returns the hour angle as hours of time.
+       * @returns hour angle
+       */
+      hour () {
+        return this.angle * 12 / Math.PI // 12 = 180 / 15
+      }
+
+      deg () {
+        return this.hour()
+      }
+
+      /**
+       * Print angle in `HʰMᵐs.ssˢ`
+       * @param {Number} precision - precision of `s.ss`
+       * @returns {String}
+       */
+      toString (precision) {
+        let [neg, h, m, s] = this.toDMS();
+        s = round(s, precision).toString().replace(/^0\./, '.');
+        const str = (neg ? '-' : '') +
+          (h + 'ʰ') +
+          (m + 'ᵐ') +
+          (s + 'ˢ');
+        return str
+      }
+    }
+
+    /**
+     * DMSToDeg converts from parsed sexagesimal angle components to decimal
+     * degrees.
+     * @param {Boolean} neg - sign, true if negative
+     * @param {Number} d - (int) degree
+     * @param {Number} m - (int) minute
+     * @param {Number} s - (float) second
+     * @returns {Number} angle in degree
+     */
+    function DMSToDeg (neg, d, m, s) {
+      s = (((d * 60 + m) * 60) + s) / 3600;
+      if (neg) {
+        return -s
+      }
+      return s
+    }
+
+    /**
+     * DegToDMS converts from decimal degrees to parsed sexagesimal angle component.
+     * @param {Number} deg - angle in degree
+     * @returns {Array} [neg, d, m, s]
+     *  {Boolean} neg - sign, true if negative
+     *  {Number} d - (int) degree
+     *  {Number} m - (int) minute
+     *  {Number} s - (float) second
+     */
+    function degToDMS (deg) {
+      const neg = (deg < 0);
+      deg = Math.abs(deg);
+      let [d, s] = modf(deg % 360);
+      const [m, s1] = modf(s * 60);
+      s = round(s1 * 60); // may introduce an error < 1e13
+      return [neg, d, m, s]
+    }
+
+    class RA extends HourAngle {
+      /**
+       * constructs a new RA value from hour, minute, and second components.
+       * Negative values are not supported, RA wraps values larger than 24
+       * to the range [0,24) hours.
+       * @param {Number} h - (int) hour
+       * @param {Number} m - (int) minute
+       * @param {Number} s - (float) second
+       */
+      constructor (h = 0, m = 0, s = 0) {
+        super(false, h, m, s);
+        const args = [].slice.call(arguments);
+        if (args.length === 1) {
+          this.angle = h;
+        } else {
+          const hr = DMSToDeg(false, h, m, s) % 24;
+          this.angle = hr * 15 * Math.PI / 180;
+        }
+      }
+
+      hour () {
+        const h = this.angle * 12 / Math.PI;
+        return (24 + (h % 24)) % 24
+      }
+    }
+
+    /**
+     * Time Angle
+     * Unit is time in seconds.
+     */
+    class Time {
+      /**
+       * @param {boolean|number} negOrTimeInSecs - set `true` if negative; if type is number than time in seconds
+       * @param {number} [h] - (int) hour
+       * @param {number} [m] - (int) minute
+       * @param {number} [s] - (float) second
+       * @example
+       * new sexa.Time(SECS_OF_DAY)
+       * new sexa.Time(false, 15, 22, 7)
+       */
+      constructor (negOrTimeInSecs, h, m, s) {
+        if (typeof negOrTimeInSecs === 'number') {
+          this.time = negOrTimeInSecs;
+        } else {
+          this.setHMS(negOrTimeInSecs, h, m, s);
+        }
+      }
+
+      setHMS (neg = false, h = 0, m = 0, s = 0) {
+        s += ((h * 60 + m) * 60);
+        if (neg) {
+          s = -s;
+        }
+        this.time = s;
+      }
+
+      /**
+       * @returns {Number} time in seconds.
+       */
+      sec () {
+        return this.time
+      }
+
+      /**
+       * @returns {Number} time in minutes.
+       */
+      min () {
+        return this.time / 60
+      }
+
+      /**
+       * @returns {Number} time in hours.
+       */
+      hour () {
+        return this.time / 3600
+      }
+
+      /**
+       * @returns {Number} time in days.
+       */
+      day () {
+        return this.time / 3600 / 24
+      }
+
+      /**
+       * @returns {Number} time in radians, where 1 day = 2 Pi radians.
+       */
+      rad () {
+        return this.time * Math.PI / 12 / 3600
+      }
+
+      /**
+       * convert time to HMS
+       * @returns {Array} [neg, h, m, s]
+       *  {Boolean} neg - sign, true if negative
+       *  {Number} h - (int) hour
+       *  {Number} m - (int) minute
+       *  {Number} s - (float) second
+       */
+      toHMS () {
+        let t = this.time;
+        const neg = (t < 0);
+        t = (neg ? -t : t);
+        const h = Math.trunc(t / 3600);
+        t = t - (h * 3600);
+        const m = Math.trunc(t / 60);
+        const s = t - (m * 60);
+        return [neg, h, m, s]
+      }
+
+      /**
+       * Print time using `HʰMᵐsˢ.ss`
+       * @param {Number} precision - precision of `.ss`
+       * @returns {String}
+       */
+      toString (precision) {
+        const [neg, h, m, s] = this.toHMS();
+        let [si, sf] = modf(s);
+        if (precision === 0) {
+          si = round(s, 0);
+          sf = 0;
+        } else {
+          sf = round(sf, precision).toString().substr(1);
+        }
+        const str = (neg ? '-' : '') +
+          (h + 'ʰ') +
+          (m + 'ᵐ') +
+          (si + 'ˢ') +
+          (sf || '');
+        return str
+      }
+    }
+
+    // units
+    const angleFromDeg = (deg) => deg * Math.PI / 180;
+    const angleFromMin = (min) => min / 60 * Math.PI / 180;
+    const angleFromSec = (sec) => sec / 3600 * Math.PI / 180;
+    const degFromAngle = (angle) => angle * 180 / Math.PI;
+    const secFromAngle = (angle) => angle * 3600 * 180 / Math.PI;
+    const secFromHourAngle = (ha) => ha * 240 * 180 / Math.PI;
+
+    /**
+     * separate fix `i` from fraction `f`
+     * @private
+     * @param {Number} float
+     * @returns {Array} [i, f]
+     *  {Number} i - (int) fix value
+     *  {Number} f - (float) fractional portion; always > 1
+     */
+    function modf (float) {
+      const i = Math.trunc(float);
+      const f = Math.abs(float - i);
+      return [i, f]
+    }
+
+    /**
+     * Rounds `float` value by precision
+     * @private
+     * @param {Number} float - value to round
+     * @param {Number} [precision] - (int) number of post decimal positions
+     * @return {Number} rounded `float`
+     */
+    function round (float, precision = 10) {
+      return parseFloat(float.toFixed(precision))
+    }
+
+    var sexa = {
+      Angle,
+      HourAngle,
+      DMSToDeg,
+      degToDMS,
+      RA,
+      Time,
+      angleFromDeg,
+      angleFromMin,
+      angleFromSec,
+      degFromAngle,
+      secFromAngle,
+      secFromHourAngle
+    };
+
+    /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module coord
+     */
+    /**
+     * Coord: Chapter 13, Transformation of Coordinates.
+     *
+     * Transforms in this package are provided in two forms, function and method.
+     * The results of the two forms should be identical.
+     *
+     * The function forms pass all arguments and results as single values.  These
+     * forms are best used when you are transforming a single pair of coordinates
+     * and wish to avoid memory allocation.
+     *
+     * The method forms take and return pointers to structs.  These forms are best
+     * used when you are transforming multiple coordinates and can reuse one or
+     * more of the structs.  In this case reuse of structs will minimize
+     * allocations, and the struct pointers will pass more efficiently on the
+     * stack.  These methods transform their arguments, placing the result in
+     * the receiver.  The receiver is then returned for convenience.
+     *
+     * A number of the functions take sine and cosine of the obliquity of the
+     * ecliptic.  This becomes an advantage when you doing multiple transformations
+     * with the same obliquity.  The efficiency of computing sine and cosine once
+     * and reuse these values far outweighs the overhead of passing one number as
+     * opposed to two.
+     */
+
+
+    /**
+     * @typedef {object} LonLat
+     * @property {Number} lon - Longitude (λ) in radians
+     * @property {Number} lat - Latitude (β) in radians
+     */
+
+    /**
+    * Ecliptic coordinates are referenced to the plane of the ecliptic.
+    */
+    class Ecliptic {
+      /**
+       * IMPORTANT: Longitudes are measured *positively* westwards
+       * e.g. Washington D.C. +77°04; Vienna -16°23'
+       * @param {Number|LonLat} [lon] - Longitude (λ) in radians
+       * @param {Number} [lat] - Latitude (β) in radians
+       */
+      constructor (lon, lat) {
+        if (typeof lon === 'object') {
+          lat = lon.lat;
+          lon = lon.lon;
+        }
+        this.lon = lon || 0;
+        this.lat = lat || 0;
+      }
+
+      /**
+       * converts ecliptic coordinates to equatorial coordinates.
+       * @param {Number} ε - Obliquity
+       * @returns {Equatorial}
+       */
+      toEquatorial (ε) {
+        const [εsin, εcos] = base.sincos(ε);
+        const [sβ, cβ] = base.sincos(this.lat);
+        const [sλ, cλ] = base.sincos(this.lon);
+        let ra = Math.atan2(sλ * εcos - (sβ / cβ) * εsin, cλ); // (13.3) p. 93
+        if (ra < 0) {
+          ra += 2 * Math.PI;
+        }
+        const dec = Math.asin(sβ * εcos + cβ * εsin * sλ); // (13.4) p. 93
+        return new Equatorial(ra, dec)
+      }
+    }
+
+    /**
+     * Equatorial coordinates are referenced to the Earth's rotational axis.
+     */
+    class Equatorial {
+      /**
+       * @param {Number} ra - (float) Right ascension (α) in radians
+       * @param {Number} dec - (float) Declination (δ) in radians
+       */
+      constructor (ra = 0, dec = 0) {
+        this.ra = ra;
+        this.dec = dec;
+      }
+
+      /**
+       * EqToEcl converts equatorial coordinates to ecliptic coordinates.
+       * @param {Number} ε - Obliquity
+       * @returns {Ecliptic}
+       */
+      toEcliptic (ε) {
+        const [εsin, εcos] = base.sincos(ε);
+        const [sα, cα] = base.sincos(this.ra);
+        const [sδ, cδ] = base.sincos(this.dec);
+        const lon = Math.atan2(sα * εcos + (sδ / cδ) * εsin, cα); // (13.1) p. 93
+        const lat = Math.asin(sδ * εcos - cδ * εsin * sα); // (13.2) p. 93
+        return new Ecliptic(lon, lat)
+      }
+
+      /**
+       * EqToHz computes Horizontal coordinates from equatorial coordinates.
+       *
+       * Argument g is the location of the observer on the Earth.  Argument st
+       * is the sidereal time at Greenwich.
+       *
+       * Sidereal time must be consistent with the equatorial coordinates.
+       * If coordinates are apparent, sidereal time must be apparent as well.
+       *
+       * @param {GlobeCoord} g - coordinates of observer on Earth
+       * @param {Number} st - sidereal time at Greenwich at time of observation
+       * @returns {Horizontal}
+       */
+      toHorizontal (g, st) {
+        const H = new sexa.Time(st).rad() - g.lon - this.ra;
+        const [sH, cH] = base.sincos(H);
+        const [sφ, cφ] = base.sincos(g.lat);
+        const [sδ, cδ] = base.sincos(this.dec);
+        const azimuth = Math.atan2(sH, cH * sφ - (sδ / cδ) * cφ); // (13.5) p. 93
+        const altitude = Math.asin(sφ * sδ + cφ * cδ * cH); // (13.6) p. 93
+        return new Horizontal(azimuth, altitude)
+      }
+
+      /**
+       * EqToGal converts equatorial coordinates to galactic coordinates.
+       *
+       * Equatorial coordinates must be referred to the standard equinox of B1950.0.
+       * For conversion to B1950, see package precess and utility functions in
+       * package "common".
+       *
+       * @returns {Galactic}
+       */
+      toGalactic () {
+        const [sdα, cdα] = base.sincos(galacticNorth1950.ra - this.ra);
+        const [sgδ, cgδ] = base.sincos(galacticNorth1950.dec);
+        const [sδ, cδ] = base.sincos(this.dec);
+        const x = Math.atan2(sdα, cdα * sgδ - (sδ / cδ) * cgδ); // (13.7) p. 94
+        // (galactic0Lon1950 + 1.5*math.Pi) = magic number of 303 deg
+        const lon = (galactic0Lon1950 + 1.5 * Math.PI - x) % (2 * Math.PI); // (13.8) p. 94
+        const lat = Math.asin(sδ * sgδ + cδ * cgδ * cdα);
+        return new Galactic(lon, lat)
+      }
+    }
+
+    /**
+     * Horizontal coordinates are referenced to the local horizon of an observer
+     * on the surface of the Earth.
+     * @param {Number} az - Azimuth (A) in radians
+     * @param {Number} alt - Altitude (h) in radians
+     */
+    class Horizontal {
+      constructor (az = 0, alt = 0) {
+        this.az = az;
+        this.alt = alt;
+      }
+
+      /**
+       * transforms horizontal coordinates to equatorial coordinates.
+       *
+       * Sidereal time must be consistent with the equatorial coordinates.
+       * If coordinates are apparent, sidereal time must be apparent as well.
+       * @param {GlobeCoord} g - coordinates of observer on Earth (lat, lon)
+       * @param {Number} st - sidereal time at Greenwich at time of observation.
+       * @returns {Equatorial} (right ascension, declination)
+       */
+      toEquatorial (g, st) {
+        const [sA, cA] = base.sincos(this.az);
+        const [sh, ch] = base.sincos(this.alt);
+        const [sφ, cφ] = base.sincos(g.lat);
+        const H = Math.atan2(sA, cA * sφ + sh / ch * cφ);
+        const ra = base.pmod(new sexa.Time(st).rad() - g.lon - H, 2 * Math.PI);
+        const dec = Math.asin(sφ * sh - cφ * ch * cA);
+        return new Equatorial(ra, dec)
+      }
+    }
+
+    /**
+     * Galactic coordinates are referenced to the plane of the Milky Way.
+     * @param {Number} lon - Longitude (l) in radians
+     * @param {Number} lat - Latitude (b) in radians
+     */
+    class Galactic {
+      constructor (lon = 0, lat = 0) {
+        this.lon = lon;
+        this.lat = lat;
+      }
+
+      /**
+       * GalToEq converts galactic coordinates to equatorial coordinates.
+       *
+       * Resulting equatorial coordinates will be referred to the standard equinox of
+       * B1950.0.  For subsequent conversion to other epochs, see package precess and
+       * utility functions in package meeus.
+       *
+       * @returns {Equatorial} (right ascension, declination)
+       */
+      toEquatorial () {
+        // (-galactic0Lon1950 - math.Pi/2) = magic number of -123 deg
+        const [sdLon, cdLon] = base.sincos(this.lon - galactic0Lon1950 - Math.PI / 2);
+        const [sgδ, cgδ] = base.sincos(galacticNorth1950.dec);
+        const [sb, cb] = base.sincos(this.lat);
+        const y = Math.atan2(sdLon, cdLon * sgδ - (sb / cb) * cgδ);
+        // (galacticNorth1950.RA.Rad() - math.Pi) = magic number of 12.25 deg
+        const ra = base.pmod(y + galacticNorth1950.ra - Math.PI, 2 * Math.PI);
+        const dec = Math.asin(sb * sgδ + cb * cgδ * cdLon);
+        return new Equatorial(ra, dec)
+      }
+    }
+
+    /**
+    * equatorial coords for galactic north
+    * IAU B1950.0 coordinates of galactic North Pole
+    */
+    const galacticNorth = new Equatorial(
+      new sexa.RA(12, 49, 0).rad(),
+      27.4 * Math.PI / 180
+    );
+    const galacticNorth1950 = galacticNorth;
+
+    /**
+    * Galactic Longitude 0°
+    * Meeus gives 33 as the origin of galactic longitudes relative to the
+    * ascending node of of the galactic equator.  33 + 90 = 123, the IAU
+    * value for origin relative to the equatorial pole.
+    */
+    const galacticLon0 = 33 * Math.PI / 180;
+    const galactic0Lon1950 = galacticLon0;
+
+    /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module nutation
+     */
+    /**
+     * Nutation: Chapter 22, Nutation and the Obliquity of the Ecliptic.
+     */
+
+
+    ((function () {
+      const PROPS = 'd,m,n,f,ω,s0,s1,c0,c1'.split(',');
+      const tab = [
+        [0, 0, 0, 0, 1, -171996, -174.2, 92025, 8.9],
+        [-2, 0, 0, 2, 2, -13187, -1.6, 5736, -3.1],
+        [0, 0, 0, 2, 2, -2274, -0.2, 977, -0.5],
+        [0, 0, 0, 0, 2, 2062, 0.2, -895, 0.5],
+        [0, 1, 0, 0, 0, 1426, -3.4, 54, -0.1],
+        [0, 0, 1, 0, 0, 712, 0.1, -7, 0],
+        [-2, 1, 0, 2, 2, -517, 1.2, 224, -0.6],
+        [0, 0, 0, 2, 1, -386, -0.4, 200, 0],
+        [0, 0, 1, 2, 2, -301, 0, 129, -0.1],
+        [-2, -1, 0, 2, 2, 217, -0.5, -95, 0.3],
+        [-2, 0, 1, 0, 0, -158, 0, 0, 0],
+        [-2, 0, 0, 2, 1, 129, 0.1, -70, 0],
+        [0, 0, -1, 2, 2, 123, 0, -53, 0],
+        [2, 0, 0, 0, 0, 63, 0, 0, 0],
+        [0, 0, 1, 0, 1, 63, 0.1, -33, 0],
+        [2, 0, -1, 2, 2, -59, 0, 26, 0],
+        [0, 0, -1, 0, 1, -58, -0.1, 32, 0],
+        [0, 0, 1, 2, 1, -51, 0, 27, 0],
+        [-2, 0, 2, 0, 0, 48, 0, 0, 0],
+        [0, 0, -2, 2, 1, 46, 0, -24, 0],
+        [2, 0, 0, 2, 2, -38, 0, 16, 0],
+        [0, 0, 2, 2, 2, -31, 0, 13, 0],
+        [0, 0, 2, 0, 0, 29, 0, 0, 0],
+        [-2, 0, 1, 2, 2, 29, 0, -12, 0],
+        [0, 0, 0, 2, 0, 26, 0, 0, 0],
+        [-2, 0, 0, 2, 0, -22, 0, 0, 0],
+        [0, 0, -1, 2, 1, 21, 0, -10, 0],
+        [0, 2, 0, 0, 0, 17, -0.1, 0, 0],
+        [2, 0, -1, 0, 1, 16, 0, -8, 0],
+        [-2, 2, 0, 2, 2, -16, 0.1, 7, 0],
+        [0, 1, 0, 0, 1, -15, 0, 9, 0],
+        [-2, 0, 1, 0, 1, -13, 0, 7, 0],
+        [0, -1, 0, 0, 1, -12, 0, 6, 0],
+        [0, 0, 2, -2, 0, 11, 0, 0, 0],
+        [2, 0, -1, 2, 1, -10, 0, 5, 0],
+        [2, 0, 1, 2, 2, -8, 0, 3, 0],
+        [0, 1, 0, 2, 2, 7, 0, -3, 0],
+        [-2, 1, 1, 0, 0, -7, 0, 0, 0],
+        [0, -1, 0, 2, 2, -7, 0, 3, 0],
+        [2, 0, 0, 2, 1, -7, 0, 3, 0],
+        [2, 0, 1, 0, 0, 6, 0, 0, 0],
+        [-2, 0, 2, 2, 2, 6, 0, -3, 0],
+        [-2, 0, 1, 2, 1, 6, 0, -3, 0],
+        [2, 0, -2, 0, 1, -6, 0, 3, 0],
+        [2, 0, 0, 0, 1, -6, 0, 3, 0],
+        [0, -1, 1, 0, 0, 5, 0, 0, 0],
+        [-2, -1, 0, 2, 1, -5, 0, 3, 0],
+        [-2, 0, 0, 0, 1, -5, 0, 3, 0],
+        [0, 0, 2, 2, 1, -5, 0, 3, 0],
+        [-2, 0, 2, 0, 1, 4, 0, 0, 0],
+        [-2, 1, 0, 2, 1, 4, 0, 0, 0],
+        [0, 0, 1, -2, 0, 4, 0, 0, 0],
+        [-1, 0, 1, 0, 0, -4, 0, 0, 0],
+        [-2, 1, 0, 0, 0, -4, 0, 0, 0],
+        [1, 0, 0, 0, 0, -4, 0, 0, 0],
+        [0, 0, 1, 2, 0, 3, 0, 0, 0],
+        [0, 0, -2, 2, 2, -3, 0, 0, 0],
+        [-1, -1, 1, 0, 0, -3, 0, 0, 0],
+        [0, 1, 1, 0, 0, -3, 0, 0, 0],
+        [0, -1, 1, 2, 2, -3, 0, 0, 0],
+        [2, -1, -1, 2, 2, -3, 0, 0, 0],
+        [0, 0, 3, 2, 2, -3, 0, 0, 0],
+        [2, -1, 0, 2, 2, -3, 0, 0, 0]
+      ];
+
+      return tab.map((row) => {
+        const o = {};
+        PROPS.forEach((p, i) => {
+          o[p] = row[i];
+        });
+        return o
+      })
+    }))();
+
+    /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module moonphase
+     */
+    /**
+     * Moonphase: Chapter 49, Phases of the Moon
+     */
+
+
+    const { sin, cos } = Math;
+    const ck = 1 / 1236.85;
+    const D2R = Math.PI / 180;
+
+    /**
+     * mean synodial lunar month
+     */
+    const meanLunarMonth = 29.530588861;
+
+    // (49.1) p. 349
+    function mean (T) {
+      return base.horner(T, 2451550.09766, 29.530588861 / ck,
+        0.00015437, -0.00000015, 0.00000000073)
+    }
+
+    /** snap returns k at specified quarter q nearest year y. */
+    function snap (y, q) {
+      const k = (y - 2000) * 12.3685; // (49.2) p. 350
+      return Math.floor(k - q + 0.5) + q
+    }
+
+    /**
+     * MeanNew returns the jde of the mean New Moon nearest the given datthis.
+     * The mean date is within 0.5 day of the true date of New Moon.
+     *
+     * @param {Number} year - decimal year
+     * @returns {Number} jde
+     */
+    function meanNew (year) {
+      return mean(snap(year, 0) * ck)
+    }
+
+    /**
+     * MeanFirst returns the jde of the mean First Quarter Moon nearest the given datthis.
+     * The mean date is within 0.5 day of the true date of First Quarter Moon.
+     *
+     * @param {Number} year - decimal year
+     * @returns {Number} jde
+     */
+    function meanFirst (year) {
+      return mean(snap(year, 0.25) * ck)
+    }
+
+    /**
+     * MeanFull returns the jde of the mean Full Moon nearest the given datthis.
+     * The mean date is within 0.5 day of the true date of Full Moon.
+     *
+     * @param {Number} year - decimal year
+     * @returns {Number} jde
+     */
+    function meanFull (year) {
+      return mean(snap(year, 0.5) * ck)
+    }
+
+    /**
+     * MeanLast returns the jde of the mean Last Quarter Moon nearest the given datthis.
+     * The mean date is within 0.5 day of the true date of Last Quarter Moon.
+     *
+     * @param {Number} year - decimal year
+     * @returns {Number} jde
+     */
+    function meanLast (year) {
+      return mean(snap(year, 0.75) * ck)
+    }
+
+    /**
+     * New returns the jde of New Moon nearest the given date.
+     *
+     * @param {Number} year - decimal year
+     * @returns {Number} jde
+     */
+    function newMoon (year) {
+      const m = new Mp(year, 0);
+      return mean(m.T) + m.nfc(nc) + m.a()
+    }
+
+    /**
+     * First returns the jde of First Quarter Moon nearest the given datthis.
+     *
+     * @param {Number} year - decimal year
+     * @returns {Number} jde
+     */
+    function first (year) {
+      const m = new Mp(year, 0.25);
+      return mean(m.T) + m.flc() + m.w() + m.a()
+    }
+
+    /**
+     * Full returns the jde of Full Moon nearest the given datthis.
+     *
+     * @param {Number} year - decimal year
+     * @returns {Number} jde
+     */
+    function full (year) {
+      const m = new Mp(year, 0.5);
+      return mean(m.T) + m.nfc(fc) + m.a()
+    }
+
+    /**
+     * Last returns the jde of Last Quarter Moon nearest the given datthis.
+     *
+     * @param {Number} year - decimal year
+     * @returns {Number} jde
+     */
+    function last (year) {
+      const m = new Mp(year, 0.75);
+      return mean(m.T) + m.flc() - m.w() + m.a()
+    }
+
+    class Mp {
+      constructor (y, q) {
+        this.A = new Array(14);
+        const k = this.k = snap(y, q);
+        const T = this.T = this.k * ck; // (49.3) p. 350
+        this.E = base.horner(T, 1, -0.002516, -0.0000074);
+        this.M = base.horner(T, 2.5534 * D2R, 29.1053567 * D2R / ck,
+          -0.0000014 * D2R, -0.00000011 * D2R);
+        this.M_ = base.horner(T, 201.5643 * D2R, 385.81693528 * D2R / ck,
+          0.0107582 * D2R, 0.00001238 * D2R, -0.000000058 * D2R);
+        this.F = base.horner(T, 160.7108 * D2R, 390.67050284 * D2R / ck,
+          -0.0016118 * D2R, -0.00000227 * D2R, 0.000000011 * D2R);
+        this.Ω = base.horner(T, 124.7746 * D2R, -1.56375588 * D2R / ck,
+          0.0020672 * D2R, 0.00000215 * D2R);
+        this.A[0] = 299.7 * D2R + 0.107408 * D2R * k - 0.009173 * T * T;
+        this.A[1] = 251.88 * D2R + 0.016321 * D2R * k;
+        this.A[2] = 251.83 * D2R + 26.651886 * D2R * k;
+        this.A[3] = 349.42 * D2R + 36.412478 * D2R * k;
+        this.A[4] = 84.66 * D2R + 18.206239 * D2R * k;
+        this.A[5] = 141.74 * D2R + 53.303771 * D2R * k;
+        this.A[6] = 207.17 * D2R + 2.453732 * D2R * k;
+        this.A[7] = 154.84 * D2R + 7.30686 * D2R * k;
+        this.A[8] = 34.52 * D2R + 27.261239 * D2R * k;
+        this.A[9] = 207.19 * D2R + 0.121824 * D2R * k;
+        this.A[10] = 291.34 * D2R + 1.844379 * D2R * k;
+        this.A[11] = 161.72 * D2R + 24.198154 * D2R * k;
+        this.A[12] = 239.56 * D2R + 25.513099 * D2R * k;
+        this.A[13] = 331.55 * D2R + 3.592518 * D2R * k;
+      }
+
+      // new or full corrections
+      nfc (c) {
+        const { M, M_, E, F, Ω } = this;
+        return c[0] * sin(M_) +
+          c[1] * sin(M) * E +
+          c[2] * sin(2 * M_) +
+          c[3] * sin(2 * F) +
+          c[4] * sin(M_ - M) * E +
+          c[5] * sin(M_ + M) * E +
+          c[6] * sin(2 * M) * E * E +
+          c[7] * sin(M_ - 2 * F) +
+          c[8] * sin(M_ + 2 * F) +
+          c[9] * sin(2 * M_ + M) * E +
+          c[10] * sin(3 * M_) +
+          c[11] * sin(M + 2 * F) * E +
+          c[12] * sin(M - 2 * F) * E +
+          c[13] * sin(2 * M_ - M) * E +
+          c[14] * sin(Ω) +
+          c[15] * sin(M_ + 2 * M) +
+          c[16] * sin(2 * (M_ - F)) +
+          c[17] * sin(3 * M) +
+          c[18] * sin(M_ + M - 2 * F) +
+          c[19] * sin(2 * (M_ + F)) +
+          c[20] * sin(M_ + M + 2 * F) +
+          c[21] * sin(M_ - M + 2 * F) +
+          c[22] * sin(M_ - M - 2 * F) +
+          c[23] * sin(3 * M_ + M) +
+          c[24] * sin(4 * M_)
+      }
+
+      // first or last corrections
+      flc () {
+        const { M, M_, E, F, Ω } = this;
+        return -0.62801 * sin(M_) +
+          0.17172 * sin(M) * E +
+          -0.01183 * sin(M_ + M) * E +
+          0.00862 * sin(2 * M_) +
+          0.00804 * sin(2 * F) +
+          0.00454 * sin(M_ - M) * E +
+          0.00204 * sin(2 * M) * E * E +
+          -0.0018 * sin(M_ - 2 * F) +
+          -0.0007 * sin(M_ + 2 * F) +
+          -0.0004 * sin(3 * M_) +
+          -0.00034 * sin(2 * M_ - M) * E +
+          0.00032 * sin(M + 2 * F) * E +
+          0.00032 * sin(M - 2 * F) * E +
+          -0.00028 * sin(M_ + 2 * M) * E * E +
+          0.00027 * sin(2 * M_ + M) * E +
+          -0.00017 * sin(Ω) +
+          -0.00005 * sin(M_ - M - 2 * F) +
+          0.00004 * sin(2 * M_ + 2 * F) +
+          -0.00004 * sin(M_ + M + 2 * F) +
+          0.00004 * sin(M_ - 2 * M) +
+          0.00003 * sin(M_ + M - 2 * F) +
+          0.00003 * sin(3 * M) +
+          0.00002 * sin(2 * M_ - 2 * F) +
+          0.00002 * sin(M_ - M + 2 * F) +
+          -0.00002 * sin(3 * M_ + M)
+      }
+
+      w () {
+        const { M, M_, E, F } = this;
+        return 0.00306 -
+          0.00038 * E * cos(M) +
+          0.00026 * cos(M_) -
+          0.00002 * (cos(M_ - M) -
+            cos(M_ + M) -
+            cos(2 * F)
+          )
+      }
+
+      // additional corrections
+      a () {
+        let a = 0;
+        ac.forEach((c, i) => {
+          a += c * sin(this.A[i]);
+        });
+        return a
+      }
+    }
+
+    // new coefficients
+    const nc = [
+      -0.4072, 0.17241, 0.01608, 0.01039, 0.00739,
+      -0.00514, 0.00208, -0.00111, -0.00057, 0.00056,
+      -0.00042, 0.00042, 0.00038, -0.00024, -0.00017,
+      -0.00007, 0.00004, 0.00004, 0.00003, 0.00003,
+      -0.00003, 0.00003, -0.00002, -0.00002, 0.00002
+    ];
+
+    // full coefficients
+    const fc = [
+      -0.40614, 0.17302, 0.01614, 0.01043, 0.00734,
+      -0.00515, 0.00209, -0.00111, -0.00057, 0.00056,
+      -0.00042, 0.00042, 0.00038, -0.00024, -0.00017,
+      -0.00007, 0.00004, 0.00004, 0.00003, 0.00003,
+      -0.00003, 0.00003, -0.00002, -0.00002, 0.00002
+    ];
+
+    // additional corrections
+    const ac = [
+      0.000325, 0.000165, 0.000164, 0.000126, 0.00011,
+      0.000062, 0.00006, 0.000056, 0.000047, 0.000042,
+      0.000040, 0.000037, 0.000035, 0.000023
+    ];
+
+    var moonphase = {
+      meanLunarMonth,
+      meanNew,
+      meanFirst,
+      meanFull,
+      meanLast,
+      newMoon,
+      new: newMoon, // BACKWARDS-COMPATIBILITY
+      first,
+      full,
+      last
+    };
+
+    /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module moonposition
+     */
+    /**
+     * Moonposition: Chapter 47, Position of the Moon.
+     */
+
+
+    ((function () {
+      const ta = [
+        [0, 0, 1, 0, 6288774, -20905355],
+        [2, 0, -1, 0, 1274027, -3699111],
+        [2, 0, 0, 0, 658314, -2955968],
+        [0, 0, 2, 0, 213618, -569925],
+
+        [0, 1, 0, 0, -185116, 48888],
+        [0, 0, 0, 2, -114332, -3149],
+        [2, 0, -2, 0, 58793, 246158],
+        [2, -1, -1, 0, 57066, -152138],
+
+        [2, 0, 1, 0, 53322, -170733],
+        [2, -1, 0, 0, 45758, -204586],
+        [0, 1, -1, 0, -40923, -129620],
+        [1, 0, 0, 0, -34720, 108743],
+
+        [0, 1, 1, 0, -30383, 104755],
+        [2, 0, 0, -2, 15327, 10321],
+        [0, 0, 1, 2, -12528, 0],
+        [0, 0, 1, -2, 10980, 79661],
+
+        [4, 0, -1, 0, 10675, -34782],
+        [0, 0, 3, 0, 10034, -23210],
+        [4, 0, -2, 0, 8548, -21636],
+        [2, 1, -1, 0, -7888, 24208],
+
+        [2, 1, 0, 0, -6766, 30824],
+        [1, 0, -1, 0, -5163, -8379],
+        [1, 1, 0, 0, 4987, -16675],
+        [2, -1, 1, 0, 4036, -12831],
+
+        [2, 0, 2, 0, 3994, -10445],
+        [4, 0, 0, 0, 3861, -11650],
+        [2, 0, -3, 0, 3665, 14403],
+        [0, 1, -2, 0, -2689, -7003],
+
+        [2, 0, -1, 2, -2602, 0],
+        [2, -1, -2, 0, 2390, 10056],
+        [1, 0, 1, 0, -2348, 6322],
+        [2, -2, 0, 0, 2236, -9884],
+
+        [0, 1, 2, 0, -2120, 5751],
+        [0, 2, 0, 0, -2069, 0],
+        [2, -2, -1, 0, 2048, -4950],
+        [2, 0, 1, -2, -1773, 4130],
+
+        [2, 0, 0, 2, -1595, 0],
+        [4, -1, -1, 0, 1215, -3958],
+        [0, 0, 2, 2, -1110, 0],
+        [3, 0, -1, 0, -892, 3258],
+
+        [2, 1, 1, 0, -810, 2616],
+        [4, -1, -2, 0, 759, -1897],
+        [0, 2, -1, 0, -713, -2117],
+        [2, 2, -1, 0, -700, 2354],
+
+        [2, 1, -2, 0, 691, 0],
+        [2, -1, 0, -2, 596, 0],
+        [4, 0, 1, 0, 549, -1423],
+        [0, 0, 4, 0, 537, -1117],
+
+        [4, -1, 0, 0, 520, -1571],
+        [1, 0, -2, 0, -487, -1739],
+        [2, 1, 0, -2, -399, 0],
+        [0, 0, 2, -2, -381, -4421],
+
+        [1, 1, 1, 0, 351, 0],
+        [3, 0, -2, 0, -340, 0],
+        [4, 0, -3, 0, 330, 0],
+        [2, -1, 2, 0, 327, 0],
+
+        [0, 2, 1, 0, -323, 1165],
+        [1, 1, -1, 0, 299, 0],
+        [2, 0, 3, 0, 294, 0],
+        [2, 0, -1, -2, 0, 8752]
+      ];
+      return ta.map((row) => {
+        const o = {};
+        const vals = ['d', 'm', 'm_', 'f', 'Σl', 'Σr'];
+        vals.forEach((D2R, i) => {
+          o[D2R] = row[i];
+        });
+        return o
+      })
+    }))();
+
+    ((function () {
+      const tb = [
+        [0, 0, 0, 1, 5128122],
+        [0, 0, 1, 1, 280602],
+        [0, 0, 1, -1, 277693],
+        [2, 0, 0, -1, 173237],
+
+        [2, 0, -1, 1, 55413],
+        [2, 0, -1, -1, 46271],
+        [2, 0, 0, 1, 32573],
+        [0, 0, 2, 1, 17198],
+
+        [2, 0, 1, -1, 9266],
+        [0, 0, 2, -1, 8822],
+        [2, -1, 0, -1, 8216],
+        [2, 0, -2, -1, 4324],
+
+        [2, 0, 1, 1, 4200],
+        [2, 1, 0, -1, -3359],
+        [2, -1, -1, 1, 2463],
+        [2, -1, 0, 1, 2211],
+
+        [2, -1, -1, -1, 2065],
+        [0, 1, -1, -1, -1870],
+        [4, 0, -1, -1, 1828],
+        [0, 1, 0, 1, -1794],
+
+        [0, 0, 0, 3, -1749],
+        [0, 1, -1, 1, -1565],
+        [1, 0, 0, 1, -1491],
+        [0, 1, 1, 1, -1475],
+
+        [0, 1, 1, -1, -1410],
+        [0, 1, 0, -1, -1344],
+        [1, 0, 0, -1, -1335],
+        [0, 0, 3, 1, 1107],
+
+        [4, 0, 0, -1, 1021],
+        [4, 0, -1, 1, 833],
+
+        [0, 0, 1, -3, 777],
+        [4, 0, -2, 1, 671],
+        [2, 0, 0, -3, 607],
+        [2, 0, 2, -1, 596],
+
+        [2, -1, 1, -1, 491],
+        [2, 0, -2, 1, -451],
+        [0, 0, 3, -1, 439],
+        [2, 0, 2, 1, 422],
+
+        [2, 0, -3, -1, 421],
+        [2, 1, -1, 1, -366],
+        [2, 1, 0, 1, -351],
+        [4, 0, 0, 1, 331],
+
+        [2, -1, 1, 1, 315],
+        [2, -2, 0, -1, 302],
+        [0, 0, 1, 3, -283],
+        [2, 1, 1, -1, -229],
+
+        [1, 1, 0, -1, 223],
+        [1, 1, 0, 1, 223],
+        [0, 1, -2, -1, -220],
+        [2, 1, -1, -1, -220],
+
+        [1, 0, 1, 1, -185],
+        [2, -1, -2, -1, 181],
+        [0, 1, 2, 1, -177],
+        [4, 0, -2, -1, 176],
+
+        [4, -1, -1, -1, 166],
+        [1, 0, 1, -1, -164],
+        [4, 0, 1, -1, 132],
+        [1, 0, -1, -1, -119],
+
+        [4, -1, 0, -1, 115],
+        [2, -2, 0, 1, 107]
+      ];
+      return tb.map((row) => {
+        const o = {};
+        const vals = ['d', 'm', 'm_', 'f', 'Σb'];
+        vals.forEach((D2R, i) => {
+          o[D2R] = row[i];
+        });
+        return o
+      })
+    }))();
+
+    /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module refraction
+     */
+    /**
+     * Refraction: Chapter 16: Atmospheric Refraction.
+     *
+     * Functions here assume atmospheric pressure of 1010 mb, temperature of
+     * 10°C, and yellow light.
+     */
+
+    new sexa.Angle(false, 0, 0, 58.294).rad();
+    new sexa.Angle(false, 0, 0, 0.0668).rad();
+    new sexa.Angle(false, 0, 0, 58.276).rad();
+    new sexa.Angle(false, 0, 0, 0.0824).rad();
+
+    /* eslint key-spacing: 1 */
+    /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module rise
+     */
+    /**
+     * Rise: Chapter 15, Rising, Transit, and Setting.
+     */
+
+
+    base.errorCode('always above horizon', -1);
+    base.errorCode('always below horizon', 1);
+
+    /**
+     * mean refraction of the atmosphere
+     */
+    const meanRefraction = new sexa.Angle(false, 0, 34, 0).rad();
+
+    /**
+     * "Standard altitudes" for various bodies already including `meanRefraction` of 0°34'
+     *
+     * The standard altitude is the geometric altitude of the center of body
+     * at the time of apparent rising or seting.
+     */
+    ({
+      stellar: -meanRefraction,
+      solar: new sexa.Angle(true, 0, 50, 0).rad(),
+      // not containing meanRefraction
+      lunar: sexa.angleFromDeg(0.7275),
+      lunarMean: sexa.angleFromDeg(0.125)
+    });
+
+    /**
+     * @copyright 2013 Sonia Keys
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module solstice
+     */
+    /**
+     * Solstice: Chapter 27: Equinoxes and Solstices.
+     */
+
+
+    // table 27.c
+    ((function () {
+      const term = [
+        [485, 324.96, 1934.136],
+        [203, 337.23, 32964.467],
+        [199, 342.08, 20.186],
+        [182, 27.85, 445267.112],
+        [156, 73.14, 45036.886],
+        [136, 171.52, 22518.443],
+        [77, 222.54, 65928.934],
+        [74, 296.72, 3034.906],
+        [70, 243.58, 9037.513],
+        [58, 119.81, 33718.147],
+        [52, 297.17, 150.678],
+        [50, 21.02, 2281.226],
+        [45, 247.54, 29929.562],
+        [44, 325.15, 31555.956],
+        [29, 60.93, 4443.417],
+        [18, 155.12, 67555.328],
+        [17, 288.79, 4562.452],
+        [16, 198.04, 62894.029],
+        [14, 199.76, 31436.921],
+        [12, 95.39, 14577.848],
+        [12, 287.11, 31931.756],
+        [12, 320.81, 34777.259],
+        [9, 227.73, 1222.114],
+        [8, 15.45, 16859.074]
+      ];
+      return term.map((t) => {
+        return {
+          a: t[0],
+          b: t[1],
+          c: t[2]
+        }
+      })
+    }))();
+
+    /**
+     * @copyright 2016 commenthol
+     * @license MIT
+     * @module sunrise
+     */
+    /**
+     * Sunrise: Compute rise, noon, set of the Sun for an earth observer
+     */
+
+
+    ({
+      sunrise:          new sexa.Angle(true, 0, 50, 0).rad(),
+      sunriseEnd:       new sexa.Angle(true, 0, 18, 0).rad(),
+      twilight:         new sexa.Angle(true, 6, 0, 0).rad(),
+      nauticalTwilight: new sexa.Angle(true, 12, 0, 0).rad(),
+      night:            new sexa.Angle(true, 18, 0, 0).rad(),
+      goldenHour:       new sexa.Angle(false, 6, 0, 0).rad()
+    });
+
+    /**
      * Main card class definition
      */
     class TSMoonCard extends s {
@@ -602,7 +2307,7 @@
                     <div class="state">
                     ${l_state}
                     </div>
-                <div>
+                </div>
             </div>
         </ha-card>
         `;
@@ -611,17 +2316,21 @@
             const date = new Date();
             const phase = c.lunarPhase(date);
             const agePercent = c.lunarAgePercent();
+            console.log('Phase de la lune :', phase);
+            console.log('Pourcentage de fin de lune:', agePercent);
             // Utilisation de la classe
             const personne1 = new Personne("John Doe", 25);
             personne1.afficherInformations();
+            const moonPhase = moonphase.phase(new Date()); // Obtenez la phase actuelle de la lune
+            console.log(moonPhase);
+            //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
+            //return moonriseTime || null;
             //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
             // Obtenez les temps du lever et du coucher du soleil
             //const times = SunCalc.getTimes(new Date(), 51.5, -0.1);
             // Accédez aux propriétés spécifiques pour obtenir les heures
             //const sunrise = times.sunrise;
             //const sunset = times.sunset;
-            console.log('Heure du lever du soleil :', phase);
-            console.log('Heure du coucher du soleil :', agePercent);
         }
     }
     __decorate([
@@ -641,7 +2350,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.32";
+    var version = "0.5.35";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

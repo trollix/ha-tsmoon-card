@@ -27,9 +27,6 @@ const plugins = [
   }), 
 ];
 
-plugins.push(typescript());
-
-let sourcemapPathTransform = undefined;
 
 if (process.env.release) {
   plugins.push(template())

@@ -7,8 +7,11 @@ import { svg } from './img_exp'
 import { localize } from './localize/localize';
 import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
-
-
+//import * as SunCalc from "suncalc";
+import * as SunTimesAny from 'suntimes';
+type SuntimesAnyType = {
+    [key: string]: any;
+  };
 import {
     HomeAssistant,
     hasConfigOrEntityChanged,
@@ -157,4 +160,13 @@ export class TSMoonCard extends LitElement {
 
 
     }
+
+    private getMoonriseTime(date: Date, latitude: number, longitude: number): Date | null {
+        // Use the library dynamically, as TypeScript may not recognize the specific functions
+        const suntimes: SuntimesAnyType = SunTimesAny;
+        const moonrise = suntimes.getMoonRise(date, latitude, longitude);
+      
+        return moonrise ? new Date(moonrise) : null;
+      }
+
 }

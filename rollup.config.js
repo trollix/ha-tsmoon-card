@@ -50,5 +50,6 @@ export default {
     file: targetFileName,
     format: 'iife',
   },
+  context: 'global',
   plugins: plugins,
 }

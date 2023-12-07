@@ -7,6 +7,7 @@ import image from '@rollup/plugin-image'
 import versionInjector from 'rollup-plugin-version-injector';
 import json from '@rollup/plugin-json';
 import pkg from './package.json';
+import replace from '@rollup/plugin-replace';
 
 let targetFileName = pkg.main;
 
@@ -20,6 +21,10 @@ const plugins = [
     injectInComments: false,
     logLevel: 'warn',
   }),
+  replace({
+    'typeof window': JSON.stringify('object'), // Replace 'typeof window' with a string
+    preventAssignment: true,
+  }), 
 ];
 
 plugins.push(typescript());
@@ -50,6 +55,7 @@ export default {
     file: targetFileName,
     format: 'iife',
   },
-  context: 'global',
+  context: 'this',
   plugins: plugins,
+
 }

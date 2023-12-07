@@ -150,8 +150,10 @@ export class TSMoonCard extends LitElement {
         const l_latitude = 48.8566; // Latitude de l'emplacement souhaité
         const l_longitude = 2.3522; // Longitude de l'emplacement souhaité
         
-        const moonPhase = astronomia.moonphase.phase(new Date());
-        console.log(moonPhase);
+        const today = new Date();
+        const jd = astronomia.julian.JD(today);
+        const phase2 = astronomia.moonphase.phase(jd);
+        console.log(phase2);
 
         //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
         //return moonriseTime || null;

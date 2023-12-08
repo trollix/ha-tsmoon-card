@@ -255,7 +255,9 @@
     	invalid_icon_type: "The following colors in your configuration are invalid:"
     };
     var card$1 = {
-    	moon_info: "The moon is in the {phase} phase tonight."
+    	moon_info: "The moon is in the {phase} phase tonight.",
+    	moonrise: "Moon Rise",
+    	moonset: "Moon Set"
     };
     var moon$1 = {
     	new_moon: "New Moon",
@@ -309,7 +311,9 @@
     	invalid_icon_type: "Type d'icone incorect"
     };
     var card = {
-    	moon_info: "La lune est en phase de : {phase}."
+    	moon_info: "La lune est en phase de : {phase}.",
+    	moonrise: "Coucher",
+    	moonset: "Lever"
     };
     var moon = {
     	new_moon: "Nouvelle lune",
@@ -1833,8 +1837,10 @@
             //const l_moonrise = times.rise;
             //const l_moonset = times.set;
             // Convertissez la date en utilisant Day.js
-            const l_moonriseFormated = dayjs(times.rise).format('HH:mm:ss');
-            const l_moonsetFormated = dayjs(times.set).format('HH:mm:ss');
+            const l_moonriseFormated = dayjs(times.rise).format('HH:mm');
+            const l_moonsetFormated = dayjs(times.set).format('HH:mm');
+            const l_moonsetDisplayName = this.localize(`card.moonset`);
+            const l_moonriseDisplayName = this.localize(`card.moonrise`);
             return x `
         
         <ha-card>
@@ -1847,17 +1853,14 @@
                 <div class="entity-row">
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
-                        Entity name
+                    ${l_state}
                         <div class="secondary">
-                            Secondary info - ${this.icon_type}
+                            Secondary info
                         </div>
                     </div>
                     <div class="state">
-                    ${l_state}
-                    </div>
-                    <div class="state">
-                    Moonrise: ${l_moonriseFormated}<br />
-                    Moonset: ${l_moonsetFormated}
+                    ${l_moonriseDisplayName}: ${l_moonriseFormated}<br />
+                    ${l_moonsetDisplayName}: ${l_moonsetFormated}
                     </div>
                 </div>
             </div>
@@ -1899,7 +1902,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.6.2";
+    var version = "0.7.0";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

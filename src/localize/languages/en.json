@@ -14,7 +14,9 @@
       "invalid_icon_type": "The following colors in your configuration are invalid:"
     },
     "card": {
-      "moon_info": "The moon is in the {phase} phase tonight."
+      "moon_info": "The moon is in the {phase} phase tonight.",
+      "moonrise": "Moon Rise",
+      "moonset": "Moon Set"
     },
     "moon": {
       "new_moon": "New Moon",

@@ -117,8 +117,12 @@ export class TSMoonCard extends LitElement {
         //const l_moonset = times.set;
 
         // Convertissez la date en utilisant Day.js
-        const l_moonriseFormated = dayjs(times.rise).format('HH:mm:ss');
-        const l_moonsetFormated = dayjs(times.set).format('HH:mm:ss');
+        const l_moonriseFormated = dayjs(times.rise).format('HH:mm');
+        const l_moonsetFormated = dayjs(times.set).format('HH:mm');
+
+        const l_moonsetDisplayName =  this.localize(`card.moonset`);
+        const l_moonriseDisplayName =  this.localize(`card.moonrise`);
+        
 
 
         return html`
@@ -133,17 +137,14 @@ export class TSMoonCard extends LitElement {
                 <div class="entity-row">
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
-                        Entity name
+                    ${l_state}
                         <div class="secondary">
-                            Secondary info - ${this.icon_type}
+                            Secondary info
                         </div>
                     </div>
                     <div class="state">
-                    ${l_state}
-                    </div>
-                    <div class="state">
-                    Moonrise: ${l_moonriseFormated}<br />
-                    Moonset: ${l_moonsetFormated}
+                    ${l_moonriseDisplayName}: ${l_moonriseFormated}<br />
+                    ${l_moonsetDisplayName}: ${l_moonsetFormated}
                     </div>
                 </div>
             </div>

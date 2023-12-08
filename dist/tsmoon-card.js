@@ -1774,6 +1774,15 @@
             this.icon_type = "forms";
             this.language = "en";
             this.entity = "";
+            /*
+                private latitude (): number {
+                    return this.config.latitude ?? this.lastHass.config.latitude
+                  }
+                
+                  private longitude (): number {
+                    return this.config.longitude ?? this.lastHass.config.longitude
+                  }
+            */
         }
         renderIcon(svg_icon_code) {
             return x `
@@ -1819,10 +1828,17 @@
          */
         setConfig(config) {
             var _a, _b, _c;
+            this._config = Object.assign({}, config);
             this.entity = config.entity;
             this.cardTitle = (_a = config.title) !== null && _a !== void 0 ? _a : this.cardTitle;
             this.icon_type = (_b = config.icon_type) !== null && _b !== void 0 ? _b : 'forms';
             this.language = (_c = config.language) !== null && _c !== void 0 ? _c : 'fr';
+            /*
+                if (config.latitude === undefined && config.longitude !== undefined
+                    || config.latitude !== undefined && config.longitude == undefined) {
+                    throw Error('Latitude and longitude must be both set or unset')
+                  }
+            */
         }
         /**
          * Renders the card when the update is requested (when any of the properties are changed)
@@ -1897,10 +1913,10 @@
     ], TSMoonCard.prototype, "language", void 0);
     __decorate([
         t()
-    ], TSMoonCard.prototype, "config", void 0);
+    ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.7.2";
+    var version = "0.7.3";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

@@ -5,7 +5,7 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-import { Personne } from "./utils2";
+//import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
 import dayjs from 'dayjs';
 
@@ -23,7 +23,7 @@ import {
     formatTime
   } from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
   
-
+import type { HassEntity } from "home-assistant-js-websocket";
 
 /**
  * Main card class definition
@@ -44,7 +44,7 @@ export class TSMoonCard extends LitElement {
 
     private entity: string = "";
 
-    @state() private config!: ICardConfig
+    @state() private _config?: ICardConfig
 
     private renderIcon (svg_icon_code: string): TemplateResult {
         return html`
@@ -94,10 +94,19 @@ export class TSMoonCard extends LitElement {
      */
     setConfig(config: ICardConfig): void {
         
+        this._config = {...config};
+
         this.entity = config.entity;
         this.cardTitle = config.title ?? this.cardTitle;
         this.icon_type = config.icon_type ?? 'forms';
         this.language = config.language ?? 'fr';
+    /*
+        if (config.latitude === undefined && config.longitude !== undefined
+            || config.latitude !== undefined && config.longitude == undefined) {
+            throw Error('Latitude and longitude must be both set or unset')
+          }
+    */
+
     }
 
     /**
@@ -174,6 +183,15 @@ export class TSMoonCard extends LitElement {
 
         
     }
+/*
+    private latitude (): number {
+        return this.config.latitude ?? this.lastHass.config.latitude
+      }
+    
+      private longitude (): number {
+        return this.config.longitude ?? this.lastHass.config.longitude
+      }
+*/
 
 
 }

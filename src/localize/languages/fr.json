@@ -14,7 +14,7 @@
       "invalid_icon_type": "Type d'icone incorect"
     },
     "card": {
-      "moon_info": "La lune est en phase de : {phase}.",
+      "moon_phase": "Phase lunaire",
       "moonrise": "Coucher",
       "moonset": "Lever"
     },

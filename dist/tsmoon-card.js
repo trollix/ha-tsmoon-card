@@ -255,7 +255,7 @@
     	invalid_icon_type: "The following colors in your configuration are invalid:"
     };
     var card$1 = {
-    	moon_info: "The moon is in the {phase} phase tonight.",
+    	moon_phase: "Moon Phase",
     	moonrise: "Moon Rise",
     	moonset: "Moon Set"
     };
@@ -311,7 +311,7 @@
     	invalid_icon_type: "Type d'icone incorect"
     };
     var card = {
-    	moon_info: "La lune est en phase de : {phase}.",
+    	moon_phase: "Phase lunaire",
     	moonrise: "Coucher",
     	moonset: "Lever"
     };
@@ -1839,8 +1839,6 @@
             // Convertissez la date en utilisant Day.js
             const l_moonriseFormated = dayjs(times.rise).format('HH:mm');
             const l_moonsetFormated = dayjs(times.set).format('HH:mm');
-            const l_moonsetDisplayName = this.localize(`card.moonset`);
-            const l_moonriseDisplayName = this.localize(`card.moonrise`);
             return x `
         
         <ha-card>
@@ -1853,14 +1851,14 @@
                 <div class="entity-row">
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
-                    ${l_state}
+                    ${this.localize(`card.moonphase`)}
                         <div class="secondary">
-                            Secondary info
+                        ${l_state}
                         </div>
                     </div>
                     <div class="state">
-                    ${l_moonriseDisplayName}: ${l_moonriseFormated}<br />
-                    ${l_moonsetDisplayName}: ${l_moonsetFormated}
+                    ${this.localize(`card.moonrise`)}: ${l_moonriseFormated}<br />
+                    ${this.localize(`card.moonset`)}: ${l_moonsetFormated}
                     </div>
                 </div>
             </div>
@@ -1902,7 +1900,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.7.0";
+    var version = "0.7.1";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

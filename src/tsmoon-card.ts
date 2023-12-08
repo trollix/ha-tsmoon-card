@@ -120,10 +120,6 @@ export class TSMoonCard extends LitElement {
         const l_moonriseFormated = dayjs(times.rise).format('HH:mm');
         const l_moonsetFormated = dayjs(times.set).format('HH:mm');
 
-        const l_moonsetDisplayName =  this.localize(`card.moonset`);
-        const l_moonriseDisplayName =  this.localize(`card.moonrise`);
-        
-
 
         return html`
         
@@ -137,14 +133,14 @@ export class TSMoonCard extends LitElement {
                 <div class="entity-row">
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
-                    ${l_state}
+                    ${this.localize(`card.moonphase`)}
                         <div class="secondary">
-                            Secondary info
+                        ${l_state}
                         </div>
                     </div>
                     <div class="state">
-                    ${l_moonriseDisplayName}: ${l_moonriseFormated}<br />
-                    ${l_moonsetDisplayName}: ${l_moonsetFormated}
+                    ${this.localize(`card.moonrise`)}: ${l_moonriseFormated}<br />
+                    ${this.localize(`card.moonset`)}: ${l_moonsetFormated}
                     </div>
                 </div>
             </div>

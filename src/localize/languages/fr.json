@@ -15,8 +15,8 @@
     },
     "card": {
       "moon_phase": "Phase lunaire",
-      "moonrise": "Coucher",
-      "moonset": "Lever"
+      "moon_rise": "Coucher",
+      "moon_set": "Lever"
     },
     "moon": {
       "new_moon": "Nouvelle lune",

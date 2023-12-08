@@ -15,8 +15,8 @@
     },
     "card": {
       "moon_phase": "Moon Phase",
-      "moonrise": "Moon Rise",
-      "moonset": "Moon Set"
+      "moon_rise": "Moon Rise",
+      "moon_set": "Moon Set"
     },
     "moon": {
       "new_moon": "New Moon",

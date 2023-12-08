@@ -256,8 +256,8 @@
     };
     var card$1 = {
     	moon_phase: "Moon Phase",
-    	moonrise: "Moon Rise",
-    	moonset: "Moon Set"
+    	moon_rise: "Moon Rise",
+    	moon_set: "Moon Set"
     };
     var moon$1 = {
     	new_moon: "New Moon",
@@ -312,8 +312,8 @@
     };
     var card = {
     	moon_phase: "Phase lunaire",
-    	moonrise: "Coucher",
-    	moonset: "Lever"
+    	moon_rise: "Coucher",
+    	moon_set: "Lever"
     };
     var moon = {
     	new_moon: "Nouvelle lune",
@@ -1851,14 +1851,14 @@
                 <div class="entity-row">
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
-                    ${this.localize(`card.moonphase`)}
+                    ${this.localize(`card.moon_phase`)}
                         <div class="secondary">
                         ${l_state}
                         </div>
                     </div>
                     <div class="state">
-                    ${this.localize(`card.moonrise`)}: ${l_moonriseFormated}<br />
-                    ${this.localize(`card.moonset`)}: ${l_moonsetFormated}
+                    ${this.localize(`card.moon_rise`)}: ${l_moonriseFormated}<br />
+                    ${this.localize(`card.moon_set`)}: ${l_moonsetFormated}
                     </div>
                 </div>
             </div>
@@ -1900,7 +1900,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.7.1";
+    var version = "0.7.2";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

@@ -133,14 +133,14 @@ export class TSMoonCard extends LitElement {
                 <div class="entity-row">
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
-                    ${this.localize(`card.moonphase`)}
+                    ${this.localize(`card.moon_phase`)}
                         <div class="secondary">
                         ${l_state}
                         </div>
                     </div>
                     <div class="state">
-                    ${this.localize(`card.moonrise`)}: ${l_moonriseFormated}<br />
-                    ${this.localize(`card.moonset`)}: ${l_moonsetFormated}
+                    ${this.localize(`card.moon_rise`)}: ${l_moonriseFormated}<br />
+                    ${this.localize(`card.moon_set`)}: ${l_moonsetFormated}
                     </div>
                 </div>
             </div>

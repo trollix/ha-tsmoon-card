@@ -107,7 +107,14 @@ export class TSMoonCard extends LitElement {
 
         const moonIcon = this.toIcon(this.state, this.icon_type);
         const l_state = this.localize(`moon.${this.state}`);
-        this.getMoonRise();
+        //this.getMoonRise();
+
+               // Obtenez les temps du lever et du coucher du soleil
+               const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
+
+               // Accédez aux propriétés spécifiques pour obtenir les heures
+               const l_moonrise = times.rise;
+               const l_moonset = times.set;
 
         return html`
         
@@ -129,6 +136,10 @@ export class TSMoonCard extends LitElement {
                     <div class="state">
                     ${l_state}
                     </div>
+                    <div class="state">
+                    Moonrise: ${l_moonrise}<br />
+                    Moonset: ${l_moonset}
+                    </div>
                 </div>
             </div>
         </ha-card>
@@ -141,30 +152,13 @@ export class TSMoonCard extends LitElement {
         const phase2 = Moon.lunarPhase(date);
         const agePercent = Moon.lunarAgePercent();
 
-        console.log('Phase de la lune :', phase2);
-        console.log('Pourcentage de fin de lune:', agePercent);
+        //console.log('Phase de la lune :', phase2);
+        //console.log('Pourcentage de fin de lune:', agePercent);
 
         // Utilisation de la classe
-        const personne1 = new Personne("John Doe", 25);
-        personne1.afficherInformations();
+        //const personne1 = new Personne("John Doe", 25);
+        //personne1.afficherInformations();
 
-        // Exemple d'utilisation
-        const l_date = new Date(); // Utilisez la date actuelle ou une date spécifique
-        const l_latitude = 48.8566; // Latitude de l'emplacement souhaité
-        const l_longitude = 2.3522; // Longitude de l'emplacement souhaité
-        
-        //const juliano = require('astronomia').julian;
-        //const juliani = require('astronomia').moonphase;
-
-        //const today = new Date();
-        //const jd = juliano.toJulianDay(today);
-        //const phase = juliani.phase(jd);
-        //console.log(phase);
-
-        //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
-        //return moonriseTime || null;
-
-        //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
         // Obtenez les temps du lever et du coucher du soleil
         const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
 
@@ -172,8 +166,8 @@ export class TSMoonCard extends LitElement {
         const sunrise = times.rise;
         const sunset = times.set;
 
-        console.log('Sunrise :', sunrise);
-        console.log('Sunset:', sunset);
+        //console.log('Sunrise :', sunrise);
+        //console.log('Sunset:', sunset);
 
 
         

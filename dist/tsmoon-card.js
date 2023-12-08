@@ -424,19 +424,6 @@
         return translated;
     }
 
-    // Définition de la classe
-    class Personne {
-        // Constructeur de la classe
-        constructor(nom, age) {
-            this.nom = nom;
-            this.age = age;
-        }
-        // Méthode de la classe
-        afficherInformations() {
-            console.log(`Nom: ${this.nom}, Age: ${this.age}`);
-        }
-    }
-
     var T = /* @__PURE__ */ ((t) => (t.NORTHERN = "Northern", t.SOUTHERN = "Southern", t))(T || {}), G = /* @__PURE__ */ ((t) => (t.NEW = "🌑", t.WAXING_CRESCENT = "🌒", t.FIRST_QUARTER = "🌓", t.WAXING_GIBBOUS = "🌔", t.FULL = "🌕", t.WANING_GIBBOUS = "🌖", t.LAST_QUARTER = "🌗", t.WANING_CRESCENT = "🌘", t))(G || {}), W = /* @__PURE__ */ ((t) => (t.NEW = "🌑", t.WAXING_CRESCENT = "🌘", t.FIRST_QUARTER = "🌗", t.WAXING_GIBBOUS = "🌖", t.FULL = "🌕", t.WANING_GIBBOUS = "🌔", t.LAST_QUARTER = "🌓", t.WANING_CRESCENT = "🌒", t))(W || {}), A = /* @__PURE__ */ ((t) => (t.NEW = "New", t.WAXING_CRESCENT = "Waxing Crescent", t.FIRST_QUARTER = "First Quarter", t.WAXING_GIBBOUS = "Waxing Gibbous", t.FULL = "Full", t.WANING_GIBBOUS = "Waning Gibbous", t.LAST_QUARTER = "Last Quarter", t.WANING_CRESCENT = "Waning Crescent", t))(A || {});
     const E = 24405875e-1, C = 2.4234366115277777e6, U = 27.55454988, I = 29.53058770576;
     class n {
@@ -1828,7 +1815,12 @@
         render() {
             const moonIcon = this.toIcon(this.state, this.icon_type);
             const l_state = this.localize(`moon.${this.state}`);
-            this.getMoonRise();
+            //this.getMoonRise();
+            // Obtenez les temps du lever et du coucher du soleil
+            const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
+            // Accédez aux propriétés spécifiques pour obtenir les heures
+            const l_moonrise = times.rise;
+            const l_moonset = times.set;
             return x `
         
         <ha-card>
@@ -1849,6 +1841,10 @@
                     <div class="state">
                     ${l_state}
                     </div>
+                    <div class="state">
+                    Moonrise: ${l_moonrise}<br />
+                    Moonset: ${l_moonset}
+                    </div>
                 </div>
             </div>
         </ha-card>
@@ -1856,29 +1852,20 @@
         }
         getMoonRise() {
             const date = new Date();
-            const phase2 = c.lunarPhase(date);
-            const agePercent = c.lunarAgePercent();
-            console.log('Phase de la lune :', phase2);
-            console.log('Pourcentage de fin de lune:', agePercent);
+            c.lunarPhase(date);
+            c.lunarAgePercent();
+            //console.log('Phase de la lune :', phase2);
+            //console.log('Pourcentage de fin de lune:', agePercent);
             // Utilisation de la classe
-            const personne1 = new Personne("John Doe", 25);
-            personne1.afficherInformations();
-            //const juliano = require('astronomia').julian;
-            //const juliani = require('astronomia').moonphase;
-            //const today = new Date();
-            //const jd = juliano.toJulianDay(today);
-            //const phase = juliani.phase(jd);
-            //console.log(phase);
-            //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
-            //return moonriseTime || null;
-            //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
+            //const personne1 = new Personne("John Doe", 25);
+            //personne1.afficherInformations();
             // Obtenez les temps du lever et du coucher du soleil
             const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
             // Accédez aux propriétés spécifiques pour obtenir les heures
-            const sunrise = times.rise;
-            const sunset = times.set;
-            console.log('Sunrise :', sunrise);
-            console.log('Sunset:', sunset);
+            times.rise;
+            times.set;
+            //console.log('Sunrise :', sunrise);
+            //console.log('Sunset:', sunset);
         }
     }
     __decorate([
@@ -1898,7 +1885,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.46";
+    var version = "0.6.1";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

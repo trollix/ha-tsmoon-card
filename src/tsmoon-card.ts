@@ -7,8 +7,8 @@ import { svg } from './img_exp'
 import { localize } from './localize/localize';
 import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
-//import { SunCalc } from './lib/suncalc3';
-//import { julian } from 'astronomia';
+import dayjs from 'dayjs';
+
 import { default as SunCalc } from 'suncalc3';
 
 
@@ -109,12 +109,17 @@ export class TSMoonCard extends LitElement {
         const l_state = this.localize(`moon.${this.state}`);
         //this.getMoonRise();
 
-               // Obtenez les temps du lever et du coucher du soleil
-               const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
+        // Obtenez les temps du lever et du coucher du soleil
+        const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
 
-               // Accédez aux propriétés spécifiques pour obtenir les heures
-               const l_moonrise = times.rise;
-               const l_moonset = times.set;
+        // Accédez aux propriétés spécifiques pour obtenir les heures
+        //const l_moonrise = times.rise;
+        //const l_moonset = times.set;
+
+        // Convertissez la date en utilisant Day.js
+        const l_moonriseFormated = dayjs(times.rise).format('HH:mm:ss');
+        const l_moonsetFormated = dayjs(times.set).format('HH:mm:ss');
+
 
         return html`
         
@@ -137,8 +142,8 @@ export class TSMoonCard extends LitElement {
                     ${l_state}
                     </div>
                     <div class="state">
-                    Moonrise: ${l_moonrise}<br />
-                    Moonset: ${l_moonset}
+                    Moonrise: ${l_moonriseFormated}<br />
+                    Moonset: ${l_moonsetFormated}
                     </div>
                 </div>
             </div>

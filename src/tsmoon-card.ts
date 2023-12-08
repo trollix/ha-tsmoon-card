@@ -44,7 +44,11 @@ export class TSMoonCard extends LitElement {
 
     private entity: string = "";
 
+    @property({ attribute: false }) private home_latitude: number = 0;
+    @property({ attribute: false }) private home_longitude: number = 0;
+
     @state() private _config?: ICardConfig
+
 
     private renderIcon (svg_icon_code: string): TemplateResult {
         return html`
@@ -86,6 +90,8 @@ export class TSMoonCard extends LitElement {
         }
 
         this.state = hass.states[this.entity].state;
+        this.home_latitude = hass.states['zone.home'].attributes.latitude;
+        this.home_longitude = hass.states['zone.home'].attributes.longitude;
     }
 
     /**

@@ -1774,6 +1774,8 @@
             this.icon_type = "forms";
             this.language = "en";
             this.entity = "";
+            this.home_latitude = 0;
+            this.home_longitude = 0;
             /*
                 private latitude (): number {
                     return this.config.latitude ?? this.lastHass.config.latitude
@@ -1821,6 +1823,8 @@
                 return;
             }
             this.state = hass.states[this.entity].state;
+            this.home_latitude = hass.states['zone.home'].attributes.latitude;
+            this.home_longitude = hass.states['zone.home'].attributes.longitude;
         }
         /**
          * Called every time when entity config is updated
@@ -1911,6 +1915,12 @@
     __decorate([
         n$2({ attribute: false })
     ], TSMoonCard.prototype, "language", void 0);
+    __decorate([
+        n$2({ attribute: false })
+    ], TSMoonCard.prototype, "home_latitude", void 0);
+    __decorate([
+        n$2({ attribute: false })
+    ], TSMoonCard.prototype, "home_longitude", void 0);
     __decorate([
         t()
     ], TSMoonCard.prototype, "_config", void 0);

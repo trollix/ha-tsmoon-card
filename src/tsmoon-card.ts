@@ -67,7 +67,8 @@ export class TSMoonCard extends LitElement {
             return svg[type][moonState]!;
         } else {
           // Gérer le cas où la propriété n'est pas définie
-          throw new Error('Propriété non définie');
+          // throw new Error('Propriété non définie');
+          return "";
         }
       }
 
@@ -160,18 +161,19 @@ export class TSMoonCard extends LitElement {
         //const phase = juliani.phase(jd);
         //console.log(phase);
 
-        const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
+        //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
         //return moonriseTime || null;
 
         //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
         // Obtenez les temps du lever et du coucher du soleil
-        //const times = SunCalc.getTimes(new Date(), 51.5, -0.1);
+        const times = SunCalc.getMoonTimes(new Date(), 51.5, -0.1);
 
         // Accédez aux propriétés spécifiques pour obtenir les heures
-        //const sunrise = times.sunrise;
-        //const sunset = times.sunset;
+        const sunrise = times.rise;
+        const sunset = times.set;
 
-
+        console.log('Sunrise :', sunrise);
+        console.log('Sunset:', sunset);
 
 
         

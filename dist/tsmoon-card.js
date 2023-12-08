@@ -1793,7 +1793,8 @@
             }
             else {
                 // Gérer le cas où la propriété n'est pas définie
-                throw new Error('Propriété non définie');
+                // throw new Error('Propriété non définie');
+                return "";
             }
         }
         // CSS for the card
@@ -1862,24 +1863,22 @@
             // Utilisation de la classe
             const personne1 = new Personne("John Doe", 25);
             personne1.afficherInformations();
-            // Exemple d'utilisation
-            const l_date = new Date(); // Utilisez la date actuelle ou une date spécifique
-            const l_latitude = 48.8566; // Latitude de l'emplacement souhaité
-            const l_longitude = 2.3522; // Longitude de l'emplacement souhaité
             //const juliano = require('astronomia').julian;
             //const juliani = require('astronomia').moonphase;
             //const today = new Date();
             //const jd = juliano.toJulianDay(today);
             //const phase = juliani.phase(jd);
             //console.log(phase);
-            SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
+            //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
             //return moonriseTime || null;
             //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
             // Obtenez les temps du lever et du coucher du soleil
-            //const times = SunCalc.getTimes(new Date(), 51.5, -0.1);
+            const times = SunCalc.getMoonTimes(new Date(), 51.5, -0.1);
             // Accédez aux propriétés spécifiques pour obtenir les heures
-            //const sunrise = times.sunrise;
-            //const sunset = times.sunset;
+            const sunrise = times.rise;
+            const sunset = times.set;
+            console.log('Sunrise :', sunrise);
+            console.log('Sunset:', sunset);
         }
     }
     __decorate([
@@ -1899,7 +1898,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.41";
+    var version = "0.5.44";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

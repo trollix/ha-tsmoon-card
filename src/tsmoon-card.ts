@@ -166,7 +166,7 @@ export class TSMoonCard extends LitElement {
 
         //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
         // Obtenez les temps du lever et du coucher du soleil
-        const times = SunCalc.getMoonTimes(new Date(), 51.5, -0.1);
+        const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
 
         // Accédez aux propriétés spécifiques pour obtenir les heures
         const sunrise = times.rise;

@@ -1873,7 +1873,7 @@
             //return moonriseTime || null;
             //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);
             // Obtenez les temps du lever et du coucher du soleil
-            const times = SunCalc.getMoonTimes(new Date(), 51.5, -0.1);
+            const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
             // Accédez aux propriétés spécifiques pour obtenir les heures
             const sunrise = times.rise;
             const sunset = times.set;
@@ -1898,7 +1898,7 @@
     ], TSMoonCard.prototype, "config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.5.45";
+    var version = "0.5.46";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

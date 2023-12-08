@@ -8,7 +8,9 @@ import { localize } from './localize/localize';
 import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
 //import { SunCalc } from './lib/suncalc3';
-import { julian } from 'astronomia';
+//import { julian } from 'astronomia';
+import { default as SunCalc } from 'suncalc3';
+
 
 import {
     HomeAssistant,
@@ -150,15 +152,15 @@ export class TSMoonCard extends LitElement {
         const l_latitude = 48.8566; // Latitude de l'emplacement souhaité
         const l_longitude = 2.3522; // Longitude de l'emplacement souhaité
         
-        const juliano = require('astronomia').julian;
-        const juliani = require('astronomia').moonphase;
+        //const juliano = require('astronomia').julian;
+        //const juliani = require('astronomia').moonphase;
 
-        const today = new Date();
-        const jd = juliano.toJulianDay(today);
-        const phase = juliani.phase(jd);
-        console.log(phase);
+        //const today = new Date();
+        //const jd = juliano.toJulianDay(today);
+        //const phase = juliani.phase(jd);
+        //console.log(phase);
 
-        //const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
+        const moonriseTime = SunCalc.getMoonTimes(l_date, l_latitude, l_longitude).rise;
         //return moonriseTime || null;
 
         //const {sunrise, sunset} = SunCalc.getTimes(new Date(), 51.5, -0.1);

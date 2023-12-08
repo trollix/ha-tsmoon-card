@@ -1,5 +1,3 @@
-declare module 'suncalc' {
-
 /**
  * calculates sun position for a given date and latitude/longitude
  * @param {number|Date} dateValue Date object or timestamp for calculating sun-position
@@ -535,5 +533,3 @@ export type IMoonTimes = {
     highest?: Date;
 };
 //# sourceMappingURL=suncalc.d.ts.map
-
-}

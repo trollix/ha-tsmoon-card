@@ -1,5 +1,6 @@
 import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import cssImports from 'rollup-plugin-import-css';
 import template from 'rollup-plugin-html-literals';
 import { terser } from '@rollup/plugin-terser';
@@ -17,6 +18,7 @@ const plugins = [
   json(),
   image(),
   typescript(),
+  commonjs(),
   versionInjector({
     injectInComments: false,
     logLevel: 'warn',

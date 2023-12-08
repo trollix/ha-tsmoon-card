@@ -1852,7 +1852,7 @@
             const l_state = this.localize(`moon.${this.state}`);
             //this.getMoonRise();
             // Obtenez les temps du lever et du coucher du soleil
-            const times = SunCalc.getMoonTimes(new Date(), this.home_longitude, this.home_latitude);
+            const times = SunCalc.getMoonTimes(new Date(), this.home_latitude, this.home_longitude);
             // Accédez aux propriétés spécifiques pour obtenir les heures
             //const l_moonrise = times.rise;
             //const l_moonset = times.set;
@@ -1926,7 +1926,7 @@
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.7.5";
+    var version = "0.7.6";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
 

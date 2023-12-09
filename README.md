@@ -45,14 +45,20 @@ Startup setup for new lovelace (Home Assistant) card development
 
     Note: The style.ts file is auto-generated
 
+
+## Configuration
+
+
+
+
 ## Preview
 
 ### Card (en)
 
 #### form
 
-![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_form_en.png?raw=true "Ha TSMoon Card")
-![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_form_en.png?raw=true "Ha TSMoon Card")
+![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_forms_en.png?raw=true "Ha TSMoon Card")
+![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_forms_en.png?raw=true "Ha TSMoon Card")
 
 #### round
 
@@ -68,8 +74,8 @@ Startup setup for new lovelace (Home Assistant) card development
 
 #### form
 
-![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_form_fr.png?raw=true "Ha TSMoon Card")
-![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_form_fr.png?raw=true "Ha TSMoon Card")
+![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_forms_fr.png?raw=true "Ha TSMoon Card")
+![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_forms_fr.png?raw=true "Ha TSMoon Card")
 
 #### round
 

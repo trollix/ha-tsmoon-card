@@ -11,41 +11,56 @@ Startup setup for new lovelace (Home Assistant) card development
 * Two bundle types: debug and crunched one
 * Teststing with Electron headless browser
 
-## How to use it?
+## Goals
 
-1. Get the template code
+- [X] Display a simple card to display moon phase
 
-    * Click on the "Use this template" button at the top of this page. Your private repo will be created for you.
+## Installation
 
-    * Clone your repo to your box
-    OR
-    * Clone this repo to your box
-      `git clone https://github.com/trollix/ha-tmoon-card.git your-card-name`
+For installation you should have [HACS](https://hacs.xyz/docs/setup/download/) installed. Then add this repository https://github.com/trollix/ha-tsmoon-card in HACS and install the card. You have to reload you browser after installation.
 
-    * Create empty repo on your git server and copy it's url
+Then you can add the new card into your dashboard.
 
-    * Change the remote url
 
-      `git remote set-url origin [your target repo url]`
+## Installation
 
-2. Change the card class name and the custom element name in index.ts, update package.json
+### Easiest method:
 
-3. Push the code and you are ready to go
+✨ Install via HACS
 
-    `git push origin master`
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=trollix&repository=ha-tsmoon-card)
 
-4. Build
+### Alternative method:
 
-    Run `npm install` once before first build.
+1. Download `tsmoon-card.js` from the [Releases][releases] page
+2. Upload to `/www/ha-tsmoon-card/tsmoon-card.js` (via Samba, File Editor, SSH, etc.)
+3. Visit the Resources page in your Home Assistant install and add `/ha-tsmoon-card/tsmoon-card.js` as a
+   JavaScript Module.
+   [![Open your Home Assistant instance and show your dashboard resources.](https://my.home-assistant.io/badges/lovelace_resources.svg)](https://my.home-assistant.io/redirect/lovelace_resources/)
+4. Refresh your browser
 
-   * `npm run build` produces debug version of the code (just bundled but no crunched)
-   * `npm run release` produces crunched bundle
-
-    The output files are located in `dist` directory.
-
-    Note: The style.ts file is auto-generated
 
 ## Configuration
+
+| Name        | Type    | Default      | Description                                              |
+| ----------- | ------- | ------------ | -------------------------------------------------------- |
+| type        | string  | **Required** | `custom:custom:tsmoon-card`                              |
+| entity      | string  | **Required** | The entity id of moon sensor -> sensor.moon              |
+| title       | string  | **optional** | Title displayed on the card                              |
+| icon_type   | string  | **optional** | choose type of picture for the moon (forms/round/photos) |
+| language    | string  | **optional** | turn off the on/heat button                              |
+
+Example:
+
+```yaml
+
+type: custom:tsmoon-card
+title: Lune
+entity: sensor.moon
+icon_type: round
+language: fr
+
+```
 
 ## Preview
 

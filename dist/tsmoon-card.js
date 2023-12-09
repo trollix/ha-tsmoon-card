@@ -1,4 +1,4 @@
-(function () {
+var TSMoonCard = (function (exports) {
     'use strict';
 
     /******************************************************************************
@@ -1769,22 +1769,13 @@
     class TSMoonCard extends s {
         constructor() {
             super(...arguments);
-            this.cardTitle = "Moon Phase";
+            this.cardTitle = "";
             this.state = "";
             this.icon_type = "forms";
             this.language = "en";
             this.entity = "";
             this.home_latitude = 0;
             this.home_longitude = 0;
-            /*
-                private latitude (): number {
-                    return this.config.latitude ?? this.lastHass.config.latitude
-                  }
-                
-                  private longitude (): number {
-                    return this.config.longitude ?? this.lastHass.config.longitude
-                  }
-            */
         }
         renderIcon(svg_icon_code) {
             return x `
@@ -1871,7 +1862,7 @@
                 <div class="entity-row">
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
-                    <span class="primary">${this.localize(`card.moon_phase`)}:</span>
+                    <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
                         ${l_state}
                         </div>
@@ -1899,8 +1890,6 @@
             // Accédez aux propriétés spécifiques pour obtenir les heures
             times.rise;
             times.set;
-            //console.log('Sunrise :', sunrise);
-            //console.log('Sunset:', sunset);
         }
     }
     __decorate([
@@ -1926,13 +1915,14 @@
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.7.7";
+    var version = "0.7.8";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
-
-    // 
-    printVersionToConsole();
     // Registering card
     customElements.define("tsmoon-card", TSMoonCard);
 
-})();
+    exports.printVersionToConsole = printVersionToConsole;
+
+    return exports;
+
+})({});

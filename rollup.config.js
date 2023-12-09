@@ -53,6 +53,7 @@ export default {
     },
     file: targetFileName,
     format: 'iife',
+    name: 'TSMoonCard'
   },
   context: 'this',
   plugins: plugins,

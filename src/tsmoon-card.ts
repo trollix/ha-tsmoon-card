@@ -5,7 +5,6 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-//import { Personne } from "./utils2";
 import { Moon } from 'lunarphase-js';
 import dayjs from 'dayjs';
 
@@ -31,7 +30,7 @@ import type { HassEntity } from "home-assistant-js-websocket";
 export class TSMoonCard extends LitElement {
 
     @property({ attribute: false })
-    private cardTitle: string = "Moon Phase";
+    private cardTitle: string = "";
 
     @property({ attribute: false })
     private state: string = "";
@@ -148,7 +147,7 @@ export class TSMoonCard extends LitElement {
                 <div class="entity-row">
                     ${this.renderIcon(moonIcon)}
                     <div class="name truncate">
-                    <span class="primary">${this.localize(`card.moon_phase`)}:</span>
+                    <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
                         ${l_state}
                         </div>
@@ -183,21 +182,9 @@ export class TSMoonCard extends LitElement {
         const sunrise = times.rise;
         const sunset = times.set;
 
-        //console.log('Sunrise :', sunrise);
-        //console.log('Sunset:', sunset);
-
-
         
     }
-/*
-    private latitude (): number {
-        return this.config.latitude ?? this.lastHass.config.latitude
-      }
-    
-      private longitude (): number {
-        return this.config.longitude ?? this.lastHass.config.longitude
-      }
-*/
+
 
 
 }

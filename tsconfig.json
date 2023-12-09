@@ -16,5 +16,5 @@
           ],
         "allowSyntheticDefaultImports": true  // pour utiliser require sans alert
     },
-    "include": ["src", "src/img_dec.d.ts","src/suncalc3/suncalc.d.ts"]
+    "include": ["src", "src/img_dec.d.ts","src/suncalc.d.ts"]
 }

@@ -124,7 +124,7 @@ export class TSMoonCard extends LitElement {
         const moonIcon = this.toIcon(this.state, this.icon_type);
         var l_state = this.localize(`moon.${this.state}`);
         const l_date = new Date();
-
+        console.log('Nom de fin de lune:', this.state);
         //this.getMoonRise();
 
         // Obtenez les temps du lever et du coucher du soleil

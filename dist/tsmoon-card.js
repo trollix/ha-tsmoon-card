@@ -1842,6 +1842,7 @@ var TSMoonCard = (function (exports) {
             const moonIcon = this.toIcon(this.state, this.icon_type);
             var l_state = this.localize(`moon.${this.state}`);
             const l_date = new Date();
+            console.log('Nom de fin de lune:', this.state);
             //this.getMoonRise();
             // Obtenez les temps du lever et du coucher du soleil
             const times = SunCalc.getMoonTimes(l_date, this.home_latitude, this.home_longitude);
@@ -1923,7 +1924,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.3";
+    var version = "0.8.4";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

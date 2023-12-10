@@ -1,6 +1,6 @@
 {
   "name": "ha-tsmoon-card",
-  "version": "0.7.16",
+  "version": "0.7.17",
   "description": "Simple Moon Card",
   "main": "dist/tsmoon-card.js",
   "files": [

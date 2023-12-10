@@ -41,6 +41,7 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false })
     private language: string = "en";
 
+    @property({ attribute: false })
     private entity: string = "sensor.moon";
 
     @property({ attribute: false }) private home_latitude: number = 0;
@@ -84,6 +85,7 @@ export class TSMoonCard extends LitElement {
      * Called on every hass update
      */
     set hass(hass: HomeAssistant) {
+        
         if (!this.entity || !hass.states[this.entity]) {
             return;
         }
@@ -101,7 +103,7 @@ export class TSMoonCard extends LitElement {
         
         this._config = {...config};
 
-        this.entity = config.entity;
+        this.entity = config.entity ?? this.entity;
         this.cardTitle = config.title ?? this.cardTitle;
         this.icon_type = config.icon_type ?? 'forms';
         this.language = config.language ?? 'fr';

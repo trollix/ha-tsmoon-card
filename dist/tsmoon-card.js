@@ -1822,12 +1822,12 @@ var TSMoonCard = (function (exports) {
          * @param config Card configuration (yaml converted to JSON)
          */
         setConfig(config) {
-            var _a, _b, _c;
+            var _a, _b, _c, _d;
             this._config = Object.assign({}, config);
-            this.entity = config.entity;
-            this.cardTitle = (_a = config.title) !== null && _a !== void 0 ? _a : this.cardTitle;
-            this.icon_type = (_b = config.icon_type) !== null && _b !== void 0 ? _b : 'forms';
-            this.language = (_c = config.language) !== null && _c !== void 0 ? _c : 'fr';
+            this.entity = (_a = config.entity) !== null && _a !== void 0 ? _a : this.entity;
+            this.cardTitle = (_b = config.title) !== null && _b !== void 0 ? _b : this.cardTitle;
+            this.icon_type = (_c = config.icon_type) !== null && _c !== void 0 ? _c : 'forms';
+            this.language = (_d = config.language) !== null && _d !== void 0 ? _d : 'fr';
             /*
                 if (config.latitude === undefined && config.longitude !== undefined
                     || config.latitude !== undefined && config.longitude == undefined) {
@@ -1906,6 +1906,9 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "language", void 0);
     __decorate([
         n$2({ attribute: false })
+    ], TSMoonCard.prototype, "entity", void 0);
+    __decorate([
+        n$2({ attribute: false })
     ], TSMoonCard.prototype, "home_latitude", void 0);
     __decorate([
         n$2({ attribute: false })
@@ -1915,7 +1918,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.7.16";
+    var version = "0.7.17";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

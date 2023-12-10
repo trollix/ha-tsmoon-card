@@ -41,7 +41,7 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false })
     private language: string = "en";
 
-    private entity: string = "";
+    private entity: string = "sensor.moon";
 
     @property({ attribute: false }) private home_latitude: number = 0;
     @property({ attribute: false }) private home_longitude: number = 0;

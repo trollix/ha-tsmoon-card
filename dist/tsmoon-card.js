@@ -1915,9 +1915,17 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.7.11";
+    var version = "0.7.14";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
+    // This puts your card into the UI card picker dialog
+    window.customCards = window.customCards || [];
+    window.customCards.push({
+        type: 'tsmoon-card',
+        name: 'TSimple Moon Phase CArd',
+        description: 'A card to view Moon Phases',
+        preview: false,
+    });
     // Registering card
     customElements.define("tsmoon-card", TSMoonCard);
 

@@ -7,6 +7,14 @@ export const printVersionToConsole = () => console.info(
     'color: #000; font-weight: bold; background: #ddd',
 );
 
+// This puts your card into the UI card picker dialog
+(window as any).customCards = (window as any).customCards || [];
+(window as any).customCards.push({
+  type: 'tsmoon-card',
+  name: 'TSimple Moon Phase CArd',
+  description: 'A card to view Moon Phases',
+  preview: false,
+});
 
 // Registering card
 customElements.define("tsmoon-card", TSMoonCard);

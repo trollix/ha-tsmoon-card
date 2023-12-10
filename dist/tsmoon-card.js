@@ -1840,16 +1840,20 @@ var TSMoonCard = (function (exports) {
          */
         render() {
             const moonIcon = this.toIcon(this.state, this.icon_type);
-            const l_state = this.localize(`moon.${this.state}`);
+            var l_state = this.localize(`moon.${this.state}`);
+            const l_date = new Date();
             //this.getMoonRise();
             // Obtenez les temps du lever et du coucher du soleil
-            const times = SunCalc.getMoonTimes(new Date(), this.home_latitude, this.home_longitude);
+            const times = SunCalc.getMoonTimes(l_date, this.home_latitude, this.home_longitude);
             // Accédez aux propriétés spécifiques pour obtenir les heures
             //const l_moonrise = times.rise;
             //const l_moonset = times.set;
             // Convertissez la date en utilisant Day.js
             const l_moonriseFormated = dayjs(times.rise).format('HH:mm');
             const l_moonsetFormated = dayjs(times.set).format('HH:mm');
+            //Calcul autonome de la phase de la lune
+            const local_calculated_moon_phase = c.lunarPhase(l_date);
+            l_state = this.localize(local_calculated_moon_phase);
             return x `
         
         <ha-card>
@@ -1918,7 +1922,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.7.18";
+    var version = "0.8.0";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

@@ -141,7 +141,9 @@ export class TSMoonCard extends LitElement {
         //Calcul autonome de la phase de la lune
         const local_calculated_moon_phase = Moon.lunarPhase(l_date);
         l_state = this.localize(local_calculated_moon_phase);
+        console.log('Nom de fin de lune:', local_calculated_moon_phase);
 
+        
         return html`
         
         <ha-card>

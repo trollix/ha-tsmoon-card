@@ -139,7 +139,7 @@ export class TSMoonCard extends LitElement {
         const l_moonsetFormated = dayjs(times.set).format('HH:mm');
 
         //Calcul autonome de la phase de la lune
-        const local_calculated_moon_phase = Moon.lunarPhase(l_date);
+        const local_calculated_moon_phase = Moon.lunarPhase();
         l_state = this.localize(local_calculated_moon_phase);
         console.log('Nom de fin de lune:', local_calculated_moon_phase);
 

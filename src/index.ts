@@ -13,7 +13,7 @@ export const printVersionToConsole = () => console.info(
   type: 'tsmoon-card',
   name: 'TSimple Moon Phase CArd',
   description: 'A card to view Moon Phases',
-  preview: false,
+  preview: true,
 });
 
 // Registering card

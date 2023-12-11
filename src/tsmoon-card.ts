@@ -5,7 +5,7 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-import { Moon } from 'lunarphase-js';
+import { Moon, Hemisphere } from 'lunarphase-js';
 import dayjs from 'dayjs';
 
 import { default as SunCalc } from 'suncalc3';
@@ -142,9 +142,9 @@ export class TSMoonCard extends LitElement {
         const l_moonsetFormated = dayjs(times.set).format('HH:mm');
 
         //Calcul autonome de la phase de la lune
-        const local_calculated_moon_phase = Moon.lunarPhase(new Date());
-        const l_state2 = this.localize(local_calculated_moon_phase);
-        console.log('Nom de fin de lune:', local_calculated_moon_phase);
+        const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
+        const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);
+        //console.log('Nom de fin de lune:', local_calculated_moon_phase);
 
         
         return html`

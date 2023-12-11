@@ -1804,7 +1804,7 @@ var TSMoonCard = (function (exports) {
             <div class="card-content">
                 <div class="entity-row">
                     ${this.renderIcon(lc_moonIcon)}
-                    <div class="info">
+                    <div class="name truncate">
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
                         ${lc_state_localized}
@@ -1846,7 +1846,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.25";
+    var version = "0.8.26";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

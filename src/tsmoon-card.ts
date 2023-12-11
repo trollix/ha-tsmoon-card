@@ -24,6 +24,19 @@ import {
   
 import type { HassEntity } from "home-assistant-js-websocket";
 
+
+const TSMOON_PHASES = {
+    newMoon: 'new_moon',
+    waxingCrescentMoon: 'waxing_crescent',
+    firstQuarterMoon: 'first_quarter',
+    waxingGibbousMoon: 'waxing_gibbous',
+    fullMoon: 'full_moon',
+    waningGibbousMoon: 'waning_gibbous',
+    thirdQuarterMoon: 'last_quarter',
+    waningCrescentMoon: 'waning_crescent'
+};
+
+
 /**
  * Main card class definition
  */
@@ -145,8 +158,8 @@ export class TSMoonCard extends LitElement {
         // donc il faut les traduire
 
 
-        const moonPhase = SunCalc.TSMOON_PHASES[moonRawData.illumination.phase.id];
-        const l_state3 = moonRawData.illumination.phase.id; 
+        const moonPhaseIn = moonRawData.illumination.phase.id;
+        const l_state3 = TSMOON_PHASES[moonPhaseIn];
 
         //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
         //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);

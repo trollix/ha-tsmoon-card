@@ -6,10 +6,8 @@ Startup setup for new lovelace (Home Assistant) card development
 
 * Card code written in TypeScript
 * Bundling all the files to single output
-* Map file generated, poiting to repo url (with version etc), this way debugging is possible without having source code locally
 * CSS code minimized, converted to TS and included in output bundle
-* Two bundle types: debug and crunched one
-* Teststing with Electron headless browser
+
 
 ## Goals
 

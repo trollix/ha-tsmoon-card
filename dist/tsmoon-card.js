@@ -1685,6 +1685,16 @@ var TSMoonCard = (function (exports) {
     var suncalcExports = suncalc.exports;
     var SunCalc = /*@__PURE__*/getDefaultExportFromCjs(suncalcExports);
 
+    const TSMOON_PHASES = {
+        newMoon: 'new_moon',
+        waxingCrescentMoon: 'waxing_crescent',
+        firstQuarterMoon: 'first_quarter',
+        waxingGibbousMoon: 'waxing_gibbous',
+        fullMoon: 'full_moon',
+        waningGibbousMoon: 'waning_gibbous',
+        thirdQuarterMoon: 'last_quarter',
+        waningCrescentMoon: 'waning_crescent'
+    };
     /**
      * Main card class definition
      */
@@ -1779,8 +1789,8 @@ var TSMoonCard = (function (exports) {
             const l_state2 = moonRawData.illumination.phase.id;
             // suncalc ne donne pas les mêmes chaines de varible retour des phases
             // donc il faut les traduire
-            SunCalc.TSMOON_PHASES[moonRawData.illumination.phase.id];
-            const l_state3 = moonRawData.illumination.phase.id;
+            const moonPhaseIn = moonRawData.illumination.phase.id;
+            const l_state3 = TSMOON_PHASES[moonPhaseIn];
             //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
             //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);
             //console.log('Nom de fin de lune:', local_calculated_moon_phase);
@@ -1852,7 +1862,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.15";
+    var version = "0.8.16";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

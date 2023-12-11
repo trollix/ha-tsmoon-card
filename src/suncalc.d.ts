@@ -174,19 +174,4 @@ declare module "suncalc3" {
 
     export type IMoonData = IMoonPosition & IMoonDataInst;
 
-    export enum TSMOON_PHASES {
-        newMoon = 'new_moon',
-        waxingCrescentMoon = 'waxing_crescent',
-        firstQuarterMoon = 'first_quarter',
-        waxingGibbousMoon = 'waxing_gibbous',
-        fullMoon = 'full_moon',
-        waningGibbousMoon = 'waning_gibbous',
-        thirdQuarterMoon = 'last_quarter',
-        waningCrescentMoon = 'waning_crescent'
-    }
-    
-
-
-
-
 }

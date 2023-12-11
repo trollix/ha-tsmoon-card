@@ -126,12 +126,6 @@ export class TSMoonCard extends LitElement {
         this.cardTitle = config.title ?? this.cardTitle;
         this.icon_type = config.icon_type ?? 'forms';
         this.language = config.language ?? 'fr';
-    /*
-        if (config.latitude === undefined && config.longitude !== undefined
-            || config.latitude !== undefined && config.longitude == undefined) {
-            throw Error('Latitude and longitude must be both set or unset')
-          }
-    */
 
     }
 
@@ -144,7 +138,7 @@ export class TSMoonCard extends LitElement {
         const lc_date = new Date();  // Def Date
 
         if ((! lv_state) || (lv_state == '')) {
-            
+            console.info('lv_state non défini ou nul:', this.state);
             //Calcul autonome de la phase de la lune
             const lc_moonRawData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);       
              
@@ -154,7 +148,7 @@ export class TSMoonCard extends LitElement {
             lv_state = this.localize(`moon.${lc_state3}`);
 
         } 
-
+        console.info('lv_state:', lv_state);
         // A partir d'ici lv_state est OK
 
         // Calcul de l'icone

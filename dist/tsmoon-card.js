@@ -1767,12 +1767,6 @@ var TSMoonCard = (function (exports) {
             this.cardTitle = (_b = config.title) !== null && _b !== void 0 ? _b : this.cardTitle;
             this.icon_type = (_c = config.icon_type) !== null && _c !== void 0 ? _c : 'forms';
             this.language = (_d = config.language) !== null && _d !== void 0 ? _d : 'fr';
-            /*
-                if (config.latitude === undefined && config.longitude !== undefined
-                    || config.latitude !== undefined && config.longitude == undefined) {
-                    throw Error('Latitude and longitude must be both set or unset')
-                  }
-            */
         }
         /**
          * Renders the card when the update is requested (when any of the properties are changed)
@@ -1781,6 +1775,7 @@ var TSMoonCard = (function (exports) {
             var lv_state = this.state;
             const lc_date = new Date(); // Def Date
             if ((!lv_state) || (lv_state == '')) {
+                console.info('lv_state non défini ou nul:', this.state);
                 //Calcul autonome de la phase de la lune
                 const lc_moonRawData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
                 // suncalc ne donne pas les mêmes chaines de varible retour des phases
@@ -1788,6 +1783,7 @@ var TSMoonCard = (function (exports) {
                 const lc_state3 = TSMOON_PHASES[lc_moonRawData.illumination.phase.id];
                 lv_state = this.localize(`moon.${lc_state3}`);
             }
+            console.info('lv_state:', lv_state);
             // A partir d'ici lv_state est OK
             // Calcul de l'icone
             const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
@@ -1853,7 +1849,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.27";
+    var version = "0.8.28";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

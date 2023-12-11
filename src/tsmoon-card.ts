@@ -55,7 +55,7 @@ export class TSMoonCard extends LitElement {
     private language: string = "en";
 
     @property({ attribute: false })
-    private entity: string = "sensor.moon";
+    private entity: string = "";
 
     @property({ attribute: false }) private home_latitude: number = 0;
     @property({ attribute: false }) private home_longitude: number = 0;
@@ -134,45 +134,40 @@ export class TSMoonCard extends LitElement {
      */
     render(): TemplateResult {
 
-        const moonIcon = this.toIcon(this.state, this.icon_type);
-        const l_state = this.localize(`moon.${this.state}`);
-        const l_date = new Date();
+        var lv_state = this.state; 
+        const lc_date = new Date();  // Def Date
 
-        //this.getMoonRise();
+        if (! lv_state) {
+            
+            //Calcul autonome de la phase de la lune
+            const lc_moonRawData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);       
+             
+            // suncalc ne donne pas les mêmes chaines de varible retour des phases
+            // donc il faut les traduire
+            const lc_state3 = TSMOON_PHASES[lc_moonRawData.illumination.phase.id];
+            lv_state = this.localize(`moon.${lc_state3}`);
 
-        // Obtenez les temps du lever et du coucher du soleil
-        const times = SunCalc.getMoonTimes(l_date, this.home_latitude, this.home_longitude);
+        } 
+
+        // A partir d'ici lv_state est OK
+
+        // Calcul de l'icone
+        const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
+        const lc_state_localized = this.localize(`moon.${lv_state}`);
+        
+        // Calcul des temps du lever et du coucher du soleil
+        const lc_times = SunCalc.getMoonTimes(lc_date, this.home_latitude, this.home_longitude);
         
         // Accéder directement aux propriétés spécifiques pour obtenir les heures
-        //const l_moonrise = times.rise;
-        //const l_moonset = times.set;
+        //const l_moonrise = lc_times.rise;
+        //const l_moonset = lc_times.set;
 
         // Convertir la date en utilisant Day.js
-        const l_moonriseFormated = dayjs(times.rise).format('HH:mm');
-        const l_moonsetFormated = dayjs(times.set).format('HH:mm');
+        const lc_moonriseFormated = dayjs(lc_times.rise).format('HH:mm');
+        const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
 
-        //Calcul autonome de la phase de la lune
-        const moonRawData = SunCalc.getMoonData(l_date, this.home_latitude, this.home_longitude);       
-        const l_state2 = moonRawData.illumination.phase.id; 
-        // suncalc ne donne pas les mêmes chaines de varible retour des phases
-        // donc il faut les traduire
-
-
-        const l_state3 = TSMOON_PHASES[moonRawData.illumination.phase.id];
-        const l_state4 = this.localize(`moon.${l_state3}`);
-
-        console.log('this.state:', this.state);
-        console.log('lstate:', l_state);
-        console.log('lstate2:', l_state2);
-        console.log('lstate3:', l_state3);
-        console.log('lstate4:', l_state4);
-
-
-        //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
-        //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);
-        //console.log('Nom de fin de lune:', local_calculated_moon_phase);
-
-        
+   
+       
         return html`
         
         <ha-card>
@@ -183,47 +178,22 @@ export class TSMoonCard extends LitElement {
             </div>
             <div class="card-content">
                 <div class="entity-row">
-                    ${this.renderIcon(moonIcon)}
-                    <div class="name truncate">
+                    ${this.renderIcon(lc_moonIcon)}
+                    <div class="info">
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
-                        ${l_state} - ${l_state2} <br/>
-                        ${l_state3} - ${l_state4}
+                        ${lc_state_localized}
                         </div>
                     </div>
                     <div class="state">
-                    <span class="primary">${this.localize(`card.moon_rise`)}: </span> ${l_moonriseFormated}<br />
-                    <span class="primary">${this.localize(`card.moon_set`)}: </span> ${l_moonsetFormated}
+                    <span class="primary">${this.localize(`card.moon_rise`)}: </span> ${lc_moonriseFormated}<br />
+                    <span class="primary">${this.localize(`card.moon_set`)}: </span> ${lc_moonsetFormated}
                     </div>
                 </div>
             </div>
         </ha-card>
         `;
     }
-
-    private getMoonRise() {
-
-        const date = new Date();
-        //const phase2 = Moon.lunarPhase(date);
-        //const agePercent = Moon.lunarAgePercent();
-
-        //console.log('Phase de la lune :', phase2);
-        //console.log('Pourcentage de fin de lune:', agePercent);
-
-        // Utilisation de la classe
-        //const personne1 = new Personne("John Doe", 25);
-        //personne1.afficherInformations();
-
-        // Obtenez les temps du lever et du coucher du soleil
-        const times = SunCalc.getMoonTimes(new Date(), 44.803, -0.6501);
-
-        // Accédez aux propriétés spécifiques pour obtenir les heures
-        const sunrise = times.rise;
-        const sunset = times.set;
-
-        
-    }
-
 
 
 }

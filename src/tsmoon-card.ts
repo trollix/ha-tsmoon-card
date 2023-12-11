@@ -159,7 +159,7 @@ export class TSMoonCard extends LitElement {
 
 
         const l_state3 = TSMOON_PHASES[moonRawData.illumination.phase.id];
-        const l_state4 = this.localize(`moon.l_state3`);
+        const l_state4 = this.localize('moon.l_state3');
 
         console.log('this.state:', this.state);
         console.log('lstate:', l_state);

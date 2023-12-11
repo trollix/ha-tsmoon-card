@@ -5,7 +5,7 @@ import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-import { Moon, Hemisphere } from 'lunarphase-js';
+//import { Moon, Hemisphere } from 'lunarphase-js';
 import dayjs from 'dayjs';
 
 import { default as SunCalc } from 'suncalc3';
@@ -122,7 +122,7 @@ export class TSMoonCard extends LitElement {
     render(): TemplateResult {
 
         const moonIcon = this.toIcon(this.state, this.icon_type);
-        var l_state = this.localize(`moon.${this.state}`);
+        const l_state = this.localize(`moon.${this.state}`);
         const l_date = new Date();
         //console.log('Phase de lune:', this.state);
         //this.getMoonRise();
@@ -130,20 +130,21 @@ export class TSMoonCard extends LitElement {
         // Obtenez les temps du lever et du coucher du soleil
         const times = SunCalc.getMoonTimes(l_date, this.home_latitude, this.home_longitude);
         
-        const moonRawData = SunCalc.getMoonData(l_date, this.home_latitude, this.home_longitude);
-        //const moonPhase = Constants.MOON_PHASES[moonRawData.illumination.phase.id];
-
-        // Accédez aux propriétés spécifiques pour obtenir les heures
+        // Accéder directement aux propriétés spécifiques pour obtenir les heures
         //const l_moonrise = times.rise;
         //const l_moonset = times.set;
 
-        // Convertissez la date en utilisant Day.js
+        // Convertir la date en utilisant Day.js
         const l_moonriseFormated = dayjs(times.rise).format('HH:mm');
         const l_moonsetFormated = dayjs(times.set).format('HH:mm');
 
         //Calcul autonome de la phase de la lune
-        const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
-        const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);
+        const moonRawData = SunCalc.getMoonData(l_date, this.home_latitude, this.home_longitude);
+        
+        //const moonPhase = Constants.MOON_PHASES[moonRawData.illumination.phase.id];
+
+        //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
+        //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);
         //console.log('Nom de fin de lune:', local_calculated_moon_phase);
 
         
@@ -161,7 +162,7 @@ export class TSMoonCard extends LitElement {
                     <div class="name truncate">
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
-                        ${l_state} <br/> - ${l_state2}
+                        ${l_state}
                         </div>
                     </div>
                     <div class="state">
@@ -177,8 +178,8 @@ export class TSMoonCard extends LitElement {
     private getMoonRise() {
 
         const date = new Date();
-        const phase2 = Moon.lunarPhase(date);
-        const agePercent = Moon.lunarAgePercent();
+        //const phase2 = Moon.lunarPhase(date);
+        //const agePercent = Moon.lunarAgePercent();
 
         //console.log('Phase de la lune :', phase2);
         //console.log('Pourcentage de fin de lune:', agePercent);

@@ -20,12 +20,12 @@
     },
     "moon": {
       "new_moon": "Nouvelle lune",
-      "waxing_crescent": "Lune montante",
+      "waxing_crescent": "Premier croissant",
       "first_quarter": "Premier quartier",
-      "waxing_gibbous": "Lune gibeuse montante",
+      "waxing_gibbous": "Gibeuse croissante",
       "full_moon": "Pleine lune",
-      "waning_gibbous": "Lune gibeuse descendante",
+      "waning_gibbous": "Gibeuse décroissante",
       "last_quarter": "Dernier quartier",
-      "waning_crescent": "Lune descendante"
+      "waning_crescent": "Dernier croissant"
     }
   }

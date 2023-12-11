@@ -1791,6 +1791,7 @@ var TSMoonCard = (function (exports) {
             // donc il faut les traduire
             const moonPhaseIn = moonRawData.illumination.phase.id;
             const l_state3 = TSMOON_PHASES[moonPhaseIn];
+            const l_state4 = this.localize(l_state3);
             //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
             //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);
             //console.log('Nom de fin de lune:', local_calculated_moon_phase);
@@ -1809,7 +1810,7 @@ var TSMoonCard = (function (exports) {
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
                         ${l_state} - ${l_state2} <br/>
-                        ${l_state3}
+                        ${l_state3} - ${l_state4}
                         </div>
                     </div>
                     <div class="state">
@@ -1862,7 +1863,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.16";
+    var version = "0.8.17";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

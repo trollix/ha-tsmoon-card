@@ -161,7 +161,7 @@ export class TSMoonCard extends LitElement {
         const moonPhaseIn = moonRawData.illumination.phase.id;
         const l_state3 = TSMOON_PHASES[moonPhaseIn];
 
-        const l_state4 = this.localize(l_state3);
+        const l_state4 = this.localize(`moon.l_state3`);
 
         //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
         //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);

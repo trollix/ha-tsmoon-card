@@ -8,10 +8,9 @@ Startup setup for new lovelace (Home Assistant) card development
 * Bundling all the files to single output
 * CSS code minimized, converted to TS and included in output bundle
 
-
 ## Goals
 
-- [X] Display a simple card to display moon phase
+* [X] Display a simple card to display moon phase
 
 ## Installation
 
@@ -19,16 +18,13 @@ For installation you should have [HACS](https://hacs.xyz/docs/setup/download/) i
 
 Then you can add the new card into your dashboard.
 
-
-## Installation
-
-### Easiest method:
+### Easiest method
 
 ✨ Install via HACS
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=trollix&repository=ha-tsmoon-card)
 
-### Alternative method:
+### Alternative method
 
 1. Download `tsmoon-card.js` from the [Releases][releases] page
 2. Upload to `/www/ha-tsmoon-card/tsmoon-card.js` (via Samba, File Editor, SSH, etc.)
@@ -36,7 +32,6 @@ Then you can add the new card into your dashboard.
    JavaScript Module.
    [![Open your Home Assistant instance and show your dashboard resources.](https://my.home-assistant.io/badges/lovelace_resources.svg)](https://my.home-assistant.io/redirect/lovelace_resources/)
 4. Refresh your browser
-
 
 ## Configuration
 

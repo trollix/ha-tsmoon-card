@@ -1842,10 +1842,12 @@ var TSMoonCard = (function (exports) {
             const moonIcon = this.toIcon(this.state, this.icon_type);
             var l_state = this.localize(`moon.${this.state}`);
             const l_date = new Date();
-            console.log('Nom de fin de lune:', this.state);
+            //console.log('Phase de lune:', this.state);
             //this.getMoonRise();
             // Obtenez les temps du lever et du coucher du soleil
             const times = SunCalc.getMoonTimes(l_date, this.home_latitude, this.home_longitude);
+            SunCalc.getMoonData(l_date, this.home_latitude, this.home_longitude);
+            //const moonPhase = Constants.MOON_PHASES[moonRawData.illumination.phase.id];
             // Accédez aux propriétés spécifiques pour obtenir les heures
             //const l_moonrise = times.rise;
             //const l_moonset = times.set;
@@ -1853,8 +1855,8 @@ var TSMoonCard = (function (exports) {
             const l_moonriseFormated = dayjs(times.rise).format('HH:mm');
             const l_moonsetFormated = dayjs(times.set).format('HH:mm');
             //Calcul autonome de la phase de la lune
-            //const local_calculated_moon_phase = Moon.lunarPhase();
-            //l_state = this.localize(local_calculated_moon_phase);
+            const local_calculated_moon_phase = c.lunarPhase(new Date());
+            const l_state2 = this.localize(local_calculated_moon_phase);
             //console.log('Nom de fin de lune:', local_calculated_moon_phase);
             return x `
         
@@ -1870,7 +1872,7 @@ var TSMoonCard = (function (exports) {
                     <div class="name truncate">
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
-                        ${l_state}
+                        ${l_state} <br/> ${l_state2}
                         </div>
                     </div>
                     <div class="state">
@@ -1924,7 +1926,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.4";
+    var version = "0.8.7";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

@@ -131,7 +131,7 @@ export class TSMoonCard extends LitElement {
         const times = SunCalc.getMoonTimes(l_date, this.home_latitude, this.home_longitude);
         
         const moonRawData = SunCalc.getMoonData(l_date, this.home_latitude, this.home_longitude);
-        const moonPhase = Constants.MOON_PHASES[moonRawData.illumination.phase.id];
+        //const moonPhase = Constants.MOON_PHASES[moonRawData.illumination.phase.id];
 
         // Accédez aux propriétés spécifiques pour obtenir les heures
         //const l_moonrise = times.rise;
@@ -142,8 +142,8 @@ export class TSMoonCard extends LitElement {
         const l_moonsetFormated = dayjs(times.set).format('HH:mm');
 
         //Calcul autonome de la phase de la lune
-        //const local_calculated_moon_phase = Moon.lunarPhase();
-        //l_state = this.localize(local_calculated_moon_phase);
+        const local_calculated_moon_phase = Moon.lunarPhase(new Date());
+        const l_state2 = this.localize(local_calculated_moon_phase);
         //console.log('Nom de fin de lune:', local_calculated_moon_phase);
 
         
@@ -161,7 +161,7 @@ export class TSMoonCard extends LitElement {
                     <div class="name truncate">
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
-                        ${l_state}
+                        ${l_state} <br/> ${l_state2}
                         </div>
                     </div>
                     <div class="state">

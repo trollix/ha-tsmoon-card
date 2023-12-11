@@ -139,10 +139,14 @@ export class TSMoonCard extends LitElement {
         const l_moonsetFormated = dayjs(times.set).format('HH:mm');
 
         //Calcul autonome de la phase de la lune
-        const moonRawData = SunCalc.getMoonData(l_date, this.home_latitude, this.home_longitude);
-        const l_state2 = moonRawData.illumination.phase.id;
+        const moonRawData = SunCalc.getMoonData(l_date, this.home_latitude, this.home_longitude);       
+        const l_state2 = moonRawData.illumination.phase.id; 
+        // suncalc ne donne pas les mêmes chaines de varible retour des phases
+        // donc il faut les traduire
 
-        //const moonPhase = Constants.MOON_PHASES[moonRawData.illumination.phase.id];
+
+        const moonPhase = SunCalc.TSMOON_PHASES[moonRawData.illumination.phase.id];
+        const l_state3 = moonRawData.illumination.phase.id; 
 
         //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
         //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);
@@ -163,7 +167,8 @@ export class TSMoonCard extends LitElement {
                     <div class="name truncate">
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">
-                        ${l_state} - ${l_state2}
+                        ${l_state} - ${l_state2} <br/>
+                        ${l_state3}
                         </div>
                     </div>
                     <div class="state">

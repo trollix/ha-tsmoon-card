@@ -144,8 +144,7 @@ export class TSMoonCard extends LitElement {
              
             // suncalc ne donne pas les mêmes chaines de varible retour des phases
             // donc il faut les traduire
-            const lc_state3 = TSMOON_PHASES[lc_moonRawData.illumination.phase.id];
-            lv_state = this.localize(`moon.${lc_state3}`);
+            lv_state = TSMOON_PHASES[lc_moonRawData.illumination.phase.id];
 
         } 
         console.info('lv_state:', lv_state);

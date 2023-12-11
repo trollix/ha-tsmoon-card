@@ -1742,10 +1742,17 @@ var TSMoonCard = (function (exports) {
          * Called on every hass update
          */
         set hass(hass) {
+            /*
             if (!this.entity || !hass.states[this.entity]) {
                 return;
             }
-            this.state = hass.states[this.entity].state;
+            */
+            if (this.entity) {
+                this.state = hass.states[this.entity].state;
+            }
+            else {
+                this.state = '';
+            }
             this.home_latitude = hass.states['zone.home'].attributes.latitude;
             this.home_longitude = hass.states['zone.home'].attributes.longitude;
         }
@@ -1773,7 +1780,7 @@ var TSMoonCard = (function (exports) {
         render() {
             var lv_state = this.state;
             const lc_date = new Date(); // Def Date
-            if (!lv_state) {
+            if ((!lv_state) || (lv_state == '')) {
                 //Calcul autonome de la phase de la lune
                 const lc_moonRawData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
                 // suncalc ne donne pas les mêmes chaines de varible retour des phases
@@ -1846,7 +1853,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.26";
+    var version = "0.8.27";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

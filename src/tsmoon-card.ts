@@ -99,11 +99,17 @@ export class TSMoonCard extends LitElement {
      */
     set hass(hass: HomeAssistant) {
         
+        /*
         if (!this.entity || !hass.states[this.entity]) {
             return;
         }
+        */
+        if (this.entity) {
+            this.state = hass.states[this.entity].state;
+        } else {
+            this.state = '';
+        }
 
-        this.state = hass.states[this.entity].state;
         this.home_latitude = hass.states['zone.home'].attributes.latitude;
         this.home_longitude = hass.states['zone.home'].attributes.longitude;
     }
@@ -137,7 +143,7 @@ export class TSMoonCard extends LitElement {
         var lv_state = this.state; 
         const lc_date = new Date();  // Def Date
 
-        if (! lv_state) {
+        if ((! lv_state) || (lv_state == '')) {
             
             //Calcul autonome de la phase de la lune
             const lc_moonRawData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);       

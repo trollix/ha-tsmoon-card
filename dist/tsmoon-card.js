@@ -1789,7 +1789,7 @@ var TSMoonCard = (function (exports) {
             // suncalc ne donne pas les mêmes chaines de varible retour des phases
             // donc il faut les traduire
             const l_state3 = TSMOON_PHASES[moonRawData.illumination.phase.id];
-            const l_state4 = this.localize('moon.l_state3');
+            const l_state4 = this.localize(`moon.${l_state3}`);
             console.log('this.state:', this.state);
             console.log('lstate:', l_state);
             console.log('lstate2:', l_state2);
@@ -1866,7 +1866,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.22";
+    var version = "0.8.23";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

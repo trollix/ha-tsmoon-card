@@ -14,6 +14,7 @@ declare module "suncalc3" {
          */
         value: number;
     };
+    
     export type IPhaseObj = {
         /**
          * - The phase start
@@ -170,7 +171,7 @@ declare module "suncalc3" {
          */
         parallacticAngleDegrees: number;
     };
-    
+
     export type IMoonData = IMoonPosition & IMoonDataInst;
 
     

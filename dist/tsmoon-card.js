@@ -1774,7 +1774,6 @@ var TSMoonCard = (function (exports) {
             const moonIcon = this.toIcon(this.state, this.icon_type);
             const l_state = this.localize(`moon.${this.state}`);
             const l_date = new Date();
-            //console.log('Phase de lune:', this.state);
             //this.getMoonRise();
             // Obtenez les temps du lever et du coucher du soleil
             const times = SunCalc.getMoonTimes(l_date, this.home_latitude, this.home_longitude);
@@ -1789,9 +1788,13 @@ var TSMoonCard = (function (exports) {
             const l_state2 = moonRawData.illumination.phase.id;
             // suncalc ne donne pas les mêmes chaines de varible retour des phases
             // donc il faut les traduire
-            const moonPhaseIn = moonRawData.illumination.phase.id;
-            const l_state3 = TSMOON_PHASES[moonPhaseIn];
+            const l_state3 = TSMOON_PHASES[moonRawData.illumination.phase.id];
             const l_state4 = this.localize(`moon.l_state3`);
+            console.log('this.state:', this.state);
+            console.log('lstate:', l_state);
+            console.log('lstate2:', l_state2);
+            console.log('lstate3:', l_state3);
+            console.log('lstate4:', l_state4);
             //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
             //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);
             //console.log('Nom de fin de lune:', local_calculated_moon_phase);
@@ -1863,7 +1866,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.20";
+    var version = "0.8.21";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

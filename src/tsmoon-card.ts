@@ -137,7 +137,7 @@ export class TSMoonCard extends LitElement {
         const moonIcon = this.toIcon(this.state, this.icon_type);
         const l_state = this.localize(`moon.${this.state}`);
         const l_date = new Date();
-        //console.log('Phase de lune:', this.state);
+
         //this.getMoonRise();
 
         // Obtenez les temps du lever et du coucher du soleil
@@ -158,10 +158,15 @@ export class TSMoonCard extends LitElement {
         // donc il faut les traduire
 
 
-        const moonPhaseIn = moonRawData.illumination.phase.id;
-        const l_state3 = TSMOON_PHASES[moonPhaseIn];
-
+        const l_state3 = TSMOON_PHASES[moonRawData.illumination.phase.id];
         const l_state4 = this.localize(`moon.l_state3`);
+
+        console.log('this.state:', this.state);
+        console.log('lstate:', l_state);
+        console.log('lstate2:', l_state2);
+        console.log('lstate3:', l_state3);
+        console.log('lstate4:', l_state4);
+
 
         //const local_calculated_moon_phase = Moon.lunarPhase(new Date(), {hemisphere: Hemisphere.NORTHERN});
         //const l_state2 = local_calculated_moon_phase;//this.localize(local_calculated_moon_phase);

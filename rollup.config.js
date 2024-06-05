@@ -2,7 +2,7 @@ import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import cssImports from 'rollup-plugin-import-css';
-import template from 'rollup-plugin-html-literals';
+//import template from 'rollup-plugin-html-literals';
 import { terser } from '@rollup/plugin-terser';
 import image from '@rollup/plugin-image'
 import versionInjector from 'rollup-plugin-version-injector';
@@ -31,7 +31,7 @@ const plugins = [
 
 
 if (process.env.release) {
-  plugins.push(template())
+  //plugins.push(template())
   plugins.push(
     terser({
       compress: {}

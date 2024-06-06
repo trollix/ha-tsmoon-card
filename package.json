@@ -1,11 +1,13 @@
 {
   "name": "ha-tsmoon-card",
-  "version": "0.8.44",
+  "version": "0.8.45",
   "description": "Simple Moon Card",
   "main": "dist/tsmoon-card.js",
+
   "files": [
     "/dist"
   ],
+
   "scripts": {
     "build": "rimraf dist && npm run rollup",
     "release": "rollup --environment release -c",
@@ -30,14 +32,14 @@
   },
   "homepage": "https://github.com/trollix/ha-tsmoon-card#readme",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.8",
+    "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-replace": "^5.0.6",
+    "@rollup/plugin-replace": "^5.0.7",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@types/node": "^20.14.1",
+    "@types/node": "^20.14.2",
     "@types/suncalc": "^1.9.2",
     "rimraf": "^5.0.7",
     "rollup": "^4.18.0",

@@ -1,7 +1,7 @@
 //import { HomeAssistant } from "./ha-types";
 import { html, css, LitElement, CSSResultGroup, TemplateResult } from "lit";
 import { property, state } from "lit/decorators.js";
-import { ICardConfig } from "./types";
+//import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
@@ -18,6 +18,7 @@ import {
     ActionHandlerEvent,
     handleAction,
     LovelaceCardEditor,
+    LovelaceCardConfig,
     getLovelace,
     formatTime
   } from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
@@ -35,6 +36,13 @@ const TSMOON_PHASES = {
     thirdQuarterMoon: 'last_quarter',
     waningCrescentMoon: 'waning_crescent'
 };
+
+export interface ICardConfig extends LovelaceCardConfig {
+    title?: string;
+    entity?: string;
+    icon_type?: string;
+    language?: string;
+}
 
 
 /**

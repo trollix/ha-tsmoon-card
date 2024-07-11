@@ -233,26 +233,26 @@ var TSMoonCard = (function (exports) {
         default: de
     });
 
-    var common$1 = {
+    var common$2 = {
     	version: "Version",
     	title: "Minimal Sun Moon",
     	title_card: "Minimal Sun Moon Card",
     	description: "A minimal card to render the state of the sun and moon.",
     	invalid_configuration: "Invalid configuration"
     };
-    var editor$1 = {
+    var editor$2 = {
     	moon_entity: "Moon entity (Optional)"
     };
-    var errors$1 = {
+    var errors$2 = {
     	missing_moon_entity: "moon_entity is missing in configuration",
     	invalid_icon_type: "The following colors in your configuration are invalid:"
     };
-    var card$1 = {
+    var card$2 = {
     	moon_phase: "Moon Phase",
     	moon_rise: "Moon Rise",
     	moon_set: "Moon Set"
     };
-    var moon$1 = {
+    var moon$2 = {
     	new_moon: "New Moon",
     	waxing_crescent: "Waxing Crescent",
     	first_quarter: "First Quarter",
@@ -263,21 +263,21 @@ var TSMoonCard = (function (exports) {
     	waning_crescent: "Waning Crescent"
     };
     var en = {
-    	common: common$1,
-    	editor: editor$1,
-    	errors: errors$1,
-    	card: card$1,
-    	moon: moon$1
+    	common: common$2,
+    	editor: editor$2,
+    	errors: errors$2,
+    	card: card$2,
+    	moon: moon$2
     };
 
     var en$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        card: card$1,
-        common: common$1,
+        card: card$2,
+        common: common$2,
         default: en,
-        editor: editor$1,
-        errors: errors$1,
-        moon: moon$1
+        editor: editor$2,
+        errors: errors$2,
+        moon: moon$2
     });
 
     var es = {
@@ -289,26 +289,26 @@ var TSMoonCard = (function (exports) {
         default: es
     });
 
-    var common = {
+    var common$1 = {
     	version: "Version",
     	title: "Phases de la lune",
     	title_card: "Simple carte des phases de la lune",
     	description: "Une simple carte pour afficher la phase de la lune",
     	invalid_configuration: "Invalid configuration"
     };
-    var editor = {
+    var editor$1 = {
     	moon_entity: "Entité de la lune"
     };
-    var errors = {
+    var errors$1 = {
     	missing_moon_entity: "Sensor de la lune manquant",
     	invalid_icon_type: "Type d'icone incorect"
     };
-    var card = {
+    var card$1 = {
     	moon_phase: "Phase lunaire",
     	moon_rise: "Coucher",
     	moon_set: "Lever"
     };
-    var moon = {
+    var moon$1 = {
     	new_moon: "Nouvelle lune",
     	waxing_crescent: "Premier croissant",
     	first_quarter: "Premier quartier",
@@ -319,21 +319,21 @@ var TSMoonCard = (function (exports) {
     	waning_crescent: "Dernier croissant"
     };
     var fr = {
-    	common: common,
-    	editor: editor,
-    	errors: errors,
-    	card: card,
-    	moon: moon
+    	common: common$1,
+    	editor: editor$1,
+    	errors: errors$1,
+    	card: card$1,
+    	moon: moon$1
     };
 
     var fr$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        card: card,
-        common: common,
+        card: card$1,
+        common: common$1,
         default: fr,
-        editor: editor,
-        errors: errors,
-        moon: moon
+        editor: editor$1,
+        errors: errors$1,
+        moon: moon$1
     });
 
     var it = {
@@ -372,6 +372,53 @@ var TSMoonCard = (function (exports) {
         default: pl
     });
 
+    var common = {
+    	version: "Verzió",
+    	title: "Minimális Nap Hold",
+    	title_card: "Minimális Nap Hold kártya",
+    	description: "Egy minimális kártya a nap és a hold állapotának megjelenítéséhez.",
+    	invalid_configuration: "Érvénytelen konfiguráció"
+    };
+    var editor = {
+    	moon_entity: "Hold entitás (opcionális)"
+    };
+    var errors = {
+    	missing_moon_entity: "A moon_entity hiányzik a konfigurációból",
+    	invalid_icon_type: "A konfigurációban szereplő következő színek érvénytelenek:"
+    };
+    var card = {
+    	moon_phase: "Holdfázis",
+    	moon_rise: "Holdkelte",
+    	moon_set: "Holdnyugta"
+    };
+    var moon = {
+    	new_moon: "Újhold",
+    	waxing_crescent: "Növekvő holdsarló",
+    	first_quarter: "Első negyed",
+    	waxing_gibbous: "Növőhold fázis",
+    	full_moon: "Telihold",
+    	waning_gibbous: "Fogyóhold fázis",
+    	last_quarter: "Utolsó negyed",
+    	waning_crescent: "Csökkenő holdsarló"
+    };
+    var hu = {
+    	common: common,
+    	editor: editor,
+    	errors: errors,
+    	card: card,
+    	moon: moon
+    };
+
+    var hu$1 = /*#__PURE__*/Object.freeze({
+        __proto__: null,
+        card: card,
+        common: common,
+        default: hu,
+        editor: editor,
+        errors: errors,
+        moon: moon
+    });
+
     var pt = {
     	
     };
@@ -400,6 +447,7 @@ var TSMoonCard = (function (exports) {
         nb: nb$1,
         nl: nl$1,
         pl: pl$1,
+        hu: hu$1,
         pt: pt$1,
         pt_BR,
     };
@@ -1841,7 +1889,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.8.50";
+    var version = "0.8.51";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

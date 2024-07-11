@@ -1,0 +1,31 @@
+{
+    "common": {
+      "version": "Verzió",
+      "title": "Minimális Nap Hold",
+      "title_card": "Minimális Nap Hold kártya",
+      "description": "Egy minimális kártya a nap és a hold állapotának megjelenítéséhez.",
+      "invalid_configuration": "Érvénytelen konfiguráció"
+    },
+    "editor": {
+      "moon_entity": "Hold entitás (opcionális)"
+    },
+    "errors": {
+      "missing_moon_entity": "A moon_entity hiányzik a konfigurációból",
+      "invalid_icon_type": "A konfigurációban szereplő következő színek érvénytelenek:"
+    },
+    "card": {
+      "moon_phase": "Holdfázis",
+      "moon_rise": "Holdkelte",
+      "moon_set": "Holdnyugta"
+    },
+    "moon": {
+      "new_moon": "Újhold",
+      "waxing_crescent": "Növekvő holdsarló",
+      "first_quarter": "Első negyed",
+      "waxing_gibbous": "Növőhold fázis",
+      "full_moon": "Telihold",
+      "waning_gibbous": "Fogyóhold fázis",
+      "last_quarter": "Utolsó negyed",
+      "waning_crescent": "Csökkenő holdsarló"
+    }
+}

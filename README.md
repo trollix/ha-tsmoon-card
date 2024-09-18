@@ -42,7 +42,7 @@ Then you can add the new card into your dashboard.
 | title       | string  | **optional** | Title displayed on the card                              |
 | icon_type   | string  | **optional** | Type of picture for the moon (forms/round/photos)        |
 | language    | string  | **optional** | The language used in the card                            |
-| time_format | string  | **optional** | Time format displayed in the card [ 12h or 24h ]         |
+| time_format | string  | **optional** | Time format displayed in the card (12h/24h)              |
 
 Example:
 

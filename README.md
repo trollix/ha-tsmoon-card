@@ -90,4 +90,4 @@ language: fr
 ### Localization
   
 * pt-BR : ![netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
-* de: ![netsoft-ruidias](https://github.com/MickLesk "netsoft-ruidias")
+* de: ![MickLesk](https://github.com/MickLesk "MickLesk")

@@ -2010,7 +2010,7 @@ var TSMoonCard = (function (exports) {
     window.customCards = window.customCards || [];
     window.customCards.push({
         type: 'tsmoon-card',
-        name: 'TSimple Moon Phase CArd',
+        name: 'TSimple Moon Phase Card',
         entity: "sensor.moon",
         description: 'A card to view Moon Phases',
         preview: true,

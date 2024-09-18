@@ -9,16 +9,12 @@ Assurez-vous que ce fichier est inclus dans votre configuration TypeScript (gén
 
 */
 
-
-
-
 declare module '*.svg' {
     const content: string;
     export default content;
 }
-  
+
 declare module '*.png' {
     const content: string;
     export default content;
 }
-

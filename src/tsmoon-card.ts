@@ -80,7 +80,7 @@ export class TSMoonCard extends LitElement {
     private getTimeString(style: string): string {
         // Format strings defined here: https://day.js.org/docs/en/display/format
         if (this.time_format == '12h') {
-            return 'h:mm'
+            return 'h:mm A'
         } else {
             return 'HH:mm'
         }

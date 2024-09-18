@@ -1,31 +1,31 @@
 {
-    "common": {
-      "version": "Version",
-      "title": "Phases de la lune",
-      "title_card": "Simple carte des phases de la lune",
-      "description": "Une simple carte pour afficher la phase de la lune",
-      "invalid_configuration": "Invalid configuration"
-    },
-    "editor": {
-      "moon_entity": "Entité de la lune"
-    },
-    "errors": {
-      "missing_moon_entity": "Sensor de la lune manquant",
-      "invalid_icon_type": "Type d'icone incorect"
-    },
-    "card": {
-      "moon_phase": "Phase lunaire",
-      "moon_rise": "Coucher",
-      "moon_set": "Lever"
-    },
-    "moon": {
-      "new_moon": "Nouvelle lune",
-      "waxing_crescent": "Premier croissant",
-      "first_quarter": "Premier quartier",
-      "waxing_gibbous": "Gibeuse croissante",
-      "full_moon": "Pleine lune",
-      "waning_gibbous": "Gibeuse décroissante",
-      "last_quarter": "Dernier quartier",
-      "waning_crescent": "Dernier croissant"
-    }
+  "common": {
+    "version": "Version",
+    "title": "Phases de la lune",
+    "title_card": "Simple carte des phases de la lune",
+    "description": "Une simple carte pour afficher la phase de la lune",
+    "invalid_configuration": "Invalid configuration"
+  },
+  "editor": {
+    "moon_entity": "Entité de la lune"
+  },
+  "errors": {
+    "missing_moon_entity": "Sensor de la lune manquant",
+    "invalid_icon_type": "Type d'icone incorect"
+  },
+  "card": {
+    "moon_phase": "Phase lunaire",
+    "moon_rise": "Coucher",
+    "moon_set": "Lever"
+  },
+  "moon": {
+    "new_moon": "Nouvelle lune",
+    "waxing_crescent": "Premier croissant",
+    "first_quarter": "Premier quartier",
+    "waxing_gibbous": "Gibeuse croissante",
+    "full_moon": "Pleine lune",
+    "waning_gibbous": "Gibeuse décroissante",
+    "last_quarter": "Dernier quartier",
+    "waning_crescent": "Dernier croissant"
   }
+}

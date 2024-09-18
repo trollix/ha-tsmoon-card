@@ -1,3 +1,31 @@
 {
-
+  "common": {
+    "version": "Versão",
+    "title": "Fases da Lua",
+    "title_card": "Card das fases da lua",
+    "description": "Um cartão minimalista para exibir as fases da lua e do sol.",
+    "invalid_configuration": "Configuração Inválida"
+  },
+  "editor": {
+    "moon_entity": "Entidade Lua (Opcional)"
+  },
+  "errors": {
+    "missing_moon_entity": "moon_entity está em falta na configuração",
+    "invalid_icon_type": "As seguintes cores na configuração são inválidas:"
+  },
+  "card": {
+    "moon_phase": "Fase da Lua",
+    "moon_rise": "Nascer da Lua",
+    "moon_set": "Pôr da Lua"
+  },
+  "moon": {
+    "new_moon": "Lua Nova",
+    "waxing_crescent": "Lua Crescente",
+    "first_quarter": "Quarto Crescente",
+    "waxing_gibbous": "Crescente Gibosa",
+    "full_moon": "Lua Cheia",
+    "waning_gibbous": "Minguante Gibosa",
+    "last_quarter": "Quarto Minguante",
+    "waning_crescent": "Lua Minguante"
+  }
 }

@@ -1,31 +1,31 @@
 {
-    "common": {
-      "version": "Version",
-      "title": "Minimal Sun Moon",
-      "title_card": "Minimal Sun Moon Card",
-      "description": "A minimal card to render the state of the sun and moon.",
-      "invalid_configuration": "Invalid configuration"
-    },
-    "editor": {
-      "moon_entity": "Moon entity (Optional)"
-    },
-    "errors": {
-      "missing_moon_entity": "moon_entity is missing in configuration",
-      "invalid_icon_type": "The following colors in your configuration are invalid:"
-    },
-    "card": {
-      "moon_phase": "Moon Phase",
-      "moon_rise": "Moon Rise",
-      "moon_set": "Moon Set"
-    },
-    "moon": {
-      "new_moon": "New Moon",
-      "waxing_crescent": "Waxing Crescent",
-      "first_quarter": "First Quarter",
-      "waxing_gibbous": "Waxing Gibbous",
-      "full_moon": "Full Moon",
-      "waning_gibbous": "Waning Gibbous",
-      "last_quarter": "Last Quarter",
-      "waning_crescent": "Waning Crescent"
-    }
+  "common": {
+    "version": "Version",
+    "title": "Minimal Sun Moon",
+    "title_card": "Minimal Sun Moon Card",
+    "description": "A minimal card to render the state of the sun and moon.",
+    "invalid_configuration": "Invalid configuration"
+  },
+  "editor": {
+    "moon_entity": "Moon entity (Optional)"
+  },
+  "errors": {
+    "missing_moon_entity": "moon_entity is missing in configuration",
+    "invalid_icon_type": "The following colors in your configuration are invalid:"
+  },
+  "card": {
+    "moon_phase": "Moon Phase",
+    "moon_rise": "Moon Rise",
+    "moon_set": "Moon Set"
+  },
+  "moon": {
+    "new_moon": "New Moon",
+    "waxing_crescent": "Waxing Crescent",
+    "first_quarter": "First Quarter",
+    "waxing_gibbous": "Waxing Gibbous",
+    "full_moon": "Full Moon",
+    "waning_gibbous": "Waning Gibbous",
+    "last_quarter": "Last Quarter",
+    "waning_crescent": "Waning Crescent"
   }
+}

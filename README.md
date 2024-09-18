@@ -84,3 +84,10 @@ language: fr
 #### photo-fr
 
 ![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_photos_fr.png?raw=true "Ha TSMoon Card")
+
+## Credits
+
+### Localization
+  
+* pt-BR : ![netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
+* de: ![netsoft-ruidias](https://github.com/MickLesk "netsoft-ruidias")

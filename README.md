@@ -14,7 +14,7 @@ Startup setup for new lovelace (Home Assistant) card development
 
 ## Installation
 
-For installation you should have [HACS](https://hacs.xyz/docs/setup/download/) installed. Then add this repository https://github.com/trollix/ha-tsmoon-card in HACS and install the card. You have to reload you browser after installation.
+For installation you should have [HACS](https://hacs.xyz/docs/setup/download/) installed. Then add this repository <https://github.com/trollix/ha-tsmoon-card> in HACS and install the card. You have to reload you browser after installation.
 
 Then you can add the new card into your dashboard.
 
@@ -26,7 +26,7 @@ Then you can add the new card into your dashboard.
 
 ### Alternative method
 
-1. Download `tsmoon-card.js` from the [Releases][releases] page
+1. Download `tsmoon-card.js` from the [Releases](https://github.com/trollix/ha-tsmoon-card/releases) page
 2. Upload to `/www/ha-tsmoon-card/tsmoon-card.js` (via Samba, File Editor, SSH, etc.)
 3. Visit the Resources page in your Home Assistant install and add `/ha-tsmoon-card/tsmoon-card.js` as a
    JavaScript Module.
@@ -40,8 +40,8 @@ Then you can add the new card into your dashboard.
 | type        | string  | **Required** | `custom:custom:tsmoon-card`                              |
 | entity      | string  | **Required** | The entity id of moon sensor -> sensor.moon              |
 | title       | string  | **optional** | Title displayed on the card                              |
-| icon_type   | string  | **optional** | choose type of picture for the moon (forms/round/photos) |
-| language    | string  | **optional** | turn off the on/heat button                              |
+| icon_type   | string  | **optional** | Type of picture for the moon (forms/round/photos)        |
+| language    | string  | **optional** | The language used in the card                            |
 
 Example:
 
@@ -91,3 +91,4 @@ language: fr
   
 * pt-BR : ![netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
 * de: ![MickLesk](https://github.com/MickLesk "MickLesk")
+* es: ![ldsmovil](https://github.com/ldsmovil "ldsmovil")

@@ -1,3 +1,31 @@
 {
-
+  "common": {
+    "version": "Version",
+    "title": "Minimal Sonne Mond",
+    "title_card": "Minimal Sonne Mond Karte",
+    "description": "Eine minimalistische Karte zur Darstellung des Zustands von Sonne und Mond.",
+    "invalid_configuration": "Ungültige Konfiguration"
+  },
+  "editor": {
+    "moon_entity": "Mond-Entität (Optional)"
+  },
+  "errors": {
+    "missing_moon_entity": "moon_entity fehlt in der Konfiguration",
+    "invalid_icon_type": "Die folgenden Farben in deiner Konfiguration sind ungültig:"
+  },
+  "card": {
+    "moon_phase": "Mondphase",
+    "moon_rise": "Mondaufgang",
+    "moon_set": "Monduntergang"
+  },
+  "moon": {
+    "new_moon": "Neumond",
+    "waxing_crescent": "Zunehmende Sichel",
+    "first_quarter": "Erstes Viertel",
+    "waxing_gibbous": "Zunehmender Mond",
+    "full_moon": "Vollmond",
+    "waning_gibbous": "Abnehmender Mond",
+    "last_quarter": "Letztes Viertel",
+    "waning_crescent": "Abnehmende Sichel"
+  }
 }

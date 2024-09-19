@@ -26,7 +26,7 @@ Then you can add the new card into your dashboard.
 
 ### Alternative method
 
-1. Download `tsmoon-card.js` from the [Releases][releases] page
+1. Download `tsmoon-card.js` from the [Releases](https://github.com/trollix/ha-tsmoon-card/releases) page
 2. Upload to `/www/ha-tsmoon-card/tsmoon-card.js` (via Samba, File Editor, SSH, etc.)
 3. Visit the Resources page in your Home Assistant install and add `/ha-tsmoon-card/tsmoon-card.js` as a
    JavaScript Module.
@@ -92,3 +92,4 @@ time_format: 12h
 
 * pt-BR : ![netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
 * de: ![MickLesk](https://github.com/MickLesk "MickLesk")
+* es: ![ldsmovil](https://github.com/ldsmovil "ldsmovil")

@@ -1,3 +1,31 @@
 {
-
+  "common": {
+    "version": "Versión",
+    "title": "Sol y Luna Mínimo",
+    "title_card": "Tarjeta Sol con Luna",
+    "description": "Tarjeta para mostrar el estado del sol y la luna.",
+    "invalid_configuration": "Configuración inválida"
+  },
+  "editor": {
+    "moon_entity": "Entidad de la Luna (Opcional)"
+  },
+  "errors": {
+    "missing_moon_entity": "Falta moon_entity en la configuración",
+    "invalid_icon_type": "Configuración no válida:"
+  },
+  "card": {
+    "moon_phase": "Fase Lunar",
+    "moon_rise": "Salida de la Luna",
+    "moon_set": "Puesta de la Luna"
+  },
+  "moon": {
+    "new_moon": "Luna Nueva",
+    "waxing_crescent": "Cuarto Creciente",
+    "first_quarter": "Cuarto Creciente",
+    "waxing_gibbous": "Gibosa Creciente",
+    "full_moon": "Luna Llena",
+    "waning_gibbous": "Gibosa Menguante",
+    "last_quarter": "Cuarto Menguante",
+    "waning_crescent": "Cuarto Menguante"
+  }
 }

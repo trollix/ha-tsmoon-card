@@ -8,11 +8,12 @@ Dans le cas spécifique des modules déclaratifs que vous utilisez pour déclare
 Assurez-vous que ce fichier est inclus dans votre configuration TypeScript (généralement dans le fichier tsconfig.json).
 
 */
+
 declare module '*.svg' {
     const content: string;
     export default content;
 }
-  
+
 declare module '*.png' {
     const content: string;
     export default content;

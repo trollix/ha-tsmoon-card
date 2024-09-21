@@ -91,7 +91,7 @@ export class TSMoonCard extends LitElement {
         }
     }
 
-    private getLocale (): string {
+    private getLocale(): string {
         return this.language ?? this.hass.locale.language ?? 'en'
     }
 
@@ -103,7 +103,7 @@ export class TSMoonCard extends LitElement {
             // throw new Error('Propriété non définie');
             return "";
         }
-      }
+    }
 
     // CSS for the card
     // https://lit.dev/docs/components/styles/
@@ -114,7 +114,7 @@ export class TSMoonCard extends LitElement {
      * Called on every hass update
      */
     set hass(hass: HomeAssistant) {
-        
+
         /*
         if (!this.entity || !hass.states[this.entity]) {
             return;
@@ -135,7 +135,7 @@ export class TSMoonCard extends LitElement {
      * @param config Card configuration (yaml converted to JSON)
      */
     setConfig(config: ICardConfig): void {
-        
+
         this._config = { ...config };
 
         this.entity = config.entity ?? this.entity;
@@ -153,23 +153,23 @@ export class TSMoonCard extends LitElement {
         var lv_state = this.state;
         const lc_date = new Date();  // Def Date
 
-        if ((! lv_state) || (lv_state == '')) {
+        if ((!lv_state) || (lv_state == '')) {
             console.info('lv_state non défini ou nul:', this.state);
             //Calcul autonome de la phase de la lune
-            const lc_moonRawData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);       
-             
+            const lc_moonRawData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
+
             // suncalc ne donne pas les mêmes chaines de varible retour des phases
             // donc il faut les traduire
             lv_state = TSMOON_PHASES[lc_moonRawData.illumination.phase.id];
 
-        } 
+        }
         console.info('lv_state:', lv_state);
         // A partir d'ici lv_state est OK
 
         // Calcul de l'icone
         const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
         const lc_state_localized = this.localize(`moon.${lv_state}`);
-        
+
         // Calcul des temps du lever et du coucher du soleil
         const lc_times = SunCalc.getMoonTimes(lc_date, this.home_latitude, this.home_longitude);
 
@@ -178,6 +178,7 @@ export class TSMoonCard extends LitElement {
         //const l_moonset = lc_times.set;
 
         // Convertir la date en utilisant Day.js
+
         //const lc_moonriseFormated = dayjs(lc_times.rise).format('HH:mm');
         //const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
         const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeFormat(this.time_format));
@@ -210,6 +211,4 @@ export class TSMoonCard extends LitElement {
         </ha-card>
         `;
     }
-
-
 }

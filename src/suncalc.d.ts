@@ -1,6 +1,6 @@
 declare module "suncalc3" {
     
-    export function getMoonTimes(dateValue: number | Date, lat: number, lng: number, inUTC?: boolean): IMoonTimes; 
+    export function getMoonTimes(dateValue: number | Date, lat: number, lng: number, inUTC?: boolean): IMoonTimes;
 
     export function getMoonData(dateValue: number | Date, lat: number, lng: number): IMoonData;
 

@@ -11,7 +11,7 @@ export const printVersionToConsole = () => console.info(
 (window as any).customCards = (window as any).customCards || [];
 (window as any).customCards.push({
   type: 'tsmoon-card',
-  name: 'TSimple Moon Phase Card',
+  name: 'Simple Moon Phase Card',
   entity: "sensor.moon",
   description: 'A card to view Moon Phases',
   preview: true,

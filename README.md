@@ -41,6 +41,7 @@ Then you can add the new card into your dashboard.
 | entity      | string  | **Required** | The entity id of moon sensor -> sensor.moon              |
 | title       | string  | **optional** | Title displayed on the card                              |
 | icon_type   | string  | **optional** | Type of picture for the moon (forms/round/photos)        |
+| time_format | string  | **optional** | Time format displayed in the card (12h/24h)              |
 | language    | string  | **optional** | The language used in the card                            |
 
 Example:
@@ -51,6 +52,7 @@ type: custom:tsmoon-card
 title: Lune
 entity: sensor.moon
 icon_type: round
+time_format: 24h
 language: fr
 
 ```
@@ -86,6 +88,10 @@ language: fr
 ![HA-TSMOON-CARD](https://github.com/trollix/ha-tsmoon-card/blob/main/img_photos_fr.png?raw=true "Ha TSMoon Card")
 
 ## Credits
+
+### Code
+
+* time Format option : https://github.com/tmcarr  ![tmcarr](https://github.com/tmcarr "tmcarr")
 
 ### Localization
   

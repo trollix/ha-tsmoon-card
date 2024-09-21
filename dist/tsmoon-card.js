@@ -1861,6 +1861,7 @@ var TSMoonCard = (function (exports) {
             this.icon_type = "forms";
             this.language = "en";
             this.entity = "";
+            this.time_format = "24h";
             this.home_latitude = 0;
             this.home_longitude = 0;
         }
@@ -1873,6 +1874,20 @@ var TSMoonCard = (function (exports) {
         }
         localize(key) {
             return localize(key, this.getLocale());
+        }
+        /**
+         * credits to: tmcarr - https://github.com/tmcarr
+         * @param p_timeFormat:string Time Format
+         * @returns
+         */
+        getTimeFormat(p_timeFormat) {
+            // Format strings defined here: https://day.js.org/docs/en/display/format
+            if (p_timeFormat == '12h') {
+                return 'h:mm A';
+            }
+            else {
+                return 'HH:mm';
+            }
         }
         getLocale() {
             var _a, _b;
@@ -1916,12 +1931,13 @@ var TSMoonCard = (function (exports) {
          * @param config Card configuration (yaml converted to JSON)
          */
         setConfig(config) {
-            var _a, _b, _c, _d;
+            var _a, _b, _c, _d, _e;
             this._config = Object.assign({}, config);
             this.entity = (_a = config.entity) !== null && _a !== void 0 ? _a : this.entity;
             this.cardTitle = (_b = config.title) !== null && _b !== void 0 ? _b : this.cardTitle;
             this.icon_type = (_c = config.icon_type) !== null && _c !== void 0 ? _c : 'forms';
             this.language = (_d = config.language) !== null && _d !== void 0 ? _d : 'fr';
+            this.time_format = (_e = config.time_format) !== null && _e !== void 0 ? _e : '24h';
         }
         /**
          * Renders the card when the update is requested (when any of the properties are changed)
@@ -1948,8 +1964,10 @@ var TSMoonCard = (function (exports) {
             //const l_moonrise = lc_times.rise;
             //const l_moonset = lc_times.set;
             // Convertir la date en utilisant Day.js
-            const lc_moonriseFormated = dayjs(lc_times.rise).format('HH:mm');
-            const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
+            //const lc_moonriseFormated = dayjs(lc_times.rise).format('HH:mm');
+            //const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
+            const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeFormat(this.time_format));
+            const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeFormat(this.time_format));
             return ke `
         
         <ha-card>
@@ -1994,6 +2012,9 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "entity", void 0);
     __decorate([
         n({ attribute: false })
+    ], TSMoonCard.prototype, "time_format", void 0);
+    __decorate([
+        n({ attribute: false })
     ], TSMoonCard.prototype, "home_latitude", void 0);
     __decorate([
         n({ attribute: false })
@@ -2003,14 +2024,14 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "0.9.4";
+    var version = "0.9.5";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog
     window.customCards = window.customCards || [];
     window.customCards.push({
         type: 'tsmoon-card',
-        name: 'TSimple Moon Phase Card',
+        name: 'Simple Moon Phase Card',
         entity: "sensor.moon",
         description: 'A card to view Moon Phases',
         preview: true,

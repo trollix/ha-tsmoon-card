@@ -91,7 +91,7 @@ language: fr
 
 ### Code
 
-* Time Format option : https://github.com/tmcarr  ![tmcarr](https://github.com/tmcarr "tmcarr")
+* Time Format option : ![tmcarr](https://github.com/tmcarr "tmcarr")
 
 ### Localization
   

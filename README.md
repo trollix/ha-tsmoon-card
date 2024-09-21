@@ -91,10 +91,12 @@ language: fr
 
 ### Code
 
-* time Format option : https://github.com/tmcarr  ![tmcarr](https://github.com/tmcarr "tmcarr")
+* Time Format option : https://github.com/tmcarr  ![tmcarr](https://github.com/tmcarr "tmcarr")
 
 ### Localization
   
 * pt-BR : ![netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
 * de: ![MickLesk](https://github.com/MickLesk "MickLesk")
 * es: ![ldsmovil](https://github.com/ldsmovil "ldsmovil")
+* sk! ![misa1515](https://github.com/misa1515 "misa1515")
+* ca: ![rogodra](https://github.com/rogodra "rogodra")

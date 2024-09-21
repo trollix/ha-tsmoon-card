@@ -10,7 +10,6 @@ import dayjs from 'dayjs';
 
 import { default as SunCalc } from 'suncalc3';
 
-
 import {
     HomeAssistant,
     hasConfigOrEntityChanged,
@@ -21,10 +20,9 @@ import {
     LovelaceCardConfig,
     getLovelace,
     formatTime
-  } from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
+} from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
   
 import type { HassEntity } from "home-assistant-js-websocket";
-
 
 const TSMOON_PHASES = {
     newMoon: 'new_moon',
@@ -58,13 +56,16 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false })
     private entity: string = "";
 
+    @property({ attribute: false })
+    private time_format: string = "24h";
+
     @property({ attribute: false }) private home_latitude: number = 0;
     @property({ attribute: false }) private home_longitude: number = 0;
 
     @state() private _config?: ICardConfig
 
 
-    private renderIcon (svg_icon_code: string): TemplateResult {
+    private renderIcon(svg_icon_code: string): TemplateResult {
         return html`
             <div class="icon">
                 <img class="moon-img-svg" src=${svg_icon_code} />
@@ -72,8 +73,22 @@ export class TSMoonCard extends LitElement {
         `
     }
 
-    private localize (key: string): string {
+    private localize(key: string): string {
         return localize(key, this.getLocale())
+    }
+
+    /**
+     * credits to: tmcarr - https://github.com/tmcarr
+     * @param p_timeFormat:string Time Format
+     * @returns 
+     */
+    private getTimeFormat(p_timeFormat: string): string {
+        // Format strings defined here: https://day.js.org/docs/en/display/format
+        if (p_timeFormat == '12h') {
+            return 'h:mm A'
+        } else {
+            return 'HH:mm'
+        }
     }
 
     private getLocale (): string {
@@ -84,15 +99,15 @@ export class TSMoonCard extends LitElement {
         if ((type === 'forms') || (type === 'round') || (type === 'photo') || (type === 'clear')) {
             return svg[type][moonState]!;
         } else {
-          // Gérer le cas où la propriété n'est pas définie
-          // throw new Error('Propriété non définie');
-          return "";
+            // Gérer le cas où la propriété n'est pas définie
+            // throw new Error('Propriété non définie');
+            return "";
         }
       }
 
     // CSS for the card
     // https://lit.dev/docs/components/styles/
-    static get styles (): CSSResultGroup {
+    static get styles(): CSSResultGroup {
         return styles
     }
     /**
@@ -121,13 +136,13 @@ export class TSMoonCard extends LitElement {
      */
     setConfig(config: ICardConfig): void {
         
-        this._config = {...config};
+        this._config = { ...config };
 
         this.entity = config.entity ?? this.entity;
         this.cardTitle = config.title ?? this.cardTitle;
         this.icon_type = config.icon_type ?? 'forms';
         this.language = config.language ?? 'fr';
-
+        this.time_format = config.time_format ?? '24h'
     }
 
     /**
@@ -135,7 +150,7 @@ export class TSMoonCard extends LitElement {
      */
     render(): TemplateResult {
 
-        var lv_state = this.state; 
+        var lv_state = this.state;
         const lc_date = new Date();  // Def Date
 
         if ((! lv_state) || (lv_state == '')) {
@@ -157,15 +172,16 @@ export class TSMoonCard extends LitElement {
         
         // Calcul des temps du lever et du coucher du soleil
         const lc_times = SunCalc.getMoonTimes(lc_date, this.home_latitude, this.home_longitude);
-        
+
         // Accéder directement aux propriétés spécifiques pour obtenir les heures
         //const l_moonrise = lc_times.rise;
         //const l_moonset = lc_times.set;
 
         // Convertir la date en utilisant Day.js
-        const lc_moonriseFormated = dayjs(lc_times.rise).format('HH:mm');
-        const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
-
+        //const lc_moonriseFormated = dayjs(lc_times.rise).format('HH:mm');
+        //const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
+        const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeFormat(this.time_format));
+        const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeFormat(this.time_format));
    
        
         return html`

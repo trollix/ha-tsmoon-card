@@ -224,6 +224,53 @@ var TSMoonCard = (function (exports) {
         }
     };
 
+    var common$7 = {
+    	version: "Versió",
+    	title: "Sol i Lluna Mínim",
+    	title_card: "Targeta Sol amb Lluna",
+    	description: "Targeta per mostrar l'estat del sol i la lluna.",
+    	invalid_configuration: "Configuració no vàlida"
+    };
+    var editor$7 = {
+    	moon_entity: "Entitat de la Lluna (Opcional)"
+    };
+    var errors$7 = {
+    	missing_moon_entity: "Falta moon_entity a la configuració",
+    	invalid_icon_type: "Els colors següents de la configuració no són vàlids:"
+    };
+    var card$7 = {
+    	moon_phase: "Fase de Lluna",
+    	moon_rise: "Sortida de Lluna",
+    	moon_set: "Posta de Lluna"
+    };
+    var moon$7 = {
+    	new_moon: "Lluna Nova",
+    	waxing_crescent: "Lluna Nova Visible",
+    	first_quarter: "Quart Creixent",
+    	waxing_gibbous: "Gibosa Creixent",
+    	full_moon: "Lluna Plena",
+    	waning_gibbous: "Gibosa Minvant",
+    	last_quarter: "Quart Minvant",
+    	waning_crescent: "Lluna Minvant"
+    };
+    var ca = {
+    	common: common$7,
+    	editor: editor$7,
+    	errors: errors$7,
+    	card: card$7,
+    	moon: moon$7
+    };
+
+    var ca$1 = /*#__PURE__*/Object.freeze({
+        __proto__: null,
+        card: card$7,
+        common: common$7,
+        default: ca,
+        editor: editor$7,
+        errors: errors$7,
+        moon: moon$7
+    });
+
     var common$6 = {
     	version: "Version",
     	title: "Sonne | Mond Karte",
@@ -591,6 +638,7 @@ var TSMoonCard = (function (exports) {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const languages = {
+        ca: ca$1,
         de: de$1,
         en: en$1,
         es: es$1,

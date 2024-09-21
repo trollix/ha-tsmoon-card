@@ -1,3 +1,31 @@
 {
-
+  "common": {
+    "version": "Versie",
+    "title": "Minimale zon-maan",
+    "title_card": "Minimale Sun Moon-kaart",
+    "description": "Een minimale kaart om de toestand van de zon en de maan weer te geven.",
+    "invalid_configuration": "Ongeldige configuratie"
+  },
+  "editor": {
+    "moon_entity": "Maanentiteit (optioneel)"
+  },
+  "errors": {
+    "missing_moon_entity": "maanentiteit ontbreekt in de configuratie",
+    "invalid_icon_type": "De volgende kleuren in uw configuratie zijn ongeldig:"
+  },
+  "card": {
+    "moon_phase": "Maanfase",
+    "moon_rise": "Maanopkomst",
+    "moon_set": "Maanondergang"
+  },
+  "moon": {
+    "new_moon": "Nieuwemaan",
+    "waxing_crescent": "Jonge maansikkel",
+    "first_quarter": "Eerste kwartier",
+    "waxing_gibbous": "Wassende maan",
+    "full_moon": "Volle maan",
+    "waning_gibbous": "Afnemende maan",
+    "last_quarter": "Laatste kwartier",
+    "waning_crescent": "Asgrauwe maan"
+  }
 }

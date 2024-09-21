@@ -1,0 +1,32 @@
+{
+  "common": {
+    "version": "Versió",
+    "title": "Sol i Lluna Mínim",
+    "title_card": "Targeta Sol amb Lluna",
+    "description": "Targeta per mostrar l'estat del sol i la lluna.",
+    "invalid_configuration": "Configuració no vàlida"
+  },
+  "editor": {
+    "moon_entity": "Entitat de la Lluna (Opcional)"
+  },
+  "errors": {
+    "missing_moon_entity": "Falta moon_entity a la configuració",
+    "invalid_icon_type": "Els colors següents de la configuració no són vàlids:"
+  },
+  "card": {
+    "moon_phase": "Fase de Lluna",
+    "moon_rise": "Sortida de Lluna",
+    "moon_set": "Posta de Lluna"
+  },
+  "moon": {
+    "new_moon": "Lluna Nova",
+    "waxing_crescent": "Lluna Nova Visible",
+    "first_quarter": "Quart Creixent",
+    "waxing_gibbous": "Gibosa Creixent",
+    "full_moon": "Lluna Plena",
+    "waning_gibbous": "Gibosa Minvant",
+    "last_quarter": "Quart Minvant",
+    "waning_crescent": "Lluna Minvant"
+  }
+
+}

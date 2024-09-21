@@ -21,7 +21,7 @@ import {
     getLovelace,
     formatTime
 } from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
-
+  
 import type { HassEntity } from "home-assistant-js-websocket";
 
 const TSMOON_PHASES = {
@@ -77,9 +77,14 @@ export class TSMoonCard extends LitElement {
         return localize(key, this.getLocale())
     }
 
-    private getTimeString(style: string): string {
+    /**
+     * credits to: tmcarr - https://github.com/tmcarr
+     * @param p_timeFormat:string Time Format
+     * @returns 
+     */
+    private getTimeFormat(p_timeFormat: string): string {
         // Format strings defined here: https://day.js.org/docs/en/display/format
-        if (this.time_format == '12h') {
+        if (p_timeFormat == '12h') {
             return 'h:mm A'
         } else {
             return 'HH:mm'
@@ -173,11 +178,13 @@ export class TSMoonCard extends LitElement {
         //const l_moonset = lc_times.set;
 
         // Convertir la date en utilisant Day.js
-        const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeString(this.time_format));
-        const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeString(this.time_format));
 
-
-
+        //const lc_moonriseFormated = dayjs(lc_times.rise).format('HH:mm');
+        //const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
+        const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeFormat(this.time_format));
+        const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeFormat(this.time_format));
+   
+       
         return html`
         
         <ha-card>

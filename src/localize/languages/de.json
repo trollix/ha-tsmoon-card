@@ -1,17 +1,17 @@
 {
   "common": {
     "version": "Version",
-    "title": "Minimal Sonne Mond",
-    "title_card": "Minimal Sonne Mond Karte",
-    "description": "Eine minimalistische Karte zur Darstellung des Zustands von Sonne und Mond.",
+    "title": "Sonne | Mond Karte",
+    "title_card": "Minimal Sonne | Mond Karte",
+    "description": "Eine minimalistische Karte, um den Stand der Sonne und des Mondes darzustellen.",
     "invalid_configuration": "Ungültige Konfiguration"
   },
   "editor": {
-    "moon_entity": "Mond-Entität (Optional)"
+    "moon_entity": "Mondentität (Optional)"
   },
   "errors": {
-    "missing_moon_entity": "moon_entity fehlt in der Konfiguration",
-    "invalid_icon_type": "Die folgenden Farben in deiner Konfiguration sind ungültig:"
+    "missing_moon_entity": "Die Mondentität (moon_entity) fehlt in der Konfiguration!",
+    "invalid_icon_type": "Die folgenden Farben in der Konfiguration sind ungültig:"
   },
   "card": {
     "moon_phase": "Mondphase",
@@ -20,12 +20,12 @@
   },
   "moon": {
     "new_moon": "Neumond",
-    "waxing_crescent": "Zunehmende Sichel",
+    "waxing_crescent": "Zunehmende Mondsichel",
     "first_quarter": "Erstes Viertel",
     "waxing_gibbous": "Zunehmender Mond",
     "full_moon": "Vollmond",
     "waning_gibbous": "Abnehmender Mond",
     "last_quarter": "Letztes Viertel",
-    "waning_crescent": "Abnehmende Sichel"
+    "waning_crescent": "Abnehmende Mondsichel"
   }
 }

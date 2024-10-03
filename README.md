@@ -101,3 +101,4 @@ time_format: 12h
 * sk: [misa1515](https://github.com/misa1515 "misa1515")
 * ca: [rogodra](https://github.com/rogodra "rogodra")
 * ru: [Nikolay-Ch](https://github.com/Nikolay-Ch "Nikolay-Ch")
+* cz: [havlejan](https://github.com/havlejan "havlejan")

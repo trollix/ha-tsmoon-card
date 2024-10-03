@@ -1,0 +1,32 @@
+{
+  "common": {
+    "version": "Verze",
+    "title": "Minimal Sun Moon",
+    "title_card": "Karta Minimal Sun Moon",
+    "description": "Minimální karta na vykreslení stavu slunce a měsíce.",
+    "invalid_configuration": "Neplatná konfigurace"
+  },
+  "editor": {
+    "moon_entity": "Entita měsíce (volitelné)"
+  },
+  "errors": {
+    "missing_moon_entity": "moon_entity chybí v konfiguraci",
+    "invalid_icon_type": "Následující barvy ve vaší konfiguraci jsou neplatné:"
+  },
+  "card": {
+    "moon_phase": "Fáze měsíce",
+    "moon_rise": "Východ měsíce",
+    "moon_set": "Západ měsíce"
+  },
+  "moon": {
+    "new_moon": "Nov",
+    "waxing_crescent": "Dorůstající srpek",
+    "first_quarter": "První čtvrt",
+    "waxing_gibbous": "Dorůstající měsíc",
+    "full_moon": "Úplněk",
+    "waning_gibbous": "Couvající měsíc",
+    "last_quarter": "Poslední čtvrt",
+    "waning_crescent": "Ubývající srpek"
+  }
+}
+  

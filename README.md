@@ -41,9 +41,7 @@ Then you can add the new card into your dashboard.
 | entity      | string  | **Required** | The entity id of moon sensor -> sensor.moon              |
 | title       | string  | **optional** | Title displayed on the card                              |
 | icon_type   | string  | **optional** | Type of picture for the moon (forms/round/photos)        |
-| time_format | string  | **optional** | Time format displayed in the card (12h/24h)              |
 | language    | string  | **optional** | The language used in the card                            |
-| time_format | string  | **optional** | Time format displayed in the card (12h/24h)              |
 
 Example:
 
@@ -55,7 +53,6 @@ entity: sensor.moon
 icon_type: round
 time_format: 24h
 language: fr
-time_format: 12h
 ```
 
 ## Preview
@@ -92,12 +89,16 @@ time_format: 12h
 
 ### Code
 
-* Time Format option : ![tmcarr](https://github.com/tmcarr "tmcarr")
+* Time Format option : [tmcarr](https://github.com/tmcarr "tmcarr")
 
 ### Localization
 
-* pt-BR : ![netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
-* de: ![MickLesk](https://github.com/MickLesk "MickLesk")
-* es: ![ldsmovil](https://github.com/ldsmovil "ldsmovil")
-* sk! ![misa1515](https://github.com/misa1515 "misa1515")
-* ca: ![rogodra](https://github.com/rogodra "rogodra")
+
+* pt-BR : [netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
+* de: [MickLesk](https://github.com/MickLesk "MickLesk")
+* es: [ldsmovil](https://github.com/ldsmovil "ldsmovil")
+* sk: [misa1515](https://github.com/misa1515 "misa1515")
+* ca: [rogodra](https://github.com/rogodra "rogodra")
+* ru: [Nikolay-Ch](https://github.com/Nikolay-Ch "Nikolay-Ch")
+* cz: [havlejan](https://github.com/havlejan "havlejan")
+

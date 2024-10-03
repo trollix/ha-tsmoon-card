@@ -93,7 +93,6 @@ language: fr
 
 ### Localization
 
-
 * pt-BR : [netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
 * de: [MickLesk](https://github.com/MickLesk "MickLesk")
 * es: [ldsmovil](https://github.com/ldsmovil "ldsmovil")
@@ -101,4 +100,3 @@ language: fr
 * ca: [rogodra](https://github.com/rogodra "rogodra")
 * ru: [Nikolay-Ch](https://github.com/Nikolay-Ch "Nikolay-Ch")
 * cz: [havlejan](https://github.com/havlejan "havlejan")
-

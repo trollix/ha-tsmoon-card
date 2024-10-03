@@ -98,5 +98,6 @@ time_format: 12h
 * pt-BR : [netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
 * de: [MickLesk](https://github.com/MickLesk "MickLesk")
 * es: [ldsmovil](https://github.com/ldsmovil "ldsmovil")
-* sk! [misa1515](https://github.com/misa1515 "misa1515")
+* sk: [misa1515](https://github.com/misa1515 "misa1515")
 * ca: [rogodra](https://github.com/rogodra "rogodra")
+* ru: [Nikolay-Ch](https://github.com/Nikolay-Ch "Nikolay-Ch")

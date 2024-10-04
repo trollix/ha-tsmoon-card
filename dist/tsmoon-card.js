@@ -224,26 +224,26 @@ var TSMoonCard = (function (exports) {
         }
     };
 
-    var common$9 = {
+    var common$a = {
     	version: "Versió",
     	title: "Sol i Lluna Mínim",
     	title_card: "Targeta Sol amb Lluna",
     	description: "Targeta per mostrar l'estat del sol i la lluna.",
     	invalid_configuration: "Configuració no vàlida"
     };
-    var editor$9 = {
+    var editor$a = {
     	moon_entity: "Entitat de la Lluna (Opcional)"
     };
-    var errors$9 = {
+    var errors$a = {
     	missing_moon_entity: "Falta moon_entity a la configuració",
     	invalid_icon_type: "Els colors següents de la configuració no són vàlids:"
     };
-    var card$9 = {
+    var card$a = {
     	moon_phase: "Fase de Lluna",
     	moon_rise: "Sortida de Lluna",
     	moon_set: "Posta de Lluna"
     };
-    var moon$9 = {
+    var moon$a = {
     	new_moon: "Lluna Nova",
     	waxing_crescent: "Lluna Nova Visible",
     	first_quarter: "Quart Creixent",
@@ -254,6 +254,53 @@ var TSMoonCard = (function (exports) {
     	waning_crescent: "Lluna Minvant"
     };
     var ca = {
+    	common: common$a,
+    	editor: editor$a,
+    	errors: errors$a,
+    	card: card$a,
+    	moon: moon$a
+    };
+
+    var ca$1 = /*#__PURE__*/Object.freeze({
+        __proto__: null,
+        card: card$a,
+        common: common$a,
+        default: ca,
+        editor: editor$a,
+        errors: errors$a,
+        moon: moon$a
+    });
+
+    var common$9 = {
+    	version: "Verze",
+    	title: "Minimal Sun Moon",
+    	title_card: "Karta Minimal Sun Moon",
+    	description: "Minimální karta na vykreslení stavu slunce a měsíce.",
+    	invalid_configuration: "Neplatná konfigurace"
+    };
+    var editor$9 = {
+    	moon_entity: "Entita měsíce (volitelné)"
+    };
+    var errors$9 = {
+    	missing_moon_entity: "moon_entity chybí v konfiguraci",
+    	invalid_icon_type: "Následující barvy ve vaší konfiguraci jsou neplatné:"
+    };
+    var card$9 = {
+    	moon_phase: "Fáze měsíce",
+    	moon_rise: "Východ měsíce",
+    	moon_set: "Západ měsíce"
+    };
+    var moon$9 = {
+    	new_moon: "Nov",
+    	waxing_crescent: "Dorůstající srpek",
+    	first_quarter: "První čtvrt",
+    	waxing_gibbous: "Dorůstající měsíc",
+    	full_moon: "Úplněk",
+    	waning_gibbous: "Couvající měsíc",
+    	last_quarter: "Poslední čtvrt",
+    	waning_crescent: "Ubývající srpek"
+    };
+    var cz = {
     	common: common$9,
     	editor: editor$9,
     	errors: errors$9,
@@ -261,11 +308,11 @@ var TSMoonCard = (function (exports) {
     	moon: moon$9
     };
 
-    var ca$1 = /*#__PURE__*/Object.freeze({
+    var cz$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
         card: card$9,
         common: common$9,
-        default: ca,
+        default: cz,
         editor: editor$9,
         errors: errors$9,
         moon: moon$9
@@ -459,6 +506,53 @@ var TSMoonCard = (function (exports) {
         moon: moon$5
     });
 
+    var common$4 = {
+    	version: "Verzió",
+    	title: "Minimális Nap Hold",
+    	title_card: "Minimális Nap Hold kártya",
+    	description: "Egy minimális kártya a nap és a hold állapotának megjelenítéséhez.",
+    	invalid_configuration: "Érvénytelen konfiguráció"
+    };
+    var editor$4 = {
+    	moon_entity: "Hold entitás (opcionális)"
+    };
+    var errors$4 = {
+    	missing_moon_entity: "A moon_entity hiányzik a konfigurációból",
+    	invalid_icon_type: "A konfigurációban szereplő következő színek érvénytelenek:"
+    };
+    var card$4 = {
+    	moon_phase: "Holdfázis",
+    	moon_rise: "Holdkelte",
+    	moon_set: "Holdnyugta"
+    };
+    var moon$4 = {
+    	new_moon: "Újhold",
+    	waxing_crescent: "Növekvő holdsarló",
+    	first_quarter: "Első negyed",
+    	waxing_gibbous: "Növőhold fázis",
+    	full_moon: "Telihold",
+    	waning_gibbous: "Fogyóhold fázis",
+    	last_quarter: "Utolsó negyed",
+    	waning_crescent: "Csökkenő holdsarló"
+    };
+    var hu = {
+    	common: common$4,
+    	editor: editor$4,
+    	errors: errors$4,
+    	card: card$4,
+    	moon: moon$4
+    };
+
+    var hu$1 = /*#__PURE__*/Object.freeze({
+        __proto__: null,
+        card: card$4,
+        common: common$4,
+        default: hu,
+        editor: editor$4,
+        errors: errors$4,
+        moon: moon$4
+    });
+
     var it = {
     	
     };
@@ -477,26 +571,26 @@ var TSMoonCard = (function (exports) {
         default: nb
     });
 
-    var common$4 = {
+    var common$3 = {
     	version: "Versie",
     	title: "Minimale zon-maan",
     	title_card: "Minimale Sun Moon-kaart",
     	description: "Een minimale kaart om de toestand van de zon en de maan weer te geven.",
     	invalid_configuration: "Ongeldige configuratie"
     };
-    var editor$4 = {
+    var editor$3 = {
     	moon_entity: "Maanentiteit (optioneel)"
     };
-    var errors$4 = {
+    var errors$3 = {
     	missing_moon_entity: "maanentiteit ontbreekt in de configuratie",
     	invalid_icon_type: "De volgende kleuren in uw configuratie zijn ongeldig:"
     };
-    var card$4 = {
+    var card$3 = {
     	moon_phase: "Maanfase",
     	moon_rise: "Maanopkomst",
     	moon_set: "Maanondergang"
     };
-    var moon$4 = {
+    var moon$3 = {
     	new_moon: "Nieuwemaan",
     	waxing_crescent: "Jonge maansikkel",
     	first_quarter: "Eerste kwartier",
@@ -507,21 +601,21 @@ var TSMoonCard = (function (exports) {
     	waning_crescent: "Asgrauwe maan"
     };
     var nl = {
-    	common: common$4,
-    	editor: editor$4,
-    	errors: errors$4,
-    	card: card$4,
-    	moon: moon$4
+    	common: common$3,
+    	editor: editor$3,
+    	errors: errors$3,
+    	card: card$3,
+    	moon: moon$3
     };
 
     var nl$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        card: card$4,
-        common: common$4,
+        card: card$3,
+        common: common$3,
         default: nl,
-        editor: editor$4,
-        errors: errors$4,
-        moon: moon$4
+        editor: editor$3,
+        errors: errors$3,
+        moon: moon$3
     });
 
     var pl = {
@@ -531,62 +625,6 @@ var TSMoonCard = (function (exports) {
     var pl$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
         default: pl
-    });
-
-    var common$3 = {
-    	version: "Verzió",
-    	title: "Minimális Nap Hold",
-    	title_card: "Minimális Nap Hold kártya",
-    	description: "Egy minimális kártya a nap és a hold állapotának megjelenítéséhez.",
-    	invalid_configuration: "Érvénytelen konfiguráció"
-    };
-    var editor$3 = {
-    	moon_entity: "Hold entitás (opcionális)"
-    };
-    var errors$3 = {
-    	missing_moon_entity: "A moon_entity hiányzik a konfigurációból",
-    	invalid_icon_type: "A konfigurációban szereplő következő színek érvénytelenek:"
-    };
-    var card$3 = {
-    	moon_phase: "Holdfázis",
-    	moon_rise: "Holdkelte",
-    	moon_set: "Holdnyugta"
-    };
-    var moon$3 = {
-    	new_moon: "Újhold",
-    	waxing_crescent: "Növekvő holdsarló",
-    	first_quarter: "Első negyed",
-    	waxing_gibbous: "Növőhold fázis",
-    	full_moon: "Telihold",
-    	waning_gibbous: "Fogyóhold fázis",
-    	last_quarter: "Utolsó negyed",
-    	waning_crescent: "Csökkenő holdsarló"
-    };
-    var hu = {
-    	common: common$3,
-    	editor: editor$3,
-    	errors: errors$3,
-    	card: card$3,
-    	moon: moon$3
-    };
-
-    var hu$1 = /*#__PURE__*/Object.freeze({
-        __proto__: null,
-        card: card$3,
-        common: common$3,
-        default: hu,
-        editor: editor$3,
-        errors: errors$3,
-        moon: moon$3
-    });
-
-    var pt = {
-    	
-    };
-
-    var pt$1 = /*#__PURE__*/Object.freeze({
-        __proto__: null,
-        default: pt
     });
 
     var common$2 = {
@@ -634,6 +672,15 @@ var TSMoonCard = (function (exports) {
         editor: editor$2,
         errors: errors$2,
         moon: moon$2
+    });
+
+    var pt = {
+    	
+    };
+
+    var pt$1 = /*#__PURE__*/Object.freeze({
+        __proto__: null,
+        default: pt
     });
 
     var common$1 = {
@@ -684,35 +731,35 @@ var TSMoonCard = (function (exports) {
     });
 
     var common = {
-    	version: "Verze",
+    	version: "Verzia",
     	title: "Minimal Sun Moon",
     	title_card: "Karta Minimal Sun Moon",
-    	description: "Minimální karta na vykreslení stavu slunce a měsíce.",
-    	invalid_configuration: "Neplatná konfigurace"
+    	description: "Minimálna karta na vykreslenie stavu slnka a mesiaca.",
+    	invalid_configuration: "Neplatná konfigurácia"
     };
     var editor = {
-    	moon_entity: "Entita měsíce (volitelné)"
+    	moon_entity: "Entita Mesiaca (voliteľné)"
     };
     var errors = {
-    	missing_moon_entity: "moon_entity chybí v konfiguraci",
-    	invalid_icon_type: "Následující barvy ve vaší konfiguraci jsou neplatné:"
+    	missing_moon_entity: "moon_entity v konfigurácii chýba",
+    	invalid_icon_type: "Nasledujúce farby vo vašej konfigurácii sú neplatné:"
     };
     var card = {
-    	moon_phase: "Fáze měsíce",
-    	moon_rise: "Východ měsíce",
-    	moon_set: "Západ měsíce"
+    	moon_phase: "Fáza Mesiaca",
+    	moon_rise: "Mesiac východ",
+    	moon_set: "Mesiac západ"
     };
     var moon = {
-    	new_moon: "Nov",
-    	waxing_crescent: "Dorůstající srpek",
-    	first_quarter: "První čtvrt",
-    	waxing_gibbous: "Dorůstající měsíc",
-    	full_moon: "Úplněk",
-    	waning_gibbous: "Couvající měsíc",
-    	last_quarter: "Poslední čtvrt",
-    	waning_crescent: "Ubývající srpek"
+    	new_moon: "Nový Mesiac",
+    	waxing_crescent: "Rastúci polmesiac",
+    	first_quarter: "Prvá štvrtina",
+    	waxing_gibbous: "Rastúci mesiac",
+    	full_moon: "Plný mesiac",
+    	waning_gibbous: "Ubúdajúci mesiac",
+    	last_quarter: "Posledná štvrtina",
+    	waning_crescent: "Ubúdajúci polmesiac"
     };
-    var cz = {
+    var sk = {
     	common: common,
     	editor: editor,
     	errors: errors,
@@ -720,11 +767,11 @@ var TSMoonCard = (function (exports) {
     	moon: moon
     };
 
-    var cz$1 = /*#__PURE__*/Object.freeze({
+    var sk$1 = /*#__PURE__*/Object.freeze({
         __proto__: null,
         card: card,
         common: common,
-        default: cz,
+        default: sk,
         editor: editor,
         errors: errors,
         moon: moon
@@ -733,19 +780,20 @@ var TSMoonCard = (function (exports) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const languages = {
         ca: ca$1,
+        cz: cz$1,
         de: de$1,
         en: en$1,
         es: es$1,
         fr: fr$1,
+        hu: hu$1,
         it: it$1,
         nb: nb$1,
         nl: nl$1,
         pl: pl$1,
-        hu: hu$1,
-        pt: pt$1,
         pt_BR,
+        pt: pt$1,
         ru: ru$1,
-        cz: cz$1,
+        sk: sk$1,
     };
     function localize(key, locale) {
         let translated;
@@ -2220,7 +2268,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "v0.9.6";
+    var version = "v0.9.7";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

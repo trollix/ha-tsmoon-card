@@ -10,6 +10,7 @@ import * as nb from './languages/nb.json';
 import * as nl from './languages/nl.json';
 import * as pl from './languages/pl.json';
 import * as pt from './languages/pt.json';
+import * as pt_BR from './languages/pt.json';
 import * as ru from './languages/ru.json';
 import * as sk from './languages/sk.json';
 

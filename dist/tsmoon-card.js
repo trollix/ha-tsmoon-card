@@ -781,7 +781,7 @@ var TSMoonCard = (function (exports) {
         nb: nb$1,
         nl: nl$1,
         pl: pl$1,
-        pt_BR,
+        pt_BR: pt$1,
         pt: pt$1,
         ru: ru$1,
         sk: sk$1,

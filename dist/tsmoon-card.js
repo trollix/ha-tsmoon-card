@@ -703,7 +703,7 @@ var TSMoonCard = (function (exports) {
     	last_quarter: "Quarto Minguante",
     	waning_crescent: "Lua Minguante"
     };
-    var ptBr = {
+    var ptBR = {
     	common: common$2,
     	editor: editor$2,
     	errors: errors$2,
@@ -715,7 +715,7 @@ var TSMoonCard = (function (exports) {
         __proto__: null,
         card: card$2,
         common: common$2,
-        default: ptBr,
+        default: ptBR,
         editor: editor$2,
         errors: errors$2,
         moon: moon$2

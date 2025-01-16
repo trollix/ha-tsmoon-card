@@ -101,3 +101,4 @@ language: fr
 * cz: [havlejan](https://github.com/havlejan "havlejan")
 * pt: [ViPeR5000](https://github.com/ViPeR5000 "ViPeR5000")
 * pt-BR : [netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
+* it: [sky7176](https://github.com/sky7176 "sky7176")

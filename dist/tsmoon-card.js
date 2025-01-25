@@ -2186,10 +2186,14 @@ var TSMoonCard = (function (exports) {
             this.home_latitude = 0;
             this.home_longitude = 0;
         }
-        renderIcon(svg_icon_code) {
+        renderIcon(svg_icon_code, p_hemisphere) {
+            var lv_style = '';
+            if (p_hemisphere == 'S') {
+                lv_style = 'transform: rotate(180deg);';
+            }
             return x `
             <div class="icon">
-                <img class="moon-img-svg" src=${svg_icon_code} />
+                <img class="moon-img-svg" src=${svg_icon_code} style=${lv_style} />
             </div>
         `;
         }
@@ -2300,7 +2304,7 @@ var TSMoonCard = (function (exports) {
             </div>
             <div class="card-content">
                 <div class="entity-row">
-                    ${this.renderIcon(lc_moonIcon)}
+                    ${this.renderIcon(lc_moonIcon, this.hemisphere)}
                     <div class="name truncate">
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">

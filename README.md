@@ -42,6 +42,8 @@ Then you can add the new card into your dashboard.
 | title       | string  | **optional** | Title displayed on the card                              |
 | icon_type   | string  | **optional** | Type of picture for the moon (forms/round/photos)        |
 | language    | string  | **optional** | The language used in the card                            |
+| time_format | string  | **optional** | Time Format: 12h / 24h                                   |
+| hemisphere  | string  | **optional** | Hemisphere (North:N - South:S)                           |
 
 Example:
 
@@ -53,6 +55,8 @@ entity: sensor.moon
 icon_type: round
 time_format: 24h
 language: fr
+hemisphere: N
+
 ```
 
 ## Preview

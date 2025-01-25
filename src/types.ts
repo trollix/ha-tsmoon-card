@@ -5,4 +5,5 @@ export interface ICardConfig extends LovelaceCardConfig {
     icon_type?: string;
     language?: string;
     time_format?: string; // added by https://github.com/tmcarr
+    hemisphere?: string;
 }

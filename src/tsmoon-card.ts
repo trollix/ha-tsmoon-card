@@ -59,6 +59,9 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false })
     private time_format: string = "24h";
 
+    @property({ attribute: false })
+    private hemisphere: string = "N";
+
     @property({ attribute: false }) private home_latitude: number = 0;
     @property({ attribute: false }) private home_longitude: number = 0;
 
@@ -142,7 +145,8 @@ export class TSMoonCard extends LitElement {
         this.cardTitle = config.title ?? this.cardTitle;
         this.icon_type = config.icon_type ?? 'forms';
         this.language = config.language ?? 'fr';
-        this.time_format = config.time_format ?? '24h'
+        this.time_format = config.time_format ?? '24h';
+        this.hemisphere = config.hemisphere ?? '24h';
     }
 
     /**

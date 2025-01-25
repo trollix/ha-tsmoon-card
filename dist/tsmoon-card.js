@@ -2182,6 +2182,7 @@ var TSMoonCard = (function (exports) {
             this.language = "en";
             this.entity = "";
             this.time_format = "24h";
+            this.hemisphere = "N";
             this.home_latitude = 0;
             this.home_longitude = 0;
         }
@@ -2251,13 +2252,14 @@ var TSMoonCard = (function (exports) {
          * @param config Card configuration (yaml converted to JSON)
          */
         setConfig(config) {
-            var _a, _b, _c, _d, _e;
+            var _a, _b, _c, _d, _e, _f;
             this._config = Object.assign({}, config);
             this.entity = (_a = config.entity) !== null && _a !== undefined ? _a : this.entity;
             this.cardTitle = (_b = config.title) !== null && _b !== undefined ? _b : this.cardTitle;
             this.icon_type = (_c = config.icon_type) !== null && _c !== undefined ? _c : 'forms';
             this.language = (_d = config.language) !== null && _d !== undefined ? _d : 'fr';
             this.time_format = (_e = config.time_format) !== null && _e !== undefined ? _e : '24h';
+            this.hemisphere = (_f = config.hemisphere) !== null && _f !== undefined ? _f : '24h';
         }
         /**
          * Renders the card when the update is requested (when any of the properties are changed)
@@ -2335,6 +2337,9 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "time_format", undefined);
     __decorate([
         n({ attribute: false })
+    ], TSMoonCard.prototype, "hemisphere", undefined);
+    __decorate([
+        n({ attribute: false })
     ], TSMoonCard.prototype, "home_latitude", undefined);
     __decorate([
         n({ attribute: false })
@@ -2344,7 +2349,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", undefined);
 
     var name = "ha-tsmoon-card";
-    var version = "v0.9.13";
+    var version = "v0.10.1";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

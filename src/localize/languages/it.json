@@ -1,3 +1,31 @@
 {
-
+  "common": {
+    "version": "Versione",
+    "title": "Fasi Lunari",
+    "title_card": "Card per Fasi Lunari",
+    "description": "Semplice scheda per visualizzare le fasi lunari e del sole.",
+    "invalid_configuration": "Configurazione non valida"
+  },
+  "editor": {
+    "moon_entity": "Moon entity (Optional)"
+  },
+  "errors": {
+    "missing_moon_entity": "moon_entity manca nella configurazione",
+    "invalid_icon_type": "I seguenti colori nella configurazione non sono validi:"
+  },
+  "card": {
+    "moon_phase": "Fase Lunare",
+    "moon_rise": "Sorgere della Luna",
+    "moon_set": "Tramonto della Luna"
+  },
+  "moon": {
+    "new_moon": "Luna Nuova",
+    "waxing_crescent": "Mezzaluna crescente",
+    "first_quarter": "Primo quarto",
+    "waxing_gibbous": "Luna crescente",
+    "full_moon": "Luna piena",
+    "waning_gibbous": "Luna calante",
+    "last_quarter": "Ultimo quarto",
+    "waning_crescent": "Mezzaluna calante"
+  }
 }

@@ -1,6 +1,7 @@
 //import { HomeAssistant } from "./ha-types";
 import { html, css, LitElement, CSSResultGroup, TemplateResult } from "lit";
 import { property, state } from "lit/decorators.js";
+import { styleMap } from 'lit/directives/style-map.js';
 import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
@@ -59,16 +60,26 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false })
     private time_format: string = "24h";
 
+    @property({ attribute: false })
+    private hemisphere: string = "N";
+
     @property({ attribute: false }) private home_latitude: number = 0;
     @property({ attribute: false }) private home_longitude: number = 0;
 
     @state() private _config?: ICardConfig
 
 
-    private renderIcon(svg_icon_code: string): TemplateResult {
+    private renderIcon(svg_icon_code: string, p_hemisphere: string): TemplateResult {
+        
+        var lv_style = '';
+        
+        if (p_hemisphere == 'S') {
+            lv_style = 'transform: rotate(180deg);';
+        }
+
         return html`
             <div class="icon">
-                <img class="moon-img-svg" src=${svg_icon_code} />
+                <img class="moon-img-svg" src=${svg_icon_code} style=${lv_style} />
             </div>
         `
     }
@@ -142,7 +153,8 @@ export class TSMoonCard extends LitElement {
         this.cardTitle = config.title ?? this.cardTitle;
         this.icon_type = config.icon_type ?? 'forms';
         this.language = config.language ?? 'fr';
-        this.time_format = config.time_format ?? '24h'
+        this.time_format = config.time_format ?? '24h';
+        this.hemisphere = config.hemisphere ?? '24h';
     }
 
     /**
@@ -195,7 +207,7 @@ export class TSMoonCard extends LitElement {
             </div>
             <div class="card-content">
                 <div class="entity-row">
-                    ${this.renderIcon(lc_moonIcon)}
+                    ${this.renderIcon(lc_moonIcon, this.hemisphere)}
                     <div class="name truncate">
                     <span class="primary">${this.localize(`card.moon_phase`)}</span>
                         <div class="secondary">

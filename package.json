@@ -1,6 +1,6 @@
 {
   "name": "ha-tsmoon-card",
-  "version": "v0.10.2",
+  "version": "v0.10.3",
   "description": "Simple Moon Card",
   "main": "dist/tsmoon-card.js",
   "files": [
@@ -37,7 +37,7 @@
     "@rollup/plugin-replace": "^6.0.2",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.5",
     "@types/suncalc": "^1.9.2",
     "rimraf": "^6.0.1",
     "rollup": "^4.34.8",

@@ -8,7 +8,6 @@ import { svg } from './img_exp'
 import { localize } from './localize/localize';
 //import { Moon, Hemisphere } from 'lunarphase-js';
 import dayjs from 'dayjs';
-import memoize from '@formatjs/fast-memoize';
 
 import { default as SunCalc } from 'suncalc3';
 
@@ -103,14 +102,12 @@ export class TSMoonCard extends LitElement {
         }
     }
         */
-/*
+
     private getTimeFormat(p_timeFormat: string): string {
         return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
     };
-*/
-    private getTimeFormat = memoize((p_timeFormat: string): string => {
-        return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
-    });
+
+
 
     private getLocale(): string {
         return this.language ?? this.hass.locale.language ?? 'en'

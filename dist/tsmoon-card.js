@@ -935,75 +935,6 @@ var TSMoonCard = (function (exports) {
     var dayjs_minExports = requireDayjs_min();
     var dayjs = /*@__PURE__*/getDefaultExportFromCjs(dayjs_minExports);
 
-    //
-    // Main
-    //
-    function memoize(fn, options) {
-        var cache = cacheDefault;
-        var serializer = serializerDefault;
-        var strategy = strategyDefault;
-        return strategy(fn, {
-            cache: cache,
-            serializer: serializer,
-        });
-    }
-    //
-    // Strategy
-    //
-    function isPrimitive(value) {
-        return (value == null || typeof value === 'number' || typeof value === 'boolean'); // || typeof value === "string" 'unsafe' primitive for our needs
-    }
-    function monadic(fn, cache, serializer, arg) {
-        var cacheKey = isPrimitive(arg) ? arg : serializer(arg);
-        var computedValue = cache.get(cacheKey);
-        if (typeof computedValue === 'undefined') {
-            computedValue = fn.call(this, arg);
-            cache.set(cacheKey, computedValue);
-        }
-        return computedValue;
-    }
-    function variadic(fn, cache, serializer) {
-        var args = Array.prototype.slice.call(arguments, 3);
-        var cacheKey = serializer(args);
-        var computedValue = cache.get(cacheKey);
-        if (typeof computedValue === 'undefined') {
-            computedValue = fn.apply(this, args);
-            cache.set(cacheKey, computedValue);
-        }
-        return computedValue;
-    }
-    function assemble(fn, context, strategy, cache, serialize) {
-        return strategy.bind(context, fn, cache, serialize);
-    }
-    function strategyDefault(fn, options) {
-        var strategy = fn.length === 1 ? monadic : variadic;
-        return assemble(fn, this, strategy, options.cache.create(), options.serializer);
-    }
-    //
-    // Serializer
-    //
-    var serializerDefault = function () {
-        return JSON.stringify(arguments);
-    };
-    //
-    // Cache
-    //
-    function ObjectWithoutPrototypeCache() {
-        this.cache = Object.create(null);
-    }
-    ObjectWithoutPrototypeCache.prototype.get = function (key) {
-        return this.cache[key];
-    };
-    ObjectWithoutPrototypeCache.prototype.set = function (key, value) {
-        this.cache[key] = value;
-    };
-    var cacheDefault = {
-        create: function create() {
-            // @ts-ignore
-            return new ObjectWithoutPrototypeCache();
-        },
-    };
-
     var suncalc = {exports: {}};
 
     var hasRequiredSuncalc;
@@ -2278,28 +2209,6 @@ var TSMoonCard = (function (exports) {
             this.hemisphere = "N";
             this.home_latitude = 0;
             this.home_longitude = 0;
-            /**
-             * credits to: tmcarr - https://github.com/tmcarr
-             * @param p_timeFormat:string Time Format
-             * @returns
-             */
-            /*private getTimeFormat(p_timeFormat: string): string {
-                // Format strings defined here: https://day.js.org/docs/en/display/format
-                if (p_timeFormat == '12h') {
-                    return 'h:mm A'
-                } else {
-                    return 'HH:mm'
-                }
-            }
-                */
-            /*
-                private getTimeFormat(p_timeFormat: string): string {
-                    return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
-                };
-            */
-            this.getTimeFormat = memoize((p_timeFormat) => {
-                return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
-            });
         }
         renderIcon(svg_icon_code, p_hemisphere) {
             var lv_style = '';
@@ -2315,6 +2224,24 @@ var TSMoonCard = (function (exports) {
         localize(key) {
             return localize(key, this.getLocale());
         }
+        /**
+         * credits to: tmcarr - https://github.com/tmcarr
+         * @param p_timeFormat:string Time Format
+         * @returns
+         */
+        /*private getTimeFormat(p_timeFormat: string): string {
+            // Format strings defined here: https://day.js.org/docs/en/display/format
+            if (p_timeFormat == '12h') {
+                return 'h:mm A'
+            } else {
+                return 'HH:mm'
+            }
+        }
+            */
+        getTimeFormat(p_timeFormat) {
+            return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
+        }
+        ;
         getLocale() {
             var _a, _b;
             return (_b = (_a = this.language) !== null && _a !== void 0 ? _a : this.hass.locale.language) !== null && _b !== void 0 ? _b : 'en';

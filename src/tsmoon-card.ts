@@ -8,6 +8,7 @@ import { svg } from './img_exp'
 import { localize } from './localize/localize';
 //import { Moon, Hemisphere } from 'lunarphase-js';
 import dayjs from 'dayjs';
+import memoize from '@formatjs/fast-memoize';
 
 import { default as SunCalc } from 'suncalc3';
 
@@ -79,7 +80,7 @@ export class TSMoonCard extends LitElement {
 
         return html`
             <div class="icon">
-                <img class="moon-img-svg" src=${svg_icon_code} style=${lv_style} />
+                <img class="moon-img-svg" loading="lazy" src=${svg_icon_code} style=${lv_style} />
             </div>
         `
     }
@@ -93,7 +94,7 @@ export class TSMoonCard extends LitElement {
      * @param p_timeFormat:string Time Format
      * @returns 
      */
-    private getTimeFormat(p_timeFormat: string): string {
+    /*private getTimeFormat(p_timeFormat: string): string {
         // Format strings defined here: https://day.js.org/docs/en/display/format
         if (p_timeFormat == '12h') {
             return 'h:mm A'
@@ -101,6 +102,15 @@ export class TSMoonCard extends LitElement {
             return 'HH:mm'
         }
     }
+        */
+/*
+    private getTimeFormat(p_timeFormat: string): string {
+        return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
+    };
+*/
+    private getTimeFormat = memoize((p_timeFormat: string): string => {
+        return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
+    });
 
     private getLocale(): string {
         return this.language ?? this.hass.locale.language ?? 'en'

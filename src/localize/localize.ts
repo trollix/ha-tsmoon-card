@@ -1,3 +1,4 @@
+
 import * as ca from './languages/ca.json';
 import * as cz from './languages/cz.json';
 import * as de from './languages/de.json';
@@ -14,7 +15,9 @@ import * as pt_BR from './languages/pt-BR.json';
 import * as ru from './languages/ru.json';
 import * as sk from './languages/sk.json';
 
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 const languages: any = {
   ca,
   cz,
@@ -32,6 +35,33 @@ const languages: any = {
   ru,
   sk,
 };
+
+
+/*
+// Optimisation des imports : Utilisation des imports dynamiques 
+// pour charger les langues uniquement lorsque nécessaire.
+const languages: Record<string, () => Promise<any>> = {
+  ca: () => import('./languages/ca.json'),
+  cz: () => import('./languages/cz.json'),
+  de: () => import('./languages/de.json'),
+  en: () => import('./languages/en.json'),
+  es: () => import('./languages/es.json'),
+  fr: () => import('./languages/fr.json'),
+  hu: () => import('./languages/hu.json'),
+  it: () => import('./languages/it.json'),
+  nb: () => import('./languages/nb.json'),
+  nl: () => import('./languages/nl.json'),
+  pl: () => import('./languages/pl.json'),
+  pt: () => import('./languages/pt.json'),
+  pt_BR: () => import('./languages/pt-BR.json'),
+  ru: () => import('./languages/ru.json'),
+  sk: () => import('./languages/sk.json'),
+
+};
+
+
+*/
+
 
 export function localize (key: string, locale: string): string {
     let translated: string

@@ -475,8 +475,8 @@ var TSMoonCard = (function (exports) {
     };
     var card$7 = {
     	moon_phase: "Phase lunaire",
-    	moon_rise: "Coucher",
-    	moon_set: "Lever"
+    	moon_rise: "Lever",
+    	moon_set: "Coucher"
     };
     var moon$7 = {
     	new_moon: "Nouvelle lune",
@@ -2381,7 +2381,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "v0.10.4";
+    var version = "v0.10.5";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

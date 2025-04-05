@@ -2326,22 +2326,18 @@ var TSMoonCard = (function (exports) {
         
         <ha-card>
             <div class="card-header">
-                <div class="truncate">
-                    ${this.cardTitle}
-                </div>
+                <div class="truncate">${this.cardTitle}</div>
             </div>
             <div class="card-content">
                 <div class="entity-row">
                     ${this.renderIcon(lc_moonIcon, this.hemisphere)}
                     <div class="name truncate">
-                    <span class="primary">${this.localize(`card.moon_phase`)}</span>
-                        <div class="secondary">
-                        ${lc_state_localized}
-                        </div>
+                      <span class="primary">${this.localize(`card.moon_phase`)}</span>
+                      <span class="secondary">${lc_state_localized}</span>
                     </div>
                     <div class="state">
-                    <span class="primary">${this.localize(`card.moon_rise`)}: </span> ${lc_moonriseFormated}<br />
-                    <span class="primary">${this.localize(`card.moon_set`)}: </span> ${lc_moonsetFormated}
+                      <div><span class="primary">${this.localize(`card.moon_rise`)}: </span> ${lc_moonriseFormated}</div>
+                      <div><span class="primary">${this.localize(`card.moon_set`)}: </span> ${lc_moonsetFormated}</div>
                     </div>
                 </div>
             </div>

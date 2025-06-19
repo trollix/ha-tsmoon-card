@@ -1,3 +1,31 @@
 {
-
+  "common": {
+    "version": "Wersja",
+    "title": "Minimalne Słońce i Księżyc",
+    "title_card": "Minimalna Karta Słońca i Księżyca",
+    "description": "Minimalna karta do wyświetlania stanu słońca i księżyca.",
+    "invalid_configuration": "Nieprawidłowa konfiguracja"
+  },
+  "editor": {
+    "moon_entity": "Encja księżyca (Opcjonalnie)"
+  },
+  "errors": {
+    "missing_moon_entity": "Brak encji moon_entity w konfiguracji",
+    "invalid_icon_type": "Następujące kolory w konfiguracji są nieprawidłowe:"
+  },
+  "card": {
+    "moon_phase": "Faza Księżyca",
+    "moon_rise": "Wschód Księżyca",
+    "moon_set": "Zachód Księżyca"
+  },
+  "moon": {
+    "new_moon": "Nów",
+    "waxing_crescent": "Przybywający Sierp",
+    "first_quarter": "Pierwsza Kwadra",
+    "waxing_gibbous": "Przybywający Garbaty",
+    "full_moon": "Pełnia",
+    "waning_gibbous": "Ubywający Garbaty",
+    "last_quarter": "Ostatnia Kwadra",
+    "waning_crescent": "Ubywający Sierp"
+  }
 }

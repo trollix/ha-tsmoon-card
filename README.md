@@ -103,6 +103,7 @@ hemisphere: N
 * ca: [rogodra](https://github.com/rogodra "rogodra")
 * ru: [Nikolay-Ch](https://github.com/Nikolay-Ch "Nikolay-Ch")
 * cz: [havlejan](https://github.com/havlejan "havlejan")
+* pl: [arnione](https://github.com/arnione "arnione")
 * pt: [ViPeR5000](https://github.com/ViPeR5000 "ViPeR5000")
 * pt-BR : [netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
 * it: [sky7176](https://github.com/sky7176 "sky7176")

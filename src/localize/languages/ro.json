@@ -1,0 +1,31 @@
+{
+  "common": {
+    "version": "Versiune",
+    "title": "Soare și Lună Minimal",
+    "title_card": "Card Soare și Lună Minimal",
+    "description": "Un card minimalist care afișează starea soarelui și a lunii.",
+    "invalid_configuration": "Configurație invalidă"
+  },
+  "editor": {
+    "moon_entity": "Entitatea lunii (Opțional)"
+  },
+  "errors": {
+    "missing_moon_entity": "Parametrul moon_entity lipsește din configurație",
+    "invalid_icon_type": "Următoarele culori din configurația ta sunt invalide:"
+  },
+  "card": {
+    "moon_phase": "Faza Lunii",
+    "moon_rise": "Răsăritul Lunii",
+    "moon_set": "Apusul Lunii"
+  },
+  "moon": {
+    "new_moon": "Lună Nouă",
+    "waxing_crescent": "Semilună în Creștere",
+    "first_quarter": "Primul Pătrar",
+    "waxing_gibbous": "Lună Convexă în Creștere",
+    "full_moon": "Lună Plină",
+    "waning_gibbous": "Lună Convexă în Scădere",
+    "last_quarter": "Ultimul Pătrar",
+    "waning_crescent": "Semilună în Scădere"
+  }
+}

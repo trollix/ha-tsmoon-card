@@ -3,7 +3,6 @@
         "target": "ES6",
         "module": "esnext",
         "lib": ["es5", "es6", "dom"],
-        "moduleResolution": "node",
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "alwaysStrict": true,

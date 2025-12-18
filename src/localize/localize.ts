@@ -12,6 +12,7 @@ import * as nl from './languages/nl.json';
 import * as pl from './languages/pl.json';
 import * as pt from './languages/pt.json';
 import * as pt_BR from './languages/pt-BR.json';
+import * as ro from './languages/ro.json';
 import * as ru from './languages/ru.json';
 import * as sk from './languages/sk.json';
 
@@ -32,6 +33,7 @@ const languages: any = {
   pl,
   pt,
   pt_BR,
+  ro,
   ru,
   sk,
 };
@@ -54,6 +56,7 @@ const languages: Record<string, () => Promise<any>> = {
   pl: () => import('./languages/pl.json'),
   pt: () => import('./languages/pt.json'),
   pt_BR: () => import('./languages/pt-BR.json'),
+  r0: () => import('./languages/ro.json'),
   ru: () => import('./languages/ru.json'),
   sk: () => import('./languages/sk.json'),
 

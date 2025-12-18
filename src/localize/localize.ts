@@ -57,6 +57,7 @@ const languages: Record<string, () => Promise<any>> = {
   pt: () => import('./languages/pt.json'),
   pt_BR: () => import('./languages/pt-BR.json'),
   ro: () => import('./languages/ro.json'),
+  r0: () => import('./languages/ro.json'),
   ru: () => import('./languages/ru.json'),
   sk: () => import('./languages/sk.json'),
 

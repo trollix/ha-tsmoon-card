@@ -106,5 +106,6 @@ hemisphere: N
 * pl: [arnione](https://github.com/arnione "arnione")
 * pt: [ViPeR5000](https://github.com/ViPeR5000 "ViPeR5000")
 * pt-BR : [netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
+* ro: [boogytotyo](https://github.com/boogytotyo "boogytotyo")
 * it: [sky7176](https://github.com/sky7176 "sky7176")
 * ro: [boogytotyo](https://github.com/boogytotyo "boogytotyo")

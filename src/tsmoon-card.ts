@@ -195,7 +195,7 @@ export class TSMoonCard extends LitElement {
         // Calcul de du % d'illuminationde la lune
         //---------------------------------------------------
         const moon_getData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
-        const moon_illumination_percent = moon_getData.illumination.angle;
+        const moon_illumination_percent = moon_getData.illumination.fraction;
        
 
         return html`

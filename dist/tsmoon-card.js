@@ -2415,7 +2415,7 @@ var TSMoonCard = (function (exports) {
             // Calcul de du % d'illuminationde la lune
             //---------------------------------------------------
             const moon_getData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
-            const moon_illumination_percent = moon_getData.illumination.angle;
+            const moon_illumination_percent = moon_getData.illumination.fraction;
             return b `
         
         <ha-card>
@@ -2472,7 +2472,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "v0.10.20";
+    var version = "v0.11.2";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

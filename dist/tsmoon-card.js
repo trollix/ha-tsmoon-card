@@ -2411,7 +2411,7 @@ var TSMoonCard = (function (exports) {
             const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeFormat(this.time_format));
             // Calcul de du % d'illuminationde la lune
             const moon_getData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
-            moon_getData.illumination;
+            const moon_illumination_percent = moon_getData.illumination;
             return b `
         
         <ha-card>
@@ -2424,7 +2424,7 @@ var TSMoonCard = (function (exports) {
                     <div class="name truncate">
                       <span class="primary">${this.localize(`card.moon_phase`)}</span><br />
                       <span class="secondary">${lc_state_localized}</span>
-                      <span class="secondary">&nbsp;(${lc_state_localized}&nbsp;%)</span>
+                      <span class="secondary">&nbsp;(${moon_illumination_percent}&nbsp;%)</span>
                     </div>
                     <div class="state">
                       <div><span class="primary">${this.localize(`card.moon_rise`)}: </span> ${lc_moonriseFormated}</div>
@@ -2468,7 +2468,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "v0.10.18";
+    var version = "v0.10.19";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

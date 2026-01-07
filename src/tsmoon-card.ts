@@ -205,7 +205,7 @@ export class TSMoonCard extends LitElement {
                     <div class="name truncate">
                       <span class="primary">${this.localize(`card.moon_phase`)}</span><br />
                       <span class="secondary">${lc_state_localized}</span>
-                      <span class="secondary">&nbsp;(${lc_state_localized}&nbsp;%)</span>
+                      <span class="secondary">&nbsp;(${moon_illumination_percent}&nbsp;%)</span>
                     </div>
                     <div class="state">
                       <div><span class="primary">${this.localize(`card.moon_rise`)}: </span> ${lc_moonriseFormated}</div>

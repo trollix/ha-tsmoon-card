@@ -2399,7 +2399,9 @@ var TSMoonCard = (function (exports) {
             // Calcul de l'icone
             const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
             const lc_state_localized = this.localize(`moon.${lv_state}`);
+            //---------------------------------------------------
             // Calcul des temps du lever et du coucher de la lune
+            //---------------------------------------------------
             const lc_times = SunCalc.getMoonTimes(lc_date, this.home_latitude, this.home_longitude);
             // Accéder directement aux propriétés spécifiques pour obtenir les heures
             //const l_moonrise = lc_times.rise;
@@ -2409,9 +2411,11 @@ var TSMoonCard = (function (exports) {
             //const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
             const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeFormat(this.time_format));
             const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeFormat(this.time_format));
+            //---------------------------------------------------
             // Calcul de du % d'illuminationde la lune
+            //---------------------------------------------------
             const moon_getData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
-            const moon_illumination_percent = moon_getData.illumination;
+            const moon_illumination_percent = moon_getData.illumination.angle;
             return b `
         
         <ha-card>
@@ -2468,7 +2472,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "_config", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "v0.10.19";
+    var version = "v0.10.20";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     // This puts your card into the UI card picker dialog

@@ -175,7 +175,9 @@ export class TSMoonCard extends LitElement {
         const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
         const lc_state_localized = this.localize(`moon.${lv_state}`);
 
+        //---------------------------------------------------
         // Calcul des temps du lever et du coucher de la lune
+        //---------------------------------------------------
         const lc_times = SunCalc.getMoonTimes(lc_date, this.home_latitude, this.home_longitude);
 
         // Accéder directement aux propriétés spécifiques pour obtenir les heures
@@ -189,10 +191,13 @@ export class TSMoonCard extends LitElement {
         const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeFormat(this.time_format));
         const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeFormat(this.time_format));
    
+        //---------------------------------------------------
         // Calcul de du % d'illuminationde la lune
+        //---------------------------------------------------
         const moon_getData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
-        const moon_illumination_percent = moon_getData.illumination;
+        const moon_illumination_percent = moon_getData.illumination.angle;
        
+
         return html`
         
         <ha-card>

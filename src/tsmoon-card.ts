@@ -42,27 +42,13 @@ const TSMOON_PHASES = {
  */
 export class TSMoonCard extends LitElement {
 
-    @property({ attribute: false })
-    private cardTitle: string = "";
-
-    @property({ attribute: false })
-    private state: string = "";
-
-    @property({ attribute: false })
-    private icon_type: string = "forms";
-
-    @property({ attribute: false })
-    private language: string = "en";
-
-    @property({ attribute: false })
-    private entity: string = "";
-
-    @property({ attribute: false })
-    private time_format: string = "24h";
-
-    @property({ attribute: false })
-    private hemisphere: string = "N";
-
+    @property({ attribute: false }) private cardTitle: string = "";
+    @property({ attribute: false }) private state: string = "";
+    @property({ attribute: false }) private icon_type: string = "forms";
+    @property({ attribute: false }) private language: string = "en";
+    @property({ attribute: false }) private entity: string = "";
+    @property({ attribute: false }) private time_format: string = "24h";
+    @property({ attribute: false }) private hemisphere: string = "N";
     @property({ attribute: false }) private home_latitude: number = 0;
     @property({ attribute: false }) private home_longitude: number = 0;
 
@@ -189,7 +175,7 @@ export class TSMoonCard extends LitElement {
         const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
         const lc_state_localized = this.localize(`moon.${lv_state}`);
 
-        // Calcul des temps du lever et du coucher du soleil
+        // Calcul des temps du lever et du coucher de la lune
         const lc_times = SunCalc.getMoonTimes(lc_date, this.home_latitude, this.home_longitude);
 
         // Accéder directement aux propriétés spécifiques pour obtenir les heures
@@ -203,6 +189,9 @@ export class TSMoonCard extends LitElement {
         const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeFormat(this.time_format));
         const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeFormat(this.time_format));
    
+        // Calcul de du % d'illuminationde la lune
+        const moon_getData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
+        const moon_illumination_percent = moon_getData.illumination;
        
         return html`
         
@@ -216,6 +205,7 @@ export class TSMoonCard extends LitElement {
                     <div class="name truncate">
                       <span class="primary">${this.localize(`card.moon_phase`)}</span><br />
                       <span class="secondary">${lc_state_localized}</span>
+                      <span class="secondary">&nbsp;(${lc_state_localized}&nbsp;%)</span>
                     </div>
                     <div class="state">
                       <div><span class="primary">${this.localize(`card.moon_rise`)}: </span> ${lc_moonriseFormated}</div>

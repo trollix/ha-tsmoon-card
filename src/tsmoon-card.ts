@@ -195,7 +195,7 @@ export class TSMoonCard extends LitElement {
         // Calcul de du % d'illuminationde la lune
         //---------------------------------------------------
         const moon_getData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
-        const moon_illumination_percent = moon_getData.illumination.fraction;
+        const moon_illumination_percent = Math.ceil(moon_getData.illumination.fraction * 100) + "%"; 
        
 
         return html`
@@ -210,7 +210,7 @@ export class TSMoonCard extends LitElement {
                     <div class="name truncate">
                       <span class="primary">${this.localize(`card.moon_phase`)}</span><br />
                       <span class="secondary">${lc_state_localized}</span>
-                      <span class="secondary">&nbsp;(${moon_illumination_percent}&nbsp;%)</span>
+                      <span class="secondary">&nbsp;(${moon_illumination_percent})</span>
                     </div>
                     <div class="state">
                       <div><span class="primary">${this.localize(`card.moon_rise`)}: </span> ${lc_moonriseFormated}</div>

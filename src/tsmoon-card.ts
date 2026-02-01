@@ -1,11 +1,9 @@
-//import { HomeAssistant } from "./ha-types";
 import { html, LitElement, CSSResultGroup, TemplateResult } from "lit";
 import { property} from "lit/decorators.js";
 import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
 import { localize } from './localize/localize';
-//import { Moon, Hemisphere } from 'lunarphase-js';
 import dayjs from 'dayjs';
 
 import { default as SunCalc } from 'suncalc3';

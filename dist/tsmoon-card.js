@@ -2633,17 +2633,22 @@ var TSMoonCard = (function (exports) {
     var name = "ha-tsmoon-card";
     var version = "v0.13.1";
 
-    const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
+    const CARD_TYPE = 'tsmoon-card';
+    const CARD_NAME = 'Simple Moon Phase Card';
+    const CARD_DESCRIPTION = 'A card to view Moon Phases';
+    const printVersionToConsole = () => {
+        console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
+    };
     window.customCards = window.customCards || [];
     window.customCards.push({
-        type: 'tsmoon-card',
-        name: 'Simple Moon Phase Card',
-        entity: "sensor.moon",
-        description: 'A card to view Moon Phases',
+        type: CARD_TYPE,
+        name: CARD_NAME,
+        entity: 'sensor.moon',
+        description: CARD_DESCRIPTION,
         preview: true,
     });
     printVersionToConsole();
-    customElements.define("tsmoon-card", TSMoonCard);
+    customElements.define(CARD_TYPE, TSMoonCard);
 
     exports.printVersionToConsole = printVersionToConsole;
 

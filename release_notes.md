@@ -1,12 +1,10 @@
-## Nouveautés
+## New Features
+* Added visual configuration editor
+* Performance improvements (willUpdate lifecycle)
+* Better error handling
+* Added "loading" translation key
 
-- Ajout d'un éditeur visuel de configuration;
-- Amélioration des performances (willUpdate)
-- Meilleure gestion des erreurs
-- Ajout de la clé de traduction "loading"
-
-## Améliorations techniques
-
-- Optimisation du cycle de rendu
-- Valeurs par défaut robustes (Paris)
-- Typage TypeScript amélioré
+## Technical Improvements
+* Optimized render cycle
+* Robust default values (Paris)
+* Improved TypeScript typing

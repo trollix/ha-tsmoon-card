@@ -195,6 +195,28 @@ export class TSMoonCard extends LitElement {
             // Calculer l'icône
             this.moonIcon = this.toIcon(phaseState, this.icon_type);
 
+                    // Calculer l'illumination
+            const moonData = SunCalc.getMoonData(
+                currentDate,
+                this.home_latitude,
+                this.home_longitude
+            );
+            this.moonIllumination = Math.ceil(moonData.illumination.fraction * 100) + "%";
+
+            // Calculer lever/coucher
+            const times = SunCalc.getMoonTimes(
+                currentDate,
+                this.home_latitude,
+                this.home_longitude
+            );
+        
+            const timeFormat = this.getTimeFormat(this.time_format);
+            this.moonRise = dayjs(times.rise).format(timeFormat);
+            this.moonSet = dayjs(times.set).format(timeFormat);
+
+
+
+
 
         } catch (error) {
             console.error('Erreur lors du calcul des données lunaires:', error);
@@ -214,49 +236,21 @@ export class TSMoonCard extends LitElement {
      */
     render(): TemplateResult {
 
-        var lv_state = this.state;
-        const lc_date = new Date();  // Def Date
-
-        if ((!lv_state) || (lv_state == '')) {
-            console.info('lv_state non défini ou nul:', this.state);
-            //Calcul autonome de la phase de la lune
-            const lc_moonRawData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
-
-            // suncalc ne donne pas les mêmes chaines de varible retour des phases
-            // donc il faut les traduire
-            lv_state = TSMOON_PHASES[lc_moonRawData.illumination.phase.id];
-
+        if (!this.moonPhase) {
+            return html`
+                <ha-card>
+                    <div class="card-content">
+                        ... -> ...
+                    </div>
+                </ha-card>
+            `;
         }
-        console.info('lv_state:', lv_state);
-        // A partir d'ici lv_state est OK
 
-        // Calcul de l'icone
-        //const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
-        const lc_state_localized = this.localize(`moon.${lv_state}`);
-
-        //---------------------------------------------------
-        // Calcul des temps du lever et du coucher de la lune
-        //---------------------------------------------------
-        const lc_times = SunCalc.getMoonTimes(lc_date, this.home_latitude, this.home_longitude);
-
-        // Accéder directement aux propriétés spécifiques pour obtenir les heures
-        //const l_moonrise = lc_times.rise;
-        //const l_moonset = lc_times.set;
-
-        // Convertir la date en utilisant Day.js
-
-        //const lc_moonriseFormated = dayjs(lc_times.rise).format('HH:mm');
-        //const lc_moonsetFormated = dayjs(lc_times.set).format('HH:mm');
-        const lc_moonriseFormated = dayjs(lc_times.rise).format(this.getTimeFormat(this.time_format));
-        const lc_moonsetFormated = dayjs(lc_times.set).format(this.getTimeFormat(this.time_format));
-   
-        //---------------------------------------------------
-        // Calcul de du % d'illuminationde la lune
-        //---------------------------------------------------
-        const moon_getData = SunCalc.getMoonData(lc_date, this.home_latitude, this.home_longitude);
-        const moon_illumination_percent = Math.ceil(moon_getData.illumination.fraction * 100) + "%"; 
-       
-
+        const LCstate = this.localize(`moon.${this.moonPhase}`);
+        const LCmoon_phase = this.localize('card.moon_phase');
+        const LCmoon_rise = this.localize(`card.moon_rise`);
+        const LCmoon_set = this.localize(`card.moon_set`);
+ 
         return html`
         
         <ha-card>
@@ -267,13 +261,13 @@ export class TSMoonCard extends LitElement {
                 <div class="entity-row">
                     ${this.renderIcon(this.moonIcon, this.hemisphere)}
                     <div class="name truncate">
-                      <span class="primary">${this.localize(`card.moon_phase`)}</span> :: <br />
-                      <span class="secondary">${lc_state_localized}</span>
-                      <span class="secondary">&nbsp;(${moon_illumination_percent})</span>
+                      <span class="primary">${LCmoon_phase}</span><br />
+                      <span class="secondary">${LCstate}</span>
+                      <span class="secondary">&nbsp;(${this.moonIllumination})</span>
                     </div>
                     <div class="state">
-                      <div><span class="primary">${this.localize(`card.moon_rise`)}: </span> ${lc_moonriseFormated}</div>
-                      <div><span class="primary">${this.localize(`card.moon_set`)}: </span> ${lc_moonsetFormated}</div>
+                      <div><span class="primary">${LCmoon_rise}: </span> ${this.moonRise}</div>
+                      <div><span class="primary">${LCmoon_set}: </span> ${this.moonSet}</div>
                     </div>
                 </div>
             </div>

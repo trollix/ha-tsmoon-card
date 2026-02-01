@@ -2550,7 +2550,7 @@ var TSMoonCard = (function (exports) {
             }
             return b `
         <div class="card-config">
-            <!-- Titre de la carte -->
+            <!-- Titre -->
             <ha-textfield
                 label="Titre (optionnel)"
                 .value=${this._config.title || ''}
@@ -2558,7 +2558,7 @@ var TSMoonCard = (function (exports) {
                 @input=${this._valueChanged}
             ></ha-textfield>
 
-            <!-- Sélecteur d'entité -->
+            <!-- Entité -->
             <ha-entity-picker
                 label="Entité de la lune"
                 .hass=${this.hass}
@@ -2574,6 +2574,7 @@ var TSMoonCard = (function (exports) {
                 .value=${this._config.icon_type || 'forms'}
                 .configValue=${'icon_type'}
                 @selected=${this._valueChanged}
+                @closed=${(ev) => ev.stopPropagation()}
             >
                 <mwc-list-item value="forms">Forms</mwc-list-item>
                 <mwc-list-item value="round">Round</mwc-list-item>
@@ -2581,12 +2582,13 @@ var TSMoonCard = (function (exports) {
                 <mwc-list-item value="clear">Clear</mwc-list-item>
             </ha-select>
 
-            <!-- Format de l'heure -->
+            <!-- Format heure -->
             <ha-select
                 label="Format de l'heure"
                 .value=${this._config.time_format || '24h'}
                 .configValue=${'time_format'}
                 @selected=${this._valueChanged}
+                @closed=${(ev) => ev.stopPropagation()}
             >
                 <mwc-list-item value="24h">24h</mwc-list-item>
                 <mwc-list-item value="12h">12h</mwc-list-item>
@@ -2598,6 +2600,7 @@ var TSMoonCard = (function (exports) {
                 .value=${this._config.hemisphere || 'N'}
                 .configValue=${'hemisphere'}
                 @selected=${this._valueChanged}
+                @closed=${(ev) => ev.stopPropagation()}
             >
                 <mwc-list-item value="N">Nord</mwc-list-item>
                 <mwc-list-item value="S">Sud</mwc-list-item>
@@ -2628,7 +2631,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "v0.13.0";
+    var version = "v0.13.0.1";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     window.customCards = window.customCards || [];

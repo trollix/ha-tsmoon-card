@@ -46,14 +46,14 @@ export class TSMoonCardEditor extends LitElement {
 
 
 
-    render(): TemplateResult {
+render(): TemplateResult {
     if (!this.hass || !this._config) {
         return html``;
     }
 
     return html`
         <div class="card-config">
-            <!-- Titre de la carte -->
+            <!-- Titre -->
             <ha-textfield
                 label="Titre (optionnel)"
                 .value=${this._config.title || ''}
@@ -61,7 +61,7 @@ export class TSMoonCardEditor extends LitElement {
                 @input=${this._valueChanged}
             ></ha-textfield>
 
-            <!-- Sélecteur d'entité -->
+            <!-- Entité -->
             <ha-entity-picker
                 label="Entité de la lune"
                 .hass=${this.hass}
@@ -77,6 +77,7 @@ export class TSMoonCardEditor extends LitElement {
                 .value=${this._config.icon_type || 'forms'}
                 .configValue=${'icon_type'}
                 @selected=${this._valueChanged}
+                @closed=${(ev: Event) => ev.stopPropagation()}
             >
                 <mwc-list-item value="forms">Forms</mwc-list-item>
                 <mwc-list-item value="round">Round</mwc-list-item>
@@ -84,12 +85,13 @@ export class TSMoonCardEditor extends LitElement {
                 <mwc-list-item value="clear">Clear</mwc-list-item>
             </ha-select>
 
-            <!-- Format de l'heure -->
+            <!-- Format heure -->
             <ha-select
                 label="Format de l'heure"
                 .value=${this._config.time_format || '24h'}
                 .configValue=${'time_format'}
                 @selected=${this._valueChanged}
+                @closed=${(ev: Event) => ev.stopPropagation()}
             >
                 <mwc-list-item value="24h">24h</mwc-list-item>
                 <mwc-list-item value="12h">12h</mwc-list-item>
@@ -101,6 +103,7 @@ export class TSMoonCardEditor extends LitElement {
                 .value=${this._config.hemisphere || 'N'}
                 .configValue=${'hemisphere'}
                 @selected=${this._valueChanged}
+                @closed=${(ev: Event) => ev.stopPropagation()}
             >
                 <mwc-list-item value="N">Nord</mwc-list-item>
                 <mwc-list-item value="S">Sud</mwc-list-item>
@@ -115,7 +118,7 @@ export class TSMoonCardEditor extends LitElement {
             ></ha-textfield>
         </div>
     `;
-    }
+}
 
 }
 

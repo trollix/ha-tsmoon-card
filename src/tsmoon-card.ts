@@ -1,7 +1,6 @@
 //import { HomeAssistant } from "./ha-types";
-import { html, css, LitElement, CSSResultGroup, TemplateResult } from "lit";
-import { property, state } from "lit/decorators.js";
-import { styleMap } from 'lit/directives/style-map.js';
+import { html, LitElement, CSSResultGroup, TemplateResult } from "lit";
+import { property} from "lit/decorators.js";
 import { ICardConfig } from "./types";
 import styles from './styles'
 import { svg } from './img_exp'
@@ -13,17 +12,8 @@ import { default as SunCalc } from 'suncalc3';
 
 import {
     HomeAssistant,
-    hasConfigOrEntityChanged,
-    hasAction,
-    ActionHandlerEvent,
-    handleAction,
-    LovelaceCardEditor,
-    LovelaceCardConfig,
-    getLovelace,
-    formatTime
 } from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
-  
-import type { HassEntity } from "home-assistant-js-websocket";
+
 
 const TSMOON_PHASES = {
     newMoon: 'new_moon',
@@ -36,11 +26,15 @@ const TSMOON_PHASES = {
     waningCrescentMoon: 'waning_crescent'
 };
 
+const DEFAULT_LATITUDE = 48.8566;   // Paris, France
+const DEFAULT_LONGITUDE = 2.3522;
 
 /**
  * Main card class definition
  */
 export class TSMoonCard extends LitElement {
+
+    private _hass?: HomeAssistant;
 
     @property({ attribute: false }) private cardTitle: string = "";
     @property({ attribute: false }) private state: string = "";
@@ -52,7 +46,12 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false }) private home_latitude: number = 0;
     @property({ attribute: false }) private home_longitude: number = 0;
 
-    @state() private _config?: ICardConfig
+    // NOUVELLES PROPRIÉTÉS - Ajoutez ces lignes
+    @property({ attribute: false }) private moonPhase: string = '';         // Contiendra : 'new_moon', 'full_moon', etc.
+    @property({ attribute: false }) private moonIcon: string = '';          // Contiendra : Le code SVG de l'icône (data:image/svg+xml...)
+    @property({ attribute: false }) private moonIllumination: string = '';  // Contiendra : '87%', '45%', etc.
+    @property({ attribute: false }) private moonRise: string = '';          // Contiendra : '18:45', '6:30 PM', etc.
+    @property({ attribute: false }) private moonSet: string = '';           // Contiendra : '06:12', '8:15 AM', etc.
 
 
     private renderIcon(svg_icon_code: string, p_hemisphere: string): TemplateResult {
@@ -96,7 +95,7 @@ export class TSMoonCard extends LitElement {
 
 
     private getLocale(): string {
-        return this.language ?? this.hass.locale.language ?? 'en'
+        return this.language ?? this._hass?.locale?.language ?? 'en'
     }
 
     private toIcon(moonState: string, type: string): string {
@@ -118,20 +117,19 @@ export class TSMoonCard extends LitElement {
      * Called on every hass update
      */
     set hass(hass: HomeAssistant) {
-
-        /*
-        if (!this.entity || !hass.states[this.entity]) {
-            return;
-        }
-        */
-        if (this.entity) {
+        this._hass = hass;
+    
+        if (this.entity && hass.states[this.entity]) {
             this.state = hass.states[this.entity].state;
         } else {
             this.state = '';
         }
 
-        this.home_latitude = hass.states['zone.home'].attributes.latitude;
-        this.home_longitude = hass.states['zone.home'].attributes.longitude;
+        // Il faut utiliser l'opérateur de coalescence nulle ?? pour fournir une valeur par défaut 
+        //Si zone.home existe → utilise sa latitude/longitude, Si zone.home n'existe pas → utilise 0 par défaut
+        this.home_latitude = hass.states['zone.home']?.attributes.latitude ?? DEFAULT_LATITUDE;
+        this.home_longitude = hass.states['zone.home']?.attributes.longitude ?? DEFAULT_LONGITUDE;
+
     }
 
     /**
@@ -140,15 +138,76 @@ export class TSMoonCard extends LitElement {
      */
     setConfig(config: ICardConfig): void {
 
-        this._config = { ...config };
-
         this.entity = config.entity ?? this.entity;
         this.cardTitle = config.title ?? this.cardTitle;
         this.icon_type = config.icon_type ?? 'forms';
         this.language = config.language ?? 'fr';
         this.time_format = config.time_format ?? '24h';
-        this.hemisphere = config.hemisphere ?? '24h';
+        this.hemisphere = config.hemisphere ?? 'N';
     }
+
+
+
+    /**
+     * Called before render() when properties change
+     */
+    protected willUpdate(changedProperties: Map<PropertyKey, unknown>): void {
+        super.willUpdate(changedProperties);
+    
+        // On recalcule seulement si certaines propriétés ont changé. cela évitera de calculer à chaque fois dans le render
+        // changedProperties.has('state') → Vérifie si la propriété state a changé
+        // Pourquoi vérifier ? Pour éviter de recalculer inutilement si seul le titre a changé par exemple.
+        if (
+            changedProperties.has('state') ||
+            changedProperties.has('home_latitude') ||
+            changedProperties.has('home_longitude') ||
+            changedProperties.has('icon_type') ||
+            changedProperties.has('time_format')
+        ) {
+            this.updateMoonData();
+        }
+    }
+
+    /**
+     * Calculate all moon data
+     */
+    private updateMoonData(): void {
+    
+        // TODO: Ici on va mettre tous les calculs
+        if (!this._hass) return;
+        try {
+            const currentDate = new Date();
+            let phaseState = this.state;
+
+            // Calcul de la phase si pas d'entité
+            if (!phaseState || phaseState === '') {
+                const moonRawData = SunCalc.getMoonData(
+                    currentDate,
+                    this.home_latitude,
+                    this.home_longitude
+                );
+                phaseState = TSMOON_PHASES[moonRawData.illumination.phase.id];
+            }
+
+            // Stocker la phase
+            this.moonPhase = phaseState;
+        
+            // Calculer l'icône
+            this.moonIcon = this.toIcon(phaseState, this.icon_type);
+
+
+        } catch (error) {
+            console.error('Erreur lors du calcul des données lunaires:', error);
+            this.moonPhase = '';
+            this.moonIcon = '';
+            this.moonIllumination = '0%';
+            this.moonRise = '--:--';
+            this.moonSet = '--:--';
+        }
+
+    }
+
+
 
     /**
      * Renders the card when the update is requested (when any of the properties are changed)
@@ -172,7 +231,7 @@ export class TSMoonCard extends LitElement {
         // A partir d'ici lv_state est OK
 
         // Calcul de l'icone
-        const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
+        //const lc_moonIcon = this.toIcon(lv_state, this.icon_type);
         const lc_state_localized = this.localize(`moon.${lv_state}`);
 
         //---------------------------------------------------
@@ -206,7 +265,7 @@ export class TSMoonCard extends LitElement {
             </div>
             <div class="card-content">
                 <div class="entity-row">
-                    ${this.renderIcon(lc_moonIcon, this.hemisphere)}
+                    ${this.renderIcon(this.moonIcon, this.hemisphere)}
                     <div class="name truncate">
                       <span class="primary">${this.localize(`card.moon_phase`)}</span><br />
                       <span class="secondary">${lc_state_localized}</span>

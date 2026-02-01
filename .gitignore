@@ -1,6 +1,27 @@
-/.vscode/
-/node_modules/
+# Dependencies
+node_modules/
 
-# Ignore Mac DS_Store files
+# Build
+dist/
+*.tsbuildinfo
+
+# Logs
+*.log
+
+# OS files
 .DS_Store
-**/.DS_Store
+Thumbs.db
+*~
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Environment
+.env*
+
+# Cache
+.cache/
+*.tmp

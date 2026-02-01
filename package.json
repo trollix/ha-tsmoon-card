@@ -1,6 +1,6 @@
 {
   "name": "ha-tsmoon-card",
-  "version": "v0.11.4",
+  "version": "v0.11.5",
   "description": "Simple Moon Card",
   "main": "dist/tsmoon-card.js",
   "files": [
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.comtrollix/ha-tmoon-card.git"
+    "url": "https://github.com/trollix/ha-tmoon-card.git"
   },
   "keywords": [
     "lovelace",

@@ -1,20 +1,27 @@
 {
-    "compilerOptions": {
-        "target": "ES6",
-        "module": "esnext",
-        "lib": ["es5", "es6", "dom"],
-        "esModuleInterop": true,
-        "experimentalDecorators": true,
-        "alwaysStrict": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "noImplicitThis": true,
-        "strict": true,
-        "resolveJsonModule": true,
-        "typeRoots": [
-            "node_modules/@types"
-          ],
-        "allowSyntheticDefaultImports": true  // pour utiliser require sans alert
-    },
-    "include": ["src", "src/img_dec.d.ts","src/suncalc.d.ts"]
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "sourceMap": false,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    
+    // ✨ Ajouts recommandés
+    "removeComments": true,
+    "noUnusedLocals": true,  // si true -> Alerte sur variables non utilisées
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }

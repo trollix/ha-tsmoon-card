@@ -2304,6 +2304,7 @@ var TSMoonCard = (function (exports) {
     };
     const DEFAULT_LATITUDE = 48.8566;
     const DEFAULT_LONGITUDE = 2.3522;
+    const DEFAULT_ICON_TYPE = 'forms';
     class TSMoonCard extends i {
         constructor() {
             super(...arguments);
@@ -2344,12 +2345,17 @@ var TSMoonCard = (function (exports) {
             return this.language ?? this._hass?.locale?.language ?? 'en';
         }
         toIcon(moonState, type) {
-            const iconType = type;
-            if (svg[iconType] && svg[iconType][moonState]) {
-                return svg[iconType][moonState];
+            const validTypes = ['forms', 'round', 'photo', 'clear'];
+            if (!validTypes.includes(type)) {
+                console.warn(`Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}" par défaut.`);
             }
-            console.warn(`Icône non trouvée pour type: ${type}, état: ${moonState}`);
-            return "";
+            const iconType = (validTypes.includes(type) ? type : DEFAULT_ICON_TYPE);
+            const icon = svg[iconType]?.[moonState];
+            if (!icon) {
+                console.warn(`Icône non trouvée pour type: ${iconType}, état: ${moonState}`);
+                return "";
+            }
+            return icon;
         }
         static get styles() {
             return styles;
@@ -2493,7 +2499,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "moonSet", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "v0.12.1";
+    var version = "v0.12.2";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     window.customCards = window.customCards || [];

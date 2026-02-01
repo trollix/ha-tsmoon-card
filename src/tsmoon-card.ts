@@ -28,6 +28,7 @@ const TSMOON_PHASES = {
 
 const DEFAULT_LATITUDE = 48.8566;   // Paris, France
 const DEFAULT_LONGITUDE = 2.3522;
+const DEFAULT_ICON_TYPE = 'forms'; 
 
 /**
  * Main card class definition
@@ -111,15 +112,24 @@ export class TSMoonCard extends LitElement {
   */
 
     private toIcon(moonState: string, type: string): string {
-        // Cast vers le bon type
-        const iconType = type as 'forms' | 'round' | 'photo' | 'clear';
+        const validTypes = ['forms', 'round', 'photo', 'clear'];
     
-        if (svg[iconType] && svg[iconType][moonState]) {
-            return svg[iconType][moonState];
+        // Vérifier si le type est valide, sinon avertir
+        if (!validTypes.includes(type)) {
+            console.warn(`Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}" par défaut.`);
+     }
+    
+        // Utiliser le type fourni s'il est valide, sinon utiliser la valeur par défaut
+        const iconType = (validTypes.includes(type) ? type : DEFAULT_ICON_TYPE) as 'forms' | 'round' | 'photo' | 'clear';
+    
+        const icon = svg[iconType]?.[moonState];
+    
+        if (!icon) {
+            console.warn(`Icône non trouvée pour type: ${iconType}, état: ${moonState}`);
+            return "";
         }
     
-        console.warn(`Icône non trouvée pour type: ${type}, état: ${moonState}`);
-        return "";
+        return icon;
     }
 
 

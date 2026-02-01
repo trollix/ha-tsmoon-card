@@ -1,4 +1,5 @@
 import { TSMoonCard } from "./tsmoon-card";
+import './editor';  // Pour ajouter l'éditeur visuel
 import { version, name } from '../package.json'
 
 export const printVersionToConsole = () => console.info(

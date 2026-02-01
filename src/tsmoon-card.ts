@@ -138,6 +138,28 @@ export class TSMoonCard extends LitElement {
     static get styles(): CSSResultGroup {
         return styles
     }
+
+
+
+    //Pour ajouter l'éditeur visuel
+    public static async getConfigElement(): Promise<HTMLElement> {
+        await import('./editor');
+        return document.createElement('tsmoon-card-editor');
+    }
+
+    public static getStubConfig(): ICardConfig {
+        return {
+            type: 'custom:tsmoon-card',
+            entity: 'sensor.moon',
+            title: 'Lune',
+            icon_type: 'forms',
+            time_format: '24h',
+            hemisphere: 'N',
+            language: 'fr'
+        };
+    }
+
+
     /**
      * Called on every hass update
      */

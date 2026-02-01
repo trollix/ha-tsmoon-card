@@ -2631,7 +2631,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "v0.13.1";
+    var version = "v0.13.2";
 
     const CARD_TYPE = 'tsmoon-card';
     const CARD_NAME = 'Simple Moon Phase Card';

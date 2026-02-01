@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Fáze měsíce",
     "moon_rise": "Východ měsíce",
-    "moon_set": "Západ měsíce"
+    "moon_set": "Západ měsíce",
+    "loading": "Načítání..."
   },
   "moon": {
     "new_moon": "Nov",

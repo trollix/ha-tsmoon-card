@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Faza Lunii",
     "moon_rise": "Răsăritul Lunii",
-    "moon_set": "Apusul Lunii"
+    "moon_set": "Apusul Lunii",
+    "loading": "Se încarcă..."
   },
   "moon": {
     "new_moon": "Lună Nouă",

@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Faza Księżyca",
     "moon_rise": "Wschód Księżyca",
-    "moon_set": "Zachód Księżyca"
+    "moon_set": "Zachód Księżyca",
+    "loading": "Ładowanie..."
   },
   "moon": {
     "new_moon": "Nów",

@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Fáza Mesiaca",
     "moon_rise": "Mesiac východ",
-    "moon_set": "Mesiac západ"
+    "moon_set": "Mesiac západ",
+    "loading": "Načítava sa..."
   },
   "moon": {
     "new_moon": "Nový Mesiac",

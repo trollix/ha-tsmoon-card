@@ -43,8 +43,8 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false }) private entity: string = "";
     @property({ attribute: false }) private time_format: string = "24h";
     @property({ attribute: false }) private hemisphere: string = "N";
-    @property({ attribute: false }) private home_latitude: number = 0;
-    @property({ attribute: false }) private home_longitude: number = 0;
+    @property({ attribute: false }) private home_latitude: number = DEFAULT_LATITUDE;
+    @property({ attribute: false }) private home_longitude: number = DEFAULT_LONGITUDE;
 
     // NOUVELLES PROPRIÉTÉS - Ajoutez ces lignes
     @property({ attribute: false }) private moonPhase: string = '';         // Contiendra : 'new_moon', 'full_moon', etc.
@@ -98,6 +98,7 @@ export class TSMoonCard extends LitElement {
         return this.language ?? this._hass?.locale?.language ?? 'en'
     }
 
+    /*
     private toIcon(moonState: string, type: string): string {
         if ((type === 'forms') || (type === 'round') || (type === 'photo') || (type === 'clear')) {
             return svg[type][moonState]!;
@@ -107,6 +108,20 @@ export class TSMoonCard extends LitElement {
             return "";
         }
     }
+  */
+
+    private toIcon(moonState: string, type: string): string {
+        // Cast vers le bon type
+        const iconType = type as 'forms' | 'round' | 'photo' | 'clear';
+    
+        if (svg[iconType] && svg[iconType][moonState]) {
+            return svg[iconType][moonState];
+        }
+    
+        console.warn(`Icône non trouvée pour type: ${type}, état: ${moonState}`);
+        return "";
+    }
+
 
     // CSS for the card
     // https://lit.dev/docs/components/styles/
@@ -240,7 +255,7 @@ export class TSMoonCard extends LitElement {
             return html`
                 <ha-card>
                     <div class="card-content">
-                        ... -> ...
+                        ${this.localize('card.loading')}
                     </div>
                 </ha-card>
             `;

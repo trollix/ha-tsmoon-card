@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Maanfase",
     "moon_rise": "Maanopkomst",
-    "moon_set": "Maanondergang"
+    "moon_set": "Maanondergang",
+    "loading": "Loading..."
   },
   "moon": {
     "new_moon": "Nieuwemaan",

@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Mondphase",
     "moon_rise": "Mondaufgang",
-    "moon_set": "Monduntergang"
+    "moon_set": "Monduntergang",
+    "loading": "Lädt..."
   },
   "moon": {
     "new_moon": "Neumond",

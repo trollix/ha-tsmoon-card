@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Fase Lunare",
     "moon_rise": "Sorgere della Luna",
-    "moon_set": "Tramonto della Luna"
+    "moon_set": "Tramonto della Luna",
+    "loading": "Caricamento..."
   },
   "moon": {
     "new_moon": "Luna Nuova",

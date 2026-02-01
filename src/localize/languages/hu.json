@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Holdfázis",
     "moon_rise": "Holdkelte",
-    "moon_set": "Holdnyugta"
+    "moon_set": "Holdnyugta",
+    "loading": "Loading..."
   },
   "moon": {
     "new_moon": "Újhold",

@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Fase da Lua",
     "moon_rise": "Nascer da Lua",
-    "moon_set": "Pôr da Lua"
+    "moon_set": "Pôr da Lua",
+    "loading": "Carregando..."
   },
   "moon": {
     "new_moon": "Lua Nova",

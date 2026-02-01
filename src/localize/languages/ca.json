@@ -16,7 +16,8 @@
   "card": {
     "moon_phase": "Fase de Lluna",
     "moon_rise": "Sortida de Lluna",
-    "moon_set": "Posta de Lluna"
+    "moon_set": "Posta de Lluna",
+    "loading": "Carregant..."
   },
   "moon": {
     "new_moon": "Lluna Nova",

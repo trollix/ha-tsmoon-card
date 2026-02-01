@@ -2376,7 +2376,7 @@ var TSMoonCard = (function (exports) {
                 <div class="entity-row">
                     ${this.renderIcon(this.moonIcon, this.hemisphere)}
                     <div class="name truncate">
-                      <span class="primary">${this.localize(`card.moon_phase`)}</span><br />
+                      <span class="primary">${this.localize(`card.moon_phase`)}</span> :: <br />
                       <span class="secondary">${lc_state_localized}</span>
                       <span class="secondary">&nbsp;(${moon_illumination_percent})</span>
                     </div>
@@ -2434,7 +2434,7 @@ var TSMoonCard = (function (exports) {
     ], TSMoonCard.prototype, "moonSet", void 0);
 
     var name = "ha-tsmoon-card";
-    var version = "v0.11.5";
+    var version = "v0.11.4.2";
 
     const printVersionToConsole = () => console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
     window.customCards = window.customCards || [];

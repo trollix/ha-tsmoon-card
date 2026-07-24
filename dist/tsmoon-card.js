@@ -2432,13 +2432,12 @@ var TSMoonCard = (function (exports) {
                 get moonSet() { return __classPrivateFieldGet(this, _TSMoonCard_moonSet_accessor_storage, "f"); }
                 set moonSet(value) { __classPrivateFieldSet(this, _TSMoonCard_moonSet_accessor_storage, value, "f"); }
                 renderIcon(svg_icon_code, p_hemisphere) {
-                    let lv_style = '';
-                    if (p_hemisphere == 'S') {
-                        lv_style = 'transform: rotate(180deg);';
-                    }
+                    const lc_style = p_hemisphere === 'S'
+                        ? 'transform: rotate(180deg);'
+                        : '';
                     return b `
             <div class="icon">
-                <img class="moon-img-svg" loading="lazy" src=${svg_icon_code} style=${lv_style} />
+                <img class="moon-img-svg" loading="lazy" src=${svg_icon_code} style=${lc_style} />
             </div>
         `;
                 }
@@ -2448,7 +2447,6 @@ var TSMoonCard = (function (exports) {
                 getTimeFormat(p_timeFormat) {
                     return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
                 }
-                ;
                 getLocale() {
                     return this.language ?? this._hass?.locale?.language ?? 'en';
                 }
@@ -2514,23 +2512,25 @@ var TSMoonCard = (function (exports) {
                     }
                 }
                 updateMoonData() {
-                    if (!this._hass)
+                    if (!this._hass) {
                         return;
+                    }
                     try {
                         const currentDate = new Date();
+                        const moonData = SunCalc.getMoonData(currentDate, this.home_latitude, this.home_longitude);
+                        const moonTimes = SunCalc.getMoonTimes(currentDate, this.home_latitude, this.home_longitude);
                         let phaseState = this.state;
-                        if (!phaseState || phaseState === '') {
-                            const moonRawData = SunCalc.getMoonData(currentDate, this.home_latitude, this.home_longitude);
-                            phaseState = TSMOON_PHASES[moonRawData.illumination.phase.id];
+                        if (!phaseState) {
+                            phaseState =
+                                TSMOON_PHASES[moonData.illumination.phase.id];
                         }
                         this.moonPhase = phaseState;
                         this.moonIcon = this.toIcon(phaseState, this.icon_type);
-                        const moonData = SunCalc.getMoonData(currentDate, this.home_latitude, this.home_longitude);
-                        this.moonIllumination = Math.ceil(moonData.illumination.fraction * 100) + "%";
-                        const times = SunCalc.getMoonTimes(currentDate, this.home_latitude, this.home_longitude);
+                        this.moonIllumination =
+                            `${Math.ceil(moonData.illumination.fraction * 100)}%`;
                         const timeFormat = this.getTimeFormat(this.time_format);
-                        this.moonRise = dayjs(times.rise).format(timeFormat);
-                        this.moonSet = dayjs(times.set).format(timeFormat);
+                        this.moonRise = dayjs(moonTimes.rise).format(timeFormat);
+                        this.moonSet = dayjs(moonTimes.set).format(timeFormat);
                     }
                     catch (error) {
                         console.error('Erreur lors du calcul des données lunaires:', error);
@@ -2582,7 +2582,7 @@ var TSMoonCard = (function (exports) {
                     super(...arguments);
                     _TSMoonCard_cardTitle_accessor_storage.set(this, __runInitializers(this, _cardTitle_initializers, ""));
                     _TSMoonCard_state_accessor_storage.set(this, (__runInitializers(this, _cardTitle_extraInitializers), __runInitializers(this, _state_initializers, "")));
-                    _TSMoonCard_icon_type_accessor_storage.set(this, (__runInitializers(this, _state_extraInitializers), __runInitializers(this, _icon_type_initializers, "forms")));
+                    _TSMoonCard_icon_type_accessor_storage.set(this, (__runInitializers(this, _state_extraInitializers), __runInitializers(this, _icon_type_initializers, DEFAULT_ICON_TYPE)));
                     _TSMoonCard_language_accessor_storage.set(this, (__runInitializers(this, _icon_type_extraInitializers), __runInitializers(this, _language_initializers, "en")));
                     _TSMoonCard_entity_accessor_storage.set(this, (__runInitializers(this, _language_extraInitializers), __runInitializers(this, _entity_initializers, "")));
                     _TSMoonCard_time_format_accessor_storage.set(this, (__runInitializers(this, _entity_extraInitializers), __runInitializers(this, _time_format_initializers, "24h")));
@@ -2673,11 +2673,6 @@ var TSMoonCard = (function (exports) {
                         return;
                     }
                     const value = ev.detail?.value ?? target.value;
-                    console.log({
-                        value,
-                        detailValue: ev.detail?.value,
-                        configValue,
-                    });
                     if (value === undefined || this._config[configValue] === value) {
                         return;
                     }
@@ -2800,7 +2795,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.15.2.3beta";
+    var version = "0.15.2.4beta";
 
     const CARD_TYPE = 'tsmoon-card';
     const CARD_NAME = 'Simple Moon Phase Card';

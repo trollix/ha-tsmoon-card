@@ -26,7 +26,7 @@ const TSMOON_PHASES = {
     waningGibbousMoon: 'waning_gibbous',
     thirdQuarterMoon: 'last_quarter',
     waningCrescentMoon: 'waning_crescent'
-};
+} as const;
 
 
 // ICON_TYPES
@@ -57,8 +57,8 @@ export class TSMoonCard extends LitElement {
     @property({ attribute: false }) 
     private accessor state: string = "";
     
-    @property({ attribute: false }) 
-    private accessor icon_type: string = "forms";
+    @property({ attribute: false })
+    private accessor icon_type: IconType = DEFAULT_ICON_TYPE;
     
     @property({ attribute: false }) 
     private accessor language: string = "en";
@@ -97,15 +97,14 @@ export class TSMoonCard extends LitElement {
 
     private renderIcon(svg_icon_code: string, p_hemisphere: string): TemplateResult {
         
-        let lv_style = '';
+        const lc_style =
+            p_hemisphere === 'S'
+                ? 'transform: rotate(180deg);'
+                : '';
         
-        if (p_hemisphere == 'S') {
-            lv_style = 'transform: rotate(180deg);';
-        }
-
         return html`
             <div class="icon">
-                <img class="moon-img-svg" loading="lazy" src=${svg_icon_code} style=${lv_style} />
+                <img class="moon-img-svg" loading="lazy" src=${svg_icon_code} style=${lc_style} />
             </div>
         `
     }
@@ -131,7 +130,7 @@ export class TSMoonCard extends LitElement {
 
     private getTimeFormat(p_timeFormat: string): string {
         return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
-    };
+    }
 
 
 
@@ -286,61 +285,61 @@ export class TSMoonCard extends LitElement {
      * Calculate all moon data
      */
     private updateMoonData(): void {
-    
-        // TODO: Ici on va mettre tous les calculs
-        if (!this._hass) return;
+        if (!this._hass) {
+            return;
+        }
+
         try {
             const currentDate = new Date();
-            let phaseState = this.state;
 
-            // Calcul de la phase si pas d'entité
-            if (!phaseState || phaseState === '') {
-                const moonRawData = SunCalc.getMoonData(
-                    currentDate,
-                    this.home_latitude,
-                    this.home_longitude
-                );
-                phaseState = TSMOON_PHASES[moonRawData.illumination.phase.id];
-            }
-
-            // Stocker la phase
-            this.moonPhase = phaseState;
-        
-            // Calculer l'icône
-            this.moonIcon = this.toIcon(phaseState, this.icon_type);
-
-                    // Calculer l'illumination
             const moonData = SunCalc.getMoonData(
                 currentDate,
                 this.home_latitude,
-                this.home_longitude
+                this.home_longitude,
             );
-            this.moonIllumination = Math.ceil(moonData.illumination.fraction * 100) + "%";
 
-            // Calculer lever/coucher
-            const times = SunCalc.getMoonTimes(
+            const moonTimes = SunCalc.getMoonTimes(
                 currentDate,
                 this.home_latitude,
-                this.home_longitude
+                this.home_longitude,
             );
-        
+
+            let phaseState = this.state;
+
+            // Si aucune entité lune n'est disponible,
+            // on calcule directement la phase avec SunCalc.
+            if (!phaseState) {
+                phaseState =
+                    TSMOON_PHASES[moonData.illumination.phase.id];
+            }
+
+            this.moonPhase = phaseState;
+
+            this.moonIcon = this.toIcon(
+                phaseState,
+                this.icon_type,
+            );
+
+            this.moonIllumination =
+                `${Math.ceil(moonData.illumination.fraction * 100)}%`;
+
             const timeFormat = this.getTimeFormat(this.time_format);
-            this.moonRise = dayjs(times.rise).format(timeFormat);
-            this.moonSet = dayjs(times.set).format(timeFormat);
 
-
-
-
+            this.moonRise = dayjs(moonTimes.rise).format(timeFormat);
+            this.moonSet = dayjs(moonTimes.set).format(timeFormat);
 
         } catch (error) {
-            console.error('Erreur lors du calcul des données lunaires:', error);
+            console.error(
+                'Erreur lors du calcul des données lunaires:',
+                error,
+            );
+
             this.moonPhase = '';
             this.moonIcon = '';
             this.moonIllumination = '0%';
             this.moonRise = '--:--';
             this.moonSet = '--:--';
         }
-
     }
 
 

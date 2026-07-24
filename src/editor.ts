@@ -73,11 +73,11 @@ private _valueChanged(ev: CustomEvent): void {
 
     const value = ev.detail?.value ?? target.value;
 
-    console.log({
-        value,
-        detailValue: ev.detail?.value,
-        configValue,
-    });
+    //console.log({
+    //    value,
+    //    detailValue: ev.detail?.value,
+    //    configValue,
+    //});
 
     if (value === undefined || this._config[configValue] === value) {
         return;

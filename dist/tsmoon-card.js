@@ -2338,6 +2338,8 @@ var TSMoonCard = (function (exports) {
     var suncalcExports = requireSuncalc();
     var SunCalc = /*@__PURE__*/getDefaultExportFromCjs(suncalcExports);
 
+    const DEFAULT_ICON_TYPE = 'forms';
+
     const TSMOON_PHASES = {
         newMoon: 'new_moon',
         waxingCrescentMoon: 'waxing_crescent',
@@ -2348,13 +2350,6 @@ var TSMoonCard = (function (exports) {
         thirdQuarterMoon: 'last_quarter',
         waningCrescentMoon: 'waning_crescent'
     };
-    const ICON_TYPES = [
-        'forms',
-        'round',
-        'photo',
-        'clear',
-    ];
-    const DEFAULT_ICON_TYPE = 'forms';
     const DEFAULT_LATITUDE = 48.8566;
     const DEFAULT_LONGITUDE = 2.3522;
     let TSMoonCard = (() => {
@@ -2451,15 +2446,9 @@ var TSMoonCard = (function (exports) {
                     return this.language ?? this._hass?.locale?.language ?? 'en';
                 }
                 toIcon(moonState, type) {
-                    const iconType = ICON_TYPES.includes(type)
-                        ? type
-                        : DEFAULT_ICON_TYPE;
-                    if (iconType !== type) {
-                        console.warn(`Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}".`);
-                    }
-                    const icon = svg[iconType]?.[moonState];
+                    const icon = svg[type]?.[moonState];
                     if (!icon) {
-                        console.warn(`Icône non trouvée : ${iconType}/${moonState}`);
+                        console.warn(`Icône non trouvée : ${type}/${moonState}`);
                         return '';
                     }
                     return icon;
@@ -2496,7 +2485,7 @@ var TSMoonCard = (function (exports) {
                 setConfig(config) {
                     this.entity = config.entity ?? this.entity;
                     this.cardTitle = config.title ?? this.cardTitle;
-                    this.icon_type = config.icon_type ?? 'forms';
+                    this.icon_type = config.icon_type ?? DEFAULT_ICON_TYPE;
                     this.language = config.language ?? 'fr';
                     this.time_format = config.time_format ?? '24h';
                     this.hemisphere = config.hemisphere ?? 'N';
@@ -2580,13 +2569,13 @@ var TSMoonCard = (function (exports) {
                 }
                 constructor() {
                     super(...arguments);
-                    _TSMoonCard_cardTitle_accessor_storage.set(this, __runInitializers(this, _cardTitle_initializers, ""));
-                    _TSMoonCard_state_accessor_storage.set(this, (__runInitializers(this, _cardTitle_extraInitializers), __runInitializers(this, _state_initializers, "")));
+                    _TSMoonCard_cardTitle_accessor_storage.set(this, __runInitializers(this, _cardTitle_initializers, ''));
+                    _TSMoonCard_state_accessor_storage.set(this, (__runInitializers(this, _cardTitle_extraInitializers), __runInitializers(this, _state_initializers, '')));
                     _TSMoonCard_icon_type_accessor_storage.set(this, (__runInitializers(this, _state_extraInitializers), __runInitializers(this, _icon_type_initializers, DEFAULT_ICON_TYPE)));
-                    _TSMoonCard_language_accessor_storage.set(this, (__runInitializers(this, _icon_type_extraInitializers), __runInitializers(this, _language_initializers, "en")));
-                    _TSMoonCard_entity_accessor_storage.set(this, (__runInitializers(this, _language_extraInitializers), __runInitializers(this, _entity_initializers, "")));
-                    _TSMoonCard_time_format_accessor_storage.set(this, (__runInitializers(this, _entity_extraInitializers), __runInitializers(this, _time_format_initializers, "24h")));
-                    _TSMoonCard_hemisphere_accessor_storage.set(this, (__runInitializers(this, _time_format_extraInitializers), __runInitializers(this, _hemisphere_initializers, "N")));
+                    _TSMoonCard_language_accessor_storage.set(this, (__runInitializers(this, _icon_type_extraInitializers), __runInitializers(this, _language_initializers, 'en')));
+                    _TSMoonCard_entity_accessor_storage.set(this, (__runInitializers(this, _language_extraInitializers), __runInitializers(this, _entity_initializers, '')));
+                    _TSMoonCard_time_format_accessor_storage.set(this, (__runInitializers(this, _entity_extraInitializers), __runInitializers(this, _time_format_initializers, '24h')));
+                    _TSMoonCard_hemisphere_accessor_storage.set(this, (__runInitializers(this, _time_format_extraInitializers), __runInitializers(this, _hemisphere_initializers, 'N')));
                     _TSMoonCard_home_latitude_accessor_storage.set(this, (__runInitializers(this, _hemisphere_extraInitializers), __runInitializers(this, _home_latitude_initializers, DEFAULT_LATITUDE)));
                     _TSMoonCard_home_longitude_accessor_storage.set(this, (__runInitializers(this, _home_latitude_extraInitializers), __runInitializers(this, _home_longitude_initializers, DEFAULT_LONGITUDE)));
                     _TSMoonCard_moonPhase_accessor_storage.set(this, (__runInitializers(this, _home_longitude_extraInitializers), __runInitializers(this, _moonPhase_initializers, '')));
@@ -2795,7 +2784,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.15.2-beta4";
+    var version = "0.15.4-beta5";
 
     const CARD_TYPE = 'tsmoon-card';
     const CARD_NAME = 'Simple Moon Phase Card';

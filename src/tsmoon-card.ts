@@ -30,14 +30,11 @@ const TSMOON_PHASES = {
 
 
 // ICON_TYPES
-export const ICON_TYPES = [
-    'forms',
-    'round',
-    'photo',
-    'clear',
-] as const;
-export type IconType = typeof ICON_TYPES[number];
-export const DEFAULT_ICON_TYPE: IconType = 'forms';
+import { DEFAULT_ICON_TYPE } from './icon-types';
+import type { IconType } from './icon-types';
+
+
+
 
 
 const DEFAULT_LATITUDE = 48.8566;   // Paris, France
@@ -52,25 +49,25 @@ export class TSMoonCard extends LitElement {
     private _hass?: HomeAssistant;
 
     @property({ attribute: false }) 
-    private accessor cardTitle: string = "";
+    private accessor cardTitle: string = '';
     
     @property({ attribute: false }) 
-    private accessor state: string = "";
+    private accessor state: string = '';
     
     @property({ attribute: false })
     private accessor icon_type: IconType = DEFAULT_ICON_TYPE;
     
     @property({ attribute: false }) 
-    private accessor language: string = "en";
+    private accessor language: string = 'en';
     
     @property({ attribute: false }) 
-    private accessor entity: string = "";
+    private accessor entity: string = '';
     
     @property({ attribute: false }) 
-    private accessor time_format: string = "24h";
+    private accessor time_format: string = '24h';
     
     @property({ attribute: false }) 
-    private accessor hemisphere: string = "N";
+    private accessor hemisphere: string = 'N';
     
     @property({ attribute: false }) 
     private accessor home_latitude: number = DEFAULT_LATITUDE;
@@ -138,60 +135,13 @@ export class TSMoonCard extends LitElement {
         return this.language ?? this._hass?.locale?.language ?? 'en'
     }
 
-    /*
-    private toIcon(moonState: string, type: string): string {
-        if ((type === 'forms') || (type === 'round') || (type === 'photo') || (type === 'clear')) {
-            return svg[type][moonState]!;
-        } else {
-            // Gérer le cas où la propriété n'est pas définie
-            // throw new Error('Propriété non définie');
-            return '';
-        }
-    }
-  */
 
-    /*
-    private toIcon(moonState: string, type: string): string {
-        const validTypes = ['forms', 'round', 'photo', 'clear'];
-    
-        // Vérifier si le type est valide, sinon avertir
-        if (!validTypes.includes(type)) {
-            console.warn(`Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}" par défaut.`);
-        }
-    
-        // Utiliser le type fourni s'il est valide, sinon utiliser la valeur par défaut
-        const iconType = (validTypes.includes(type) ? type : DEFAULT_ICON_TYPE) as 'forms' | 'round' | 'photo' | 'clear';
-    
-        const icon = svg[iconType]?.[moonState];
-    
-        if (!icon) {
-            console.warn(`Icône non trouvée pour type: ${iconType}, état: ${moonState}`);
-            return '';
-        }
-    
-        return icon;
-    }
+    private toIcon(moonState: string, type: IconType): string {
 
-*/
-
-
-    private toIcon(moonState: string, type: string): string {
-
-        const iconType: IconType =
-            ICON_TYPES.includes(type as IconType)
-                ? (type as IconType)
-                : DEFAULT_ICON_TYPE;
-
-        if (iconType !== type) {
-            console.warn(
-                `Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}".`
-            );
-        }
-
-        const icon = svg[iconType]?.[moonState];
+        const icon = svg[type]?.[moonState];
 
         if (!icon) {
-            console.warn(`Icône non trouvée : ${iconType}/${moonState}`);
+            console.warn(`Icône non trouvée : ${type}/${moonState}`);
             return '';
         }
 
@@ -253,7 +203,7 @@ export class TSMoonCard extends LitElement {
 
         this.entity = config.entity ?? this.entity;
         this.cardTitle = config.title ?? this.cardTitle;
-        this.icon_type = config.icon_type ?? 'forms';
+        this.icon_type = config.icon_type ?? DEFAULT_ICON_TYPE;
         this.language = config.language ?? 'fr';
         this.time_format = config.time_format ?? '24h';
         this.hemisphere = config.hemisphere ?? 'N';

@@ -14,7 +14,9 @@ import { localize } from './localize/localize';
 import dayjs from 'dayjs';
 import SunCalc from 'suncalc3';
 
-
+// ICON_TYPES
+import { DEFAULT_ICON_TYPE } from './icon-types';
+import type { IconType } from './icon-types';
 
 
 const TSMOON_PHASES = {
@@ -27,12 +29,6 @@ const TSMOON_PHASES = {
     thirdQuarterMoon: 'last_quarter',
     waningCrescentMoon: 'waning_crescent'
 } as const;
-
-
-// ICON_TYPES
-import { DEFAULT_ICON_TYPE } from './icon-types';
-import type { IconType } from './icon-types';
-
 
 
 

@@ -1,11 +1,18 @@
-import { LitElement, html, TemplateResult } from 'lit';
+import { LitElement, html } from 'lit';
+import type { TemplateResult } from 'lit';
+
 import { property, state } from 'lit/decorators.js';
-import { HomeAssistant } from 'custom-card-helpers';
-import { ICardConfig } from './types';
+
+import type { HomeAssistant } from 'custom-card-helpers';
+import type { ICardConfig } from './types';
 
 export class TSMoonCardEditor extends LitElement {
-    @property({ attribute: false }) public hass!: HomeAssistant;
-    @state() private _config!: ICardConfig;
+    
+    @property({ attribute: false }) 
+    public accessor hass!: HomeAssistant;
+    
+    @state() 
+    private accessor _config!: ICardConfig;
 
     /**
      * Appelé quand la config change

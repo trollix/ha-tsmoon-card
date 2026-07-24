@@ -39,22 +39,48 @@ export class TSMoonCard extends LitElement {
 
     private _hass?: HomeAssistant;
 
-    @property({ attribute: false }) private cardTitle: string = "";
-    @property({ attribute: false }) private state: string = "";
-    @property({ attribute: false }) private icon_type: string = "forms";
-    @property({ attribute: false }) private language: string = "en";
-    @property({ attribute: false }) private entity: string = "";
-    @property({ attribute: false }) private time_format: string = "24h";
-    @property({ attribute: false }) private hemisphere: string = "N";
-    @property({ attribute: false }) private home_latitude: number = DEFAULT_LATITUDE;
-    @property({ attribute: false }) private home_longitude: number = DEFAULT_LONGITUDE;
+    @property({ attribute: false }) 
+    private accessor cardTitle: string = "";
+    
+    @property({ attribute: false }) 
+    private accessor state: string = "";
+    
+    @property({ attribute: false }) 
+    private accessor icon_type: string = "forms";
+    
+    @property({ attribute: false }) 
+    private accessor language: string = "en";
+    
+    @property({ attribute: false }) 
+    private accessor entity: string = "";
+    
+    @property({ attribute: false }) 
+    private accessor time_format: string = "24h";
+    
+    @property({ attribute: false }) 
+    private accessor hemisphere: string = "N";
+    
+    @property({ attribute: false }) 
+    private accessor home_latitude: number = DEFAULT_LATITUDE;
+    
+    @property({ attribute: false }) 
+    private accessor home_longitude: number = DEFAULT_LONGITUDE;
 
     // NOUVELLES PROPRIÉTÉS - Ajoutez ces lignes
-    @property({ attribute: false }) private moonPhase: string = '';         // Contiendra : 'new_moon', 'full_moon', etc.
-    @property({ attribute: false }) private moonIcon: string = '';          // Contiendra : Le code SVG de l'icône (data:image/svg+xml...)
-    @property({ attribute: false }) private moonIllumination: string = '';  // Contiendra : '87%', '45%', etc.
-    @property({ attribute: false }) private moonRise: string = '';          // Contiendra : '18:45', '6:30 PM', etc.
-    @property({ attribute: false }) private moonSet: string = '';           // Contiendra : '06:12', '8:15 AM', etc.
+    @property({ attribute: false }) 
+    private accessor moonPhase: string = '';         // Contiendra : 'new_moon', 'full_moon', etc.
+    
+    @property({ attribute: false }) 
+    private accessor moonIcon: string = '';          // Contiendra : Le code SVG de l'icône (data:image/svg+xml...)
+    
+    @property({ attribute: false }) 
+    private accessor moonIllumination: string = '';  // Contiendra : '87%', '45%', etc.
+    
+    @property({ attribute: false }) 
+    private accessor moonRise: string = '';          // Contiendra : '18:45', '6:30 PM', etc.
+    
+    @property({ attribute: false }) 
+    private accessor moonSet: string = '';           // Contiendra : '06:12', '8:15 AM', etc.
 
 
     private renderIcon(svg_icon_code: string, p_hemisphere: string): TemplateResult {

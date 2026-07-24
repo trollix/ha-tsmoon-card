@@ -2669,15 +2669,15 @@ var TSMoonCard = (function (exports) {
                     }
                     const target = ev.currentTarget;
                     const configValue = target.configValue;
-                    console.log({
-                        targetValue: target.value,
-                        detailValue: ev.detail?.value,
-                        configValue,
-                    });
                     if (!configValue) {
                         return;
                     }
                     const value = ev.detail?.value ?? target.value;
+                    console.log({
+                        value,
+                        detailValue: ev.detail?.value,
+                        configValue,
+                    });
                     if (value === undefined || this._config[configValue] === value) {
                         return;
                     }
@@ -2721,13 +2721,16 @@ var TSMoonCard = (function (exports) {
                 label="Type d'icône"
                 .value=${this._config.icon_type || 'forms'}
                 .configValue=${'icon_type'}
+                .options=${[
+                    { value: 'forms', label: 'Forms' },
+                    { value: 'round', label: 'Round' },
+                    { value: 'photo', label: 'Photo' },
+                    { value: 'clear', label: 'Clear' },
+                ]}
                 @selected=${this._valueChanged}
-                @closed=${(ev) => ev.stopPropagation()}
+                @wa-hide=${(ev) => ev.stopPropagation()}
+                @wa-after-hide=${(ev) => ev.stopPropagation()}
             >
-                <mwc-list-item value="forms">Forms</mwc-list-item>
-                <mwc-list-item value="round">Round</mwc-list-item>
-                <mwc-list-item value="photo">Photo</mwc-list-item>
-                <mwc-list-item value="clear">Clear</mwc-list-item>
             </ha-select>
 
             <!-- Format heure -->
@@ -2735,11 +2738,14 @@ var TSMoonCard = (function (exports) {
                 label="Format de l'heure"
                 .value=${this._config.time_format || '24h'}
                 .configValue=${'time_format'}
+                .options=${[
+                    { value: '24h', label: '24h' },
+                    { value: '12h', label: '12h' },
+                ]}
                 @selected=${this._valueChanged}
-                @closed=${(ev) => ev.stopPropagation()}
+                @wa-hide=${(ev) => ev.stopPropagation()}
+                @wa-after-hide=${(ev) => ev.stopPropagation()}
             >
-                <mwc-list-item value="24h">24h</mwc-list-item>
-                <mwc-list-item value="12h">12h</mwc-list-item>
             </ha-select>
 
             <!-- Hémisphère -->
@@ -2747,11 +2753,14 @@ var TSMoonCard = (function (exports) {
                 label="Hémisphère"
                 .value=${this._config.hemisphere || 'N'}
                 .configValue=${'hemisphere'}
+                .options=${[
+                    { value: 'N', label: 'Nord' },
+                    { value: 'S', label: 'Sud' },
+                ]}
                 @selected=${this._valueChanged}
-                @closed=${(ev) => ev.stopPropagation()}
+                @wa-hide=${(ev) => ev.stopPropagation()}
+                @wa-after-hide=${(ev) => ev.stopPropagation()}
             >
-                <mwc-list-item value="N">Nord</mwc-list-item>
-                <mwc-list-item value="S">Sud</mwc-list-item>
             </ha-select>
 
             <!-- Langue -->
@@ -2791,7 +2800,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.15.2.1beta";
+    var version = "0.15.2.2beta";
 
     const CARD_TYPE = 'tsmoon-card';
     const CARD_NAME = 'Simple Moon Phase Card';

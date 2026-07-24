@@ -28,9 +28,21 @@ const TSMOON_PHASES = {
     waningCrescentMoon: 'waning_crescent'
 };
 
+
+// ICON_TYPES
+export const ICON_TYPES = [
+    'forms',
+    'round',
+    'photo',
+    'clear',
+] as const;
+export type IconType = typeof ICON_TYPES[number];
+export const DEFAULT_ICON_TYPE: IconType = 'forms';
+
+
 const DEFAULT_LATITUDE = 48.8566;   // Paris, France
 const DEFAULT_LONGITUDE = 2.3522;
-const DEFAULT_ICON_TYPE = 'forms'; 
+
 
 /**
  * Main card class definition
@@ -85,7 +97,7 @@ export class TSMoonCard extends LitElement {
 
     private renderIcon(svg_icon_code: string, p_hemisphere: string): TemplateResult {
         
-        var lv_style = '';
+        let lv_style = '';
         
         if (p_hemisphere == 'S') {
             lv_style = 'transform: rotate(180deg);';
@@ -134,18 +146,19 @@ export class TSMoonCard extends LitElement {
         } else {
             // Gérer le cas où la propriété n'est pas définie
             // throw new Error('Propriété non définie');
-            return "";
+            return '';
         }
     }
   */
 
+    /*
     private toIcon(moonState: string, type: string): string {
         const validTypes = ['forms', 'round', 'photo', 'clear'];
     
         // Vérifier si le type est valide, sinon avertir
         if (!validTypes.includes(type)) {
             console.warn(`Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}" par défaut.`);
-     }
+        }
     
         // Utiliser le type fourni s'il est valide, sinon utiliser la valeur par défaut
         const iconType = (validTypes.includes(type) ? type : DEFAULT_ICON_TYPE) as 'forms' | 'round' | 'photo' | 'clear';
@@ -154,9 +167,35 @@ export class TSMoonCard extends LitElement {
     
         if (!icon) {
             console.warn(`Icône non trouvée pour type: ${iconType}, état: ${moonState}`);
-            return "";
+            return '';
         }
     
+        return icon;
+    }
+
+*/
+
+
+    private toIcon(moonState: string, type: string): string {
+
+        const iconType: IconType =
+            ICON_TYPES.includes(type as IconType)
+                ? (type as IconType)
+                : DEFAULT_ICON_TYPE;
+
+        if (iconType !== type) {
+            console.warn(
+                `Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}".`
+            );
+        }
+
+        const icon = svg[iconType]?.[moonState];
+
+        if (!icon) {
+            console.warn(`Icône non trouvée : ${iconType}/${moonState}`);
+            return '';
+        }
+
         return icon;
     }
 

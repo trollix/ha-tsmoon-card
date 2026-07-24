@@ -2348,9 +2348,15 @@ var TSMoonCard = (function (exports) {
         thirdQuarterMoon: 'last_quarter',
         waningCrescentMoon: 'waning_crescent'
     };
+    const ICON_TYPES = [
+        'forms',
+        'round',
+        'photo',
+        'clear',
+    ];
+    const DEFAULT_ICON_TYPE = 'forms';
     const DEFAULT_LATITUDE = 48.8566;
     const DEFAULT_LONGITUDE = 2.3522;
-    const DEFAULT_ICON_TYPE = 'forms';
     let TSMoonCard = (() => {
         var _a, _TSMoonCard_cardTitle_accessor_storage, _TSMoonCard_state_accessor_storage, _TSMoonCard_icon_type_accessor_storage, _TSMoonCard_language_accessor_storage, _TSMoonCard_entity_accessor_storage, _TSMoonCard_time_format_accessor_storage, _TSMoonCard_hemisphere_accessor_storage, _TSMoonCard_home_latitude_accessor_storage, _TSMoonCard_home_longitude_accessor_storage, _TSMoonCard_moonPhase_accessor_storage, _TSMoonCard_moonIcon_accessor_storage, _TSMoonCard_moonIllumination_accessor_storage, _TSMoonCard_moonRise_accessor_storage, _TSMoonCard_moonSet_accessor_storage;
         let _classSuper = i;
@@ -2426,7 +2432,7 @@ var TSMoonCard = (function (exports) {
                 get moonSet() { return __classPrivateFieldGet(this, _TSMoonCard_moonSet_accessor_storage, "f"); }
                 set moonSet(value) { __classPrivateFieldSet(this, _TSMoonCard_moonSet_accessor_storage, value, "f"); }
                 renderIcon(svg_icon_code, p_hemisphere) {
-                    var lv_style = '';
+                    let lv_style = '';
                     if (p_hemisphere == 'S') {
                         lv_style = 'transform: rotate(180deg);';
                     }
@@ -2447,15 +2453,16 @@ var TSMoonCard = (function (exports) {
                     return this.language ?? this._hass?.locale?.language ?? 'en';
                 }
                 toIcon(moonState, type) {
-                    const validTypes = ['forms', 'round', 'photo', 'clear'];
-                    if (!validTypes.includes(type)) {
-                        console.warn(`Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}" par défaut.`);
+                    const iconType = ICON_TYPES.includes(type)
+                        ? type
+                        : DEFAULT_ICON_TYPE;
+                    if (iconType !== type) {
+                        console.warn(`Type d'icône invalide: "${type}". Utilisation de "${DEFAULT_ICON_TYPE}".`);
                     }
-                    const iconType = (validTypes.includes(type) ? type : DEFAULT_ICON_TYPE);
                     const icon = svg[iconType]?.[moonState];
                     if (!icon) {
-                        console.warn(`Icône non trouvée pour type: ${iconType}, état: ${moonState}`);
-                        return "";
+                        console.warn(`Icône non trouvée : ${iconType}/${moonState}`);
+                        return '';
                     }
                     return icon;
                 }
@@ -2776,7 +2783,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.15";
+    var version = "0.15.1";
 
     const CARD_TYPE = 'tsmoon-card';
     const CARD_NAME = 'Simple Moon Phase Card';

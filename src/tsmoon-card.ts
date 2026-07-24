@@ -1,16 +1,20 @@
-import { html, LitElement, CSSResultGroup, TemplateResult } from "lit";
-import { property} from "lit/decorators.js";
-import { ICardConfig } from "./types";
-import styles from './styles'
-import { svg } from './img_exp'
+import { html, LitElement } from 'lit';
+import type { CSSResultGroup, TemplateResult } from 'lit';
+
+import { property } from 'lit/decorators.js';
+
+import type { ICardConfig } from './types';
+// This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
+import type { HomeAssistant } from 'custom-card-helpers';
+
+import styles from './styles';
+import { svg } from './img_exp';
 import { localize } from './localize/localize';
+
 import dayjs from 'dayjs';
+import SunCalc from 'suncalc3';
 
-import { default as SunCalc } from 'suncalc3';
 
-import {
-    HomeAssistant,
-} from 'custom-card-helpers'; // This is a community maintained npm module with common helper functions/types. https://github.com/custom-cards/custom-card-helpers
 
 
 const TSMOON_PHASES = {

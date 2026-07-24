@@ -2,26 +2,35 @@
   "compilerOptions": {
     "target": "ES2020",
     "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
+
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+
     "declaration": true,
     "sourceMap": false,
+
     "experimentalDecorators": true,
     "useDefineForClassFields": false,
+
     "outDir": "./dist",
     "rootDir": "./src",
-    
-    // ✨ Ajouts recommandés
+
     "removeComments": true,
-    "noUnusedLocals": true,  // si true -> Alerte sur variables non utilisées
+    "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true
   },
+
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

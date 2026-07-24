@@ -2669,6 +2669,11 @@ var TSMoonCard = (function (exports) {
                     }
                     const target = ev.currentTarget;
                     const configValue = target.configValue;
+                    console.log({
+                        targetValue: target.value,
+                        detailValue: ev.detail?.value,
+                        configValue,
+                    });
                     if (!configValue) {
                         return;
                     }
@@ -2786,7 +2791,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.15.2";
+    var version = "0.15.2.1beta";
 
     const CARD_TYPE = 'tsmoon-card';
     const CARD_NAME = 'Simple Moon Phase Card';

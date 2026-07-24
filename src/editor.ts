@@ -67,6 +67,13 @@ private _valueChanged(ev: CustomEvent): void {
 
     const configValue = target.configValue;
 
+    console.log({
+      targetValue: target.value,
+      detailValue: ev.detail?.value,
+      configValue,
+    });
+
+
     if (!configValue) {
         return;
     }

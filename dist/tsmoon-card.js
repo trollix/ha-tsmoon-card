@@ -2667,22 +2667,25 @@ var TSMoonCard = (function (exports) {
                     if (!this._config || !this.hass) {
                         return;
                     }
-                    const target = ev.target;
+                    const target = ev.currentTarget;
                     const configValue = target.configValue;
-                    const value = target.value;
-                    if (this._config[configValue] === value) {
+                    if (!configValue) {
+                        return;
+                    }
+                    const value = ev.detail?.value ?? target.value;
+                    if (value === undefined || this._config[configValue] === value) {
                         return;
                     }
                     const newConfig = {
                         ...this._config,
                         [configValue]: value,
                     };
-                    const event = new CustomEvent('config-changed', {
+                    this._config = newConfig;
+                    this.dispatchEvent(new CustomEvent('config-changed', {
                         detail: { config: newConfig },
                         bubbles: true,
                         composed: true,
-                    });
-                    this.dispatchEvent(event);
+                    }));
                 }
                 render() {
                     if (!this.hass || !this._config) {
@@ -2783,7 +2786,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.15.1";
+    var version = "0.15.2";
 
     const CARD_TYPE = 'tsmoon-card';
     const CARD_NAME = 'Simple Moon Phase Card';

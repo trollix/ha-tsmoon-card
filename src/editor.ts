@@ -24,6 +24,8 @@ export class TSMoonCardEditor extends LitElement {
     /**
      * Appelé quand l'utilisateur change un champ
      */
+
+    /*
     private _valueChanged(ev: CustomEvent): void {
         if (!this._config || !this.hass) {
             return;
@@ -50,6 +52,47 @@ export class TSMoonCardEditor extends LitElement {
         });
         this.dispatchEvent(event);
     }
+*/
+
+
+private _valueChanged(ev: CustomEvent): void {
+    if (!this._config || !this.hass) {
+        return;
+    }
+
+    const target = ev.currentTarget as HTMLElement & {
+        configValue?: keyof ICardConfig;
+        value?: string;
+    };
+
+    const configValue = target.configValue;
+
+    if (!configValue) {
+        return;
+    }
+
+    const value = ev.detail?.value ?? target.value;
+
+    if (value === undefined || this._config[configValue] === value) {
+        return;
+    }
+
+    const newConfig: ICardConfig = {
+        ...this._config,
+        [configValue]: value,
+    };
+
+    // Mise à jour immédiate de l’affichage de l’éditeur
+    this._config = newConfig;
+
+    this.dispatchEvent(
+        new CustomEvent('config-changed', {
+            detail: { config: newConfig },
+            bubbles: true,
+            composed: true,
+        }),
+    );
+}
 
 
 

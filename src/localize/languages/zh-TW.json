@@ -1,0 +1,32 @@
+{
+  "common": {
+    "version": "版本",
+    "title": "月相",
+    "title_card": "月相卡片",
+    "description": "顯示日月運行狀態的極簡卡片。",
+    "invalid_configuration": "設定無效"
+  },
+  "editor": {
+    "moon_entity": "月相實體（選填）"
+  },
+  "errors": {
+    "missing_moon_entity": "設定中缺少 moon_entity",
+    "invalid_icon_type": "設定中的圖示類型無效："
+  },
+  "card": {
+    "moon_phase": "月相",
+    "moon_rise": "月出",
+    "moon_set": "月落",
+    "loading": "載入中…"
+  },
+  "moon": {
+    "new_moon": "新月",
+    "waxing_crescent": "娥眉月",
+    "first_quarter": "上弦月",
+    "waxing_gibbous": "盈凸月",
+    "full_moon": "滿月",
+    "waning_gibbous": "虧凸月",
+    "last_quarter": "下弦月",
+    "waning_crescent": "殘月"
+  }
+}

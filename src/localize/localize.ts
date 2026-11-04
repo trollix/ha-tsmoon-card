@@ -15,6 +15,8 @@ import * as pt_BR from './languages/pt-BR.json';
 import * as ro from './languages/ro.json';
 import * as ru from './languages/ru.json';
 import * as sk from './languages/sk.json';
+import * as zh_CN from './languages/zh-CN.json';
+import * as zh_TW from './languages/zh-TW.json';
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,6 +38,12 @@ const languages: any = {
   ro,
   ru,
   sk,
+  // Home Assistant locales: zh, zh-CN / zh-Hans, zh-TW / zh-Hant
+  zh: zh_CN,
+  zhcn: zh_CN,
+  zhhans: zh_CN,
+  zhtw: zh_TW,
+  zhhant: zh_TW,
 };
 
 

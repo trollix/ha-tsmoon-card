@@ -788,7 +788,7 @@ var TSMoonCard = (function (exports) {
     	title_card: "Card das fases da lua",
     	description: "Um cartão minimalista para exibir as fases da lua e do sol.",
     	invalid_configuration: "Configuração Inválida",
-    	language_label: "Português"
+    	language_label: "Português (pt-BR)"
     };
     var editor$6 = {
     	moon_entity: "Entidade Lua (Opcional)"
@@ -984,7 +984,7 @@ var TSMoonCard = (function (exports) {
     	title_card: "月相卡片",
     	description: "显示日月运行状态的极简卡片。",
     	invalid_configuration: "配置无效",
-    	language_label: "简体中文"
+    	language_label: "简体中文 (zh-CN)"
     };
     var editor$2 = {
     	moon_entity: "月相实体（可选）"
@@ -1033,7 +1033,7 @@ var TSMoonCard = (function (exports) {
     	title_card: "月相卡片",
     	description: "顯示日月運行狀態的極簡卡片。",
     	invalid_configuration: "設定無效",
-    	language_label: "繁體中文"
+    	language_label: "繁體中文 (zh-TW)"
     };
     var editor$1 = {
     	moon_entity: "月相實體（選填）"
@@ -2896,7 +2896,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.21.pr2";
+    var version = "0.22";
 
     const CARD_TYPE = "tsmoon-card";
     const CARD_NAME = "Simple Moon Phase Card";

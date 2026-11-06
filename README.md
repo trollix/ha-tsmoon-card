@@ -108,3 +108,5 @@ hemisphere: N
 * pt-BR : [netsoft-ruidias](https://github.com/netsoft-ruidias "netsoft-ruidias")
 * ro: [boogytotyo](https://github.com/boogytotyo "boogytotyo")
 * it: [sky7176](https://github.com/sky7176 "sky7176")
+* zh-CN: [hotkong](https://github.com/hotkong "hotkong")
+* zh-TW: [hotkong](https://github.com/hotkong "hotkong")

@@ -1,75 +1,6 @@
 var TSMoonCard = (function (exports) {
     'use strict';
 
-    /******************************************************************************
-    Copyright (c) Microsoft Corporation.
-
-    Permission to use, copy, modify, and/or distribute this software for any
-    purpose with or without fee is hereby granted.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-    PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
-    /* global Reflect, Promise, SuppressedError, Symbol, Iterator */
-
-
-    function __esDecorate(ctor, descriptorIn, decorators, contextIn, initializers, extraInitializers) {
-        function accept(f) { if (f !== void 0 && typeof f !== "function") throw new TypeError("Function expected"); return f; }
-        var kind = contextIn.kind, key = kind === "getter" ? "get" : kind === "setter" ? "set" : "value";
-        var target = !descriptorIn && ctor ? contextIn["static"] ? ctor : ctor.prototype : null;
-        var descriptor = descriptorIn || (target ? Object.getOwnPropertyDescriptor(target, contextIn.name) : {});
-        var _, done = false;
-        for (var i = decorators.length - 1; i >= 0; i--) {
-            var context = {};
-            for (var p in contextIn) context[p] = p === "access" ? {} : contextIn[p];
-            for (var p in contextIn.access) context.access[p] = contextIn.access[p];
-            context.addInitializer = function (f) { if (done) throw new TypeError("Cannot add initializers after decoration has completed"); extraInitializers.push(accept(f || null)); };
-            var result = (0, decorators[i])(kind === "accessor" ? { get: descriptor.get, set: descriptor.set } : descriptor[key], context);
-            if (kind === "accessor") {
-                if (result === void 0) continue;
-                if (result === null || typeof result !== "object") throw new TypeError("Object expected");
-                if (_ = accept(result.get)) descriptor.get = _;
-                if (_ = accept(result.set)) descriptor.set = _;
-                if (_ = accept(result.init)) initializers.unshift(_);
-            }
-            else if (_ = accept(result)) {
-                if (kind === "field") initializers.unshift(_);
-                else descriptor[key] = _;
-            }
-        }
-        if (target) Object.defineProperty(target, contextIn.name, descriptor);
-        done = true;
-    }
-    function __runInitializers(thisArg, initializers, value) {
-        var useValue = arguments.length > 2;
-        for (var i = 0; i < initializers.length; i++) {
-            value = useValue ? initializers[i].call(thisArg, value) : initializers[i].call(thisArg);
-        }
-        return useValue ? value : void 0;
-    }
-    function __classPrivateFieldGet(receiver, state, kind, f) {
-        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-    }
-
-    function __classPrivateFieldSet(receiver, state, value, kind, f) {
-        if (kind === "m") throw new TypeError("Private method is not writable");
-        if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-        return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-    }
-
-    typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
-        var e = new Error(message);
-        return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-    };
-
     /**
      * @license
      * Copyright 2019 Google LLC
@@ -108,7 +39,7 @@ var TSMoonCard = (function (exports) {
      * SPDX-License-Identifier: BSD-3-Clause
      */function r(r){return n({...r,state:true,attribute:false})}
 
-    var styles = i$3 `
+    var styles_default = i$3`
 
 .truncate {
     white-space: nowrap;
@@ -221,46 +152,46 @@ var TSMoonCard = (function (exports) {
     var img = "data:image/svg+xml,%3c%3fxml version='1.0' encoding='utf-8'%3f%3e%3c!-- Uploaded to: SVG Repo%2c www.svgrepo.com%2c Generator: SVG Repo Mixer Tools --%3e%3csvg width='800px' height='800px' viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--fxemoji' preserveAspectRatio='xMidYMid meet'%3e%3cpath fill='%23FDE364' d='M6.002 256c0-138.068 111.931-249.999 249.999-249.999S506 117.931 506 256c0 138.068-111.931 249.999-249.999 249.999S6.002 394.068 6.002 256'%3e%3c/path%3e%3cpath fill='%23FFC63A' d='M184.949 385.542c0-23.302 18.894-42.196 42.196-42.196c23.31 0 42.204 18.894 42.204 42.196s-18.894 42.196-42.204 42.196c-23.302 0-42.196-18.894-42.196-42.196m12.885-159.76c0 32.032 31.893 57.991 71.238 57.991s71.238-25.959 71.238-57.991s-31.893-57.991-71.238-57.991s-71.238 25.959-71.238 57.991m235.088 206.843c-14.483-10.978-35.228-17.861-58.278-17.861c-43.768 0-79.256 24.797-79.256 55.381c0 11.205 4.778 21.625 12.966 30.342c48.095-10.249 91.075-34.314 124.568-67.862zm73.05-178.75c-.469-56.359-19.585-108.266-51.487-149.864c-32.308 10.007-55.781 40.123-55.781 75.718c0 43.769 35.487 79.256 79.256 79.256c9.864 0 19.3-1.817 28.012-5.11zM303.445 10.519A251.23 251.23 0 0 0 256 6.003c-37.879 0-73.781 8.44-105.953 23.516c13.773 26.355 41.35 44.353 73.147 44.353c38.97 0 71.612-27.026 80.251-63.353zM113.3 133.471c-23.302 0-42.196 15.385-42.196 34.356c0 18.972 18.894 34.357 42.196 34.357c23.31 0 42.204-15.385 42.204-34.357c0-18.971-18.894-34.356-42.204-34.356z'%3e%3c/path%3e%3cpath fill='%23496170' d='M109.084 256c0-120.398 85.128-220.856 198.453-244.623c-16.64-3.486-33.861-5.376-51.538-5.376C117.931 6.001 6 117.932 6 256c0 138.069 111.931 250 249.999 250c17.678 0 34.899-1.89 51.538-5.376C194.212 476.857 109.084 376.391 109.084 256'%3e%3c/path%3e%3c/svg%3e";
 
     const svg = {
-        forms: {
-            first_quarter: img$v,
-            full_moon: img$u,
-            last_quarter: img$t,
-            new_moon: img$s,
-            waning_crescent: img$r,
-            waning_gibbous: img$q,
-            waxing_crescent: img$p,
-            waxing_gibbous: img$o
-        },
-        round: {
-            first_quarter: img$n,
-            full_moon: img$m,
-            last_quarter: img$l,
-            new_moon: img$k,
-            waning_crescent: img$j,
-            waning_gibbous: img$i,
-            waxing_crescent: img$h,
-            waxing_gibbous: img$g
-        },
-        photo: {
-            first_quarter: img$f,
-            full_moon: img$e,
-            last_quarter: img$d,
-            new_moon: img$c,
-            waning_crescent: img$b,
-            waning_gibbous: img$a,
-            waxing_crescent: img$9,
-            waxing_gibbous: img$8
-        },
-        clear: {
-            first_quarter: img$7,
-            full_moon: img$6,
-            last_quarter: img$5,
-            new_moon: img$4,
-            waning_crescent: img$3,
-            waning_gibbous: img$2,
-            waxing_crescent: img$1,
-            waxing_gibbous: img
-        }
+      forms: {
+        first_quarter: img$v,
+        full_moon: img$u,
+        last_quarter: img$t,
+        new_moon: img$s,
+        waning_crescent: img$r,
+        waning_gibbous: img$q,
+        waxing_crescent: img$p,
+        waxing_gibbous: img$o
+      },
+      round: {
+        first_quarter: img$n,
+        full_moon: img$m,
+        last_quarter: img$l,
+        new_moon: img$k,
+        waning_crescent: img$j,
+        waning_gibbous: img$i,
+        waxing_crescent: img$h,
+        waxing_gibbous: img$g
+      },
+      photo: {
+        first_quarter: img$f,
+        full_moon: img$e,
+        last_quarter: img$d,
+        new_moon: img$c,
+        waning_crescent: img$b,
+        waning_gibbous: img$a,
+        waxing_crescent: img$9,
+        waxing_gibbous: img$8
+      },
+      clear: {
+        first_quarter: img$7,
+        full_moon: img$6,
+        last_quarter: img$5,
+        new_moon: img$4,
+        waning_crescent: img$3,
+        waning_gibbous: img$2,
+        waxing_crescent: img$1,
+        waxing_gibbous: img
+      }
     };
 
     var common$f = {
@@ -1032,39 +963,33 @@ var TSMoonCard = (function (exports) {
     });
 
     const languages = {
-        ca: ca$1,
-        cz: cz$1,
-        de: de$1,
-        en: en$1,
-        es: es$1,
-        fr: fr$1,
-        hu: hu$1,
-        it: it$1,
-        nb: nb$1,
-        nl: nl$1,
-        pl: pl$1,
-        pt: pt$1,
-        pt_BR,
-        ro: ro$1,
-        ru: ru$1,
-        sk: sk$1,
+      ca: ca$1,
+      cz: cz$1,
+      de: de$1,
+      en: en$1,
+      es: es$1,
+      fr: fr$1,
+      hu: hu$1,
+      it: it$1,
+      nb: nb$1,
+      nl: nl$1,
+      pl: pl$1,
+      pt: pt$1,
+      pt_BR,
+      ro: ro$1,
+      ru: ru$1,
+      sk: sk$1
     };
     function localize(key, locale) {
-        let translated;
-        const lang = locale
-            .replace(/['"]+/g, '')
-            .replace('-', '_')
-            .replace('_', '')
-            .toLowerCase();
-        try {
-            translated = key.split('.').reduce((o, i) => o[i], languages[lang]);
-        }
-        catch (e) {
-            translated = key.split('.').reduce((o, i) => o[i], languages.en);
-        }
-        if (translated === undefined)
-            translated = key.split('.').reduce((o, i) => o[i], languages.en);
-        return translated;
+      let translated;
+      const lang = locale.replace(/['"]+/g, "").replace("-", "_").replace("_", "").toLowerCase();
+      try {
+        translated = key.split(".").reduce((o, i) => o[i], languages[lang]);
+      } catch (e) {
+        translated = key.split(".").reduce((o, i) => o[i], languages.en);
+      }
+      if (translated === void 0) translated = key.split(".").reduce((o, i) => o[i], languages.en);
+      return translated;
     }
 
     function getDefaultExportFromCjs (x) {
@@ -2338,213 +2263,241 @@ var TSMoonCard = (function (exports) {
     var suncalcExports = requireSuncalc();
     var SunCalc = /*@__PURE__*/getDefaultExportFromCjs(suncalcExports);
 
-    const DEFAULT_ICON_TYPE = 'forms';
+    const DEFAULT_ICON_TYPE = "forms";
 
+    var __create$1 = Object.create;
+    var __defProp$1 = Object.defineProperty;
+    var __getOwnPropDesc$1 = Object.getOwnPropertyDescriptor;
+    var __knownSymbol$1 = (name, symbol) => (symbol = Symbol[name]) ? symbol : /* @__PURE__ */ Symbol.for("Symbol." + name);
+    var __typeError$1 = (msg) => {
+      throw TypeError(msg);
+    };
+    var __defNormalProp$1 = (obj, key, value) => key in obj ? __defProp$1(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+    var __decoratorStart$1 = (base) => [, , , __create$1(base?.[__knownSymbol$1("metadata")] ?? null)];
+    var __decoratorStrings$1 = ["class", "method", "getter", "setter", "accessor", "field", "value", "get", "set"];
+    var __expectFn$1 = (fn) => fn !== void 0 && typeof fn !== "function" ? __typeError$1("Function expected") : fn;
+    var __decoratorContext$1 = (kind, name, done, metadata, fns) => ({ kind: __decoratorStrings$1[kind], name, metadata, addInitializer: (fn) => done._ ? __typeError$1("Already initialized") : fns.push(__expectFn$1(fn || null)) });
+    var __decoratorMetadata$1 = (array, target) => __defNormalProp$1(target, __knownSymbol$1("metadata"), array[3]);
+    var __runInitializers$1 = (array, flags, self, value) => {
+      for (var i = 0, fns = array[flags >> 1], n = fns && fns.length; i < n; i++) flags & 1 ? fns[i].call(self) : value = fns[i].call(self, value);
+      return value;
+    };
+    var __decorateElement$1 = (array, flags, name, decorators, target, extra) => {
+      var fn, it, done, ctx, access, k = flags & 7, s = false, p = false;
+      var j = array.length + 1 , key = __decoratorStrings$1[k + 5];
+      var initializers = (array[j - 1] = []), extraInitializers = array[j] || (array[j] = []);
+      var desc = ((target = target.prototype), __getOwnPropDesc$1({ get [name]() {
+        return __privateGet$1(this, extra);
+      }, set [name](x) {
+        return __privateSet$1(this, extra, x);
+      } }, name));
+      for (var i = decorators.length - 1; i >= 0; i--) {
+        ctx = __decoratorContext$1(k, name, done = {}, array[3], extraInitializers);
+        {
+          ctx.static = s, ctx.private = p, access = ctx.access = { has: (x) => name in x };
+          access.get = (x) => x[name];
+          access.set = (x, y) => x[name] = y;
+        }
+        it = (0, decorators[i])({ get: desc.get, set: desc.set } , ctx), done._ = 1;
+        if (it === void 0) __expectFn$1(it) && (desc[key] = it );
+        else if (typeof it !== "object" || it === null) __typeError$1("Object expected");
+        else __expectFn$1(fn = it.get) && (desc.get = fn), __expectFn$1(fn = it.set) && (desc.set = fn), __expectFn$1(fn = it.init) && initializers.unshift(fn);
+      }
+      return desc && __defProp$1(target, name, desc), target;
+    };
+    var __accessCheck$1 = (obj, member, msg) => member.has(obj) || __typeError$1("Cannot " + msg);
+    var __privateGet$1 = (obj, member, getter) => (__accessCheck$1(obj, member, "read from private field"), member.get(obj));
+    var __privateAdd$1 = (obj, member, value) => member.has(obj) ? __typeError$1("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+    var __privateSet$1 = (obj, member, value, setter) => (__accessCheck$1(obj, member, "write to private field"), member.set(obj, value), value);
+    var _moonSet_dec, _moonRise_dec, _moonIllumination_dec, _moonIcon_dec, _moonPhase_dec, _home_longitude_dec, _home_latitude_dec, _hemisphere_dec, _time_format_dec, _entity_dec, _language_dec, _icon_type_dec, _state_dec, _cardTitle_dec, _a$1, _init$1, _cardTitle, _state, _icon_type, _language, _entity, _time_format, _hemisphere, _home_latitude, _home_longitude, _moonPhase, _moonIcon, _moonIllumination, _moonRise, _moonSet;
     const TSMOON_PHASES = {
-        newMoon: 'new_moon',
-        waxingCrescentMoon: 'waxing_crescent',
-        firstQuarterMoon: 'first_quarter',
-        waxingGibbousMoon: 'waxing_gibbous',
-        fullMoon: 'full_moon',
-        waningGibbousMoon: 'waning_gibbous',
-        thirdQuarterMoon: 'last_quarter',
-        waningCrescentMoon: 'waning_crescent'
+      newMoon: "new_moon",
+      waxingCrescentMoon: "waxing_crescent",
+      firstQuarterMoon: "first_quarter",
+      waxingGibbousMoon: "waxing_gibbous",
+      fullMoon: "full_moon",
+      waningGibbousMoon: "waning_gibbous",
+      thirdQuarterMoon: "last_quarter",
+      waningCrescentMoon: "waning_crescent"
     };
     const DEFAULT_LATITUDE = 48.8566;
     const DEFAULT_LONGITUDE = 2.3522;
-    let TSMoonCard = (() => {
-        var _a, _TSMoonCard_cardTitle_accessor_storage, _TSMoonCard_state_accessor_storage, _TSMoonCard_icon_type_accessor_storage, _TSMoonCard_language_accessor_storage, _TSMoonCard_entity_accessor_storage, _TSMoonCard_time_format_accessor_storage, _TSMoonCard_hemisphere_accessor_storage, _TSMoonCard_home_latitude_accessor_storage, _TSMoonCard_home_longitude_accessor_storage, _TSMoonCard_moonPhase_accessor_storage, _TSMoonCard_moonIcon_accessor_storage, _TSMoonCard_moonIllumination_accessor_storage, _TSMoonCard_moonRise_accessor_storage, _TSMoonCard_moonSet_accessor_storage;
-        let _classSuper = i;
-        let _cardTitle_decorators;
-        let _cardTitle_initializers = [];
-        let _cardTitle_extraInitializers = [];
-        let _state_decorators;
-        let _state_initializers = [];
-        let _state_extraInitializers = [];
-        let _icon_type_decorators;
-        let _icon_type_initializers = [];
-        let _icon_type_extraInitializers = [];
-        let _language_decorators;
-        let _language_initializers = [];
-        let _language_extraInitializers = [];
-        let _entity_decorators;
-        let _entity_initializers = [];
-        let _entity_extraInitializers = [];
-        let _time_format_decorators;
-        let _time_format_initializers = [];
-        let _time_format_extraInitializers = [];
-        let _hemisphere_decorators;
-        let _hemisphere_initializers = [];
-        let _hemisphere_extraInitializers = [];
-        let _home_latitude_decorators;
-        let _home_latitude_initializers = [];
-        let _home_latitude_extraInitializers = [];
-        let _home_longitude_decorators;
-        let _home_longitude_initializers = [];
-        let _home_longitude_extraInitializers = [];
-        let _moonPhase_decorators;
-        let _moonPhase_initializers = [];
-        let _moonPhase_extraInitializers = [];
-        let _moonIcon_decorators;
-        let _moonIcon_initializers = [];
-        let _moonIcon_extraInitializers = [];
-        let _moonIllumination_decorators;
-        let _moonIllumination_initializers = [];
-        let _moonIllumination_extraInitializers = [];
-        let _moonRise_decorators;
-        let _moonRise_initializers = [];
-        let _moonRise_extraInitializers = [];
-        let _moonSet_decorators;
-        let _moonSet_initializers = [];
-        let _moonSet_extraInitializers = [];
-        return _a = class TSMoonCard extends _classSuper {
-                get cardTitle() { return __classPrivateFieldGet(this, _TSMoonCard_cardTitle_accessor_storage, "f"); }
-                set cardTitle(value) { __classPrivateFieldSet(this, _TSMoonCard_cardTitle_accessor_storage, value, "f"); }
-                get state() { return __classPrivateFieldGet(this, _TSMoonCard_state_accessor_storage, "f"); }
-                set state(value) { __classPrivateFieldSet(this, _TSMoonCard_state_accessor_storage, value, "f"); }
-                get icon_type() { return __classPrivateFieldGet(this, _TSMoonCard_icon_type_accessor_storage, "f"); }
-                set icon_type(value) { __classPrivateFieldSet(this, _TSMoonCard_icon_type_accessor_storage, value, "f"); }
-                get language() { return __classPrivateFieldGet(this, _TSMoonCard_language_accessor_storage, "f"); }
-                set language(value) { __classPrivateFieldSet(this, _TSMoonCard_language_accessor_storage, value, "f"); }
-                get entity() { return __classPrivateFieldGet(this, _TSMoonCard_entity_accessor_storage, "f"); }
-                set entity(value) { __classPrivateFieldSet(this, _TSMoonCard_entity_accessor_storage, value, "f"); }
-                get time_format() { return __classPrivateFieldGet(this, _TSMoonCard_time_format_accessor_storage, "f"); }
-                set time_format(value) { __classPrivateFieldSet(this, _TSMoonCard_time_format_accessor_storage, value, "f"); }
-                get hemisphere() { return __classPrivateFieldGet(this, _TSMoonCard_hemisphere_accessor_storage, "f"); }
-                set hemisphere(value) { __classPrivateFieldSet(this, _TSMoonCard_hemisphere_accessor_storage, value, "f"); }
-                get home_latitude() { return __classPrivateFieldGet(this, _TSMoonCard_home_latitude_accessor_storage, "f"); }
-                set home_latitude(value) { __classPrivateFieldSet(this, _TSMoonCard_home_latitude_accessor_storage, value, "f"); }
-                get home_longitude() { return __classPrivateFieldGet(this, _TSMoonCard_home_longitude_accessor_storage, "f"); }
-                set home_longitude(value) { __classPrivateFieldSet(this, _TSMoonCard_home_longitude_accessor_storage, value, "f"); }
-                get moonPhase() { return __classPrivateFieldGet(this, _TSMoonCard_moonPhase_accessor_storage, "f"); }
-                set moonPhase(value) { __classPrivateFieldSet(this, _TSMoonCard_moonPhase_accessor_storage, value, "f"); }
-                get moonIcon() { return __classPrivateFieldGet(this, _TSMoonCard_moonIcon_accessor_storage, "f"); }
-                set moonIcon(value) { __classPrivateFieldSet(this, _TSMoonCard_moonIcon_accessor_storage, value, "f"); }
-                get moonIllumination() { return __classPrivateFieldGet(this, _TSMoonCard_moonIllumination_accessor_storage, "f"); }
-                set moonIllumination(value) { __classPrivateFieldSet(this, _TSMoonCard_moonIllumination_accessor_storage, value, "f"); }
-                get moonRise() { return __classPrivateFieldGet(this, _TSMoonCard_moonRise_accessor_storage, "f"); }
-                set moonRise(value) { __classPrivateFieldSet(this, _TSMoonCard_moonRise_accessor_storage, value, "f"); }
-                get moonSet() { return __classPrivateFieldGet(this, _TSMoonCard_moonSet_accessor_storage, "f"); }
-                set moonSet(value) { __classPrivateFieldSet(this, _TSMoonCard_moonSet_accessor_storage, value, "f"); }
-                renderIcon(svg_icon_code, p_hemisphere) {
-                    const lc_style = p_hemisphere === 'S'
-                        ? 'transform: rotate(180deg);'
-                        : '';
-                    return b `
+    class TSMoonCard extends (_a$1 = i, _cardTitle_dec = [n({ attribute: false })], _state_dec = [n({ attribute: false })], _icon_type_dec = [n({ attribute: false })], _language_dec = [n({ attribute: false })], _entity_dec = [n({ attribute: false })], _time_format_dec = [n({ attribute: false })], _hemisphere_dec = [n({ attribute: false })], _home_latitude_dec = [n({ attribute: false })], _home_longitude_dec = [n({ attribute: false })], _moonPhase_dec = [n({ attribute: false })], _moonIcon_dec = [n({ attribute: false })], _moonIllumination_dec = [n({ attribute: false })], _moonRise_dec = [n({ attribute: false })], _moonSet_dec = [n({ attribute: false })], _a$1) {
+      constructor() {
+        super(...arguments);
+        this._hass = void 0;
+        __privateAdd$1(this, _cardTitle, __runInitializers$1(_init$1, 8, this, "")), __runInitializers$1(_init$1, 11, this);
+        __privateAdd$1(this, _state, __runInitializers$1(_init$1, 12, this, "")), __runInitializers$1(_init$1, 15, this);
+        __privateAdd$1(this, _icon_type, __runInitializers$1(_init$1, 16, this, DEFAULT_ICON_TYPE)), __runInitializers$1(_init$1, 19, this);
+        __privateAdd$1(this, _language, __runInitializers$1(_init$1, 20, this, "en")), __runInitializers$1(_init$1, 23, this);
+        __privateAdd$1(this, _entity, __runInitializers$1(_init$1, 24, this, "")), __runInitializers$1(_init$1, 27, this);
+        __privateAdd$1(this, _time_format, __runInitializers$1(_init$1, 28, this, "24h")), __runInitializers$1(_init$1, 31, this);
+        __privateAdd$1(this, _hemisphere, __runInitializers$1(_init$1, 32, this, "N")), __runInitializers$1(_init$1, 35, this);
+        __privateAdd$1(this, _home_latitude, __runInitializers$1(_init$1, 36, this, DEFAULT_LATITUDE)), __runInitializers$1(_init$1, 39, this);
+        __privateAdd$1(this, _home_longitude, __runInitializers$1(_init$1, 40, this, DEFAULT_LONGITUDE)), __runInitializers$1(_init$1, 43, this);
+        __privateAdd$1(this, _moonPhase, __runInitializers$1(_init$1, 44, this, "")), __runInitializers$1(_init$1, 47, this);
+        __privateAdd$1(this, _moonIcon, __runInitializers$1(_init$1, 48, this, "")), __runInitializers$1(_init$1, 51, this);
+        __privateAdd$1(this, _moonIllumination, __runInitializers$1(_init$1, 52, this, "")), __runInitializers$1(_init$1, 55, this);
+        __privateAdd$1(this, _moonRise, __runInitializers$1(_init$1, 56, this, "")), __runInitializers$1(_init$1, 59, this);
+        __privateAdd$1(this, _moonSet, __runInitializers$1(_init$1, 60, this, "")), __runInitializers$1(_init$1, 63, this);
+      }
+      // Contiendra : '06:12', '8:15 AM', etc.
+      renderIcon(svg_icon_code, p_hemisphere) {
+        const lc_style = p_hemisphere === "S" ? "transform: rotate(180deg);" : "";
+        return b`
             <div class="icon">
                 <img class="moon-img-svg" loading="lazy" src=${svg_icon_code} style=${lc_style} />
             </div>
         `;
-                }
-                localize(key) {
-                    return localize(key, this.getLocale());
-                }
-                getTimeFormat(p_timeFormat) {
-                    return p_timeFormat === '12h' ? 'h:mm A' : 'HH:mm';
-                }
-                getLocale() {
-                    return this.language ?? this._hass?.locale?.language ?? 'en';
-                }
-                toIcon(moonState, type) {
-                    const icon = svg[type]?.[moonState];
-                    if (!icon) {
-                        console.warn(`Icône non trouvée : ${type}/${moonState}`);
-                        return '';
-                    }
-                    return icon;
-                }
-                static get styles() {
-                    return styles;
-                }
-                static async getConfigElement() {
-                    await Promise.resolve().then(function () { return editor; });
-                    return document.createElement('tsmoon-card-editor');
-                }
-                static getStubConfig() {
-                    return {
-                        type: 'custom:tsmoon-card',
-                        entity: 'sensor.moon',
-                        title: 'Lune',
-                        icon_type: 'forms',
-                        time_format: '24h',
-                        hemisphere: 'N',
-                        language: 'fr'
-                    };
-                }
-                set hass(hass) {
-                    this._hass = hass;
-                    if (this.entity && hass.states[this.entity]) {
-                        this.state = hass.states[this.entity].state;
-                    }
-                    else {
-                        this.state = '';
-                    }
-                    this.home_latitude = hass.states['zone.home']?.attributes.latitude ?? DEFAULT_LATITUDE;
-                    this.home_longitude = hass.states['zone.home']?.attributes.longitude ?? DEFAULT_LONGITUDE;
-                }
-                setConfig(config) {
-                    this.entity = config.entity ?? this.entity;
-                    this.cardTitle = config.title ?? this.cardTitle;
-                    this.icon_type = config.icon_type ?? DEFAULT_ICON_TYPE;
-                    this.language = config.language ?? 'fr';
-                    this.time_format = config.time_format ?? '24h';
-                    this.hemisphere = config.hemisphere ?? 'N';
-                }
-                willUpdate(changedProperties) {
-                    super.willUpdate(changedProperties);
-                    if (changedProperties.has('state') ||
-                        changedProperties.has('home_latitude') ||
-                        changedProperties.has('home_longitude') ||
-                        changedProperties.has('icon_type') ||
-                        changedProperties.has('time_format')) {
-                        this.updateMoonData();
-                    }
-                }
-                updateMoonData() {
-                    if (!this._hass) {
-                        return;
-                    }
-                    try {
-                        const currentDate = new Date();
-                        const moonData = SunCalc.getMoonData(currentDate, this.home_latitude, this.home_longitude);
-                        const moonTimes = SunCalc.getMoonTimes(currentDate, this.home_latitude, this.home_longitude);
-                        let phaseState = this.state;
-                        if (!phaseState) {
-                            phaseState =
-                                TSMOON_PHASES[moonData.illumination.phase.id];
-                        }
-                        this.moonPhase = phaseState;
-                        this.moonIcon = this.toIcon(phaseState, this.icon_type);
-                        this.moonIllumination =
-                            `${Math.ceil(moonData.illumination.fraction * 100)}%`;
-                        const timeFormat = this.getTimeFormat(this.time_format);
-                        this.moonRise = dayjs(moonTimes.rise).format(timeFormat);
-                        this.moonSet = dayjs(moonTimes.set).format(timeFormat);
-                    }
-                    catch (error) {
-                        console.error('Erreur lors du calcul des données lunaires:', error);
-                        this.moonPhase = '';
-                        this.moonIcon = '';
-                        this.moonIllumination = '0%';
-                        this.moonRise = '--:--';
-                        this.moonSet = '--:--';
-                    }
-                }
-                render() {
-                    if (!this.moonPhase) {
-                        return b `
+      }
+      localize(key) {
+        return localize(key, this.getLocale());
+      }
+      /**
+       * credits to: tmcarr - https://github.com/tmcarr
+       * @param p_timeFormat:string Time Format
+       * @returns 
+       */
+      /*private getTimeFormat(p_timeFormat: string): string {
+          // Format strings defined here: https://day.js.org/docs/en/display/format
+          if (p_timeFormat == '12h') {
+              return 'h:mm A'
+          } else {
+              return 'HH:mm'
+          }
+      }
+          */
+      getTimeFormat(p_timeFormat) {
+        return p_timeFormat === "12h" ? "h:mm A" : "HH:mm";
+      }
+      getLocale() {
+        return this.language ?? this._hass?.locale?.language ?? "en";
+      }
+      toIcon(moonState, type) {
+        const icon = svg[type]?.[moonState];
+        if (!icon) {
+          console.warn(`Ic\xF4ne non trouv\xE9e : ${type}/${moonState}`);
+          return "";
+        }
+        return icon;
+      }
+      // CSS for the card
+      // https://lit.dev/docs/components/styles/
+      static get styles() {
+        return styles_default;
+      }
+      //Pour ajouter l'éditeur visuel
+      static async getConfigElement() {
+        await Promise.resolve().then(function () { return editor; });
+        return document.createElement("tsmoon-card-editor");
+      }
+      static getStubConfig() {
+        return {
+          type: "custom:tsmoon-card",
+          entity: "sensor.moon",
+          title: "Lune",
+          icon_type: "forms",
+          time_format: "24h",
+          hemisphere: "N",
+          language: "fr"
+        };
+      }
+      /**
+       * Called on every hass update
+       */
+      set hass(hass) {
+        this._hass = hass;
+        if (this.entity && hass.states[this.entity]) {
+          this.state = hass.states[this.entity].state;
+        } else {
+          this.state = "";
+        }
+        this.home_latitude = hass.states["zone.home"]?.attributes.latitude ?? DEFAULT_LATITUDE;
+        this.home_longitude = hass.states["zone.home"]?.attributes.longitude ?? DEFAULT_LONGITUDE;
+      }
+      /**
+       * Called every time when entity config is updated
+       * @param config Card configuration (yaml converted to JSON)
+       */
+      setConfig(config) {
+        this.entity = config.entity ?? this.entity;
+        this.cardTitle = config.title ?? this.cardTitle;
+        this.icon_type = config.icon_type ?? DEFAULT_ICON_TYPE;
+        this.language = config.language ?? "fr";
+        this.time_format = config.time_format ?? "24h";
+        this.hemisphere = config.hemisphere ?? "N";
+      }
+      /**
+       * Called before render() when properties change
+       */
+      willUpdate(changedProperties) {
+        super.willUpdate(changedProperties);
+        if (changedProperties.has("state") || changedProperties.has("home_latitude") || changedProperties.has("home_longitude") || changedProperties.has("icon_type") || changedProperties.has("time_format")) {
+          this.updateMoonData();
+        }
+      }
+      /**
+       * Calculate all moon data
+       */
+      updateMoonData() {
+        if (!this._hass) {
+          return;
+        }
+        try {
+          const currentDate = /* @__PURE__ */ new Date();
+          const moonData = SunCalc.getMoonData(
+            currentDate,
+            this.home_latitude,
+            this.home_longitude
+          );
+          const moonTimes = SunCalc.getMoonTimes(
+            currentDate,
+            this.home_latitude,
+            this.home_longitude
+          );
+          let phaseState = this.state;
+          if (!phaseState) {
+            phaseState = TSMOON_PHASES[moonData.illumination.phase.id];
+          }
+          this.moonPhase = phaseState;
+          this.moonIcon = this.toIcon(
+            phaseState,
+            this.icon_type
+          );
+          this.moonIllumination = `${Math.ceil(moonData.illumination.fraction * 100)}%`;
+          const timeFormat = this.getTimeFormat(this.time_format);
+          this.moonRise = dayjs(moonTimes.rise).format(timeFormat);
+          this.moonSet = dayjs(moonTimes.set).format(timeFormat);
+        } catch (error) {
+          console.error(
+            "Erreur lors du calcul des donn\xE9es lunaires:",
+            error
+          );
+          this.moonPhase = "";
+          this.moonIcon = "";
+          this.moonIllumination = "0%";
+          this.moonRise = "--:--";
+          this.moonSet = "--:--";
+        }
+      }
+      /**
+       * Renders the card when the update is requested (when any of the properties are changed)
+       */
+      render() {
+        if (!this.moonPhase) {
+          return b`
                 <ha-card>
                     <div class="card-content">
-                        ${this.localize('card.loading')}
+                        ${this.localize("card.loading")}
                     </div>
                 </ha-card>
             `;
-                    }
-                    const LCstate = this.localize(`moon.${this.moonPhase}`);
-                    const LCmoon_phase = this.localize('card.moon_phase');
-                    const LCmoon_rise = this.localize(`card.moon_rise`);
-                    const LCmoon_set = this.localize(`card.moon_set`);
-                    return b `
+        }
+        const LCstate = this.localize(`moon.${this.moonPhase}`);
+        const LCmoon_phase = this.localize("card.moon_phase");
+        const LCmoon_rise = this.localize(`card.moon_rise`);
+        const LCmoon_set = this.localize(`card.moon_set`);
+        return b`
         
         <ha-card>
             <div class="card-header">
@@ -2566,127 +2519,164 @@ var TSMoonCard = (function (exports) {
             </div>
         </ha-card>
         `;
-                }
-                constructor() {
-                    super(...arguments);
-                    _TSMoonCard_cardTitle_accessor_storage.set(this, __runInitializers(this, _cardTitle_initializers, ''));
-                    _TSMoonCard_state_accessor_storage.set(this, (__runInitializers(this, _cardTitle_extraInitializers), __runInitializers(this, _state_initializers, '')));
-                    _TSMoonCard_icon_type_accessor_storage.set(this, (__runInitializers(this, _state_extraInitializers), __runInitializers(this, _icon_type_initializers, DEFAULT_ICON_TYPE)));
-                    _TSMoonCard_language_accessor_storage.set(this, (__runInitializers(this, _icon_type_extraInitializers), __runInitializers(this, _language_initializers, 'en')));
-                    _TSMoonCard_entity_accessor_storage.set(this, (__runInitializers(this, _language_extraInitializers), __runInitializers(this, _entity_initializers, '')));
-                    _TSMoonCard_time_format_accessor_storage.set(this, (__runInitializers(this, _entity_extraInitializers), __runInitializers(this, _time_format_initializers, '24h')));
-                    _TSMoonCard_hemisphere_accessor_storage.set(this, (__runInitializers(this, _time_format_extraInitializers), __runInitializers(this, _hemisphere_initializers, 'N')));
-                    _TSMoonCard_home_latitude_accessor_storage.set(this, (__runInitializers(this, _hemisphere_extraInitializers), __runInitializers(this, _home_latitude_initializers, DEFAULT_LATITUDE)));
-                    _TSMoonCard_home_longitude_accessor_storage.set(this, (__runInitializers(this, _home_latitude_extraInitializers), __runInitializers(this, _home_longitude_initializers, DEFAULT_LONGITUDE)));
-                    _TSMoonCard_moonPhase_accessor_storage.set(this, (__runInitializers(this, _home_longitude_extraInitializers), __runInitializers(this, _moonPhase_initializers, '')));
-                    _TSMoonCard_moonIcon_accessor_storage.set(this, (__runInitializers(this, _moonPhase_extraInitializers), __runInitializers(this, _moonIcon_initializers, '')));
-                    _TSMoonCard_moonIllumination_accessor_storage.set(this, (__runInitializers(this, _moonIcon_extraInitializers), __runInitializers(this, _moonIllumination_initializers, '')));
-                    _TSMoonCard_moonRise_accessor_storage.set(this, (__runInitializers(this, _moonIllumination_extraInitializers), __runInitializers(this, _moonRise_initializers, '')));
-                    _TSMoonCard_moonSet_accessor_storage.set(this, (__runInitializers(this, _moonRise_extraInitializers), __runInitializers(this, _moonSet_initializers, '')));
-                    __runInitializers(this, _moonSet_extraInitializers);
-                }
-            },
-            _TSMoonCard_cardTitle_accessor_storage = new WeakMap(),
-            _TSMoonCard_state_accessor_storage = new WeakMap(),
-            _TSMoonCard_icon_type_accessor_storage = new WeakMap(),
-            _TSMoonCard_language_accessor_storage = new WeakMap(),
-            _TSMoonCard_entity_accessor_storage = new WeakMap(),
-            _TSMoonCard_time_format_accessor_storage = new WeakMap(),
-            _TSMoonCard_hemisphere_accessor_storage = new WeakMap(),
-            _TSMoonCard_home_latitude_accessor_storage = new WeakMap(),
-            _TSMoonCard_home_longitude_accessor_storage = new WeakMap(),
-            _TSMoonCard_moonPhase_accessor_storage = new WeakMap(),
-            _TSMoonCard_moonIcon_accessor_storage = new WeakMap(),
-            _TSMoonCard_moonIllumination_accessor_storage = new WeakMap(),
-            _TSMoonCard_moonRise_accessor_storage = new WeakMap(),
-            _TSMoonCard_moonSet_accessor_storage = new WeakMap(),
-            (() => {
-                const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(_classSuper[Symbol.metadata] ?? null) : void 0;
-                _cardTitle_decorators = [n({ attribute: false })];
-                _state_decorators = [n({ attribute: false })];
-                _icon_type_decorators = [n({ attribute: false })];
-                _language_decorators = [n({ attribute: false })];
-                _entity_decorators = [n({ attribute: false })];
-                _time_format_decorators = [n({ attribute: false })];
-                _hemisphere_decorators = [n({ attribute: false })];
-                _home_latitude_decorators = [n({ attribute: false })];
-                _home_longitude_decorators = [n({ attribute: false })];
-                _moonPhase_decorators = [n({ attribute: false })];
-                _moonIcon_decorators = [n({ attribute: false })];
-                _moonIllumination_decorators = [n({ attribute: false })];
-                _moonRise_decorators = [n({ attribute: false })];
-                _moonSet_decorators = [n({ attribute: false })];
-                __esDecorate(_a, null, _cardTitle_decorators, { kind: "accessor", name: "cardTitle", static: false, private: false, access: { has: obj => "cardTitle" in obj, get: obj => obj.cardTitle, set: (obj, value) => { obj.cardTitle = value; } }, metadata: _metadata }, _cardTitle_initializers, _cardTitle_extraInitializers);
-                __esDecorate(_a, null, _state_decorators, { kind: "accessor", name: "state", static: false, private: false, access: { has: obj => "state" in obj, get: obj => obj.state, set: (obj, value) => { obj.state = value; } }, metadata: _metadata }, _state_initializers, _state_extraInitializers);
-                __esDecorate(_a, null, _icon_type_decorators, { kind: "accessor", name: "icon_type", static: false, private: false, access: { has: obj => "icon_type" in obj, get: obj => obj.icon_type, set: (obj, value) => { obj.icon_type = value; } }, metadata: _metadata }, _icon_type_initializers, _icon_type_extraInitializers);
-                __esDecorate(_a, null, _language_decorators, { kind: "accessor", name: "language", static: false, private: false, access: { has: obj => "language" in obj, get: obj => obj.language, set: (obj, value) => { obj.language = value; } }, metadata: _metadata }, _language_initializers, _language_extraInitializers);
-                __esDecorate(_a, null, _entity_decorators, { kind: "accessor", name: "entity", static: false, private: false, access: { has: obj => "entity" in obj, get: obj => obj.entity, set: (obj, value) => { obj.entity = value; } }, metadata: _metadata }, _entity_initializers, _entity_extraInitializers);
-                __esDecorate(_a, null, _time_format_decorators, { kind: "accessor", name: "time_format", static: false, private: false, access: { has: obj => "time_format" in obj, get: obj => obj.time_format, set: (obj, value) => { obj.time_format = value; } }, metadata: _metadata }, _time_format_initializers, _time_format_extraInitializers);
-                __esDecorate(_a, null, _hemisphere_decorators, { kind: "accessor", name: "hemisphere", static: false, private: false, access: { has: obj => "hemisphere" in obj, get: obj => obj.hemisphere, set: (obj, value) => { obj.hemisphere = value; } }, metadata: _metadata }, _hemisphere_initializers, _hemisphere_extraInitializers);
-                __esDecorate(_a, null, _home_latitude_decorators, { kind: "accessor", name: "home_latitude", static: false, private: false, access: { has: obj => "home_latitude" in obj, get: obj => obj.home_latitude, set: (obj, value) => { obj.home_latitude = value; } }, metadata: _metadata }, _home_latitude_initializers, _home_latitude_extraInitializers);
-                __esDecorate(_a, null, _home_longitude_decorators, { kind: "accessor", name: "home_longitude", static: false, private: false, access: { has: obj => "home_longitude" in obj, get: obj => obj.home_longitude, set: (obj, value) => { obj.home_longitude = value; } }, metadata: _metadata }, _home_longitude_initializers, _home_longitude_extraInitializers);
-                __esDecorate(_a, null, _moonPhase_decorators, { kind: "accessor", name: "moonPhase", static: false, private: false, access: { has: obj => "moonPhase" in obj, get: obj => obj.moonPhase, set: (obj, value) => { obj.moonPhase = value; } }, metadata: _metadata }, _moonPhase_initializers, _moonPhase_extraInitializers);
-                __esDecorate(_a, null, _moonIcon_decorators, { kind: "accessor", name: "moonIcon", static: false, private: false, access: { has: obj => "moonIcon" in obj, get: obj => obj.moonIcon, set: (obj, value) => { obj.moonIcon = value; } }, metadata: _metadata }, _moonIcon_initializers, _moonIcon_extraInitializers);
-                __esDecorate(_a, null, _moonIllumination_decorators, { kind: "accessor", name: "moonIllumination", static: false, private: false, access: { has: obj => "moonIllumination" in obj, get: obj => obj.moonIllumination, set: (obj, value) => { obj.moonIllumination = value; } }, metadata: _metadata }, _moonIllumination_initializers, _moonIllumination_extraInitializers);
-                __esDecorate(_a, null, _moonRise_decorators, { kind: "accessor", name: "moonRise", static: false, private: false, access: { has: obj => "moonRise" in obj, get: obj => obj.moonRise, set: (obj, value) => { obj.moonRise = value; } }, metadata: _metadata }, _moonRise_initializers, _moonRise_extraInitializers);
-                __esDecorate(_a, null, _moonSet_decorators, { kind: "accessor", name: "moonSet", static: false, private: false, access: { has: obj => "moonSet" in obj, get: obj => obj.moonSet, set: (obj, value) => { obj.moonSet = value; } }, metadata: _metadata }, _moonSet_initializers, _moonSet_extraInitializers);
-                if (_metadata) Object.defineProperty(_a, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
-            })(),
-            _a;
-    })();
+      }
+    }
+    _init$1 = __decoratorStart$1(_a$1);
+    _cardTitle = new WeakMap();
+    _state = new WeakMap();
+    _icon_type = new WeakMap();
+    _language = new WeakMap();
+    _entity = new WeakMap();
+    _time_format = new WeakMap();
+    _hemisphere = new WeakMap();
+    _home_latitude = new WeakMap();
+    _home_longitude = new WeakMap();
+    _moonPhase = new WeakMap();
+    _moonIcon = new WeakMap();
+    _moonIllumination = new WeakMap();
+    _moonRise = new WeakMap();
+    _moonSet = new WeakMap();
+    __decorateElement$1(_init$1, 4, "cardTitle", _cardTitle_dec, TSMoonCard, _cardTitle);
+    __decorateElement$1(_init$1, 4, "state", _state_dec, TSMoonCard, _state);
+    __decorateElement$1(_init$1, 4, "icon_type", _icon_type_dec, TSMoonCard, _icon_type);
+    __decorateElement$1(_init$1, 4, "language", _language_dec, TSMoonCard, _language);
+    __decorateElement$1(_init$1, 4, "entity", _entity_dec, TSMoonCard, _entity);
+    __decorateElement$1(_init$1, 4, "time_format", _time_format_dec, TSMoonCard, _time_format);
+    __decorateElement$1(_init$1, 4, "hemisphere", _hemisphere_dec, TSMoonCard, _hemisphere);
+    __decorateElement$1(_init$1, 4, "home_latitude", _home_latitude_dec, TSMoonCard, _home_latitude);
+    __decorateElement$1(_init$1, 4, "home_longitude", _home_longitude_dec, TSMoonCard, _home_longitude);
+    __decorateElement$1(_init$1, 4, "moonPhase", _moonPhase_dec, TSMoonCard, _moonPhase);
+    __decorateElement$1(_init$1, 4, "moonIcon", _moonIcon_dec, TSMoonCard, _moonIcon);
+    __decorateElement$1(_init$1, 4, "moonIllumination", _moonIllumination_dec, TSMoonCard, _moonIllumination);
+    __decorateElement$1(_init$1, 4, "moonRise", _moonRise_dec, TSMoonCard, _moonRise);
+    __decorateElement$1(_init$1, 4, "moonSet", _moonSet_dec, TSMoonCard, _moonSet);
+    __decoratorMetadata$1(_init$1, TSMoonCard);
 
-    let TSMoonCardEditor = (() => {
-        var _a, _TSMoonCardEditor_hass_accessor_storage, _TSMoonCardEditor__config_accessor_storage;
-        let _classSuper = i;
-        let _hass_decorators;
-        let _hass_initializers = [];
-        let _hass_extraInitializers = [];
-        let __config_decorators;
-        let __config_initializers = [];
-        let __config_extraInitializers = [];
-        return _a = class TSMoonCardEditor extends _classSuper {
-                get hass() { return __classPrivateFieldGet(this, _TSMoonCardEditor_hass_accessor_storage, "f"); }
-                set hass(value) { __classPrivateFieldSet(this, _TSMoonCardEditor_hass_accessor_storage, value, "f"); }
-                get _config() { return __classPrivateFieldGet(this, _TSMoonCardEditor__config_accessor_storage, "f"); }
-                set _config(value) { __classPrivateFieldSet(this, _TSMoonCardEditor__config_accessor_storage, value, "f"); }
-                setConfig(config) {
-                    this._config = config;
-                }
-                _valueChanged(ev) {
-                    if (!this._config || !this.hass) {
-                        return;
-                    }
-                    const target = ev.currentTarget;
-                    const configValue = target.configValue;
-                    if (!configValue) {
-                        return;
-                    }
-                    const value = ev.detail?.value ?? target.value;
-                    if (value === undefined || this._config[configValue] === value) {
-                        return;
-                    }
-                    const newConfig = {
-                        ...this._config,
-                        [configValue]: value,
-                    };
-                    this._config = newConfig;
-                    this.dispatchEvent(new CustomEvent('config-changed', {
-                        detail: { config: newConfig },
-                        bubbles: true,
-                        composed: true,
-                    }));
-                }
-                render() {
-                    if (!this.hass || !this._config) {
-                        return b ``;
-                    }
-                    return b `
+    var __create = Object.create;
+    var __defProp = Object.defineProperty;
+    var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+    var __knownSymbol = (name, symbol) => (symbol = Symbol[name]) ? symbol : /* @__PURE__ */ Symbol.for("Symbol." + name);
+    var __typeError = (msg) => {
+      throw TypeError(msg);
+    };
+    var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+    var __decoratorStart = (base) => [, , , __create(base?.[__knownSymbol("metadata")] ?? null)];
+    var __decoratorStrings = ["class", "method", "getter", "setter", "accessor", "field", "value", "get", "set"];
+    var __expectFn = (fn) => fn !== void 0 && typeof fn !== "function" ? __typeError("Function expected") : fn;
+    var __decoratorContext = (kind, name, done, metadata, fns) => ({ kind: __decoratorStrings[kind], name, metadata, addInitializer: (fn) => done._ ? __typeError("Already initialized") : fns.push(__expectFn(fn || null)) });
+    var __decoratorMetadata = (array, target) => __defNormalProp(target, __knownSymbol("metadata"), array[3]);
+    var __runInitializers = (array, flags, self, value) => {
+      for (var i = 0, fns = array[flags >> 1], n = fns && fns.length; i < n; i++) flags & 1 ? fns[i].call(self) : value = fns[i].call(self, value);
+      return value;
+    };
+    var __decorateElement = (array, flags, name, decorators, target, extra) => {
+      var fn, it, done, ctx, access, k = flags & 7, s = false, p = false;
+      var j = array.length + 1 , key = __decoratorStrings[k + 5];
+      var initializers = (array[j - 1] = []), extraInitializers = array[j] || (array[j] = []);
+      var desc = ((target = target.prototype), __getOwnPropDesc({ get [name]() {
+        return __privateGet(this, extra);
+      }, set [name](x) {
+        return __privateSet(this, extra, x);
+      } }, name));
+      for (var i = decorators.length - 1; i >= 0; i--) {
+        ctx = __decoratorContext(k, name, done = {}, array[3], extraInitializers);
+        {
+          ctx.static = s, ctx.private = p, access = ctx.access = { has: (x) => name in x };
+          access.get = (x) => x[name];
+          access.set = (x, y) => x[name] = y;
+        }
+        it = (0, decorators[i])({ get: desc.get, set: desc.set } , ctx), done._ = 1;
+        if (it === void 0) __expectFn(it) && (desc[key] = it );
+        else if (typeof it !== "object" || it === null) __typeError("Object expected");
+        else __expectFn(fn = it.get) && (desc.get = fn), __expectFn(fn = it.set) && (desc.set = fn), __expectFn(fn = it.init) && initializers.unshift(fn);
+      }
+      return desc && __defProp(target, name, desc), target;
+    };
+    var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+    var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), member.get(obj));
+    var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+    var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), member.set(obj, value), value);
+    var __config_dec, _hass_dec, _a, _init, _hass, __config;
+    class TSMoonCardEditor extends (_a = i, _hass_dec = [n({ attribute: false })], __config_dec = [r()], _a) {
+      constructor() {
+        super(...arguments);
+        __privateAdd(this, _hass, __runInitializers(_init, 8, this)), __runInitializers(_init, 11, this);
+        __privateAdd(this, __config, __runInitializers(_init, 12, this)), __runInitializers(_init, 15, this);
+      }
+      /**
+       * Appelé quand la config change
+       */
+      setConfig(config) {
+        this._config = config;
+      }
+      /**
+       * Appelé quand l'utilisateur change un champ
+       */
+      /*
+          private _valueChanged(ev: CustomEvent): void {
+              if (!this._config || !this.hass) {
+                  return;
+              }
+      
+              const target = ev.target as any;
+              const configValue = target.configValue;
+              const value = target.value;
+      
+              if (this._config[configValue] === value) {
+                  return;
+              }
+      
+              const newConfig = {
+                  ...this._config,
+                  [configValue]: value,
+              };
+      
+              // Envoyer la nouvelle config à Home Assistant
+              const event = new CustomEvent('config-changed', {
+                  detail: { config: newConfig },
+                  bubbles: true,
+                  composed: true,
+              });
+              this.dispatchEvent(event);
+          }
+      */
+      _valueChanged(ev) {
+        if (!this._config || !this.hass) {
+          return;
+        }
+        const target = ev.currentTarget;
+        const configValue = target.configValue;
+        if (!configValue) {
+          return;
+        }
+        const value = ev.detail?.value ?? target.value;
+        if (value === void 0 || this._config[configValue] === value) {
+          return;
+        }
+        const newConfig = {
+          ...this._config,
+          [configValue]: value
+        };
+        this._config = newConfig;
+        this.dispatchEvent(
+          new CustomEvent("config-changed", {
+            detail: { config: newConfig },
+            bubbles: true,
+            composed: true
+          })
+        );
+      }
+      render() {
+        if (!this.hass || !this._config) {
+          return b``;
+        }
+        return b`
         <div class="card-config">
             <!-- Titre -->
             <ha-textfield
                 label="Titre (optionnel)"
-                .value=${this._config.title || ''}
-                .configValue=${'title'}
+                .value=${this._config.title || ""}
+                .configValue=${"title"}
                 @input=${this._valueChanged}
             ></ha-textfield>
 
@@ -2694,8 +2684,8 @@ var TSMoonCard = (function (exports) {
             <ha-entity-picker
                 label="Entité de la lune"
                 .hass=${this.hass}
-                .value=${this._config.entity || ''}
-                .configValue=${'entity'}
+                .value=${this._config.entity || ""}
+                .configValue=${"entity"}
                 @value-changed=${this._valueChanged}
                 allow-custom-entity
             ></ha-entity-picker>
@@ -2703,14 +2693,14 @@ var TSMoonCard = (function (exports) {
             <!-- Type d'icône -->
             <ha-select
                 label="Type d'icône"
-                .value=${this._config.icon_type || 'forms'}
-                .configValue=${'icon_type'}
+                .value=${this._config.icon_type || "forms"}
+                .configValue=${"icon_type"}
                 .options=${[
-                    { value: 'forms', label: 'Forms' },
-                    { value: 'round', label: 'Round' },
-                    { value: 'photo', label: 'Photo' },
-                    { value: 'clear', label: 'Clear' },
-                ]}
+      { value: "forms", label: "Forms" },
+      { value: "round", label: "Round" },
+      { value: "photo", label: "Photo" },
+      { value: "clear", label: "Clear" }
+    ]}
                 @selected=${this._valueChanged}
                 @wa-hide=${(ev) => ev.stopPropagation()}
                 @wa-after-hide=${(ev) => ev.stopPropagation()}
@@ -2720,12 +2710,12 @@ var TSMoonCard = (function (exports) {
             <!-- Format heure -->
             <ha-select
                 label="Format de l'heure"
-                .value=${this._config.time_format || '24h'}
-                .configValue=${'time_format'}
+                .value=${this._config.time_format || "24h"}
+                .configValue=${"time_format"}
                 .options=${[
-                    { value: '24h', label: '24h' },
-                    { value: '12h', label: '12h' },
-                ]}
+      { value: "24h", label: "24h" },
+      { value: "12h", label: "12h" }
+    ]}
                 @selected=${this._valueChanged}
                 @wa-hide=${(ev) => ev.stopPropagation()}
                 @wa-after-hide=${(ev) => ev.stopPropagation()}
@@ -2735,12 +2725,12 @@ var TSMoonCard = (function (exports) {
             <!-- Hémisphère -->
             <ha-select
                 label="Hémisphère"
-                .value=${this._config.hemisphere || 'N'}
-                .configValue=${'hemisphere'}
+                .value=${this._config.hemisphere || "N"}
+                .configValue=${"hemisphere"}
                 .options=${[
-                    { value: 'N', label: 'Nord' },
-                    { value: 'S', label: 'Sud' },
-                ]}
+      { value: "N", label: "Nord" },
+      { value: "S", label: "Sud" }
+    ]}
                 @selected=${this._valueChanged}
                 @wa-hide=${(ev) => ev.stopPropagation()}
                 @wa-after-hide=${(ev) => ev.stopPropagation()}
@@ -2750,33 +2740,21 @@ var TSMoonCard = (function (exports) {
             <!-- Langue -->
             <ha-textfield
                 label="Langue (fr, en, de, etc.)"
-                .value=${this._config.language || 'fr'}
-                .configValue=${'language'}
+                .value=${this._config.language || "fr"}
+                .configValue=${"language"}
                 @input=${this._valueChanged}
             ></ha-textfield>
         </div>
     `;
-                }
-                constructor() {
-                    super(...arguments);
-                    _TSMoonCardEditor_hass_accessor_storage.set(this, __runInitializers(this, _hass_initializers, void 0));
-                    _TSMoonCardEditor__config_accessor_storage.set(this, (__runInitializers(this, _hass_extraInitializers), __runInitializers(this, __config_initializers, void 0)));
-                    __runInitializers(this, __config_extraInitializers);
-                }
-            },
-            _TSMoonCardEditor_hass_accessor_storage = new WeakMap(),
-            _TSMoonCardEditor__config_accessor_storage = new WeakMap(),
-            (() => {
-                const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(_classSuper[Symbol.metadata] ?? null) : void 0;
-                _hass_decorators = [n({ attribute: false })];
-                __config_decorators = [r()];
-                __esDecorate(_a, null, _hass_decorators, { kind: "accessor", name: "hass", static: false, private: false, access: { has: obj => "hass" in obj, get: obj => obj.hass, set: (obj, value) => { obj.hass = value; } }, metadata: _metadata }, _hass_initializers, _hass_extraInitializers);
-                __esDecorate(_a, null, __config_decorators, { kind: "accessor", name: "_config", static: false, private: false, access: { has: obj => "_config" in obj, get: obj => obj._config, set: (obj, value) => { obj._config = value; } }, metadata: _metadata }, __config_initializers, __config_extraInitializers);
-                if (_metadata) Object.defineProperty(_a, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
-            })(),
-            _a;
-    })();
-    customElements.define('tsmoon-card-editor', TSMoonCardEditor);
+      }
+    }
+    _init = __decoratorStart(_a);
+    _hass = new WeakMap();
+    __config = new WeakMap();
+    __decorateElement(_init, 4, "hass", _hass_dec, TSMoonCardEditor, _hass);
+    __decorateElement(_init, 4, "_config", __config_dec, TSMoonCardEditor, __config);
+    __decoratorMetadata(_init, TSMoonCardEditor);
+    customElements.define("tsmoon-card-editor", TSMoonCardEditor);
 
     var editor = /*#__PURE__*/Object.freeze({
         __proto__: null,
@@ -2784,21 +2762,25 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.20";
+    var version = "0.21";
 
-    const CARD_TYPE = 'tsmoon-card';
-    const CARD_NAME = 'Simple Moon Phase Card';
-    const CARD_DESCRIPTION = 'A card to view Moon Phases';
+    const CARD_TYPE = "tsmoon-card";
+    const CARD_NAME = "Simple Moon Phase Card";
+    const CARD_DESCRIPTION = "A card to view Moon Phases";
     const printVersionToConsole = () => {
-        console.info(`%c  ${name.toUpperCase()}  %c  Version ${version}  `, 'color: white; font-weight: bold; background: crimson', 'color: #000; font-weight: bold; background: #ddd');
+      console.info(
+        `%c  ${name.toUpperCase()}  %c  Version ${version}  `,
+        "color: white; font-weight: bold; background: crimson",
+        "color: #000; font-weight: bold; background: #ddd"
+      );
     };
     window.customCards = window.customCards || [];
     window.customCards.push({
-        type: CARD_TYPE,
-        name: CARD_NAME,
-        entity: 'sensor.moon',
-        description: CARD_DESCRIPTION,
-        preview: true,
+      type: CARD_TYPE,
+      name: CARD_NAME,
+      entity: "sensor.moon",
+      description: CARD_DESCRIPTION,
+      preview: true
     });
     printVersionToConsole();
     customElements.define(CARD_TYPE, TSMoonCard);

@@ -4,7 +4,8 @@
     "title": "Minimale zon-maan",
     "title_card": "Minimale Sun Moon-kaart",
     "description": "Een minimale kaart om de toestand van de zon en de maan weer te geven.",
-    "invalid_configuration": "Ongeldige configuratie"
+    "invalid_configuration": "Ongeldige configuratie",
+    "language_label": "Nederlands"
   },
   "editor": {
     "moon_entity": "Maanentiteit (optioneel)"

@@ -4,7 +4,8 @@
     "title": "Sonne | Mond Karte",
     "title_card": "Minimal Sonne | Mond Karte",
     "description": "Eine minimalistische Karte, um den Stand der Sonne und des Mondes darzustellen.",
-    "invalid_configuration": "Ungültige Konfiguration"
+    "invalid_configuration": "Ungültige Konfiguration",
+    "language_label": "Deutsch"
   },
   "editor": {
     "moon_entity": "Mondentität (Optional)"

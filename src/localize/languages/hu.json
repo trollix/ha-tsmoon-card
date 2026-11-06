@@ -4,7 +4,8 @@
     "title": "Minimális Nap Hold",
     "title_card": "Minimális Nap Hold kártya",
     "description": "Egy minimális kártya a nap és a hold állapotának megjelenítéséhez.",
-    "invalid_configuration": "Érvénytelen konfiguráció"
+    "invalid_configuration": "Érvénytelen konfiguráció",
+    "language_label": "Magyar"
   },
   "editor": {
     "moon_entity": "Hold entitás (opcionális)"

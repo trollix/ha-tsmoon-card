@@ -4,7 +4,8 @@
     "title": "月相",
     "title_card": "月相卡片",
     "description": "顯示日月運行狀態的極簡卡片。",
-    "invalid_configuration": "設定無效"
+    "invalid_configuration": "設定無效",
+    "language_label": "繁體中文"
   },
   "editor": {
     "moon_entity": "月相實體（選填）"

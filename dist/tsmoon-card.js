@@ -199,7 +199,8 @@ var TSMoonCard = (function (exports) {
     	title: "Sol i Lluna Mínim",
     	title_card: "Targeta Sol amb Lluna",
     	description: "Targeta per mostrar l'estat del sol i la lluna.",
-    	invalid_configuration: "Configuració no vàlida"
+    	invalid_configuration: "Configuració no vàlida",
+    	language_label: "Català"
     };
     var editor$i = {
     	moon_entity: "Entitat de la Lluna (Opcional)"
@@ -247,7 +248,8 @@ var TSMoonCard = (function (exports) {
     	title: "Minimal Sun Moon",
     	title_card: "Karta Minimal Sun Moon",
     	description: "Minimální karta na vykreslení stavu slunce a měsíce.",
-    	invalid_configuration: "Neplatná konfigurace"
+    	invalid_configuration: "Neplatná konfigurace",
+    	language_label: "Čeština"
     };
     var editor$h = {
     	moon_entity: "Entita měsíce (volitelné)"
@@ -295,7 +297,8 @@ var TSMoonCard = (function (exports) {
     	title: "Sonne | Mond Karte",
     	title_card: "Minimal Sonne | Mond Karte",
     	description: "Eine minimalistische Karte, um den Stand der Sonne und des Mondes darzustellen.",
-    	invalid_configuration: "Ungültige Konfiguration"
+    	invalid_configuration: "Ungültige Konfiguration",
+    	language_label: "Deutsch"
     };
     var editor$g = {
     	moon_entity: "Mondentität (Optional)"
@@ -343,7 +346,8 @@ var TSMoonCard = (function (exports) {
     	title: "Minimal Sun Moon",
     	title_card: "Minimal Sun Moon Card",
     	description: "A minimal card to render the state of the sun and moon.",
-    	invalid_configuration: "Invalid configuration"
+    	invalid_configuration: "Invalid configuration",
+    	language_label: "English"
     };
     var editor$f = {
     	moon_entity: "Moon entity (Optional)"
@@ -391,7 +395,8 @@ var TSMoonCard = (function (exports) {
     	title: "Sol y Luna Mínimo",
     	title_card: "Tarjeta Sol con Luna",
     	description: "Tarjeta para mostrar el estado del sol y la luna.",
-    	invalid_configuration: "Configuración inválida"
+    	invalid_configuration: "Configuración inválida",
+    	language_label: "Español"
     };
     var editor$e = {
     	moon_entity: "Entidad de la Luna (Opcional)"
@@ -439,7 +444,8 @@ var TSMoonCard = (function (exports) {
     	title: "Phases de la lune",
     	title_card: "Simple carte des phases de la lune",
     	description: "Une simple carte pour afficher la phase de la lune",
-    	invalid_configuration: "Invalid configuration"
+    	invalid_configuration: "Invalid configuration",
+    	language_label: "Français"
     };
     var editor$d = {
     	moon_entity: "Entité de la lune"
@@ -487,7 +493,8 @@ var TSMoonCard = (function (exports) {
     	title: "Minimális Nap Hold",
     	title_card: "Minimális Nap Hold kártya",
     	description: "Egy minimális kártya a nap és a hold állapotának megjelenítéséhez.",
-    	invalid_configuration: "Érvénytelen konfiguráció"
+    	invalid_configuration: "Érvénytelen konfiguráció",
+    	language_label: "Magyar"
     };
     var editor$c = {
     	moon_entity: "Hold entitás (opcionális)"
@@ -535,7 +542,8 @@ var TSMoonCard = (function (exports) {
     	title: "Fasi Lunari",
     	title_card: "Card per Fasi Lunari",
     	description: "Semplice scheda per visualizzare le fasi lunari e del sole.",
-    	invalid_configuration: "Configurazione non valida"
+    	invalid_configuration: "Configurazione non valida",
+    	language_label: "Italiano"
     };
     var editor$b = {
     	moon_entity: "Moon entity (Optional)"
@@ -583,7 +591,8 @@ var TSMoonCard = (function (exports) {
     	title: "Minimal Sun Moon",
     	title_card: "Minimal Sun Moon Card",
     	description: "A minimal card to render the state of the sun and moon.",
-    	invalid_configuration: "Invalid configuration"
+    	invalid_configuration: "Invalid configuration",
+    	language_label: "Norsk bokmål"
     };
     var editor$a = {
     	moon_entity: "Moon entity (Optional)"
@@ -631,7 +640,8 @@ var TSMoonCard = (function (exports) {
     	title: "Minimale zon-maan",
     	title_card: "Minimale Sun Moon-kaart",
     	description: "Een minimale kaart om de toestand van de zon en de maan weer te geven.",
-    	invalid_configuration: "Ongeldige configuratie"
+    	invalid_configuration: "Ongeldige configuratie",
+    	language_label: "Nederlands"
     };
     var editor$9 = {
     	moon_entity: "Maanentiteit (optioneel)"
@@ -679,7 +689,8 @@ var TSMoonCard = (function (exports) {
     	title: "Minimalne Słońce i Księżyc",
     	title_card: "Minimalna Karta Słońca i Księżyca",
     	description: "Minimalna karta do wyświetlania stanu słońca i księżyca.",
-    	invalid_configuration: "Nieprawidłowa konfiguracja"
+    	invalid_configuration: "Nieprawidłowa konfiguracja",
+    	language_label: "Polski"
     };
     var editor$8 = {
     	moon_entity: "Encja księżyca (Opcjonalnie)"
@@ -727,7 +738,8 @@ var TSMoonCard = (function (exports) {
     	title: "Fases da Lua",
     	title_card: "Cartão das fases da lua",
     	description: "Um cartão minimalista para exibir as fases da lua e do sol.",
-    	invalid_configuration: "Configuração Inválida"
+    	invalid_configuration: "Configuração Inválida",
+    	language_label: "Português"
     };
     var editor$7 = {
     	moon_entity: "Entidade Lua (Opcional)"
@@ -775,7 +787,8 @@ var TSMoonCard = (function (exports) {
     	title: "Fases da Lua",
     	title_card: "Card das fases da lua",
     	description: "Um cartão minimalista para exibir as fases da lua e do sol.",
-    	invalid_configuration: "Configuração Inválida"
+    	invalid_configuration: "Configuração Inválida",
+    	language_label: "Português"
     };
     var editor$6 = {
     	moon_entity: "Entidade Lua (Opcional)"
@@ -823,7 +836,8 @@ var TSMoonCard = (function (exports) {
     	title: "Soare și Lună Minimal",
     	title_card: "Card Soare și Lună Minimal",
     	description: "Un card minimalist care afișează starea soarelui și a lunii.",
-    	invalid_configuration: "Configurație invalidă"
+    	invalid_configuration: "Configurație invalidă",
+    	language_label: "Română"
     };
     var editor$5 = {
     	moon_entity: "Entitatea lunii (Opțional)"
@@ -871,7 +885,8 @@ var TSMoonCard = (function (exports) {
     	title: "Фазы луны",
     	title_card: "Минималистическая карточка лунных фаз",
     	description: "Минималистичная карточка для отображения состояния луны.",
-    	invalid_configuration: "Ошибка в конфигурации"
+    	invalid_configuration: "Ошибка в конфигурации",
+    	language_label: "Русский"
     };
     var editor$4 = {
     	moon_entity: "Сенсор лунных фаз (Опционально)"
@@ -919,7 +934,8 @@ var TSMoonCard = (function (exports) {
     	title: "Minimal Sun Moon",
     	title_card: "Karta Minimal Sun Moon",
     	description: "Minimálna karta na vykreslenie stavu slnka a mesiaca.",
-    	invalid_configuration: "Neplatná konfigurácia"
+    	invalid_configuration: "Neplatná konfigurácia",
+    	language_label: "Slovenčina"
     };
     var editor$3 = {
     	moon_entity: "Entita Mesiaca (voliteľné)"
@@ -967,7 +983,8 @@ var TSMoonCard = (function (exports) {
     	title: "月相",
     	title_card: "月相卡片",
     	description: "显示日月运行状态的极简卡片。",
-    	invalid_configuration: "配置无效"
+    	invalid_configuration: "配置无效",
+    	language_label: "简体中文"
     };
     var editor$2 = {
     	moon_entity: "月相实体（可选）"
@@ -1015,7 +1032,8 @@ var TSMoonCard = (function (exports) {
     	title: "月相",
     	title_card: "月相卡片",
     	description: "顯示日月運行狀態的極簡卡片。",
-    	invalid_configuration: "設定無效"
+    	invalid_configuration: "設定無效",
+    	language_label: "繁體中文"
     };
     var editor$1 = {
     	moon_entity: "月相實體（選填）"
@@ -1071,7 +1089,7 @@ var TSMoonCard = (function (exports) {
       nl: nl$1,
       pl: pl$1,
       pt: pt$1,
-      pt_BR,
+      ptbr: pt_BR,
       ro: ro$1,
       ru: ru$1,
       sk: sk$1,
@@ -1082,6 +1100,14 @@ var TSMoonCard = (function (exports) {
       zhtw: zh_TW,
       zhhant: zh_TW
     };
+    const LANGUAGE_OPTIONS = Object.entries(languages).filter(
+      ([code, translation]) => code === Object.keys(languages).find(
+        (key) => languages[key] === translation
+      )
+    ).map(([code, translation]) => ({
+      value: code,
+      label: translation.common.language_label
+    }));
     function localize(key, locale) {
       let translated;
       const lang = locale.replace(/['"]+/g, "").replace("-", "_").replace("_", "").toLowerCase();
@@ -2839,13 +2865,19 @@ var TSMoonCard = (function (exports) {
             >
             </ha-select>
 
-            <!-- Langue -->
-            <ha-textfield
-                label="Langue (fr, en, de, etc.)"
-                .value=${this._config.language || "fr"}
+            <!-- Langue de cette carte, indépendante de la langue de HA -->
+            <ha-select
+                label="Langue"
+                .value=${!this._config.language || this._config.language === "auto" ? "auto" : this._config.language}
                 .configValue=${"language"}
-                @input=${this._valueChanged}
-            ></ha-textfield>
+                .options=${[
+      { value: "auto", label: "Automatique \u2014 langue de Home Assistant" },
+      ...LANGUAGE_OPTIONS
+    ]}
+                @selected=${this._valueChanged}
+                @wa-hide=${(ev) => ev.stopPropagation()}
+                @wa-after-hide=${(ev) => ev.stopPropagation()}
+            ></ha-select>
         </div>
     `;
       }
@@ -2864,7 +2896,7 @@ var TSMoonCard = (function (exports) {
     });
 
     var name = "ha-tsmoon-card";
-    var version = "0.21.pr";
+    var version = "0.21.pr2";
 
     const CARD_TYPE = "tsmoon-card";
     const CARD_NAME = "Simple Moon Phase Card";

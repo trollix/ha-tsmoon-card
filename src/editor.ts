@@ -5,6 +5,7 @@ import { property, state } from 'lit/decorators.js';
 
 import type { HomeAssistant } from 'custom-card-helpers';
 import type { ICardConfig } from './types';
+import { LANGUAGE_OPTIONS } from './localize/localize';
 
 export class TSMoonCardEditor extends LitElement {
     
@@ -173,13 +174,20 @@ render(): TemplateResult {
             >
             </ha-select>
 
-            <!-- Langue -->
-            <ha-textfield
-                label="Langue (fr, en, de, etc.)"
-                .value=${this._config.language || 'fr'}
+            <!-- Langue de cette carte, indépendante de la langue de HA -->
+            <ha-select
+                label="Langue"
+                .value=${!this._config.language || this._config.language === 'auto'
+                    ? 'auto' : this._config.language}
                 .configValue=${'language'}
-                @input=${this._valueChanged}
-            ></ha-textfield>
+                .options=${[
+                    { value: 'auto', label: 'Automatique — langue de Home Assistant' },
+                    ...LANGUAGE_OPTIONS,
+                ]}
+                @selected=${this._valueChanged}
+                @wa-hide=${(ev: Event) => ev.stopPropagation()}
+                @wa-after-hide=${(ev: Event) => ev.stopPropagation()}
+            ></ha-select>
         </div>
     `;
 }

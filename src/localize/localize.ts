@@ -34,7 +34,7 @@ const languages: any = {
   nl,
   pl,
   pt,
-  pt_BR,
+  ptbr: pt_BR,
   ro,
   ru,
   sk,
@@ -72,6 +72,19 @@ const languages: Record<string, () => Promise<any>> = {
 
 
 */
+
+// Une entrée par traduction : les alias chinois sont ignorés.
+export const LANGUAGE_OPTIONS = Object.entries(languages)
+  .filter(
+    ([code, translation]) =>
+      code === Object.keys(languages).find(
+        key => languages[key] === translation,
+      ),
+  )
+  .map(([code, translation]) => ({
+    value: code,
+    label: (translation as typeof en).common.language_label,
+  }));
 
 
 export function localize (key: string, locale: string): string {

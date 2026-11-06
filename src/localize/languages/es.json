@@ -4,7 +4,8 @@
     "title": "Sol y Luna Mínimo",
     "title_card": "Tarjeta Sol con Luna",
     "description": "Tarjeta para mostrar el estado del sol y la luna.",
-    "invalid_configuration": "Configuración inválida"
+    "invalid_configuration": "Configuración inválida",
+    "language_label": "Español"
   },
   "editor": {
     "moon_entity": "Entidad de la Luna (Opcional)"

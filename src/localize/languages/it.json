@@ -4,7 +4,8 @@
     "title": "Fasi Lunari",
     "title_card": "Card per Fasi Lunari",
     "description": "Semplice scheda per visualizzare le fasi lunari e del sole.",
-    "invalid_configuration": "Configurazione non valida"
+    "invalid_configuration": "Configurazione non valida",
+    "language_label": "Italiano"
   },
   "editor": {
     "moon_entity": "Moon entity (Optional)"

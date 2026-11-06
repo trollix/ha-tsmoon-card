@@ -4,7 +4,8 @@
     "title": "Minimal Sun Moon",
     "title_card": "Minimal Sun Moon Card",
     "description": "A minimal card to render the state of the sun and moon.",
-    "invalid_configuration": "Invalid configuration"
+    "invalid_configuration": "Invalid configuration",
+    "language_label": "Norsk bokmål"
   },
   "editor": {
     "moon_entity": "Moon entity (Optional)"

@@ -4,7 +4,8 @@
     "title": "Phases de la lune",
     "title_card": "Simple carte des phases de la lune",
     "description": "Une simple carte pour afficher la phase de la lune",
-    "invalid_configuration": "Invalid configuration"
+    "invalid_configuration": "Invalid configuration",
+    "language_label": "Français"
   },
   "editor": {
     "moon_entity": "Entité de la lune"

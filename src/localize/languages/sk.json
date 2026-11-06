@@ -4,7 +4,8 @@
     "title": "Minimal Sun Moon",
     "title_card": "Karta Minimal Sun Moon",
     "description": "Minimálna karta na vykreslenie stavu slnka a mesiaca.",
-    "invalid_configuration": "Neplatná konfigurácia"
+    "invalid_configuration": "Neplatná konfigurácia",
+    "language_label": "Slovenčina"
   },
   "editor": {
     "moon_entity": "Entita Mesiaca (voliteľné)"

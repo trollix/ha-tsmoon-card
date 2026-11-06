@@ -4,7 +4,8 @@
     "title": "Minimalne Słońce i Księżyc",
     "title_card": "Minimalna Karta Słońca i Księżyca",
     "description": "Minimalna karta do wyświetlania stanu słońca i księżyca.",
-    "invalid_configuration": "Nieprawidłowa konfiguracja"
+    "invalid_configuration": "Nieprawidłowa konfiguracja",
+    "language_label": "Polski"
   },
   "editor": {
     "moon_entity": "Encja księżyca (Opcjonalnie)"

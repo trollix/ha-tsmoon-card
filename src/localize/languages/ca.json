@@ -4,7 +4,8 @@
     "title": "Sol i Lluna Mínim",
     "title_card": "Targeta Sol amb Lluna",
     "description": "Targeta per mostrar l'estat del sol i la lluna.",
-    "invalid_configuration": "Configuració no vàlida"
+    "invalid_configuration": "Configuració no vàlida",
+    "language_label": "Català"
   },
   "editor": {
     "moon_entity": "Entitat de la Lluna (Opcional)"

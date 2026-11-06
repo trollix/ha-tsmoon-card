@@ -4,7 +4,8 @@
     "title": "Fases da Lua",
     "title_card": "Cartão das fases da lua",
     "description": "Um cartão minimalista para exibir as fases da lua e do sol.",
-    "invalid_configuration": "Configuração Inválida"
+    "invalid_configuration": "Configuração Inválida",
+    "language_label": "Português"
   },
   "editor": {
     "moon_entity": "Entidade Lua (Opcional)"

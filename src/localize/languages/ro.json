@@ -4,7 +4,8 @@
     "title": "Soare și Lună Minimal",
     "title_card": "Card Soare și Lună Minimal",
     "description": "Un card minimalist care afișează starea soarelui și a lunii.",
-    "invalid_configuration": "Configurație invalidă"
+    "invalid_configuration": "Configurație invalidă",
+    "language_label": "Română"
   },
   "editor": {
     "moon_entity": "Entitatea lunii (Opțional)"

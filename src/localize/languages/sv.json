@@ -1,0 +1,33 @@
+{
+  "common": {
+    "version": "Version",
+    "title": "Minimal Sun Moon",
+    "title_card": "Minimal Sun Moon Card",
+    "description": "En minimalistisk rendering av solen och månens faser.",
+    "invalid_configuration": "Felaktig konfiguration",
+    "language_label": "Svenska"
+  },
+  "editor": {
+    "moon_entity": "Mån entitet (Optional)"
+  },
+  "errors": {
+    "missing_moon_entity": "moon_entity saknas i konfigurationen",
+    "invalid_icon_type": "Följande färger i din konfiguration är felaktiga:"
+  },
+  "card": {
+    "moon_phase": "Månfas",
+    "moon_rise": "Månuppgång",
+    "moon_set": "Månnedgång",
+    "loading": "Laddar..."
+  },
+  "moon": {
+    "new_moon": "Nymåne",
+    "waxing_crescent": "Tilltagande skära",
+    "first_quarter": "Första kvarteret",
+    "waxing_gibbous": "Tilltagande måne",
+    "full_moon": "Fullmåne",
+    "waning_gibbous": "Avtagande måne",
+    "last_quarter": "Sista kvarteret",
+    "waning_crescent": "Avtagande skära"
+  }
+}
